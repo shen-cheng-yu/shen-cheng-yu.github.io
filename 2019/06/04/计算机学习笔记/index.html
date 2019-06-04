@@ -399,7 +399,7 @@ height:50vh;
 <p><a href="https://blog.csdn.net/tangxinzhuan/article/details/52450867" target="_blank" rel="noopener">使新建windows记事本的字符集编码默认为UTF-8</a><br><a href="https://blog.csdn.net/qq_38671360/article/details/82700646" target="_blank" rel="noopener">如何使创建记事本时的默认编码为UTF-8</a><br><a href="https://zhidao.baidu.com/question/7421669.html?word=ShellNew" target="_blank" rel="noopener">shellnew是什么程序</a></p>
 <p>最终的实现方法和百度到的有些出入。基本原理就是在<code>C:\Windows\SHELLNEW</code>里面，保存一个空白的<code>utf-8</code>格式的模板记事本文件，然后在注册表里面更改<code>.txt</code>文件的默认模板为刚刚保存的那个文件。</p>
 <p>我在<code>C盘</code>里面找不到<code>ShellNew</code>这个文件夹（显示隐藏的文件/文件夹也找不到），后来就自己新建了一个<code>SHELLNEW</code>文件夹，虽然名字不一样，但是注册表里面可能是不区分大小写的，因为<code>.txt</code>已经有了<code>ShellNew</code>这个项，我再新建一个<code>SHELLNEW</code>项，就会提示该项已存在。</p>
-<p><img src="http://a1.qpic.cn/psb?/V13iejbz17O8Eu/jt5ftKbAyK1uIkMAGtQCjmlHW6G5acSloyxoLp5nY*g!/c/dMAAAAAAAAAA&ek=1&kp=1&pt=0&bo=CwSYAgsEmAIRADc!&tl=1&tm=1559628000&sce=0-12-12&rf=0-18"></p>
+<p><img src="https://img-blog.csdnimg.cn/20190604133722103.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FIMjAxODAzMjQ=,size_16,color_FFFFFF,t_70"></p>
 <p><code>ShellNew</code>这个项下面，有三个字符串值，加上我自己新建的<code>FileName</code>，一共四个字符串值。一个字符串值由数值名称，类型，数值数据三部分构成。右键修改，将它们的数据都给修改成了<code>UTF-8.txt</code>（就是我保存的那个模板记事本文件）。一开始没有效果，后来发现是因为<code>UTF</code>和<code>8</code>之间少了一个连字符，数据输入错了，难怪没有效果。</p>
 <p>现在已经成功了，看来我的<code>C盘</code>可能根本就没有<code>ShellNew</code>这个文件夹，必须要新建一个才行。</p>
 <h1 id="打开注册表"><a href="#打开注册表" class="headerlink" title="打开注册表"></a><font color="red">打开注册表</font></h1><p><kbd>win</kbd>+<kbd>R</kbd>，输入<code>regedit</code>，进入注册表界面。</p>
