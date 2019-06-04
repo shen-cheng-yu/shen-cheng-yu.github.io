@@ -266,7 +266,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">934</span>阅读时长: <span class="post-count reading-time">3 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1.7k</span>阅读时长: <span class="post-count reading-time">5 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -407,6 +407,9 @@ height:50vh;
 <h1 id="一些文件的后缀类型"><a href="#一些文件的后缀类型" class="headerlink" title="一些文件的后缀类型"></a><font color="red">一些文件的后缀类型</font></h1><h2 id="chw-文件"><a href="#chw-文件" class="headerlink" title="chw 文件"></a>chw 文件</h2><p><a href="https://zhidao.baidu.com/question/197311491.html?word=chw%E6%96%87%E4%BB%B6" target="_blank" rel="noopener">如何打开chw文件</a><br><code>EasyX</code>文件的说明文档是<code>.chm</code>类型的，本质应该是一个<code>msdn</code>查阅器，<code>.chw</code>文件就是在打开<code>.chm</code>文件时产生的索引文件，能够加快<code>.chm</code>文件的索引，是自动产生没有办法消除。</p>
 <h1 id="电脑显卡"><a href="#电脑显卡" class="headerlink" title="电脑显卡"></a><font color="red">电脑显卡</font></h1><p>在我的电脑，设备管理器里面的显示适配器里面，可以看到显卡信息。我的电脑有两个显卡，<code>Intel(R) HD Graphics 530</code>和<code>NVIDIA GeForce GTX 950M</code>，可能是一个独显一个集显这样的关系，但是两个都有内存范围这个东西？？？<br><a href="https://jingyan.baidu.com/article/fec7a1e5c6b91a1191b4e76c.html?wap_detail_test=X5" target="_blank" rel="noopener">集成显卡和独立显卡的区别</a><br><a href="https://jingyan.baidu.com/article/456c463b6971270a58314423.html" target="_blank" rel="noopener">怎么查看电脑的显卡</a></p>
 <h1 id="给本地图片设置url"><a href="#给本地图片设置url" class="headerlink" title="给本地图片设置url"></a><font color="red">给本地图片设置url</font></h1><p>一开始上传到qq空间里面，qq空间里面的图片不能直接右键获得<code>url</code>，就用前端的方法，复制该图片的<code>src</code>标签的内容即可。但是qq空间里的图片不能引用，即便是获取了图片的网址，在<code>hexo</code>博客界面也显示不出来，未经允许不可引用。据说是qq空间设置了防盗链，，，没办法，就把图片上传到<code>csdn</code>的服务器。<code>csdn</code>可以直接上传本地图片，然后给其分配一个网址，通过这个网址就可以引用这个图片了。</p>
+<h1 id="鼠标工作原理"><a href="#鼠标工作原理" class="headerlink" title="鼠标工作原理"></a><font color="red">鼠标工作原理</font></h1><h2 id="定位原理"><a href="#定位原理" class="headerlink" title="定位原理"></a>定位原理</h2><p>光电鼠标内部有一个发光二极管，它发出的光线通过一个菱形镜，折射到鼠标垫或者桌面上，可以照亮光电鼠标底部表面（这是鼠标底部总会发光的原因），当然也有部分光线直接通过菱形镜笔直地向前照射。光电鼠标经底部表面反射回的一部分光线，通过一个圆形镜后，传输到一个光感应器件（微成像器）内成像。这个菱形镜和圆形镜是光电鼠标内部光学器件中很重要的一部分。当光电鼠标移动时，其移动轨迹便会被记录为一组高速拍摄的连贯图像，被光电鼠标内部的一块专用图像分析芯片（DSP，即数字微处理器）分析处理。该芯片通过对这些图像上特征点位置的变化进行分析，来判断鼠标的移动方向和移动距离，从而完成光标的定位。 </p>
+<h2 id="滚轮原理"><a href="#滚轮原理" class="headerlink" title="滚轮原理"></a>滚轮原理</h2><p>应该是鼠标的滚轮通过轴插入到鼠标编码器上面的孔，这样滚轮旋转的时候，就能带动鼠标编码器的旋转运动。编码器有3个引脚，第一个引脚接电源，剩下两个是输出引脚。但是当接通电源的时候，这两个引脚的输出波形会有相位差。比如说，当顺时针旋转时，第二引脚的输出波形超前于第三引脚的输出波形，逆时针的时候就反过来，这样通过两个引脚输出波形的相位差关系，就知道滚轮的旋转方向了。<br>当慢滑动时，第二引脚和第三引脚输出的波形脉宽宽（也就是高电平持续时间长）；当快滑动时，第二引脚和第三引脚输出的波形脉宽窄（也就是高电平持续时间短）。<br>总结可得，鼠标编码器的接法是：第一引脚接VCC电源，第二引脚和第三引脚为输出端。编码器通过相位差来判断滑动方向，通过输出高电平持续时间来判断滑动速度，但无论滑动快慢和方向，其各引脚输出的脉冲宽度相同。</p>
+<h2 id="DPI"><a href="#DPI" class="headerlink" title="DPI"></a>DPI</h2><p>dpi是它用来衡量鼠标每移动一英寸所能检测出的点数，dpi越小，用来定位的点数就越少，定位精度就低；dpi越大，用来定位点数就多，定位精度就高。通常情况下，传统机械式鼠标的扫描精度都在200dpi以下，而光电鼠标则能达到400甚至800dpi。<br><a href="http://www.fengniao.com/pe/0_691720.html" target="_blank" rel="noopener">光电鼠标的工作原理</a><br><a href="http://3g.163.com/v/video/VNOV3LM6Q.html" target="_blank" rel="noopener">鼠标中键的工作原理</a><br><a href="https://blog.csdn.net/u011798737/article/details/70990823" target="_blank" rel="noopener">鼠标编码器原理</a><br><a href="https://wenku.baidu.com/view/1dbfb38fa0116c175f0e4862.html" target="_blank" rel="noopener">今天终于明白了鼠标编码器的原理</a></p>
 
     </article>
     <!-- license  -->
@@ -414,6 +417,11 @@ height:50vh;
     <!-- paginator  -->
     <ul class="post-paginator">
         <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2019/06/04/Office学习笔记/" title="Office学习笔记">
+                    <div class="nextTitle">Office学习笔记</div>
+                </a>
             
         </li>
         <li class="previous">
@@ -546,7 +554,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#记事本更改默认编码方式为UTF-8"><span class="toc-number">1.</span> <span class="toc-text">记事本更改默认编码方式为UTF-8</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#打开注册表"><span class="toc-number">2.</span> <span class="toc-text">打开注册表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Markdown中使用HTML标签"><span class="toc-number">3.</span> <span class="toc-text">Markdown中使用HTML标签</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一些文件的后缀类型"><span class="toc-number">4.</span> <span class="toc-text">一些文件的后缀类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#chw-文件"><span class="toc-number">4.1.</span> <span class="toc-text">chw 文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#电脑显卡"><span class="toc-number">5.</span> <span class="toc-text">电脑显卡</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#给本地图片设置url"><span class="toc-number">6.</span> <span class="toc-text">给本地图片设置url</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#记事本更改默认编码方式为UTF-8"><span class="toc-number">1.</span> <span class="toc-text">记事本更改默认编码方式为UTF-8</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#打开注册表"><span class="toc-number">2.</span> <span class="toc-text">打开注册表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Markdown中使用HTML标签"><span class="toc-number">3.</span> <span class="toc-text">Markdown中使用HTML标签</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一些文件的后缀类型"><span class="toc-number">4.</span> <span class="toc-text">一些文件的后缀类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#chw-文件"><span class="toc-number">4.1.</span> <span class="toc-text">chw 文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#电脑显卡"><span class="toc-number">5.</span> <span class="toc-text">电脑显卡</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#给本地图片设置url"><span class="toc-number">6.</span> <span class="toc-text">给本地图片设置url</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#鼠标工作原理"><span class="toc-number">7.</span> <span class="toc-text">鼠标工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定位原理"><span class="toc-number">7.1.</span> <span class="toc-text">定位原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#滚轮原理"><span class="toc-number">7.2.</span> <span class="toc-text">滚轮原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DPI"><span class="toc-number">7.3.</span> <span class="toc-text">DPI</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -608,9 +616,24 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 5
+        Total : 6
         </div>
         <!-- search  -->
         
@@ -620,6 +643,20 @@ top:50vh;
     
     
     
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
