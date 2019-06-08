@@ -266,7 +266,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">325</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">562</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -410,6 +410,9 @@ height:50vh;
 <h1 id="conio-h"><a href="#conio-h" class="headerlink" title="conio.h"></a><font color="red">conio.h</font></h1><p>定义了通过控制台进行数据输入和数据输出的函数，主要是一些用户通过按键盘产生的对应操作，比如<code>getch()</code>、<code>kbhit()</code>等等。</p>
 <h1 id="指针数组和数组指针"><a href="#指针数组和数组指针" class="headerlink" title="指针数组和数组指针"></a><font color="red">指针数组和数组指针</font></h1><p>先从概念上明确，前面一个词是修饰词，后面一个词才是本质。指针数组是一个数组，数组里的每一个元素都是一个指针。数组指针是一个指针，指向一个数组。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>* a[<span class="number">10</span>]   <span class="comment">//指针数组</span></span><br><span class="line"><span class="keyword">int</span> (*p) a[<span class="number">10</span>]  <span class="comment">//数组指针</span></span><br></pre></td></tr></table></figure></p>
 <p>优先级关系是：<code>)&gt;[]&gt;*</code><br>因此第一行代码先形成了数组关系，每个数组元素都是int型的指针。第二行代码先形成了指针关系，指向一个数组。<br><a href="https://blog.csdn.net/weixin_41923658/article/details/88066916" target="_blank" rel="noopener">指针数组与数组指针的区别</a></p>
+<h1 id="记录程序运行时间"><a href="#记录程序运行时间" class="headerlink" title="记录程序运行时间"></a><font color="red">记录程序运行时间</font></h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">clock_t</span> startTime,endTime;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">123456789</span>;i++)&#123;&#125;</span><br><span class="line">    startTime=clock();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">123456789</span>;i++)&#123;&#125;</span><br><span class="line">    endTime=clock();</span><br><span class="line">    <span class="keyword">double</span> time1=(<span class="keyword">double</span>)(endTime-startTime)/CLOCKS_PER_SEC;</span><br><span class="line">    <span class="keyword">double</span> time2=(<span class="keyword">double</span>)endTime/CLOCKS_PER_SEC;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;time1&lt;&lt;<span class="string">" "</span>&lt;&lt;time2&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>程序输出如下：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0.234</span> <span class="number">0.468</span></span><br></pre></td></tr></table></figure></p>
+<p>可以看出，两个循环的时间基本上就是一个循环的两倍。<br><code>&lt;ctime&gt;</code>库里面的clock()计时函数，返回的是程序从启动开始，到调用这个计时函数为止所花费的CPU时钟计时单元，在MSDN中称之为挂钟时间（wal-clock）。若挂钟时间不可取，则返回-1。其中clock_t是用来保存该计时单元的数据类型。此外还定义了一个常量CLOCKS_PER_SEC，它用来表示一秒钟会有多少个时钟计时单元。<br><a href="https://www.cnblogs.com/didiaodidiao/p/9194702.html" target="_blank" rel="noopener">C++如何记录程序运行时间</a></p>
 
     </article>
     <!-- license  -->
@@ -554,7 +557,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ASCII对照"><span class="toc-number">1.</span> <span class="toc-text">ASCII对照</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#初始化画布"><span class="toc-number">2.</span> <span class="toc-text">初始化画布</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#conio-h"><span class="toc-number">3.</span> <span class="toc-text">conio.h</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#指针数组和数组指针"><span class="toc-number">4.</span> <span class="toc-text">指针数组和数组指针</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ASCII对照"><span class="toc-number">1.</span> <span class="toc-text">ASCII对照</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#初始化画布"><span class="toc-number">2.</span> <span class="toc-text">初始化画布</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#conio-h"><span class="toc-number">3.</span> <span class="toc-text">conio.h</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#指针数组和数组指针"><span class="toc-number">4.</span> <span class="toc-text">指针数组和数组指针</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#记录程序运行时间"><span class="toc-number">5.</span> <span class="toc-text">记录程序运行时间</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -648,9 +651,60 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 7
+        Total : 10
         </div>
         <!-- search  -->
         
@@ -666,7 +720,22 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/05</span><a class="archive-post-title" href="/2019/06/05/C++学习笔记—继承和派生/">C++学习笔记—继承和派生</a>
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——从C到C++/">C++学习笔记—从C到C++</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">C++学习笔记—多态和虚函数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——类和对象基础/">C++学习笔记—类和对象基础</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/05</span><a class="archive-post-title" href="/2019/06/05/C++学习笔记——继承和派生/">C++学习笔记—继承和派生</a>
         </li>
     
     
@@ -709,7 +778,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记—运算符重载/">C++学习笔记—运算符重载</a>
+            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
         </li>
     
     
