@@ -411,7 +411,36 @@ height:50vh;
 <h2 id="MBR"><a href="#MBR" class="headerlink" title="MBR"></a>MBR</h2><p>MBR 位于硬盘第一个物理扇区（绝对扇区）柱面0，磁头0，扇区1处。由于DOS是由柱面0，磁头1，扇区1开始，故MBR不属于DOS扇区，DOS不能直接访问。MBR中包含硬盘的主引导程序和硬盘分区表。硬盘分区表有4个分区记录区。记录区就是记录有关分区信息的一张表。它从主引导记录偏移地址 01BEH处连续存放，每个分区记录区占16个字节。<br>4个分区中只能有1个活跃分区，即C盘。标志符是80H在分区记录区的第一个字节处。若第一个字节是00H则表示非活跃分区。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">80	01	01	00	0B	FE	3F	81	3F	00	00	00	C3	DD	1F	00 </span><br><span class="line">00	00	01	82	05	FE	BF	0C	02	DE	1F	00	0E	90	61	00 </span><br><span class="line">00	00	00	00	00	00	00	00	00	00	00	00	00	00	00	00 </span><br><span class="line">00	00	00	00	00	00	00	00	00	00	00	00	00	00	00	00</span><br></pre></td></tr></table></figure></p>
 <h2 id="DBR"><a href="#DBR" class="headerlink" title="DBR"></a>DBR</h2><p>DBR 位于柱面0，磁头1，扇区1，即第一个DOS扇区（DOS扇区号为0）。DBR分为两部分：DOS引导程序和BPB（BIOS parameter block）。</p>
 <h2 id="文件分配表"><a href="#文件分配表" class="headerlink" title="文件分配表"></a>文件分配表</h2><p>文件分配表是反映硬盘上所有簇的使用情况，通过查文件分配表可以得知任一簇的使用情况。DOS在给一个文件分配空间时总先扫描FAT，找到第一个可用簇，将该空间分配给文件，并将该簇的簇号填到目录的相应段内。FAT就是记录文件簇号的一张表。文件第一个簇号（在目录表中）和FAT中该文件的簇号串起来形成文件的“簇号链”，恢复被破坏的文件就是根据这条链。FAT位于DBR之后，其DOS扇区号从1开始。</p>
-<h2 id="文件目录"><a href="#文件目录" class="headerlink" title="文件目录"></a>文件目录</h2><p>文件目录分为两类：根目录，子目录。根目录有一个，子目录可以有多个。子目录下还可以有子目录，从而形成“树状”的文件目录结构。DOS为目录项分配32字节。目录项分为三类：文件，子目录（其内容是许多目录项），卷标（只能在根目录，只有一个。目录项中有文件（或子目录，或卷标）的名字，扩展名，属性，生成或最后修改日期，时间，开始簇号，及文件大小。目录项的32个字节的分配如下：<br>|意义|文件名|扩展名|文件属性|保留|时间|日期|开始簇号|文件长度|<br>| :–: | :–:| :–: | :–: | :–: | :–: | :–: | :–: | :–: |<br>|<strong>字节数</strong>|8B|3B|1B|10B|2B|2B|2B|4B|<br>目录项文件名区域中第一个字节还有特殊的意义：00H代表未使用 ，EBH代表此文件已被删除。<br>WINDOWS的长文件名使用了上表中所说的“保留”这片区域。<br>DOS中DIR列出的内容是根据文件目录表得到的。<br>文件起始簇号填在文件目录中，其余簇都填在FAT中上一簇的位置上。<font color="red">（上一簇是什么意思？？） </font><br><a href="http://blog.sina.com.cn/s/blog_711588b60102w464.html" target="_blank" rel="noopener">硬盘基本知识（磁道、扇区、柱面、磁头数、簇、MBR、DBR）</a></p>
+<h2 id="文件目录"><a href="#文件目录" class="headerlink" title="文件目录"></a>文件目录</h2><p>文件目录分为两类：根目录，子目录。根目录有一个，子目录可以有多个。子目录下还可以有子目录，从而形成“树状”的文件目录结构。DOS为目录项分配32字节。目录项分为三类：文件，子目录（其内容是许多目录项），卷标（只能在根目录，只有一个。目录项中有文件（或子目录，或卷标）的名字，扩展名，属性，生成或最后修改日期，时间，开始簇号，及文件大小。目录项的32个字节的分配如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">意义</th>
+<th style="text-align:center">文件名</th>
+<th style="text-align:center">扩展名</th>
+<th style="text-align:center">文件属性</th>
+<th style="text-align:center">保留</th>
+<th style="text-align:center">时间</th>
+<th style="text-align:center">日期</th>
+<th style="text-align:center">开始簇号</th>
+<th style="text-align:center">文件长度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>字节数</strong></td>
+<td style="text-align:center">8B</td>
+<td style="text-align:center">3B</td>
+<td style="text-align:center">1B</td>
+<td style="text-align:center">10B</td>
+<td style="text-align:center">2B</td>
+<td style="text-align:center">2B</td>
+<td style="text-align:center">2B</td>
+<td style="text-align:center">4B</td>
+</tr>
+</tbody>
+</table>
+<p>目录项文件名区域中第一个字节还有特殊的意义：00H代表未使用 ，EBH代表此文件已被删除。<br>WINDOWS的长文件名使用了上表中所说的“保留”这片区域。<br>DOS中DIR列出的内容是根据文件目录表得到的。<br>文件起始簇号填在文件目录中，其余簇都填在FAT中上一簇的位置上。<font color="red">（上一簇是什么意思？？） </font><br><a href="http://blog.sina.com.cn/s/blog_711588b60102w464.html" target="_blank" rel="noopener">硬盘基本知识（磁道、扇区、柱面、磁头数、簇、MBR、DBR）</a></p>
 
     </article>
     <!-- license  -->
