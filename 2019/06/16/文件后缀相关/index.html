@@ -22,7 +22,7 @@
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>计算机学习笔记 · 云想衣裳花想容，春风拂槛露华浓</title>
+    <title>文件后缀相关 · 云想衣裳花想容，春风拂槛露华浓</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/">xtncsg&#39;s Studio.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">计算机学习笔记</a>
+                <a href="#" class="post-name">文件后缀相关</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            计算机学习笔记
+            文件后缀相关
             <!-- 404 -->
             
         </h1>
@@ -266,12 +266,12 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">1.7k</span>阅读时长: <span class="post-count reading-time">5 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">73</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/06/04</span>
+                    <span class="post-intro-time">2019/06/16</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -395,21 +395,7 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="记事本更改默认编码方式为UTF-8"><a href="#记事本更改默认编码方式为UTF-8" class="headerlink" title="记事本更改默认编码方式为UTF-8"></a><font color="red">记事本更改默认编码方式为UTF-8</font></h1><p>由于之前在<code>Marxico</code>上写好的Markdown文件，导入到记事本里面，再修改记事本的后缀为<code>.md</code>，把这样的文件上传到<code>Hexo</code>上，博客上显示的文章就会乱码。为了一劳永逸的解决这个问题，就想把记事本的默认编码方式改为<code>utf-8</code>，要不然每次都要另存为才能改编码方式。</p>
-<p><a href="https://blog.csdn.net/tangxinzhuan/article/details/52450867" target="_blank" rel="noopener">使新建windows记事本的字符集编码默认为UTF-8</a><br><a href="https://blog.csdn.net/qq_38671360/article/details/82700646" target="_blank" rel="noopener">如何使创建记事本时的默认编码为UTF-8</a><br><a href="https://zhidao.baidu.com/question/7421669.html?word=ShellNew" target="_blank" rel="noopener">shellnew是什么程序</a></p>
-<p>最终的实现方法和百度到的有些出入。基本原理就是在<code>C:\Windows\SHELLNEW</code>里面，保存一个空白的<code>utf-8</code>格式的模板记事本文件，然后在注册表里面更改<code>.txt</code>文件的默认模板为刚刚保存的那个文件。</p>
-<p>我在<code>C盘</code>里面找不到<code>ShellNew</code>这个文件夹（显示隐藏的文件/文件夹也找不到），后来就自己新建了一个<code>SHELLNEW</code>文件夹，虽然名字不一样，但是注册表里面可能是不区分大小写的，因为<code>.txt</code>已经有了<code>ShellNew</code>这个项，我再新建一个<code>SHELLNEW</code>项，就会提示该项已存在。</p>
-<p><img src="https://img-blog.csdnimg.cn/20190604133722103.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FIMjAxODAzMjQ=,size_16,color_FFFFFF,t_70"></p>
-<p><code>ShellNew</code>这个项下面，有三个字符串值，加上我自己新建的<code>FileName</code>，一共四个字符串值。一个字符串值由数值名称，类型，数值数据三部分构成。右键修改，将它们的数据都给修改成了<code>UTF-8.txt</code>（就是我保存的那个模板记事本文件）。一开始没有效果，后来发现是因为<code>UTF</code>和<code>8</code>之间少了一个连字符，数据输入错了，难怪没有效果。</p>
-<p>现在已经成功了，看来我的<code>C盘</code>可能根本就没有<code>ShellNew</code>这个文件夹，必须要新建一个才行。</p>
-<h1 id="打开注册表"><a href="#打开注册表" class="headerlink" title="打开注册表"></a><font color="red">打开注册表</font></h1><p><kbd>win</kbd>+<kbd>R</kbd>，输入<code>regedit</code>，进入注册表界面。</p>
-<h1 id="Markdown中使用HTML标签"><a href="#Markdown中使用HTML标签" class="headerlink" title="Markdown中使用HTML标签"></a><font color="red">Markdown中使用HTML标签</font></h1><p><a href="https://www.cnblogs.com/moije/articles/6751624.html" target="_blank" rel="noopener">HTML常用标签大全</a><br>标签的基本使用方法，<code>&lt;xx&gt;这里是要输入的汉字&lt;/xx&gt;</code><br><code>&lt;blockquote&gt;&lt;/blockquote&gt;</code>块引用<br><code>&lt;kbd&gt;&lt;/kbd&gt;</code>键盘符号<br><code>&lt;u&gt;&lt;/u&gt;</code>下划线<br><code>&lt;font color=&quot;red&quot;&gt;&lt;/font&gt;</code>改变字体颜色<br><code>&lt;font color=#ff0000&gt;&lt;/font&gt;</code>改变字体颜色</p>
-<h1 id="一些文件的后缀类型"><a href="#一些文件的后缀类型" class="headerlink" title="一些文件的后缀类型"></a><font color="red">一些文件的后缀类型</font></h1><h2 id="chw-文件"><a href="#chw-文件" class="headerlink" title="chw 文件"></a>chw 文件</h2><p><a href="https://zhidao.baidu.com/question/197311491.html?word=chw%E6%96%87%E4%BB%B6" target="_blank" rel="noopener">如何打开chw文件</a><br><code>EasyX</code>文件的说明文档是<code>.chm</code>类型的，本质应该是一个<code>msdn</code>查阅器，<code>.chw</code>文件就是在打开<code>.chm</code>文件时产生的索引文件，能够加快<code>.chm</code>文件的索引，是自动产生没有办法消除。</p>
-<h1 id="电脑显卡"><a href="#电脑显卡" class="headerlink" title="电脑显卡"></a><font color="red">电脑显卡</font></h1><p>在我的电脑，设备管理器里面的显示适配器里面，可以看到显卡信息。我的电脑有两个显卡，<code>Intel(R) HD Graphics 530</code>和<code>NVIDIA GeForce GTX 950M</code>，可能是一个独显一个集显这样的关系，但是两个都有内存范围这个东西？？？<br><a href="https://jingyan.baidu.com/article/fec7a1e5c6b91a1191b4e76c.html?wap_detail_test=X5" target="_blank" rel="noopener">集成显卡和独立显卡的区别</a><br><a href="https://jingyan.baidu.com/article/456c463b6971270a58314423.html" target="_blank" rel="noopener">怎么查看电脑的显卡</a></p>
-<h1 id="给本地图片设置url"><a href="#给本地图片设置url" class="headerlink" title="给本地图片设置url"></a><font color="red">给本地图片设置url</font></h1><p>一开始上传到qq空间里面，qq空间里面的图片不能直接右键获得<code>url</code>，就用前端的方法，复制该图片的<code>src</code>标签的内容即可。但是qq空间里的图片不能引用，即便是获取了图片的网址，在<code>hexo</code>博客界面也显示不出来，未经允许不可引用。据说是qq空间设置了防盗链，，，没办法，就把图片上传到<code>csdn</code>的服务器。<code>csdn</code>可以直接上传本地图片，然后给其分配一个网址，通过这个网址就可以引用这个图片了。</p>
-<h1 id="鼠标工作原理"><a href="#鼠标工作原理" class="headerlink" title="鼠标工作原理"></a><font color="red">鼠标工作原理</font></h1><h2 id="定位原理"><a href="#定位原理" class="headerlink" title="定位原理"></a>定位原理</h2><p>光电鼠标内部有一个发光二极管，它发出的光线通过一个菱形镜，折射到鼠标垫或者桌面上，可以照亮光电鼠标底部表面（这是鼠标底部总会发光的原因），当然也有部分光线直接通过菱形镜笔直地向前照射。光电鼠标经底部表面反射回的一部分光线，通过一个圆形镜后，传输到一个光感应器件（微成像器）内成像。这个菱形镜和圆形镜是光电鼠标内部光学器件中很重要的一部分。当光电鼠标移动时，其移动轨迹便会被记录为一组高速拍摄的连贯图像，被光电鼠标内部的一块专用图像分析芯片（DSP，即数字微处理器）分析处理。该芯片通过对这些图像上特征点位置的变化进行分析，来判断鼠标的移动方向和移动距离，从而完成光标的定位。 </p>
-<h2 id="滚轮原理"><a href="#滚轮原理" class="headerlink" title="滚轮原理"></a>滚轮原理</h2><p>应该是鼠标的滚轮通过轴插入到鼠标编码器上面的孔，这样滚轮旋转的时候，就能带动鼠标编码器的旋转运动。编码器有3个引脚，第一个引脚接电源，剩下两个是输出引脚。但是当接通电源的时候，这两个引脚的输出波形会有相位差。比如说，当顺时针旋转时，第二引脚的输出波形超前于第三引脚的输出波形，逆时针的时候就反过来，这样通过两个引脚输出波形的相位差关系，就知道滚轮的旋转方向了。<br>当慢滑动时，第二引脚和第三引脚输出的波形脉宽宽（也就是高电平持续时间长）；当快滑动时，第二引脚和第三引脚输出的波形脉宽窄（也就是高电平持续时间短）。<br>总结可得，鼠标编码器的接法是：第一引脚接VCC电源，第二引脚和第三引脚为输出端。编码器通过相位差来判断滑动方向，通过输出高电平持续时间来判断滑动速度，但无论滑动快慢和方向，其各引脚输出的脉冲宽度相同。</p>
-<h2 id="DPI"><a href="#DPI" class="headerlink" title="DPI"></a>DPI</h2><p>dpi是它用来衡量鼠标每移动一英寸所能检测出的点数，dpi越小，用来定位的点数就越少，定位精度就低；dpi越大，用来定位点数就多，定位精度就高。通常情况下，传统机械式鼠标的扫描精度都在200dpi以下，而光电鼠标则能达到400甚至800dpi。<br><a href="http://www.fengniao.com/pe/0_691720.html" target="_blank" rel="noopener">光电鼠标的工作原理</a><br><a href="http://3g.163.com/v/video/VNOV3LM6Q.html" target="_blank" rel="noopener">鼠标中键的工作原理</a><br><a href="https://blog.csdn.net/u011798737/article/details/70990823" target="_blank" rel="noopener">鼠标编码器原理</a><br><a href="https://wenku.baidu.com/view/1dbfb38fa0116c175f0e4862.html" target="_blank" rel="noopener">今天终于明白了鼠标编码器的原理</a></p>
+        <h1 id="chw-文件"><a href="#chw-文件" class="headerlink" title="chw 文件"></a>chw 文件</h1><p><a href="https://zhidao.baidu.com/question/197311491.html?word=chw%E6%96%87%E4%BB%B6" target="_blank" rel="noopener">如何打开chw文件</a><br><code>EasyX</code>文件的说明文档是<code>.chm</code>类型的，本质应该是一个<code>msdn</code>查阅器，<code>.chw</code>文件就是在打开<code>.chm</code>文件时产生的索引文件，能够加快<code>.chm</code>文件的索引，是自动产生没有办法消除。</p>
 
     </article>
     <!-- license  -->
@@ -419,16 +405,16 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href="/2019/06/04/Office学习笔记/" title="Office学习笔记">
-                    <div class="nextTitle">Office学习笔记</div>
+                <a href="/2019/06/16/指针相关/" title="指针相关">
+                    <div class="nextTitle">指针相关</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2019/06/04/古诗词学习笔记/" title="古诗词学习笔记">
-                    <div class="prevTitle">古诗词学习笔记</div>
+                <a href="/2019/06/16/头文件与库文件相关/" title="头文件与库文件相关">
+                    <div class="prevTitle">头文件与库文件相关</div>
                 </a>
             
         </li>
@@ -554,7 +540,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#记事本更改默认编码方式为UTF-8"><span class="toc-number">1.</span> <span class="toc-text">记事本更改默认编码方式为UTF-8</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#打开注册表"><span class="toc-number">2.</span> <span class="toc-text">打开注册表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Markdown中使用HTML标签"><span class="toc-number">3.</span> <span class="toc-text">Markdown中使用HTML标签</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一些文件的后缀类型"><span class="toc-number">4.</span> <span class="toc-text">一些文件的后缀类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#chw-文件"><span class="toc-number">4.1.</span> <span class="toc-text">chw 文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#电脑显卡"><span class="toc-number">5.</span> <span class="toc-text">电脑显卡</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#给本地图片设置url"><span class="toc-number">6.</span> <span class="toc-text">给本地图片设置url</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#鼠标工作原理"><span class="toc-number">7.</span> <span class="toc-text">鼠标工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定位原理"><span class="toc-number">7.1.</span> <span class="toc-text">定位原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#滚轮原理"><span class="toc-number">7.2.</span> <span class="toc-text">滚轮原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DPI"><span class="toc-number">7.3.</span> <span class="toc-text">DPI</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#chw-文件"><span class="toc-number">1.</span> <span class="toc-text">chw 文件</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -699,9 +685,106 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 10
+        Total : 17
         </div>
         <!-- search  -->
         
@@ -717,22 +800,70 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——从C到C++/">C++学习笔记—从C到C++</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/头文件与库文件相关/">头文件与库文件相关</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">C++学习笔记—多态和虚函数</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/指针相关/">指针相关</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——类和对象基础/">C++学习笔记—类和对象基础</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/文件后缀相关/">文件后缀相关</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/05</span><a class="archive-post-title" href="/2019/06/05/C++学习笔记——继承和派生/">C++学习笔记—继承和派生</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/记事本更改默认编码方式为UTF-8/">记事本更改默认编码方式为UTF-8</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/电脑硬件/">电脑硬件</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/磁盘与磁盘格式/">磁盘与磁盘格式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/程序运行时间/">程序运行时间</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/HTML学习笔记/">HTML学习笔记</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/05/04/Git Github Hexo/">Git Github Hexo</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/C++学习笔记——类和对象提高/">C++学习笔记—类和对象提高</a>
         </li>
     
     
@@ -760,12 +891,22 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/04</span><a class="archive-post-title" href="/2019/06/04/计算机学习笔记/">计算机学习笔记</a>
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——从C到C++/">C++学习笔记—从C到C++</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/04</span><a class="archive-post-title" href="/2019/06/04/编程学习笔记/">编程学习笔记</a>
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">C++学习笔记—多态和虚函数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——类和对象基础/">C++学习笔记—类和对象基础</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/05</span><a class="archive-post-title" href="/2019/06/05/C++学习笔记——继承和派生/">C++学习笔记—继承和派生</a>
         </li>
     
     
@@ -776,20 +917,6 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/05/04/Git Github Hexo/">Git Github Hexo</a>
         </li>
     
     </ul></div>
