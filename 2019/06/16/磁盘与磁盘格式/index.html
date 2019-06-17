@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="κԭ">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="κԭ">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content>
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>磁盘与磁盘格式 · 云想衣裳花想容，春风拂槛露华浓</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">xtncsg&#39;s Studio.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">磁盘与磁盘格式</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href="/">xtncsg's Studio.</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(https://img-blog.csdnimg.cn/20190604163423985.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FIMjAxODAzMjQ=,size_16,color_FFFFFF,t_70)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            磁盘与磁盘格式
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">2.5k</span>阅读时长: <span class="post-count reading-time">9 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/06/16</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="磁盘的结构"><a href="#磁盘的结构" class="headerlink" title="磁盘的结构"></a>磁盘的结构</h1><p><a href="https://mp.weixin.qq.com/s/-7FRZ-vuDuX9M2cT9C0AQg" target="_blank" rel="noopener">管家公众号链接</a><br>硬盘最基本的组成部分是由坚硬金属材料制成的涂以磁性介质的盘片，一个硬盘包括有多个盘片，每个盘片有两面，都可记录信息。总共有多少个盘面，就有多少个磁头用来独写读写信息。每个扇区可存储128×2的N次方（N＝0.1.2.3）字节信息。在DOS中每扇区是128×2的2次方＝512字节。柱面是从最外缘的“0”开始编号，磁头从0开始编号，扇区是从1开始编号。柱面、磁头、扇区构成了硬盘结构的基本参数，硬盘的CHS，即Cylinder（柱面）、Head（磁头）、Sector（扇区），只要知道了硬盘的CHS的数目，即可确定硬盘的容量，计算公式为：存储容量＝磁头数×磁道（柱面）数×每道扇区数×每扇区字节数。一张磁盘有多个分区，比如C盘这个分区在最外层的磁道上，D盘在里面的磁道。一个分区包含很多个磁道组成。<br><a href="https://zhidao.baidu.com/question/981853326082120459.html" target="_blank" rel="noopener">什么是磁道，什么是簇，分区是怎样划分的？</a></p>
+<h1 id="簇"><a href="#簇" class="headerlink" title="簇"></a>簇</h1><h2 id="簇的概念"><a href="#簇的概念" class="headerlink" title="簇的概念"></a>簇的概念</h2><p>“簇”是DOS进行分配的最小单位。当创建一个很小的文件时，如是一个字节，则它在磁盘上并不是只占一个字节的空间，而是占有整个一簇。不同格式的磁盘，其簇的大小是不一样的。簇的概念仅适用于数据区。</p>
+<h2 id="查看磁盘分区簇的大小"><a href="#查看磁盘分区簇的大小" class="headerlink" title="查看磁盘分区簇的大小"></a>查看磁盘分区簇的大小</h2><p>在Windows操作系统中，可以使用Chkdsk命令查看硬盘分区的簇大小。该命令对硬盘进行分析，得到的分配单元的值就是该分区的簇的大小，比如我的C盘格式是NTFS，簇的大小是4KB。<br><img src="https://img-blog.csdnimg.cn/20190616181435760.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FIMjAxODAzMjQ=,size_16,color_FFFFFF,t_70" alt="enter image description here"><br><a href="https://zhidao.baidu.com/question/1388505773070899180.html" target="_blank" rel="noopener">怎么查看簇大小？</a></p>
+<h2 id="取合适的簇值"><a href="#取合适的簇值" class="headerlink" title="取合适的簇值"></a>取合适的簇值</h2><p>理论上簇越小越好，因为这样可以节约空间。但事实是，簇太小会使系统性能有轻微下降。当一个大文件分开存放到好几个很小的簇上时，查找文件的时候，需要把这几个簇都给找出来，会影响到速度。4K的簇是比较合理的。若是NTFS格式，簇最小可达512B。FAT32 是比较好的格式，最小簇可达4KB。<br><a href="https://zhidao.baidu.com/question/327243804939618685.html" target="_blank" rel="noopener">簇大好还是小好</a></p>
+<h1 id="磁盘格式"><a href="#磁盘格式" class="headerlink" title="磁盘格式"></a>磁盘格式</h1><p>windows下主要有FAT16、FAT32、NTFS 等，最新格式为exFAT，不同的磁盘格式有不同的特性。常见的FAT格式说的应该就是FAT16这个格式。</p>
+<h2 id="U-盘格式"><a href="#U-盘格式" class="headerlink" title="U 盘格式"></a>U 盘格式</h2><p>U盘默认的格式是FAT32，这个格式不允许传输超过4GB的大文件，将它转换成NTFS格式就可以了。但是这种格式是很伤U盘的，因为NTFS分区是采用“日志式”的文件系统，需要记录详细的读写操作，因为要不断读写，会影响到U盘的速度和寿命。</p>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><p>FAT就是以前学操作系统时见到的文件分配表，File Allocation Table。<br>NTFS 是New Technology File System。<br>FAT16最大可以管理大到2GB的分区，但每个分区最多只能有65525个簇。随着硬盘或分区容量的增大，每个簇所占的空间将越来越大，从而导致硬盘空间的浪费。<br>FAT32可以支持大到2TB的分区。FAT32使用的簇比FAT16小，从而有效地节约了硬盘空间。<br>NTFS中簇的大小并不依赖于磁盘或分区的大小。簇尺寸的缩小不但降低了磁盘空间的浪费，还减少了产生磁盘碎片的可能。</p>
+<p><font color="red">这里的簇减小和磁盘碎片有什么关系呢？</font><br><a href="https://baike.baidu.com/item/%E7%A3%81%E7%9B%98%E6%A0%BC%E5%BC%8F/958346" target="_blank" rel="noopener">磁盘格式——百度百科</a></p>
+<h2 id="磁盘格式转换为NTFS格式"><a href="#磁盘格式转换为NTFS格式" class="headerlink" title="磁盘格式转换为NTFS格式"></a>磁盘格式转换为NTFS格式</h2><p>（管理员）运行命令行，输入<code>convert c:/fs:ntfs</code>。这应该是在运行一个命令行程序<code>convert.exe</code>，后面的是命令行参数。可以通过这条命令将FAT或FAT32卷转换为NTFS格式。一旦将某个驱动器或分区转换为NTFS格式，无法将其恢复回FAT或FAT32格式。只能通过格式化磁盘或者分区的方式恢复原来的格式，格式化的方法会丢失分区内所有的数据，格式化的时候可以指定分区的格式，也可以同时指定分区中簇的大小。<br><img src="https://img-blog.csdnimg.cn/20190616181220266.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FIMjAxODAzMjQ=,size_16,color_FFFFFF,t_70" alt="enter image description here"><br><img src="https://img-blog.csdnimg.cn/20190616181603242.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FIMjAxODAzMjQ=,size_16,color_FFFFFF,t_70" alt="enter image description here"><br><a href="https://zhidao.baidu.com/question/262020022.html" target="_blank" rel="noopener">怎么把磁盘格式转换为NTFS格式的啊？</a></p>
+<h2 id="NTFS格式簇大小"><a href="#NTFS格式簇大小" class="headerlink" title="NTFS格式簇大小"></a>NTFS格式簇大小</h2><p>NTFS支持512/1024/2048/4096/8192/16K/32K/64K。在NTFS文件系统中，当分区的大小在2GB以下时，簇的大小应该比相应的FAT32簇小，即小于4KB；当分区的大小在2GB以上时（2GB~2TB），簇的大小应该都为4KB。一般情况下使用默认的分区大小即可。<br><a href="https://zhidao.baidu.com/question/7260210.html" target="_blank" rel="noopener">关于ntfs格式簇大小！！！</a></p>
+<h1 id="如何划分整G硬盘"><a href="#如何划分整G硬盘" class="headerlink" title="如何划分整G硬盘"></a>如何划分整G硬盘</h1><p>比如在分区的时候想得到一个2G的分区，这时候输入2000M或者2048M所分出来的区在Windows下面都不会被认成整数的2G，而是1.9G多一点。<br>整数G计算公式：(X－1)×4+1024×X=Y<br>其中X就是想要得到的整数分区的数值，单位是G，Y是你分区时应该输入的数字，单位是M，例如想得到3G的分区就应该输入(3－1)×4+1024×3=3080，那么在分区时就应该输入3080作为分区的大小。</p>
+<h1 id="绝对扇区与DOS扇区"><a href="#绝对扇区与DOS扇区" class="headerlink" title="绝对扇区与DOS扇区"></a>绝对扇区与DOS扇区</h1><p>用柱面/磁头/扇区可以唯一地定位磁盘上的一个特定的区域，或是说柱面/磁头/扇区与磁盘上每一个扇区有一一对应关系，这就是绝对扇区的表示方法。<br>但DOS不能直接使用绝对扇区进行磁盘上的信息管理，而是用所谓“相对扇区”或“DOS扇区”。“相对扇区”只是一个数字，该数字与绝对扇区“柱面/磁头/扇区”具有一一对应关系。当使用相对扇区编号时，DOS是从柱面0，磁头1，扇区1开始（柱面0，磁头0的区域不属于DOS扇区，没有DOS扇区编号，DOS下不能访问，只能调用BIOS访问），该扇区的DOS扇区编号为0，是第一个DOS扇区。依次编号该磁道上剩余的其他扇区。然后是同柱面上其他磁道上的扇区。再然后是其他柱面上的扇区。</p>
+<h1 id="DOS磁盘区域的划分"><a href="#DOS磁盘区域的划分" class="headerlink" title="DOS磁盘区域的划分"></a>DOS磁盘区域的划分</h1><p>格式化好的硬盘，整个磁盘按所记录数据的作用不同可分为主引导记录（MBR:Main Boot Record），DOS引导记录 （DBR:DOS Boot Record），文件分配表（FAT:File Allocation Table），根目录 （BD:Boot Directory）和数据区。前4个重要信息在磁盘的外磁道上，每个磁道上存储的信息总量是一样的，而外圈周长大于内圈周长，也即外圈存储密度要小些，可靠性高些。</p>
+<h2 id="MBR"><a href="#MBR" class="headerlink" title="MBR"></a>MBR</h2><p>MBR 位于硬盘第一个物理扇区（绝对扇区）柱面0，磁头0，扇区1处。由于DOS是由柱面0，磁头1，扇区1开始，故MBR不属于DOS扇区，DOS不能直接访问。MBR中包含硬盘的主引导程序和硬盘分区表。硬盘分区表有4个分区记录区。记录区就是记录有关分区信息的一张表。它从主引导记录偏移地址 01BEH处连续存放，每个分区记录区占16个字节。<br>4个分区中只能有1个活跃分区，即C盘。标志符是80H在分区记录区的第一个字节处。若第一个字节是00H则表示非活跃分区。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">80	01	01	00	0B	FE	3F	81	3F	00	00	00	C3	DD	1F	00 </span><br><span class="line">00	00	01	82	05	FE	BF	0C	02	DE	1F	00	0E	90	61	00 </span><br><span class="line">00	00	00	00	00	00	00	00	00	00	00	00	00	00	00	00 </span><br><span class="line">00	00	00	00	00	00	00	00	00	00	00	00	00	00	00	00</span><br></pre></td></tr></table></figure></p>
+<h2 id="DBR"><a href="#DBR" class="headerlink" title="DBR"></a>DBR</h2><p>DBR 位于柱面0，磁头1，扇区1，即第一个DOS扇区（DOS扇区号为0）。DBR分为两部分：DOS引导程序和BPB（BIOS parameter block）。</p>
+<h2 id="文件分配表"><a href="#文件分配表" class="headerlink" title="文件分配表"></a>文件分配表</h2><p>文件分配表是反映硬盘上所有簇的使用情况，通过查文件分配表可以得知任一簇的使用情况。DOS在给一个文件分配空间时总先扫描FAT，找到第一个可用簇，将该空间分配给文件，并将该簇的簇号填到目录的相应段内。FAT就是记录文件簇号的一张表。文件第一个簇号（在目录表中）和FAT中该文件的簇号串起来形成文件的“簇号链”，恢复被破坏的文件就是根据这条链。FAT位于DBR之后，其DOS扇区号从1开始。</p>
+<h2 id="文件目录"><a href="#文件目录" class="headerlink" title="文件目录"></a>文件目录</h2><p>文件目录分为两类：根目录，子目录。根目录有一个，子目录可以有多个。子目录下还可以有子目录，从而形成“树状”的文件目录结构。DOS为目录项分配32字节。目录项分为三类：文件，子目录（其内容是许多目录项），卷标（只能在根目录，只有一个。目录项中有文件（或子目录，或卷标）的名字，扩展名，属性，生成或最后修改日期，时间，开始簇号，及文件大小。目录项的32个字节的分配如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">意义</th>
+<th style="text-align:center">文件名</th>
+<th style="text-align:center">扩展名</th>
+<th style="text-align:center">文件属性</th>
+<th style="text-align:center">保留</th>
+<th style="text-align:center">时间</th>
+<th style="text-align:center">日期</th>
+<th style="text-align:center">开始簇号</th>
+<th style="text-align:center">文件长度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>字节数</strong></td>
+<td style="text-align:center">8B</td>
+<td style="text-align:center">3B</td>
+<td style="text-align:center">1B</td>
+<td style="text-align:center">10B</td>
+<td style="text-align:center">2B</td>
+<td style="text-align:center">2B</td>
+<td style="text-align:center">2B</td>
+<td style="text-align:center">4B</td>
+</tr>
+</tbody>
+</table>
+<p>目录项文件名区域中第一个字节还有特殊的意义：00H代表未使用 ，EBH代表此文件已被删除。<br>WINDOWS的长文件名使用了上表中所说的“保留”这片区域。<br>DOS中DIR列出的内容是根据文件目录表得到的。<br>文件起始簇号填在文件目录中，其余簇都填在FAT中上一簇的位置上。<font color="red">（上一簇是什么意思？？） </font><br><a href="http://blog.sina.com.cn/s/blog_711588b60102w464.html" target="_blank" rel="noopener">硬盘基本知识（磁道、扇区、柱面、磁头数、簇、MBR、DBR）</a></p>
+
+    </article>
+    <!-- license  -->
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2019/06/16/电脑硬件/" title="电脑硬件">
+                    <div class="nextTitle">电脑硬件</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2019/06/16/程序运行时间/" title="程序运行时间">
+                    <div class="prevTitle">程序运行时间</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:1431168022@qq.com" class="iconfont-archer email" title="email"></a>
+            
+        
+    
+        
+            
+                <a href="https://github.com/shen-cheng-yu" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title="wechat">
+                  
+                  <img class="profile-qr" src="https://img-blog.csdnimg.cn/2019060414414914.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FIMjAxODAzMjQ=,size_16,color_FFFFFF,t_70">
+                </span>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer qq" title="qq">
+                  
+                  <img class="profile-qr" src="https://img-blog.csdnimg.cn/20190604144134786.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FIMjAxODAzMjQ=,size_16,color_FFFFFF,t_70">
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#磁盘的结构"><span class="toc-number">1.</span> <span class="toc-text">磁盘的结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#簇"><span class="toc-number">2.</span> <span class="toc-text">簇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#簇的概念"><span class="toc-number">2.1.</span> <span class="toc-text">簇的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看磁盘分区簇的大小"><span class="toc-number">2.2.</span> <span class="toc-text">查看磁盘分区簇的大小</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#取合适的簇值"><span class="toc-number">2.3.</span> <span class="toc-text">取合适的簇值</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#磁盘格式"><span class="toc-number">3.</span> <span class="toc-text">磁盘格式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#U-盘格式"><span class="toc-number">3.1.</span> <span class="toc-text">U 盘格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#区别"><span class="toc-number">3.2.</span> <span class="toc-text">区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#磁盘格式转换为NTFS格式"><span class="toc-number">3.3.</span> <span class="toc-text">磁盘格式转换为NTFS格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NTFS格式簇大小"><span class="toc-number">3.4.</span> <span class="toc-text">NTFS格式簇大小</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如何划分整G硬盘"><span class="toc-number">4.</span> <span class="toc-text">如何划分整G硬盘</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#绝对扇区与DOS扇区"><span class="toc-number">5.</span> <span class="toc-text">绝对扇区与DOS扇区</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DOS磁盘区域的划分"><span class="toc-number">6.</span> <span class="toc-text">DOS磁盘区域的划分</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#MBR"><span class="toc-number">6.1.</span> <span class="toc-text">MBR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DBR"><span class="toc-number">6.2.</span> <span class="toc-text">DBR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件分配表"><span class="toc-number">6.3.</span> <span class="toc-text">文件分配表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件目录"><span class="toc-number">6.4.</span> <span class="toc-text">文件目录</span></a></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 17
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/头文件与库文件相关/">头文件与库文件相关</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/指针相关/">指针相关</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/文件后缀相关/">文件后缀相关</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/记事本更改默认编码方式为UTF-8/">记事本更改默认编码方式为UTF-8</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/电脑硬件/">电脑硬件</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/磁盘与磁盘格式/">磁盘与磁盘格式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/程序运行时间/">程序运行时间</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/HTML学习笔记/">HTML学习笔记</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/05/04/Git Github Hexo/">Git Github Hexo</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/C++学习笔记——类和对象提高/">C++学习笔记—类和对象提高</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——从C到C++/">C++学习笔记—从C到C++</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">C++学习笔记—多态和虚函数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——类和对象基础/">C++学习笔记—类和对象基础</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/05</span><a class="archive-post-title" href="/2019/06/05/C++学习笔记——继承和派生/">C++学习笔记—继承和派生</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/04</span><a class="archive-post-title" href="/2019/06/04/古诗词学习笔记/">古诗词学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
+        </li>
+    
+    </ul></div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br>
+    1、请确保node版本大于6.2<br>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "κԭ"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+
