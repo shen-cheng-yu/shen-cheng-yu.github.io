@@ -78,6 +78,8 @@
     <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
     
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -201,10 +203,8 @@
 </head>
 
     
-        <body class="home-body">
     
-    
-<header class="header index-header">
+<header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
@@ -220,34 +220,21 @@
 
 
 
-
-height:50vh;
 ">
     
     <!-- 主页  -->
-    
-    
-    <!-- 文章页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(https://img-blog.csdnimg.cn/20190604160112535.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FIMjAxODAzMjQ=,size_16,color_FFFFFF,t_70)"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            xtncsg's Studio.
-            <!-- 文章页  -->
-            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
-            
-            
-                云想衣裳花想容，春风拂槛露华浓
-            
-            <!-- 文章页  -->
             
         </p>
         <!-- 文章页meta -->
@@ -359,38 +346,6 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/06/17/hexo使用攻略/">
-            
-                <span>HEXO攻略(Archer)</span>
-        </a>
-        <div class="abstract-content">
-            首先，目前使用hexo时，用的主题是Archer主题，是当时搭建博客时就选定的主题。
-表格对齐说明行位于第二行，这一行不能少。表格要与最上面的文本内容空一行，否则解析不出来。hexo博客搭建时遇到的一些问题
-标签文章写的多了之后，给每一篇文章设置相关的标签是十分必要的，下面两篇教程的背景是NexT主题，设置标签比较复杂，事实上Archer这个主题设置标签不需要进行任何设置，直接在文章里面写上标签就行了。如下图，Archer主题写好文章就会自动有写作时间，在这里额外加上date这一项并没有什么作用。Hexo使用攻略-添加分类及标签hexo 添加标签和分类
-
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/17</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="hexo">hexo</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
         <a class="abstract-title" href="/2019/06/16/指针相关/">
             
                 <span>指针相关</span>
@@ -412,36 +367,6 @@ height:50vh;
         <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags="编程">编程</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/16/文件后缀相关/">
-            
-                <span>文件后缀相关</span>
-        </a>
-        <div class="abstract-content">
-            chw 文件如何打开chw文件EasyX文件的说明文档是.chm类型的，本质应该是一个msdn查阅器，.chw文件就是在打开.chm文件时产生的索引文件，能够加快.chm文件的索引，是自动产生没有办法消除。
-
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="电脑">电脑</a>
     
 </div>
             
@@ -486,102 +411,6 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/06/16/记事本更改默认编码方式为UTF-8/">
-            
-                <span>记事本更改默认编码方式为UTF-8</span>
-        </a>
-        <div class="abstract-content">
-             由于之前在Marxico上写好的Markdown文件，导入到记事本里面，再修改记事本的后缀为.md，把这样的文件上传到Hexo上，博客上显示的文章就会乱码。为了一劳永逸的解决这个问题，就想把记事本的默认编码方式改为utf-8，要不然每次都要另存为才能改编码方式。
-使新建windows记事本的字符集编码默认为UTF-8如何使创建记事本时的默认编码为UTF-8shellnew是什么程序
-最终的实现方法和百度到的有些出入。基本原理就是在C:\Windows\SHELLNEW里面，保存一个空白的utf-8格式的模板记事本文件，然后在注册表里面更改.txt文件的默认模板为刚刚保存的那个文件。
-我...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="电脑">电脑</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="骚操作">骚操作</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/16/电脑硬件/">
-            
-                <span>电脑硬件</span>
-        </a>
-        <div class="abstract-content">
-            鼠标工作原理定位原理光电鼠标内部有一个发光二极管，它发出的光线通过一个菱形镜，折射到鼠标垫或者桌面上，可以照亮光电鼠标底部表面（这是鼠标底部总会发光的原因），当然也有部分光线直接通过菱形镜笔直地向前照射。光电鼠标经底部表面反射回的一部分光线，通过一个圆形镜后，传输到一个光感应器件（微成像器）内成像。这个菱形镜和圆形镜是光电鼠标内部光学器件中很重要的一部分。当光电鼠标移动时，其移动轨迹便会被记录为一组高速拍摄的连贯图像，被光电鼠标内部的一块专用图像分析芯片（DSP，即数字微处理器）分析处理。该芯片通过对这些图像上特征点位置的变化进行分析，来判断鼠标的移动方向和移动距离，从而完成光标的定位。...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="硬件">硬件</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/16/磁盘与磁盘格式/">
-            
-                <span>磁盘与磁盘格式</span>
-        </a>
-        <div class="abstract-content">
-            磁盘的结构管家公众号链接硬盘最基本的组成部分是由坚硬金属材料制成的涂以磁性介质的盘片，一个硬盘包括有多个盘片，每个盘片有两面，都可记录信息。总共有多少个盘面，就有多少个磁头用来独写读写信息。每个扇区可存储128×2的N次方（N＝0.1.2.3）字节信息。在DOS中每扇区是128×2的2次方＝512字节。柱面是从最外缘的“0”开始编号，磁头从0开始编号，扇区是从1开始编号。柱面、磁头、扇区构成了硬盘结构的基本参数，硬盘的CHS，即Cylinder（柱面）、Head（磁头）、Sector（扇区），只要知道了硬盘的CHS的数目，即可确定硬盘的容量，计算公式为：存储容量＝磁头数×磁道（柱面）数×...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="磁盘">磁盘</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="操作系统">操作系统</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="硬件">硬件</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
         <a class="abstract-title" href="/2019/06/16/程序运行时间/">
             
                 <span>程序运行时间</span>
@@ -601,36 +430,6 @@ height:50vh;
         <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags="编程">编程</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/16/HTML学习笔记/">
-            
-                <span>HTML学习笔记</span>
-        </a>
-        <div class="abstract-content">
-            在Markdown中使用HTML标签HTML常用标签大全标签的基本使用方法，&lt;xx&gt;这里是要输入的汉字&lt;/xx&gt;&lt;blockquote&gt;&lt;/blockquote&gt;块引用&lt;kbd&gt;&lt;/kbd&gt;键盘符号&lt;u&gt;&lt;/u&gt;下划线&lt;font color=&quot;red&quot;&gt;&lt;/font&gt;改变字体颜色&lt;font color=#ff0000&gt;&lt;/font&gt;改变字体颜色
-
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="html">html</a>
     
 </div>
             
@@ -666,118 +465,156 @@ height:50vh;
         </div>
     </article>
     
-    <!-- paginator  -->
     
-    <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a>
-    </nav>
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/06/08/C++学习笔记——类和对象基础/">
+            
+                <span>C++学习笔记—类和对象基础</span>
+        </a>
+        <div class="abstract-content">
+            通过成员函数访问类的私有成员1234567891011121314151617181920212223242526272829303132333435363738394041#include&lt;iostream&gt;#include&lt;string.h&gt;using namespace std;/*默认是私有成员私有成员只能在成员函数里面访问成员函数能够访问当前对象和同类其他对象的全部属性和函数*/class CEmployee&#123;private:    char szName[20];public:    int salary;    void setName(c...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/08</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/06/08/C++学习笔记——从C到C++/">
+            
+                <span>C++学习笔记—从C到C++</span>
+        </a>
+        <div class="abstract-content">
+            常量指针与指针常量1234567891011121314151617181920212223#include&lt;iostream&gt;using namespace std;int main()&#123;    int n,m;    const int* p = &amp;n;  //int const* p = &amp;n;    //*p = 15;  //error: assignment of read-only location '* p',不能通过常量指针修改它所指向的值    n =20;    p = &amp;m;   //常量指针的指向可以改变    in...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/08</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">
+            
+                <span>C++学习笔记—多态和虚函数</span>
+        </a>
+        <div class="abstract-content">
+            多态的指针表现形式virtual关键字只用于类定义里的函数声明中，在类的外面写函数体则不写virtual构造函数和静态成员函数不能是虚函数，析构函数是可以的123456789101112131415161718192021222324//通过基类指针调用基类和派生类的同名虚函数时，指针指向哪个类的对象，就调用哪个类的虚函数#include&lt;iostream&gt;using std::cout;using std::endl;class Base&#123;public:    virtual void func()&#123;cout&lt;&lt;"Base virtual c...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/08</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/06/05/C++学习笔记——继承和派生/">
+            
+                <span>C++学习笔记—继承和派生</span>
+        </a>
+        <div class="abstract-content">
+            派生类对象的内存空间1234567891011121314151617181920212223#include&lt;iostream&gt;using namespace std;class CBase&#123;  //基类public:    int c1,c2;&#125;;class CDriver:public CBase&#123;  //派生类public:    int c3;&#125;;int main()&#123;    cout&lt;&lt;sizeof(CBase)&lt;&lt;" "&lt;&lt;sizeof(CDriver)&lt;&lt;endl...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/05</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/05/04/C++学习笔记——运算符重载/">
+            
+                <span>C++学习笔记—运算符重载</span>
+        </a>
+        <div class="abstract-content">
+            链接参见b站郭炜，刘家瑛老师的视频
+运算符重载为普通函数除了赋值运算符之外，其他的运算符可以重载为普通函数或者成员函数1234567891011121314151617181920#include&lt;iostream&gt;using namespace std;class Complex&#123;public:    Complex(double r = 0,double i = 0)&#123;real = r,imag = i;&#125;    double real;    double imag;&#125;;Complex operator+(const Comple...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/04</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    <!-- paginator  -->
     
 </main>
             <!-- profile -->
-            
-            <div class="profile">
-    <img class="profile-avatar" alt="avatar" src="https://img-blog.csdnimg.cn/20190604145042668.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FIMjAxODAzMjQ=,size_16,color_FFFFFF,t_70">
-    <div class="profile-name">想听你唱首歌</div>
-    
-    <div class="profile-signature">
-        discuss with me
-    </div>
-    
-    
-    <div class="profile-social">
-        
-    
-        
-            
-                <a href="mailto:1431168022@qq.com" class="iconfont-archer email" title="email"></a>
-            
-        
-    
-        
-            
-                <a href="https://github.com/shen-cheng-yu" class="iconfont-archer github" target="_blank" title="github"></a>
-            
-        
-    
-        
-            
-                <span class="iconfont-archer wechat" title="wechat">
-                  
-                  <img class="profile-qr" src="https://img-blog.csdnimg.cn/2019060414414914.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FIMjAxODAzMjQ=,size_16,color_FFFFFF,t_70">
-                </span>
-            
-        
-    
-        
-            
-                <span class="iconfont-archer qq" title="qq">
-                  
-                  <img class="profile-qr" src="https://img-blog.csdnimg.cn/20190604144134786.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FIMjAxODAzMjQ=,size_16,color_FFFFFF,t_70">
-                </span>
-            
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-
-    </div>
-    
-    
-        <div class="friends">
-            <div>FRIENDS</div>
-            
-                
-                    <span>
-                        <a href="//www.baidu.com" target="_black">friendA</a>
-                    </span>
-                
-            
-                
-                    <span>
-                        <a href="//www.google.com" target="_black">friendB</a>
-                    </span>
-                
-            
-                
-            
-        </div>
-    
-    
-        <div class="about-me">
-            <a href="/about">ABOUT ME</a>
-        </div>
-    
-</div>
             
         </div>
         <footer class="footer footer-unloaded">

@@ -22,7 +22,7 @@
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>磁盘与磁盘格式 · 云想衣裳花想容，春风拂槛露华浓</title>
+    <title>HEXO攻略(Archer) · 云想衣裳花想容，春风拂槛露华浓</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/">xtncsg&#39;s Studio.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">磁盘与磁盘格式</a>
+                <a href="#" class="post-name">HEXO攻略(Archer)</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            磁盘与磁盘格式
+            HEXO攻略(Archer)
             <!-- 404 -->
             
         </h1>
@@ -266,15 +266,13 @@ height:50vh;
                 
                     <div class="post-intro-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="磁盘">磁盘</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="操作系统">操作系统</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="hexo">hexo</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">2.5k</span>阅读时长: <span class="post-count reading-time">9 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">225</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -403,52 +401,9 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="磁盘的结构"><a href="#磁盘的结构" class="headerlink" title="磁盘的结构"></a>磁盘的结构</h1><p><a href="https://mp.weixin.qq.com/s/-7FRZ-vuDuX9M2cT9C0AQg" target="_blank" rel="noopener">管家公众号链接</a><br>硬盘最基本的组成部分是由坚硬金属材料制成的涂以磁性介质的盘片，一个硬盘包括有多个盘片，每个盘片有两面，都可记录信息。总共有多少个盘面，就有多少个磁头用来独写读写信息。每个扇区可存储128×2的N次方（N＝0.1.2.3）字节信息。在DOS中每扇区是128×2的2次方＝512字节。柱面是从最外缘的“0”开始编号，磁头从0开始编号，扇区是从1开始编号。柱面、磁头、扇区构成了硬盘结构的基本参数，硬盘的CHS，即Cylinder（柱面）、Head（磁头）、Sector（扇区），只要知道了硬盘的CHS的数目，即可确定硬盘的容量，计算公式为：存储容量＝磁头数×磁道（柱面）数×每道扇区数×每扇区字节数。一张磁盘有多个分区，比如C盘这个分区在最外层的磁道上，D盘在里面的磁道。一个分区包含很多个磁道组成。<br><a href="https://zhidao.baidu.com/question/981853326082120459.html" target="_blank" rel="noopener">什么是磁道，什么是簇，分区是怎样划分的？</a></p>
-<h1 id="簇"><a href="#簇" class="headerlink" title="簇"></a>簇</h1><h2 id="簇的概念"><a href="#簇的概念" class="headerlink" title="簇的概念"></a>簇的概念</h2><p>“簇”是DOS进行分配的最小单位。当创建一个很小的文件时，如是一个字节，则它在磁盘上并不是只占一个字节的空间，而是占有整个一簇。不同格式的磁盘，其簇的大小是不一样的。簇的概念仅适用于数据区。</p>
-<h2 id="查看磁盘分区簇的大小"><a href="#查看磁盘分区簇的大小" class="headerlink" title="查看磁盘分区簇的大小"></a>查看磁盘分区簇的大小</h2><p>在Windows操作系统中，可以使用Chkdsk命令查看硬盘分区的簇大小。该命令对硬盘进行分析，得到的分配单元的值就是该分区的簇的大小，比如我的C盘格式是NTFS，簇的大小是4KB。<br><img src="https://img-blog.csdnimg.cn/20190616181435760.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FIMjAxODAzMjQ=,size_16,color_FFFFFF,t_70" alt="enter image description here"><br><a href="https://zhidao.baidu.com/question/1388505773070899180.html" target="_blank" rel="noopener">怎么查看簇大小？</a></p>
-<h2 id="取合适的簇值"><a href="#取合适的簇值" class="headerlink" title="取合适的簇值"></a>取合适的簇值</h2><p>理论上簇越小越好，因为这样可以节约空间。但事实是，簇太小会使系统性能有轻微下降。当一个大文件分开存放到好几个很小的簇上时，查找文件的时候，需要把这几个簇都给找出来，会影响到速度。4K的簇是比较合理的。若是NTFS格式，簇最小可达512B。FAT32 是比较好的格式，最小簇可达4KB。<br><a href="https://zhidao.baidu.com/question/327243804939618685.html" target="_blank" rel="noopener">簇大好还是小好</a></p>
-<h1 id="磁盘格式"><a href="#磁盘格式" class="headerlink" title="磁盘格式"></a>磁盘格式</h1><p>windows下主要有FAT16、FAT32、NTFS 等，最新格式为exFAT，不同的磁盘格式有不同的特性。常见的FAT格式说的应该就是FAT16这个格式。</p>
-<h2 id="U-盘格式"><a href="#U-盘格式" class="headerlink" title="U 盘格式"></a>U 盘格式</h2><p>U盘默认的格式是FAT32，这个格式不允许传输超过4GB的大文件，将它转换成NTFS格式就可以了。但是这种格式是很伤U盘的，因为NTFS分区是采用“日志式”的文件系统，需要记录详细的读写操作，因为要不断读写，会影响到U盘的速度和寿命。</p>
-<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><p>FAT就是以前学操作系统时见到的文件分配表，File Allocation Table。<br>NTFS 是New Technology File System。<br>FAT16最大可以管理大到2GB的分区，但每个分区最多只能有65525个簇。随着硬盘或分区容量的增大，每个簇所占的空间将越来越大，从而导致硬盘空间的浪费。<br>FAT32可以支持大到2TB的分区。FAT32使用的簇比FAT16小，从而有效地节约了硬盘空间。<br>NTFS中簇的大小并不依赖于磁盘或分区的大小。簇尺寸的缩小不但降低了磁盘空间的浪费，还减少了产生磁盘碎片的可能。</p>
-<p><font color="red">这里的簇减小和磁盘碎片有什么关系呢？</font><br><a href="https://baike.baidu.com/item/%E7%A3%81%E7%9B%98%E6%A0%BC%E5%BC%8F/958346" target="_blank" rel="noopener">磁盘格式——百度百科</a></p>
-<h2 id="磁盘格式转换为NTFS格式"><a href="#磁盘格式转换为NTFS格式" class="headerlink" title="磁盘格式转换为NTFS格式"></a>磁盘格式转换为NTFS格式</h2><p>（管理员）运行命令行，输入<code>convert c:/fs:ntfs</code>。这应该是在运行一个命令行程序<code>convert.exe</code>，后面的是命令行参数。可以通过这条命令将FAT或FAT32卷转换为NTFS格式。一旦将某个驱动器或分区转换为NTFS格式，无法将其恢复回FAT或FAT32格式。只能通过格式化磁盘或者分区的方式恢复原来的格式，格式化的方法会丢失分区内所有的数据，格式化的时候可以指定分区的格式，也可以同时指定分区中簇的大小。<br><img src="https://img-blog.csdnimg.cn/20190616181220266.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FIMjAxODAzMjQ=,size_16,color_FFFFFF,t_70" alt="enter image description here"><br><img src="https://img-blog.csdnimg.cn/20190616181603242.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FIMjAxODAzMjQ=,size_16,color_FFFFFF,t_70" alt="enter image description here"><br><a href="https://zhidao.baidu.com/question/262020022.html" target="_blank" rel="noopener">怎么把磁盘格式转换为NTFS格式的啊？</a></p>
-<h2 id="NTFS格式簇大小"><a href="#NTFS格式簇大小" class="headerlink" title="NTFS格式簇大小"></a>NTFS格式簇大小</h2><p>NTFS支持512/1024/2048/4096/8192/16K/32K/64K。在NTFS文件系统中，当分区的大小在2GB以下时，簇的大小应该比相应的FAT32簇小，即小于4KB；当分区的大小在2GB以上时（2GB~2TB），簇的大小应该都为4KB。一般情况下使用默认的分区大小即可。<br><a href="https://zhidao.baidu.com/question/7260210.html" target="_blank" rel="noopener">关于ntfs格式簇大小！！！</a></p>
-<h1 id="如何划分整G硬盘"><a href="#如何划分整G硬盘" class="headerlink" title="如何划分整G硬盘"></a>如何划分整G硬盘</h1><p>比如在分区的时候想得到一个2G的分区，这时候输入2000M或者2048M所分出来的区在Windows下面都不会被认成整数的2G，而是1.9G多一点。<br>整数G计算公式：(X－1)×4+1024×X=Y<br>其中X就是想要得到的整数分区的数值，单位是G，Y是你分区时应该输入的数字，单位是M，例如想得到3G的分区就应该输入(3－1)×4+1024×3=3080，那么在分区时就应该输入3080作为分区的大小。</p>
-<h1 id="绝对扇区与DOS扇区"><a href="#绝对扇区与DOS扇区" class="headerlink" title="绝对扇区与DOS扇区"></a>绝对扇区与DOS扇区</h1><p>用柱面/磁头/扇区可以唯一地定位磁盘上的一个特定的区域，或是说柱面/磁头/扇区与磁盘上每一个扇区有一一对应关系，这就是绝对扇区的表示方法。<br>但DOS不能直接使用绝对扇区进行磁盘上的信息管理，而是用所谓“相对扇区”或“DOS扇区”。“相对扇区”只是一个数字，该数字与绝对扇区“柱面/磁头/扇区”具有一一对应关系。当使用相对扇区编号时，DOS是从柱面0，磁头1，扇区1开始（柱面0，磁头0的区域不属于DOS扇区，没有DOS扇区编号，DOS下不能访问，只能调用BIOS访问），该扇区的DOS扇区编号为0，是第一个DOS扇区。依次编号该磁道上剩余的其他扇区。然后是同柱面上其他磁道上的扇区。再然后是其他柱面上的扇区。</p>
-<h1 id="DOS磁盘区域的划分"><a href="#DOS磁盘区域的划分" class="headerlink" title="DOS磁盘区域的划分"></a>DOS磁盘区域的划分</h1><p>格式化好的硬盘，整个磁盘按所记录数据的作用不同可分为主引导记录（MBR:Main Boot Record），DOS引导记录 （DBR:DOS Boot Record），文件分配表（FAT:File Allocation Table），根目录 （BD:Boot Directory）和数据区。前4个重要信息在磁盘的外磁道上，每个磁道上存储的信息总量是一样的，而外圈周长大于内圈周长，也即外圈存储密度要小些，可靠性高些。</p>
-<h2 id="MBR"><a href="#MBR" class="headerlink" title="MBR"></a>MBR</h2><p>MBR 位于硬盘第一个物理扇区（绝对扇区）柱面0，磁头0，扇区1处。由于DOS是由柱面0，磁头1，扇区1开始，故MBR不属于DOS扇区，DOS不能直接访问。MBR中包含硬盘的主引导程序和硬盘分区表。硬盘分区表有4个分区记录区。记录区就是记录有关分区信息的一张表。它从主引导记录偏移地址 01BEH处连续存放，每个分区记录区占16个字节。<br>4个分区中只能有1个活跃分区，即C盘。标志符是80H在分区记录区的第一个字节处。若第一个字节是00H则表示非活跃分区。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">80	01	01	00	0B	FE	3F	81	3F	00	00	00	C3	DD	1F	00 </span><br><span class="line">00	00	01	82	05	FE	BF	0C	02	DE	1F	00	0E	90	61	00 </span><br><span class="line">00	00	00	00	00	00	00	00	00	00	00	00	00	00	00	00 </span><br><span class="line">00	00	00	00	00	00	00	00	00	00	00	00	00	00	00	00</span><br></pre></td></tr></table></figure></p>
-<h2 id="DBR"><a href="#DBR" class="headerlink" title="DBR"></a>DBR</h2><p>DBR 位于柱面0，磁头1，扇区1，即第一个DOS扇区（DOS扇区号为0）。DBR分为两部分：DOS引导程序和BPB（BIOS parameter block）。</p>
-<h2 id="文件分配表"><a href="#文件分配表" class="headerlink" title="文件分配表"></a>文件分配表</h2><p>文件分配表是反映硬盘上所有簇的使用情况，通过查文件分配表可以得知任一簇的使用情况。DOS在给一个文件分配空间时总先扫描FAT，找到第一个可用簇，将该空间分配给文件，并将该簇的簇号填到目录的相应段内。FAT就是记录文件簇号的一张表。文件第一个簇号（在目录表中）和FAT中该文件的簇号串起来形成文件的“簇号链”，恢复被破坏的文件就是根据这条链。FAT位于DBR之后，其DOS扇区号从1开始。</p>
-<h2 id="文件目录"><a href="#文件目录" class="headerlink" title="文件目录"></a>文件目录</h2><p>文件目录分为两类：根目录，子目录。根目录有一个，子目录可以有多个。子目录下还可以有子目录，从而形成“树状”的文件目录结构。DOS为目录项分配32字节。目录项分为三类：文件，子目录（其内容是许多目录项），卷标（只能在根目录，只有一个。目录项中有文件（或子目录，或卷标）的名字，扩展名，属性，生成或最后修改日期，时间，开始簇号，及文件大小。目录项的32个字节的分配如下：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">意义</th>
-<th style="text-align:center">文件名</th>
-<th style="text-align:center">扩展名</th>
-<th style="text-align:center">文件属性</th>
-<th style="text-align:center">保留</th>
-<th style="text-align:center">时间</th>
-<th style="text-align:center">日期</th>
-<th style="text-align:center">开始簇号</th>
-<th style="text-align:center">文件长度</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><strong>字节数</strong></td>
-<td style="text-align:center">8B</td>
-<td style="text-align:center">3B</td>
-<td style="text-align:center">1B</td>
-<td style="text-align:center">10B</td>
-<td style="text-align:center">2B</td>
-<td style="text-align:center">2B</td>
-<td style="text-align:center">2B</td>
-<td style="text-align:center">4B</td>
-</tr>
-</tbody>
-</table>
-<p>目录项文件名区域中第一个字节还有特殊的意义：00H代表未使用 ，EBH代表此文件已被删除。<br>WINDOWS的长文件名使用了上表中所说的“保留”这片区域。<br>DOS中DIR列出的内容是根据文件目录表得到的。<br>文件起始簇号填在文件目录中，其余簇都填在FAT中上一簇的位置上。<font color="red">（上一簇是什么意思？？） </font><br><a href="http://blog.sina.com.cn/s/blog_711588b60102w464.html" target="_blank" rel="noopener">硬盘基本知识（磁道、扇区、柱面、磁头数、簇、MBR、DBR）</a></p>
+        <p>首先，目前使用hexo时，用的主题是Archer主题，是当时搭建博客时就选定的主题。</p>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><p>对齐说明行位于第二行，这一行不能少。<br>表格要与最上面的文本内容空一行，否则解析不出来。<br><a href="https://segmentfault.com/a/1190000003710962?_ea=336354" target="_blank" rel="noopener">hexo博客搭建时遇到的一些问题</a></p>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><p>文章写的多了之后，给每一篇文章设置相关的标签是十分必要的，下面两篇教程的背景是NexT主题，设置标签比较复杂，事实上Archer这个主题设置标签不需要进行任何设置，直接在文章里面写上标签就行了。如下图，Archer主题写好文章就会自动有写作时间，在这里额外加上date这一项并没有什么作用。<br><img src="https://img-blog.csdnimg.cn/20190617170514718.png" alt="enter image description here"><br><a href="https://www.jianshu.com/p/e17711e44e00" target="_blank" rel="noopener">Hexo使用攻略-添加分类及标签</a><br><a href="https://promoon.github.io/2018/12/01/hexo_categories_tags/" target="_blank" rel="noopener">hexo 添加标签和分类</a></p>
 
     </article>
     <!-- license  -->
@@ -588,7 +543,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#磁盘的结构"><span class="toc-number">1.</span> <span class="toc-text">磁盘的结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#簇"><span class="toc-number">2.</span> <span class="toc-text">簇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#簇的概念"><span class="toc-number">2.1.</span> <span class="toc-text">簇的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看磁盘分区簇的大小"><span class="toc-number">2.2.</span> <span class="toc-text">查看磁盘分区簇的大小</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#取合适的簇值"><span class="toc-number">2.3.</span> <span class="toc-text">取合适的簇值</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#磁盘格式"><span class="toc-number">3.</span> <span class="toc-text">磁盘格式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#U-盘格式"><span class="toc-number">3.1.</span> <span class="toc-text">U 盘格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#区别"><span class="toc-number">3.2.</span> <span class="toc-text">区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#磁盘格式转换为NTFS格式"><span class="toc-number">3.3.</span> <span class="toc-text">磁盘格式转换为NTFS格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NTFS格式簇大小"><span class="toc-number">3.4.</span> <span class="toc-text">NTFS格式簇大小</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如何划分整G硬盘"><span class="toc-number">4.</span> <span class="toc-text">如何划分整G硬盘</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#绝对扇区与DOS扇区"><span class="toc-number">5.</span> <span class="toc-text">绝对扇区与DOS扇区</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DOS磁盘区域的划分"><span class="toc-number">6.</span> <span class="toc-text">DOS磁盘区域的划分</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#MBR"><span class="toc-number">6.1.</span> <span class="toc-text">MBR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DBR"><span class="toc-number">6.2.</span> <span class="toc-text">DBR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件分配表"><span class="toc-number">6.3.</span> <span class="toc-text">文件分配表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件目录"><span class="toc-number">6.4.</span> <span class="toc-text">文件目录</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#表格"><span class="toc-number">1.</span> <span class="toc-text">表格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#标签"><span class="toc-number">2.</span> <span class="toc-text">标签</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -784,9 +739,44 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 17
+        Total : 18
         </div>
         <!-- search  -->
         
@@ -802,17 +792,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/17</span><a class="archive-post-title" href="/2019/06/17/磁盘与磁盘格式/">磁盘与磁盘格式</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/头文件与库文件相关/">头文件与库文件相关</a>
+            <span class="archive-post-date">06/17</span><a class="archive-post-title" href="/2019/06/17/hexo使用攻略/">HEXO攻略(Archer)</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/指针相关/">指针相关</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/头文件与库文件相关/">头文件与库文件相关</a>
         </li>
     
     
@@ -823,6 +813,11 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/记事本更改默认编码方式为UTF-8/">记事本更改默认编码方式为UTF-8</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/磁盘与磁盘格式/">磁盘与磁盘格式</a>
         </li>
     
     
@@ -861,6 +856,21 @@ top:50vh;
         </li>
     
     
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/05</span><a class="archive-post-title" href="/2019/06/05/C++学习笔记——继承和派生/">C++学习笔记—继承和派生</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/04</span><a class="archive-post-title" href="/2019/06/04/古诗词学习笔记/">古诗词学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
+        </li>
+    
+    
     
     
     
@@ -888,30 +898,6 @@ top:50vh;
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
         </li>
     
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/05</span><a class="archive-post-title" href="/2019/06/05/C++学习笔记——继承和派生/">C++学习笔记—继承和派生</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/04</span><a class="archive-post-title" href="/2019/06/04/古诗词学习笔记/">古诗词学习笔记</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
-        </li>
-    
     </ul></div>
   </div>
         <div class="sidebar-panel-tags">
@@ -920,6 +906,30 @@ top:50vh;
         <span class="sidebar-tag-name" data-tags="磁盘"><span class="iconfont-archer">&#xe606;</span>磁盘</span>
     
         <span class="sidebar-tag-name" data-tags="操作系统"><span class="iconfont-archer">&#xe606;</span>操作系统</span>
+    
+        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
+    
+        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
+    
+        <span class="sidebar-tag-name" data-tags="github"><span class="iconfont-archer">&#xe606;</span>github</span>
+    
+        <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
+    
+        <span class="sidebar-tag-name" data-tags="html"><span class="iconfont-archer">&#xe606;</span>html</span>
+    
+        <span class="sidebar-tag-name" data-tags="Word"><span class="iconfont-archer">&#xe606;</span>Word</span>
+    
+        <span class="sidebar-tag-name" data-tags="Office"><span class="iconfont-archer">&#xe606;</span>Office</span>
+    
+        <span class="sidebar-tag-name" data-tags="编程"><span class="iconfont-archer">&#xe606;</span>编程</span>
+    
+        <span class="sidebar-tag-name" data-tags="电脑"><span class="iconfont-archer">&#xe606;</span>电脑</span>
+    
+        <span class="sidebar-tag-name" data-tags="硬件"><span class="iconfont-archer">&#xe606;</span>硬件</span>
+    
+        <span class="sidebar-tag-name" data-tags="骚操作"><span class="iconfont-archer">&#xe606;</span>骚操作</span>
+    
+        <span class="sidebar-tag-name" data-tags="文学"><span class="iconfont-archer">&#xe606;</span>文学</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
