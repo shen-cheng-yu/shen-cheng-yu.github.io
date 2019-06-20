@@ -346,281 +346,6 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/06/20/char 到 char[]的转换问题/">
-            
-                <span>char* 到 char[]的转换问题</span>
-        </a>
-        <div class="abstract-content">
-            12345678910111213141516#include&lt;iostream&gt;using namespace std;void fun(const char*);int main()&#123;    char s[10]="apple";    fun(s);    return 0;&#125;void fun(const char* str)&#123;    char t[10];    t=str;    cout&lt;&lt;t&lt;&lt;endl;&#125;
-这里将一个char*的字符串转换成char []这样的，就会报错：1error: incom...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/20</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="编程">编程</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/20/switch...case结构中变量的作用域/">
-            
-                <span>switch...case结构中变量的作用域</span>
-        </a>
-        <div class="abstract-content">
-            实验代码：123456789101112131415161718#include&lt;iostream&gt;using namespace std;int main()&#123;    int i=2;    switch(i)&#123;    case 1:        i=5;        int j=4;        break;    case 2:        cout&lt;&lt;i&lt;&lt;j&lt;&lt;endl;        break;    default:        cout&lt;&lt;3;    &#125;    retur...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/20</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="编程">编程</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/16/指针相关/">
-            
-                <span>指针相关</span>
-        </a>
-        <div class="abstract-content">
-            指针数组和数组指针先从概念上明确，前面一个词是修饰词，后面一个词才是本质。指针数组是一个数组，数组里的每一个元素都是一个指针。数组指针是一个指针，指向一个数组。12int* a[10]   //指针数组int (*p) a[10]  //数组指针
-优先级关系是：)&gt;[]&gt;*因此第一行代码先形成了数组关系，每个数组元素都是int型的指针。第二行代码先形成了指针关系，指向一个数组。指针数组与数组指针的区别
-
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="编程">编程</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/16/头文件与库文件相关/">
-            
-                <span>头文件与库文件相关</span>
-        </a>
-        <div class="abstract-content">
-            conio.h定义了通过控制台进行数据输入和数据输出的函数，主要是一些用户通过按键盘产生的对应操作，比如getch()、kbhit()等等。
-
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="编程">编程</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/16/程序运行时间/">
-            
-                <span>程序运行时间</span>
-        </a>
-        <div class="abstract-content">
-            C++程序运行时间1234567891011121314#include&lt;iostream&gt;#include&lt;ctime&gt;using namespace std;int main()&#123;    clock_t startTime,endTime;    for(int i=0;i&lt;123456789;i++)&#123;&#125;    startTime=clock();    for(int i=0;i&lt;123456789;i++)&#123;&#125;    endTime=clock();    double time1=(doub...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="编程">编程</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/16/C++学习笔记——类和对象提高/">
-            
-                <span>C++学习笔记—类和对象提高</span>
-        </a>
-        <div class="abstract-content">
-            C++程序与C语言程序的转换C++版本12345678910111213141516#include&lt;iostream&gt;using namespace std;class CCar&#123;    int price;public:    void setPrice(int p)&#123;price = p;&#125;    void getPrice()&#123;cout&lt;&lt;price&lt;&lt;endl;&#125;&#125;;int main()&#123;    CCar car;    car.setPrice(20000);    car...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/08/C++学习笔记——类和对象基础/">
-            
-                <span>C++学习笔记—类和对象基础</span>
-        </a>
-        <div class="abstract-content">
-            通过成员函数访问类的私有成员1234567891011121314151617181920212223242526272829303132333435363738394041#include&lt;iostream&gt;#include&lt;string.h&gt;using namespace std;/*默认是私有成员私有成员只能在成员函数里面访问成员函数能够访问当前对象和同类其他对象的全部属性和函数*/class CEmployee&#123;private:    char szName[20];public:    int salary;    void setName(c...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/08</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/08/C++学习笔记——从C到C++/">
-            
-                <span>C++学习笔记—从C到C++</span>
-        </a>
-        <div class="abstract-content">
-            常量指针与指针常量1234567891011121314151617181920212223#include&lt;iostream&gt;using namespace std;int main()&#123;    int n,m;    const int* p = &amp;n;  //int const* p = &amp;n;    //*p = 15;  //error: assignment of read-only location '* p',不能通过常量指针修改它所指向的值    n =20;    p = &amp;m;   //常量指针的指向可以改变    in...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/08</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">
-            
-                <span>C++学习笔记—多态和虚函数</span>
-        </a>
-        <div class="abstract-content">
-            多态的指针表现形式virtual关键字只用于类定义里的函数声明中，在类的外面写函数体则不写virtual构造函数和静态成员函数不能是虚函数，析构函数是可以的123456789101112131415161718192021222324//通过基类指针调用基类和派生类的同名虚函数时，指针指向哪个类的对象，就调用哪个类的虚函数#include&lt;iostream&gt;using std::cout;using std::endl;class Base&#123;public:    virtual void func()&#123;cout&lt;&lt;"Base virtual c...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/08</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
         <a class="abstract-title" href="/2019/06/05/C++学习笔记——继承和派生/">
             
                 <span>C++学习笔记—继承和派生</span>
@@ -644,10 +369,70 @@
         </div>
     </article>
     
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/06/04/Office学习笔记/">
+            
+                <span>Office学习笔记</span>
+        </a>
+        <div class="abstract-content">
+            选中word文档里面全部的英文或者数字查找 -&gt; 更多 -&gt; 使用通配符查找在查找内容里输入[0-9a-zA-Z]怎么快速的选中word文档中的全部数字和英文
+
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/04</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Office">Office</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/06/04/古诗词学习笔记/">
+            
+                <span>古诗词学习笔记</span>
+        </a>
+        <div class="abstract-content">
+            韩愈——题榴花2019年5月16日15点17分1234五月榴花照眼明，枝间时见子初成。可怜此地无车马，颠倒苍苔落绛英。
+诗题一作“题张十一（署）旅舍三咏·榴花”，是韩愈题写在好友张十一（名署）旅舍内的三首咏物诗之一。诗大概作于元和元年（806）韩愈和张署同赴贬所途中。古人常用各种花来自比，花受到美人的攀折，这花的生命历程才有意义。臣子就和花一样，只有受到皇帝的赏识，做臣子的才有意义，才有未来。古人还有很多诗人，明明是男的，却很热衷于写闺中怨妇的诗词，其实他们也是以怨妇自比，古代的女人非常依赖男人，男人不要她了，这个女人的人生基本就没有意义了，未来会受人指点，一片惨淡。臣子和怨妇相似的地方...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/04</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="文学">文学</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/tags/C/page/2/">2</a><a class="extend next" rel="next" href="/tags/C/page/2/">NEXT &#62;</a>
+        <a class="extend prev" rel="prev" href="/archives/2019/06/page/2/">&#60; PREV</a><a class="page-number" href="/archives/2019/06/">1</a><a class="page-number" href="/archives/2019/06/page/2/">2</a><span class="page-number current">3</span>
     </nav>
     
 </main>

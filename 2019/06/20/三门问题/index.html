@@ -22,7 +22,7 @@
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>云想衣裳花想容，春风拂槛露华浓</title>
+    <title>三门问题 · 云想衣裳花想容，春风拂槛露华浓</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,12 +203,23 @@
 </head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">xtncsg&#39;s Studio.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">三门问题</a>
+            </div>
+    </div>
     
     <a class="home-link" href="/">xtncsg's Studio.</a>
 </header>
@@ -220,24 +231,76 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(https://img-blog.csdnimg.cn/20190604163423985.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FIMjAxODAzMjQ=,size_16,color_FFFFFF,t_70)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            三门问题
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="数学">数学</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="模拟">模拟</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">655</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/06/20</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -338,318 +401,45 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/20/char 到 char[]的转换问题/">
-            
-                <span>char* 到 char[]的转换问题</span>
-        </a>
-        <div class="abstract-content">
-            12345678910111213141516#include&lt;iostream&gt;using namespace std;void fun(const char*);int main()&#123;    char s[10]="apple";    fun(s);    return 0;&#125;void fun(const char* str)&#123;    char t[10];    t=str;    cout&lt;&lt;t&lt;&lt;endl;&#125;
-这里将一个char*的字符串转换成char []这样的，就会报错：1error: incom...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/20</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="编程">编程</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/20/switch...case结构中变量的作用域/">
-            
-                <span>switch...case结构中变量的作用域</span>
-        </a>
-        <div class="abstract-content">
-            实验代码：123456789101112131415161718#include&lt;iostream&gt;using namespace std;int main()&#123;    int i=2;    switch(i)&#123;    case 1:        i=5;        int j=4;        break;    case 2:        cout&lt;&lt;i&lt;&lt;j&lt;&lt;endl;        break;    default:        cout&lt;&lt;3;    &#125;    retur...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/20</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="编程">编程</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/16/指针相关/">
-            
-                <span>指针相关</span>
-        </a>
-        <div class="abstract-content">
-            指针数组和数组指针先从概念上明确，前面一个词是修饰词，后面一个词才是本质。指针数组是一个数组，数组里的每一个元素都是一个指针。数组指针是一个指针，指向一个数组。12int* a[10]   //指针数组int (*p) a[10]  //数组指针
-优先级关系是：)&gt;[]&gt;*因此第一行代码先形成了数组关系，每个数组元素都是int型的指针。第二行代码先形成了指针关系，指向一个数组。指针数组与数组指针的区别
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>有三扇门，一扇门后面有汽车，另外两扇门后面是山羊。玩家先选择一扇门，这时主持人打开一扇山羊们（主持人事先知道每扇门后面都是什么）。那么这时候玩家是应该坚持自己原来的选择不换呢？还是应该换成另外一扇门呢？</p>
+<p>其实道理很简单。当主持人的行为完成之后，场下还剩下一扇汽车门，还有一扇山羊们可以让玩家选择。玩家事先选择的时候，有1/3的概率选到的是汽车门，这时应该坚持自己的选择。但是也有2/3的概率选到的是山羊门，这时候应该换成另外一扇门。也就是换成另外一扇门的胜率会大一些。</p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MjM5NTY1MjY0MQ==&amp;mid=2650746156&amp;idx=3&amp;sn=a1b824ce8c3326a222888fde7c2061ae&amp;chksm=befeb862898931746a8486f9e71685698b85244182fc3bcb903e2f2d87f90e7ea4491e307924&amp;xtrack=1&amp;scene=0&amp;subscene=131&amp;clicktime=1561029975&amp;ascene=7&amp;devicetype=android-25&amp;version=2700033c&amp;nettype=WIFI&amp;abtest_cookie=BQABAAoACwASABMAFQAGACOXHgBWmR4Av5keANyZHgD4mR4ADJoeAAAA&amp;lang=zh_CN&amp;pass_ticket=Of3WZZPeBKVwP5kE9QxwMPbIynqV1YZgzNsDPoI4UrfceyHOSEKP5vDOBR0%2BAx0X&amp;wx_header=1" target="_blank" rel="noopener">反直觉的三门问题</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Door</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">char</span> award[<span class="number">10</span>];   <span class="comment">//门后的奖品</span></span><br><span class="line">    Door(<span class="keyword">const</span> <span class="keyword">char</span>* award_)&#123;  <span class="comment">//构造函数</span></span><br><span class="line">        <span class="built_in">strcpy</span>(award,award_);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    srand((<span class="keyword">unsigned</span> <span class="keyword">int</span>)time(<span class="number">0</span>));</span><br><span class="line">    <span class="keyword">clock_t</span> startTime,endTime;</span><br><span class="line">    <span class="keyword">double</span> num;       <span class="comment">//试验次数</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"请输入试验次数："</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;num)&#123;</span><br><span class="line">        startTime=clock();</span><br><span class="line">        <span class="comment">//对象数组的构造函数，假定第一扇门是汽车门</span></span><br><span class="line">        Door doors[<span class="number">3</span>]=&#123;<span class="string">"car"</span>,<span class="string">"goat"</span>,Door(<span class="string">"goat"</span>)&#125;; </span><br><span class="line">        <span class="keyword">int</span> winStay=<span class="number">0</span>,winTurn=<span class="number">0</span>;  <span class="comment">//不换而胜利的场数和换门而胜利的场数</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;num;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> choice=rand()%<span class="number">3</span>;  <span class="comment">//玩家先随机选择一扇门</span></span><br><span class="line">            <span class="keyword">if</span>(choice==<span class="number">0</span>)  <span class="comment">//如果选的是汽车门，就保持选择</span></span><br><span class="line">                winStay++;</span><br><span class="line">            <span class="keyword">else</span>           <span class="comment">//否则换成另外一扇门</span></span><br><span class="line">                winTurn++;  </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"换的胜率是："</span>&lt;&lt;winTurn/num&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="comment">//cout&lt;&lt;"保持的胜率是："&lt;&lt;winStay/num&lt;&lt;endl;</span></span><br><span class="line">        endTime=clock();</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"程序运行时间是："</span>&lt;&lt;(<span class="keyword">double</span>)(endTime-startTime)/CLOCKS_PER_SEC&lt;&lt;<span class="built_in">endl</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"请输入试验次数："</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个代码好鸡贼啊！<br>实验结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">请输入试验次数：1000</span><br><span class="line">换的胜率是：0.657</span><br><span class="line">程序运行时间是：0</span><br><span class="line"></span><br><span class="line">请输入试验次数：10000</span><br><span class="line">换的胜率是：0.6665</span><br><span class="line">程序运行时间是：0</span><br><span class="line"></span><br><span class="line">请输入试验次数：100000</span><br><span class="line">换的胜率是：0.66588</span><br><span class="line">程序运行时间是：0</span><br><span class="line"></span><br><span class="line">请输入试验次数：1000000</span><br><span class="line">换的胜率是：0.666556</span><br><span class="line">程序运行时间是：0.016</span><br><span class="line"></span><br><span class="line">请输入试验次数：10000000</span><br><span class="line">换的胜率是：0.666622</span><br><span class="line">程序运行时间是：0.171</span><br><span class="line"></span><br><span class="line">请输入试验次数：100000000</span><br><span class="line">换的胜率是：0.666635</span><br><span class="line">程序运行时间是：1.812</span><br><span class="line"></span><br><span class="line">请输入试验次数：1000000000</span><br><span class="line">换的胜率是：0.666645</span><br><span class="line">程序运行时间是：18.033</span><br><span class="line"></span><br><span class="line">请输入试验次数：</span><br></pre></td></tr></table></figure></p>
 
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="编程">编程</a>
-    
-</div>
-            
-        </div>
     </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/16/头文件与库文件相关/">
-            
-                <span>头文件与库文件相关</span>
-        </a>
-        <div class="abstract-content">
-            conio.h定义了通过控制台进行数据输入和数据输出的函数，主要是一些用户通过按键盘产生的对应操作，比如getch()、kbhit()等等。
-
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="编程">编程</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/16/程序运行时间/">
-            
-                <span>程序运行时间</span>
-        </a>
-        <div class="abstract-content">
-            C++程序运行时间1234567891011121314#include&lt;iostream&gt;#include&lt;ctime&gt;using namespace std;int main()&#123;    clock_t startTime,endTime;    for(int i=0;i&lt;123456789;i++)&#123;&#125;    startTime=clock();    for(int i=0;i&lt;123456789;i++)&#123;&#125;    endTime=clock();    double time1=(doub...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="编程">编程</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/16/C++学习笔记——类和对象提高/">
-            
-                <span>C++学习笔记—类和对象提高</span>
-        </a>
-        <div class="abstract-content">
-            C++程序与C语言程序的转换C++版本12345678910111213141516#include&lt;iostream&gt;using namespace std;class CCar&#123;    int price;public:    void setPrice(int p)&#123;price = p;&#125;    void getPrice()&#123;cout&lt;&lt;price&lt;&lt;endl;&#125;&#125;;int main()&#123;    CCar car;    car.setPrice(20000);    car...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/08/C++学习笔记——类和对象基础/">
-            
-                <span>C++学习笔记—类和对象基础</span>
-        </a>
-        <div class="abstract-content">
-            通过成员函数访问类的私有成员1234567891011121314151617181920212223242526272829303132333435363738394041#include&lt;iostream&gt;#include&lt;string.h&gt;using namespace std;/*默认是私有成员私有成员只能在成员函数里面访问成员函数能够访问当前对象和同类其他对象的全部属性和函数*/class CEmployee&#123;private:    char szName[20];public:    int salary;    void setName(c...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/08</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/08/C++学习笔记——从C到C++/">
-            
-                <span>C++学习笔记—从C到C++</span>
-        </a>
-        <div class="abstract-content">
-            常量指针与指针常量1234567891011121314151617181920212223#include&lt;iostream&gt;using namespace std;int main()&#123;    int n,m;    const int* p = &amp;n;  //int const* p = &amp;n;    //*p = 15;  //error: assignment of read-only location '* p',不能通过常量指针修改它所指向的值    n =20;    p = &amp;m;   //常量指针的指向可以改变    in...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/08</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">
-            
-                <span>C++学习笔记—多态和虚函数</span>
-        </a>
-        <div class="abstract-content">
-            多态的指针表现形式virtual关键字只用于类定义里的函数声明中，在类的外面写函数体则不写virtual构造函数和静态成员函数不能是虚函数，析构函数是可以的123456789101112131415161718192021222324//通过基类指针调用基类和派生类的同名虚函数时，指针指向哪个类的对象，就调用哪个类的虚函数#include&lt;iostream&gt;using std::cout;using std::endl;class Base&#123;public:    virtual void func()&#123;cout&lt;&lt;"Base virtual c...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/08</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/06/05/C++学习笔记——继承和派生/">
-            
-                <span>C++学习笔记—继承和派生</span>
-        </a>
-        <div class="abstract-content">
-            派生类对象的内存空间1234567891011121314151617181920212223#include&lt;iostream&gt;using namespace std;class CBase&#123;  //基类public:    int c1,c2;&#125;;class CDriver:public CBase&#123;  //派生类public:    int c3;&#125;;int main()&#123;    cout&lt;&lt;sizeof(CBase)&lt;&lt;" "&lt;&lt;sizeof(CDriver)&lt;&lt;endl...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/05</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
-    
-</div>
-            
-        </div>
-    </article>
+    <!-- license  -->
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2019/06/20/char 到 char[]的转换问题/" title="char* 到 char[]的转换问题">
+                    <div class="prevTitle">char* 到 char[]的转换问题</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
-    <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/tags/C/page/2/">2</a><a class="extend next" rel="next" href="/tags/C/page/2/">NEXT &#62;</a>
-    </nav>
     
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -741,6 +531,24 @@
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1406,6 +1214,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>
