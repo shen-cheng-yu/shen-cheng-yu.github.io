@@ -346,13 +346,47 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href="/2019/06/21/python词频统计/">
+            
+                <span>Python词频统计</span>
+        </a>
+        <div class="abstract-content">
+            首先，直接用jieba进行分词，和用jieba,posseg进行分词得到的结果是不一样的。以下面这段话为示例：
+刘备、关羽与张飞在长安结拜为异姓兄弟。一瞬间大雪纷飞，诸葛亮横空出世，荡平寰宇，延续汉家天下。
+
+用jieba进行分词12345678910111213import jieba if __name__=="__main__":    file_path = "C:/Users/14311/Desktop/test.txt"    with open(file_path,'r',encoding="utf-8") as f:        content = f.read()  ...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/21</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="python">python</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="数据分析">数据分析</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href="/2019/06/17/python生成词云/">
             
                 <span>Python生成词云</span>
         </a>
         <div class="abstract-content">
             生成词云的方式有很多，有很多这样的网站，软件，微信小程序等等，这里采用python里面wordcloud模块来完成，给定一段文字，用jieba模块分词，得到很多词语，分析这些词的出现频率，将出现频率高的词语整合成词云的形式。
-先上代码吧。12345678910111213141516171819from wordcloud import WordCloudimport matplotlib.pyplot as pltimport jieba     #jieba分词file_path=r'C:\Users\14311\Desktop\1-100.txt'  # 设置文件路径file = ...
+先上代码吧。12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455from wordcloud import WordCloud,STOPWORDS  //词云模块import matplotlib.pyplot as ...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -362,8 +396,6 @@
             <!-- tags  -->
             
             <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="骚操作">骚操作</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags="python">python</a>
     
@@ -895,9 +927,38 @@ pip show numpy通过类似这样的命令，查看已经安装的包的一些具
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 25
+        Total : 26
         </div>
         <!-- search  -->
         
@@ -907,6 +968,34 @@ pip show numpy通过类似这样的命令，查看已经安装的包的一些具
     
     
     
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">C++学习笔记—多态和虚函数</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/21/python词频统计/">Python词频统计</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
@@ -938,17 +1027,17 @@ pip show numpy通过类似这样的命令，查看已经安装的包的一些具
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/头文件与库文件相关/">头文件与库文件相关</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/文件后缀相关/">文件后缀相关</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/指针相关/">指针相关</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/头文件与库文件相关/">头文件与库文件相关</a>
         </li>
     
     
@@ -988,17 +1077,36 @@ pip show numpy通过类似这样的命令，查看已经安装的包的一些具
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">C++学习笔记—多态和虚函数</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——类和对象基础/">C++学习笔记—类和对象基础</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">06/05</span><a class="archive-post-title" href="/2019/06/05/C++学习笔记——继承和派生/">C++学习笔记—继承和派生</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/04</span><a class="archive-post-title" href="/2019/06/04/古诗词学习笔记/">古诗词学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
         </li>
     
     
@@ -1026,40 +1134,7 @@ pip show numpy通过类似这样的命令，查看已经安装的包的一些具
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/04</span><a class="archive-post-title" href="/2019/06/04/古诗词学习笔记/">古诗词学习笔记</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/文件路径的写法/">文件路径的写法</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/Chrome离线插件安装/">Chrome离线插件安装</a>
         </li>
     
     
@@ -1087,7 +1162,7 @@ pip show numpy通过类似这样的命令，查看已经安装的包的一些具
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/Chrome离线插件安装/">Chrome离线插件安装</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/文件路径的写法/">文件路径的写法</a>
         </li>
     
     </ul></div>

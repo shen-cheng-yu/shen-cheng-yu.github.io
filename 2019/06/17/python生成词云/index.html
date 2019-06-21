@@ -266,8 +266,6 @@ height:50vh;
                 
                     <div class="post-intro-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="骚操作">骚操作</a>
-    
         <a class="post-tag" href="javascript:void(0);" data-tags="python">python</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags="数据分析">数据分析</a>
@@ -276,7 +274,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">630</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">882</span>阅读时长: <span class="post-count reading-time">3 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -406,15 +404,19 @@ height:50vh;
             <main class="main post-page">
     <article class="article-entry">
         <p>生成词云的方式有很多，有很多这样的网站，软件，微信小程序等等，这里采用python里面wordcloud模块来完成，给定一段文字，用jieba模块分词，得到很多词语，分析这些词的出现频率，将出现频率高的词语整合成词云的形式。</p>
-<p>先上代码吧。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> jieba     <span class="comment">#jieba分词</span></span><br><span class="line"></span><br><span class="line">file_path=<span class="string">r'C:\Users\14311\Desktop\1-100.txt'</span>  <span class="comment"># 设置文件路径</span></span><br><span class="line">file = open(file_path,<span class="string">'r'</span>,encoding=<span class="string">'utf-8'</span>).read()  <span class="comment"># 打开文件</span></span><br><span class="line">cut_file = jieba.cut(file) <span class="comment"># jieba分词</span></span><br><span class="line">join_file = <span class="string">" "</span>.join(cut_file)</span><br><span class="line"><span class="comment"># print(join_file)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成词云</span></span><br><span class="line">wordcloud = WordCloud(</span><br><span class="line">font_path=<span class="string">r"C:\Windows\Fonts\XJLbold_1.ttf"</span>,  <span class="comment">#设置字体，防止乱码，字体的路径，静姐的字体</span></span><br><span class="line">background_color=<span class="string">"#ffffff"</span>,width=<span class="number">1000</span>,height=<span class="number">880</span>).generate(join_file)</span><br><span class="line"></span><br><span class="line">plt.imshow(wordcloud, interpolation=<span class="string">"bilinear"</span>)</span><br><span class="line">plt.title(<span class="string">"1-100"</span>)</span><br><span class="line"><span class="comment"># plt.axis("off") 不知道干什么用的</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
+<p>先上代码吧。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud,STOPWORDS  //词云模块</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt  <span class="comment"># 画图模块</span></span><br><span class="line"><span class="keyword">import</span> jieba   <span class="comment"># ieba分词  </span></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image  <span class="comment"># 加载图片</span></span><br><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"></span><br><span class="line">file_path=<span class="string">r'C:\Users\14311\Desktop\东汉末年枭雄志.txt'</span>  </span><br><span class="line">file = open(file_path,<span class="string">'r'</span>,encoding=<span class="string">'gbk'</span>).read()  </span><br><span class="line">cut_file = jieba.cut(file) </span><br><span class="line">join_file = <span class="string">" "</span>.join(cut_file)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置停用词</span></span><br><span class="line">sw = set(STOPWORDS)</span><br><span class="line">sw.add(<span class="string">'的'</span>)</span><br><span class="line">sw.add(<span class="string">'你'</span>)</span><br><span class="line">sw.add(<span class="string">'我'</span>)</span><br><span class="line">sw.add(<span class="string">'他'</span>)</span><br><span class="line">sw.add(<span class="string">'因此'</span>)</span><br><span class="line">sw.add(<span class="string">'所以'</span>)</span><br><span class="line">sw.add(<span class="string">'这样'</span>)</span><br><span class="line">sw.add(<span class="string">'那样'</span>)</span><br><span class="line">sw.add(<span class="string">'会'</span>)</span><br><span class="line">sw.add(<span class="string">'不会'</span>)</span><br><span class="line">sw.add(<span class="string">'自己'</span>)</span><br><span class="line">sw.add(<span class="string">'那么'</span>)</span><br><span class="line">sw.add(<span class="string">'然后'</span>)</span><br><span class="line">sw.add(<span class="string">'事情'</span>)</span><br><span class="line">sw.add(<span class="string">'可以'</span>)</span><br><span class="line">sw.add(<span class="string">'得到'</span>)</span><br><span class="line">sw.add(<span class="string">'在'</span>)</span><br><span class="line">sw.add(<span class="string">'就是'</span>)</span><br><span class="line">sw.add(<span class="string">'它们'</span>)</span><br><span class="line">sw.add(<span class="string">'不过'</span>)</span><br><span class="line">sw.add(<span class="string">'但是'</span>)</span><br><span class="line">sw.add(<span class="string">'还是'</span>)</span><br><span class="line">sw.add(<span class="string">'一些'</span>)</span><br><span class="line">sw.add(<span class="string">'一样'</span>)</span><br><span class="line">sw.add(<span class="string">'时候'</span>)</span><br><span class="line">sw.add(<span class="string">'已经'</span>)</span><br><span class="line">sw.add(<span class="string">'明白'</span>)</span><br><span class="line">sw.add(<span class="string">'知道'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置字体和图片模板</span></span><br><span class="line">font = <span class="string">r"C:\Windows\Fonts\XJLbold_1.ttf"</span></span><br><span class="line"><span class="comment"># image_file = Image.open(r'C:\Users\14311\Desktop\轮廓.jpg')</span></span><br><span class="line"><span class="comment"># image = numpy.array(image_file)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成词云</span></span><br><span class="line">wordcloud = WordCloud(font_path=font,background_color=<span class="string">"#ffffff"</span>,width=<span class="number">1000</span>,height=<span class="number">880</span>).generate(join_file)</span><br><span class="line"><span class="comment"># wordcloud = WordCloud(font_path=font,background_color="#ffffff",mask=image,width=1000,height=880).generate(join_file)                  </span></span><br><span class="line">plt.imshow(wordcloud, interpolation=<span class="string">"bilinear"</span>)</span><br><span class="line">plt.title(<span class="string">"Chapter 1-229"</span>)</span><br><span class="line"><span class="comment"># plt.axis("off") 不知道干什么用的</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
 <p>打印一些中间变量的结果如下：<br>打印<code>cut_file</code>得到下面这行语句：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;generator object Tokenizer.cut at <span class="number">0x0A3E6530</span>&gt;</span><br></pre></td></tr></table></figure></p>
 <p>打印<code>join_file</code>得到下面这行语句：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">　 “ 刘备 ， 刘玄德 ， 涿郡 涿县 人 ， 我 的 老师 ， 卢公在 涿县 学宫 教书 时 ， 门下 的 弟子 之一 。 ” </span><br><span class="line"> </span><br><span class="line"> 　 　 “ 竟有 这种 事 ？ ” </span><br><span class="line"> </span><br><span class="line"> 　 　 程立 愣 了 一下 ， 而后 笑 道 ： “ 看来 主公 名望 大增 ， 些许 故旧 前来 拜访 也 是 理所应当 的 事情 ， 这个 刘备 ， 应该 是 想 靠 这份 关系 在 军中 某个 职位 吧 ？ 主公 如何 看待 ？ ” </span><br><span class="line"> </span><br><span class="line"> 　 　 郭鹏 放下 了 拜帖 ， 笑 道 ： “ 同门 师兄 来 拜访 ， 如何 能 不 以礼相待 呢 ？ 仲德 ， 帮 我 安排 一下 ， 我 在 县城 里 迎接 我 的 师兄 。 ”</span><br></pre></td></tr></table></figure></p>
 <p>可以看到，这时候已经将文章分词分好了。<br>打印<code>wordcloud</code>变量得到下面这行语句：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;wordcloud.wordcloud.WordCloud object at <span class="number">0x09BBDCF0</span>&gt;</span><br></pre></td></tr></table></figure></p>
 <p>最大的问题出现在wordcloud这个模块的安装上面。<br><a href="https://shen-cheng-yu.github.io/2019/06/17/pip%E6%A8%A1%E5%9D%97/" target="_blank" rel="noopener">pip安装wordcloud模块</a><br>文件路径那里，路径的写法要注意。<br><a href="https://shen-cheng-yu.github.io/2019/06/17/%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E7%9A%84%E5%86%99%E6%B3%95/" target="_blank" rel="noopener">文件路径的写法</a><br>生成词云时，可以指定词云图片的背景颜色与图片的尺寸。<br>表示颜色时，除了<code>background_color=&quot;white&quot;</code>这种方式之外，还可以<code>background_color=&quot;#ffffff&quot;</code>这样子，注意外面需要加上引号。<br>设置标题时，不支持中文字符。</p>
+<p>打开<code>.txt</code>文档的时候，有的需要是<code>gbk</code>，有的又需要是<code>utf-8</code>，为啥嘞？<br><a href="https://blog.csdn.net/qq_40883132/article/details/83280191" target="_blank" rel="noopener">UnicodeDecodeError: ‘utf-8’ codec can’t decode byte 0xc0 in position 0: invalid start byte</a></p>
+<p>为什么设置了停用词之后，还是会出现这些词语呢？</p>
+<p>加载词云的图片模板，只需要在WordCloud()函数里面，添加上一个mask的关键字参数即可。</p>
 <p>在这个过程中，出现了一大堆问题。<br><a href="https://blog.csdn.net/u011242657/article/details/64437612" target="_blank" rel="noopener">SyntaxError: (unicode error) ‘unicodeescape’ codec can’t decode bytes in position 2-3: truncated \UXXXXXXXX escape</a></p>
 <p><a href="http://tieba.baidu.com/p/5784733299" target="_blank" rel="noopener">ModuleNotFoundError: No module named ‘query_integral_image’</a></p>
 <p>参考链接：<br><a href="https://www.cnblogs.com/tiandsp/p/8636826.html" target="_blank" rel="noopener">pyton生成词云</a><br><a href="https://www.jb51.net/article/141320.htm" target="_blank" rel="noopener">详解Python如何生成词云的方法</a></p>
-<p>选取了《东汉末年枭雄志》这本小说的前面1-100章节进行实验，得到的结果如下图：<br><img src="https://img-blog.csdnimg.cn/20190617224314695.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FIMjAxODAzMjQ=,size_16,color_FFFFFF,t_70" alt="enter image description here"></p>
+<p>选取了《东汉末年枭雄志》这本小说的前面1-229章节进行实验，得到的结果如下图：<br><img src="https://img-blog.csdnimg.cn/20190621154932650.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FIMjAxODAzMjQ=,size_16,color_FFFFFF,t_70" alt="enter image description here"></p>
+<p>再选取三国演义这本小说<br><img src="https://img-blog.csdnimg.cn/20190621155228960.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FIMjAxODAzMjQ=,size_16,color_FFFFFF,t_70" alt="enter image description here"></p>
 
     </article>
     <!-- license  -->
@@ -921,9 +923,38 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 25
+        Total : 26
         </div>
         <!-- search  -->
         
@@ -933,6 +964,34 @@ top:50vh;
     
     
     
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">C++学习笔记—多态和虚函数</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/21/python词频统计/">Python词频统计</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
@@ -964,17 +1023,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/头文件与库文件相关/">头文件与库文件相关</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/文件后缀相关/">文件后缀相关</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/指针相关/">指针相关</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/头文件与库文件相关/">头文件与库文件相关</a>
         </li>
     
     
@@ -1014,17 +1073,36 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">C++学习笔记—多态和虚函数</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——类和对象基础/">C++学习笔记—类和对象基础</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">06/05</span><a class="archive-post-title" href="/2019/06/05/C++学习笔记——继承和派生/">C++学习笔记—继承和派生</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/04</span><a class="archive-post-title" href="/2019/06/04/古诗词学习笔记/">古诗词学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
         </li>
     
     
@@ -1052,40 +1130,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/04</span><a class="archive-post-title" href="/2019/06/04/古诗词学习笔记/">古诗词学习笔记</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/文件路径的写法/">文件路径的写法</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/Chrome离线插件安装/">Chrome离线插件安装</a>
         </li>
     
     
@@ -1113,7 +1158,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/Chrome离线插件安装/">Chrome离线插件安装</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/文件路径的写法/">文件路径的写法</a>
         </li>
     
     </ul></div>
