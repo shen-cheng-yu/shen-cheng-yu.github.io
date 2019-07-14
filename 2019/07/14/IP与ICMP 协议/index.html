@@ -22,7 +22,7 @@
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>云想衣裳花想容，春风拂槛露华浓</title>
+    <title>IP/ICMP 协议 · 云想衣裳花想容，春风拂槛露华浓</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,12 +203,23 @@
 </head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">xtncsg&#39;s Studio.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">IP/ICMP 协议</a>
+            </div>
+    </div>
     
     <a class="home-link" href="/">xtncsg's Studio.</a>
 </header>
@@ -220,24 +231,78 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(https://img-blog.csdnimg.cn/20190604163423985.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FIMjAxODAzMjQ=,size_16,color_FFFFFF,t_70)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            IP/ICMP 协议
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="网络协议">网络协议</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="网络">网络</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="TCP/IP">TCP/IP</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">2.6k</span>阅读时长: <span class="post-count reading-time">9 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/07/14</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -338,373 +403,130 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/14/TCP与UDP 协议/">
-            
-                <span>TCP/UDP 协议</span>
-        </a>
-        <div class="abstract-content">
-            TCPTCP 首部格式如下：TCP报头中的源端口号和目的端口号同IP数据报中的源IP与目的IP唯一确定一条TCP连接。
-确认号只有在ACK位置1时才有效。指明下一个期待收到的字节序号，表明该序号之前的所有数据已经正确无误的收到。
-数据偏移数据部分在整个报文段中的偏移量，也就是首部长度。4位，以4字节为单位，最大60个字节，至少20个字节，同IP一样。
-保留位6位，一般是取0，留作以后用。
-标志位总共6个标志位，都很重要。
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="IP协议"><a href="#IP协议" class="headerlink" title="IP协议"></a>IP协议</h1><p>IP数据包头部的格式如下：<br><img src="http://hi.csdn.net/attachment/201007/15/5573582_1279195143KN73.png" alt="enter image description here"></p>
+<h2 id="版本号"><a href="#版本号" class="headerlink" title="版本号"></a>版本号</h2><p>IPv4就是4，IPv6就是6。</p>
+<h2 id="头部长度"><a href="#头部长度" class="headerlink" title="头部长度"></a>头部长度</h2><p>整个数据报头部的长度（包括选项），以32位为一个单位（一行是32位，4个字节），接收端通过此域可以计算出报头在何处结束及从何处开始读数据。IP数据报头部至少是20个字节。</p>
+<h2 id="服务类型"><a href="#服务类型" class="headerlink" title="服务类型"></a>服务类型</h2><p>服务类型（TOS、type of service）用于规定本数据报的处理方式。<br><img src="http://hi.csdn.net/attachment/201007/15/5573582_1279195143SDCz.png" alt="enter image description here"></p>
+<ol>
+<li>前面三位是优先权，数值越大代表优先权越高，当网络拥塞时，可以根据优先权来决定数据报的取舍。</li>
+<li>D（Delay，短延迟位），当该位置1时，数据报请求以短延迟信道传输。</li>
+<li>T（Throughput，高吞吐量位），当该位置1时，数据报请求以高吞吐量信道传输。</li>
+<li>R（Reliability，高可靠位），当该位置1时，数据报请求以高可靠性信道传输。<br>当这些位上是0时，即表示以普通信道传输。<br>TOS只表示用户的请求，不具有强制性，实际应用中很少用，路由器通常忽略TOS字段。但在实际编程时，有专门的函数来设置该字段的各域。<br>在各种网际应用协议中，如果与用户直接交互的话，建议使用短延迟。如果有大量数据需要传输，建议使用高吞吐量。如果数据包传输的是控制信息，则应该使用高可靠性信道。</li>
+</ol>
+<h2 id="总长度"><a href="#总长度" class="headerlink" title="总长度"></a>总长度</h2><p>IP数据报包括头部和数据部分在内的长度，以字节为单位（头部长度的单位是4个字节）。占用16位，所以IP数据报的最大长度理论是65535个字节，但是实际上要受到MTU的限制。</p>
+<h2 id="生存时间"><a href="#生存时间" class="headerlink" title="生存时间"></a>生存时间</h2><p>TTL，time to live。指定了数据报可以在网络中传输的最长时间。实际应用中的生存时间的意思是数据报可以经过的最大路由器数。TTL的初始值由源主机设置（通常为32、64、128或256），一旦经过一个处理它的路由器，它的值就减1。当该字段为0时，数据报就丢弃，并发送ICMP报文通知源主机，这是为了防止数据报进入循环回路时无休止地传输下去。</p>
+<h2 id="上层协议标识"><a href="#上层协议标识" class="headerlink" title="上层协议标识"></a>上层协议标识</h2><p>IP协议可以承载各种上层协议，目标端根据协议标识就可以把收到的IP数据报送到TCP或UDP等处理此报文的上层协议了。<br><img src="http://hi.csdn.net/attachment/201007/15/5573582_1279195145NPrA.png" alt="enter image description here"></p>
+<h2 id="校验和"><a href="#校验和" class="headerlink" title="校验和"></a>校验和</h2><p>IP数据报只校验头部，不校验后面的数据部分。数据包每经过一个中间节点都要重新计算首部校验和。</p>
+<h2 id="分片与重组"><a href="#分片与重组" class="headerlink" title="分片与重组"></a>分片与重组</h2><p>不同的物理网络有不同的MTU，比如以太网1500。当当前传输的数据包的长度大于该网络的MTU时，就需要对该数据包分片。</p>
+<h3 id="分片"><a href="#分片" class="headerlink" title="分片"></a>分片</h3><p>被路由器分片后的各个IP数据包可能经过不同的路径到达目标主机。<br><img src="http://hi.csdn.net/attachment/201007/16/5573582_127924946840lL.png" alt="enter image description here"><br>分片后的IP数据报，数据区是原IP数据报数据区的一个连续部分，头部是原IP数据报头部的复制。</p>
+<h4 id="标志"><a href="#标志" class="headerlink" title="标志"></a>标志</h4><p>IP数据包头部中的标志字段共有3位。<br><img src="http://hi.csdn.net/attachment/201007/16/5573582_1279249468x0XZ.png" alt="enter image description here"></p>
+<ol>
+<li>不分片DF（Do not Fragment）如果该位置1，则数据包在传输过程中不能被分片，但这样当数据不能通过MTU较小的网络时，将产生数据不可达的错误。</li>
+<li>片未完MF（More Fragment）如果该位置1，说明该数据报不是分片后的最后一个数据包，最后一个数据包的该位被置0。</li>
+</ol>
+<h4 id="片偏移"><a href="#片偏移" class="headerlink" title="片偏移"></a>片偏移</h4><p>IP数据包被分片后，各片数据区在原来IP数据区中的位置用13位的片偏移来表示。上图中分片1的偏移为0，分片2的偏移为600，分片3的偏移为1200。<br>实际在IP地址中，由于偏移是以8个字节为单位进行计算的。因而在IP数据包中分片1的偏移是0，分片2的偏移是75，分片3的偏移是150。</p>
+<h3 id="重组"><a href="#重组" class="headerlink" title="重组"></a>重组</h3><p>当分了片的IP数据包到达最终目标主机时，目标主机对各分片进行组装，恢复成源主机发送时的IP数据包。<br>IP数据包头部中的标识，它唯一地标识主机发送的每一份数据包。在一个数据包被分片时，每个分片都把数据包“标识”字段的值原样复制一份，所以一个数据包的所有分片具有相同的标识。<br>目标主机根据收到的每个数据包的标识，标志中的MF位，以及片偏移进行重组。</p>
+<h2 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h2><p>IP数据包的选项由三个部分组成：选项码、选项长度和选项数据。选项码和选项长度各占一个字节。选项长度用于确定整个选项部分的长度；选项码又分为复制、选项类和选项号。<br><img src="http://hi.csdn.net/attachment/201007/16/5573582_1279249469gz2m.png" alt="enter image description here"><br>复制：占一位，用来控制一个带有选项的IP数据包被分片后对选项的处理方式。该位置1时将选项复制到所有分片中，置0时仅将选项复制到第一个分片中。这样第一个分片的头部长度就会比后面的分片大。<br>选项类和选项号用于确定该选项是哪类选项中的哪个选项，其实就是确定该选项的功能。<br><img src="http://hi.csdn.net/attachment/201007/16/5573582_1279249468JD8J.png" alt="enter image description here"></p>
+<h3 id="源路由选择"><a href="#源路由选择" class="headerlink" title="源路由选择"></a>源路由选择</h3><p>是指IP数据包在互联网中传输时，所经过的路由是由源主机指定的，以区别于数据包在互联网中传输时由路由器的IP层自动寻径所得到的路由。<br>通过设置源路由选择选项，可以测试网络中指定路由的连通性，以使数据包绕开出错的网络，也可用于测试特定网络的吞吐量。</p>
+<p>####严格源路由选择<br>发送端规定IP数据包必须经过的路径上的每一个路由器，相邻路由器之间不得有中间路由器，并且所经过的路由器的顺序不可更改。严格源路由选择选项格式如下：<br><img src="http://hi.csdn.net/attachment/201007/16/5573582_1279249469yXj5.png" alt="enter image description here"><br>选项码是<code>10001001</code>，因为IP协议的头部长度占4位，且头部长度以4个字节为单位，则头部最多有60个字节。又头部至少有20个字节，所以选项最多只有40个字节。这里去掉选项码，选项长度和指针的3个字节，还剩37个字节可以写源主机规定的每一站路由器的IP地址，所以最多可以写9个IP地址。</p>
+<h4 id="宽松源路由选择"><a href="#宽松源路由选择" class="headerlink" title="宽松源路由选择"></a>宽松源路由选择</h4><p>源主机指定的两个IP地址之间可以有其他IP地址的路由器。格式与严格的相同，只是选项码字段值为<code>10000011</code>。</p>
+<h3 id="记录路由"><a href="#记录路由" class="headerlink" title="记录路由"></a>记录路由</h3><p>记录路由选项的数据格式同上，选项码字段值为<code>10000111</code>。IP数据包可以记录数据包从源主机传输到目标主机时，所经过路径上的各个路由器的IP地址。指针初值为4，指向存放第一个IP地址的位置（数据包还没有离开源主机时就已经知道的）。将每个经过的路由器的IP地址存入选项的数据区中，指针字段的值也随着增加（每次加4），它始终指向下一个存放IP地址的位置。当记录了9个IP地址后，指针字段的值为40，表示数据区已满。</p>
+<p><a href="https://blog.csdn.net/wangzhen209/article/details/74453548" target="_blank" rel="noopener">IP数据报格式详解</a></p>
+<h1 id="ICMP协议"><a href="#ICMP协议" class="headerlink" title="ICMP协议"></a>ICMP协议</h1><p>ICMP是基于IP协议工作的，是IP协议的上层协议，但仍然把它归结为网络层协议 。ICMP只能搭配IPv4使用，如果是IPv6的情况下, 需要是用ICMPv6。</p>
+<h2 id="ICMP报头"><a href="#ICMP报头" class="headerlink" title="ICMP报头"></a>ICMP报头</h2><p>一个ICMP报文包括IP报头（至少20字节）、ICMP报头（至少8字节）和ICMP报文的数据部分。当IP报头中的上层协议标识字段值为1时，就说明这是一个ICMP报文。<br><img src="https://img-blog.csdn.net/201805301801365?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JhaWR1XzM3OTY0MDcx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="enter image description here"></p>
+<ol>
+<li>类型。占一字节，标识ICMP报文的类型，从类型值来看ICMP报文可以分为两大类。第一类是取值为1~127的差错报文，第2类是取值128以上的信息报文。</li>
+<li>代码。占一字节，与类型字段一起共同标识了ICMP报文的详细类型。</li>
+<li>校验和。对ICMP报文总体，包括数据部分在内进行校验。方法同IP数据包的校验。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型（十进制）</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">回送应答</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">目标不可达</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">源点抑制</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">重定向或改变路由</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center">回送请求</td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:center">超时</td>
+</tr>
+<tr>
+<td style="text-align:center">13</td>
+<td style="text-align:center">时间戳请求</td>
+</tr>
+<tr>
+<td style="text-align:center">14</td>
+<td style="text-align:center">时间戳应答</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Ping"><a href="#Ping" class="headerlink" title="Ping"></a>Ping</h2><p>向目标主机发送一个类型字段值为8的ICMP回送请求报文，如果途中没有异常，则目标返回类型字段值为0的ICMP回送应答报文，说明这台主机存在。</p>
+<h3 id="目标不可到达报文"><a href="#目标不可到达报文" class="headerlink" title="目标不可到达报文"></a>目标不可到达报文</h3><p>类型值为3，不同的代码字段值标识了不同的报文类型。<br>|代码字段值（十进制）|报文类型|<br>|:———:|:——-:|<br>|0|网络不可到达|<br>|1|主机不可到达|<br>|2|协议不可到达|<br>|3|端口不可到达|</p>
+<h3 id="源抑制报文"><a href="#源抑制报文" class="headerlink" title="源抑制报文"></a>源抑制报文</h3><p>类型字段值为4，代码字段值为0。充当一个控制流量的角色，通知对向主机减少数据报流量。由于ICMP没有回复传输的报文，所以只要停止该报文，对方主机就会逐渐恢复传输速率。 </p>
+<h3 id="超时报文"><a href="#超时报文" class="headerlink" title="超时报文"></a>超时报文</h3><p>类型字段值为11。代码字段值为0表示传输超时，代码字段值为1表示目标主机在进行分段重组时超时。</p>
+<h3 id="时间戳请求"><a href="#时间戳请求" class="headerlink" title="时间戳请求"></a>时间戳请求</h3><p> 发送方主机填充原始时间戳，以类型值字段为13的时间戳请求报文发送出去。接收方收到请求后填充接受时间戳后以类型值字段为14的时间戳应答报文返回，发送方计算这个时间差， 作为两台主机之间数据报来回一次的传输时间。</p>
+<h2 id="Traceroute"><a href="#Traceroute" class="headerlink" title="Traceroute"></a>Traceroute</h2><p>打印出可执行程序主机，一直到目标主机之前经历多少路由器。<br><code>traceroute www.baidu.com</code></p>
+<p><a href="https://blog.csdn.net/baidu_37964071/article/details/80514340" target="_blank" rel="noopener">ICMP协议详解</a></p>
 
-URG。该位置1时，紧急指针才有效。
-ACK。该位置1时，确认号ack才有效。
-PSH。该位置1时，说明接收方应该立刻将该报文交付给应用程序（应用层），而不是留在缓冲...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/14</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="网络协议">网络协议</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="网络">网络</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="TCP/IP">TCP/IP</a>
-    
-</div>
-            
-        </div>
     </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/14/IP与ICMP 协议/">
-            
-                <span>IP/ICMP 协议</span>
-        </a>
-        <div class="abstract-content">
-            IP协议IP数据包头部的格式如下：
-版本号IPv4就是4，IPv6就是6。
-头部长度整个数据报头部的长度（包括选项），以32位为一个单位（一行是32位，4个字节），接收端通过此域可以计算出报头在何处结束及从何处开始读数据。IP数据报头部至少是20个字节。
-服务类型服务类型（TOS、type of service）用于规定本数据报的处理方式。
-
-前面三位是优先权，数值越大代表优先权越高，当网络拥塞时，可以根据优先权来决定数据报的取舍。
-D（Delay，短延迟位），当该位置1时，数据报请求以短延迟信道传输。
-T（Throughput，高吞吐量位），当该位置1时，数据报请求以高吞吐量信道传输。...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/14</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="网络协议">网络协议</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="网络">网络</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="TCP/IP">TCP/IP</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/12/Shell编程/">
-            
-                <span>Shell编程</span>
-        </a>
-        <div class="abstract-content">
-            SSHSSH（Secure Shell）为建立在应用层基础上的安全协议。SSH 是目前较可靠，专为远程登录会话和其他网络服务提供安全性的协议。利用 SSH 协议可以有效防止远程管理过程中的信息泄露问题。传统的网络服务程序，如：ftp、pop和telnet在本质上都是不安全的，因为它们在网络上用明文传送口令和数据，别有用心的人非常容易就可以截获这些口令和数据。而且，这些服务程序的安全验证方式也是有其弱点的， 就是很容易受到“中间人”（man-in-the-middle）这种方式的攻击。所谓“中间人”的攻击方式， 就是“中间人”冒充真正的服务器接收你传给服务器的数据，然后再冒充你把数据传给真...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/12</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="网络协议">网络协议</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="设备调试">设备调试</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Linux命令">Linux命令</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Shell编程">Shell编程</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/12/设备部署/">
-            
-                <span>设备部署</span>
-        </a>
-        <div class="abstract-content">
-            好像有点懂这个设备了。这个设备里面有一个CentOS的Linux系统，可以通过XShell将笔记本和这个Linux系统连接起来，然后就能够通过笔记本电脑操纵这个Linux系统了。这样子的话，电脑虚拟机里面的Ubuntu好像就用不上了哎。当然这个设备现在我还不懂它的商业价值，不知道它是怎么卖的。。
-排网卡昨天硬盘拷贝了之后，网线直连笔记本和设备，MGT口的灯就不亮了，也就是说我没法连接到这台设备了。王佬说是要排网卡。既然笔记本连不上，那就将设备和显示器连起来。将设备插上电源，连上一个键盘，再连上一个显示器，就能够通过显示器来操纵设备了。这个时候是不需要连接网线的。
-ifconfig命令可以...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/12</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="网络">网络</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="设备调试">设备调试</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Linux命令">Linux命令</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="XShell">XShell</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/11/进程管理/">
-            
-                <span>进程管理</span>
-        </a>
-        <div class="abstract-content">
-            当我们运行程序时，Linux会为程序创建一个特殊的环境，该环境包含程序运行需要的所有资源，以保证程序能够独立运行，不受其他程序的干扰。这个特殊的环境就称为进程。每个 Linux 命令都与系统中的程序对应，输入命令，Linux 就会创建一个新的进程。例如使用 ls 命令遍历目录中的文件时，就创建了一个进程。输入一个命令，就会执行一个程序，相应地就会有进程被创建出来。系统通过一个五位数字跟踪程序的运行状态，这个数字称为 pid 或进程ID。每个进程都拥有唯一的 pid。理论上，五位数字是有限的，当数字被用完时，下一个 pid 就会重新开始，所以 pid 最终会重复。但是，两个 pid 一样的...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/11</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="操作系统">操作系统</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Linux">Linux</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/11/Linux命令/">
-            
-                <span>Linux命令</span>
-        </a>
-        <div class="abstract-content">
-            mv移动文件与文件重命名mv ../a.cpp ./mv a.cpp abc.cpp    #重命名的时候，如果涉及到了路径，就会被当成是移动操作，所以在重命名之前要先进入指定目录
-cat查看文件cat -n ../linux命令.txt |more-n 显示行号，并且带上管道命令|more来分页浏览
-vim编辑器touch abc.cpp  #创建文件vim abc.cpp  #进入vim编辑器，默认是一般模式i                  #进入编辑模式#include&lt;iostream&gt; #编辑文件按键esc            #退出编辑模式，回到一般模式:w...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/11</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Linux命令">Linux命令</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/10/XShell连接Ubuntu/">
-            
-                <span>XShell连接Ubuntu</span>
-        </a>
-        <div class="abstract-content">
-            查看ubuntu的版本lsb_release -aUbuntu-查看ubuntu系统的版本信息
-设置虚拟机静态ip虚拟机中ubuntu的网络连接模式，我给设置成了NAT模式，之前是桥接模式。
-在网络适配器里面，将VMnet8这个网络的ipv4属性修改为：ip地址：192.168.29.1子网掩码：255.255.255.0
-在虚拟机的虚拟网络编辑器，VMnet8这个网络的模式是NAT模式，选中“将主机虚拟适配器连接到此网络”，“使用本地DHCP服务将ip地址分配给虚拟机”，这两个本来就是选中状态的。
-可以在这个界面进入NAT设置和DHCP设置，得到子网ip：192.168.29.0，掩码...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/10</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="网络">网络</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="ubuntu">ubuntu</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/10/视频核心网关设备调试/">
-            
-                <span>视频核心网关设备调试</span>
-        </a>
-        <div class="abstract-content">
-            设备调试今天早上拿来的视频核心网关设备，这台设备里面存储有代码，我们需要将笔记本电脑与它连接起来。
-将设备插上电源，用网线将它的MGT口和显示器连接起来，获取DHCP自动为它分配的IP地址，一大波操作之后，得到是192.168.2.138。网线直连SPG6300设备的MGT口，开机启动后DHCP分配的ip地址在0-150，这里是138。
-获得了之后，就不需要显示器了，可以在自己的笔记本上面调试。用网线将它（MGT）和笔记本连接起来，在XShell里面输入ssh 192.168.2.138登陆远程主机（该设备），让输入用户名，这里输入root，然后输入密码，这里是Smartsecuri@6...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/10</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="网络">网络</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="TCP/IP">TCP/IP</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="设备调试">设备调试</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/08/字节对齐/">
-            
-                <span>字节对齐</span>
-        </a>
-        <div class="abstract-content">
-            计算机中内存大小的基本单位是字节（byte），理论上来讲，可以从任意地址访问某种基本数据类型，但是实际上，计算机并非逐字节大小读写内存，而是以2,4,或8的 倍数的字节块来读写内存。
-若结构体首地址为0，那么每个成员的首地址应该是成员大小的整数倍。如不满足，对前一个成员填充字节以满足。结构体的总大小应该是其最大的那个成员大小的整数倍，如不满足，最后填充字节以满足。这个主要是考虑到结构体数组的情况，比如struct A[2],若是A[0]后面不填充，那么A[1]的首地址是14，不满足要求。
-计算机每次读写一个字节块，例如，假设计算机总是从内存中取8个字节，如果一个double数据的地址对齐...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/08</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="编程">编程</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/06/入职软件安装/">
-            
-                <span>入职软件安装</span>
-        </a>
-        <div class="abstract-content">
-            Source Insight 4.0Source Insight 4.0 最简单的破解安装Source Insight 4使用技巧整理
-TeamViewerTeamViewer介绍及安装使用教程
-TortoiseSVN如何关闭win10驱动程序强制签名Win10怎么关闭UAC控制?win10关闭uac方法win10怎么关闭防火墙TortoiseSVN 使用教程
-windows资源管理器任务结束了怎么办？
-SVN与Git的区别
-TortoiseSVN使用方法
-
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/06</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="电脑">电脑</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="骚操作">骚操作</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="软件使用">软件使用</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="版本控制">版本控制</a>
-    
-</div>
-            
-        </div>
-    </article>
+    <!-- license  -->
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2019/07/14/TCP与UDP 协议/" title="TCP/UDP 协议">
+                    <div class="nextTitle">TCP/UDP 协议</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2019/07/12/Shell编程/" title="Shell编程">
+                    <div class="prevTitle">Shell编程</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
-    <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/archives/2019/page/2/">2</a><a class="page-number" href="/archives/2019/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2019/page/5/">5</a><a class="extend next" rel="next" href="/archives/2019/page/2/">NEXT &#62;</a>
-    </nav>
     
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -796,6 +618,24 @@ TortoiseSVN使用方法
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#IP协议"><span class="toc-number">1.</span> <span class="toc-text">IP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#版本号"><span class="toc-number">1.1.</span> <span class="toc-text">版本号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#头部长度"><span class="toc-number">1.2.</span> <span class="toc-text">头部长度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务类型"><span class="toc-number">1.3.</span> <span class="toc-text">服务类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总长度"><span class="toc-number">1.4.</span> <span class="toc-text">总长度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生存时间"><span class="toc-number">1.5.</span> <span class="toc-text">生存时间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上层协议标识"><span class="toc-number">1.6.</span> <span class="toc-text">上层协议标识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#校验和"><span class="toc-number">1.7.</span> <span class="toc-text">校验和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分片与重组"><span class="toc-number">1.8.</span> <span class="toc-text">分片与重组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分片"><span class="toc-number">1.8.1.</span> <span class="toc-text">分片</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#标志"><span class="toc-number">1.8.1.1.</span> <span class="toc-text">标志</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#片偏移"><span class="toc-number">1.8.1.2.</span> <span class="toc-text">片偏移</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重组"><span class="toc-number">1.8.2.</span> <span class="toc-text">重组</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选项"><span class="toc-number">1.9.</span> <span class="toc-text">选项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#源路由选择"><span class="toc-number">1.9.1.</span> <span class="toc-text">源路由选择</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#宽松源路由选择"><span class="toc-number">1.9.1.1.</span> <span class="toc-text">宽松源路由选择</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#记录路由"><span class="toc-number">1.9.2.</span> <span class="toc-text">记录路由</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ICMP协议"><span class="toc-number">2.</span> <span class="toc-text">ICMP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ICMP报头"><span class="toc-number">2.1.</span> <span class="toc-text">ICMP报头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ping"><span class="toc-number">2.2.</span> <span class="toc-text">Ping</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#目标不可到达报文"><span class="toc-number">2.2.1.</span> <span class="toc-text">目标不可到达报文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#源抑制报文"><span class="toc-number">2.2.2.</span> <span class="toc-text">源抑制报文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#超时报文"><span class="toc-number">2.2.3.</span> <span class="toc-text">超时报文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时间戳请求"><span class="toc-number">2.2.4.</span> <span class="toc-text">时间戳请求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Traceroute"><span class="toc-number">2.3.</span> <span class="toc-text">Traceroute</span></a></li></ol></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -2215,6 +2055,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>

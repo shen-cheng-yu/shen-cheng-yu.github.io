@@ -22,7 +22,7 @@
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>云想衣裳花想容，春风拂槛露华浓</title>
+    <title>TCP/UDP 协议 · 云想衣裳花想容，春风拂槛露华浓</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,12 +203,23 @@
 </head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">xtncsg&#39;s Studio.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">TCP/UDP 协议</a>
+            </div>
+    </div>
     
     <a class="home-link" href="/">xtncsg's Studio.</a>
 </header>
@@ -220,24 +231,78 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(https://img-blog.csdnimg.cn/20190604163423985.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FIMjAxODAzMjQ=,size_16,color_FFFFFF,t_70)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            TCP/UDP 协议
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="网络协议">网络协议</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="网络">网络</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="TCP/IP">TCP/IP</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">1.8k</span>阅读时长: <span class="post-count reading-time">6 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/07/14</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -338,373 +403,86 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/14/TCP与UDP 协议/">
-            
-                <span>TCP/UDP 协议</span>
-        </a>
-        <div class="abstract-content">
-            TCPTCP 首部格式如下：TCP报头中的源端口号和目的端口号同IP数据报中的源IP与目的IP唯一确定一条TCP连接。
-确认号只有在ACK位置1时才有效。指明下一个期待收到的字节序号，表明该序号之前的所有数据已经正确无误的收到。
-数据偏移数据部分在整个报文段中的偏移量，也就是首部长度。4位，以4字节为单位，最大60个字节，至少20个字节，同IP一样。
-保留位6位，一般是取0，留作以后用。
-标志位总共6个标志位，都很重要。
+            <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><p>TCP 首部格式如下：<br><img src="https://s1.51cto.com/images/20180821/1534845641472393.jpeg?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt="enter image description here"><br>TCP报头中的源端口号和目的端口号同IP数据报中的源IP与目的IP唯一确定一条TCP连接。</p>
+<h3 id="确认号"><a href="#确认号" class="headerlink" title="确认号"></a>确认号</h3><p>只有在ACK位置1时才有效。指明下一个期待收到的字节序号，表明该序号之前的所有数据已经正确无误的收到。</p>
+<h3 id="数据偏移"><a href="#数据偏移" class="headerlink" title="数据偏移"></a>数据偏移</h3><p>数据部分在整个报文段中的偏移量，也就是首部长度。4位，以4字节为单位，最大60个字节，至少20个字节，同IP一样。</p>
+<h3 id="保留位"><a href="#保留位" class="headerlink" title="保留位"></a>保留位</h3><p>6位，一般是取0，留作以后用。</p>
+<h3 id="标志位"><a href="#标志位" class="headerlink" title="标志位"></a>标志位</h3><p>总共6个标志位，都很重要。</p>
+<ol>
+<li>URG。该位置1时，紧急指针才有效。</li>
+<li>ACK。该位置1时，确认号ack才有效。</li>
+<li>PSH。该位置1时，说明接收方应该立刻将该报文交付给应用程序（应用层），而不是留在缓冲队列中。</li>
+<li>RST。用以重建连接。</li>
+<li>SYN。连接建立时用于同步序号。当SYN=1，ACK=0时表示这是一个连接请求报文段。若同意连接，则在响应报文段中使得SYN=1，ACK=1。因此，SYN=1表示这是一个连接请求，或连接接受报文。</li>
+<li>FIN。该位置1时用以结束一个TCP会话。为1时表示发送方已经没有数据发送了，即关闭本方数据流。</li>
+</ol>
+<h3 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a>窗口</h3><p>用于TCP的流量控制。</p>
+<h3 id="检验和"><a href="#检验和" class="headerlink" title="检验和"></a>检验和</h3><p>对整个报文进行检验，由发送端计算和存储，到接收端后，由接收端进行验证。</p>
+<h3 id="紧急指针"><a href="#紧急指针" class="headerlink" title="紧急指针"></a>紧急指针</h3><p>紧急指针是一个正的偏移量，和顺序号字段中的值相加表示紧急数据最后一个字节的序号。</p>
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><p>必须是4字节的整数倍，不足时可以用0填充。最常见的可选字段是最长报文大小，又称为MSS（Maximum Segment Size），每个连接方通常都在通信的第一个报文段（为建立连接而设置SYN标志为1的那个段）中指明这个选项，它表示本端所能接受的最大报文段的长度。</p>
+<h2 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h2><p><img src="https://img-blog.csdn.net/20180717202520531?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4OTUwMzE2/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="enter image description here"></p>
+<ol>
+<li><p>建立连接时，客户端发送(SYN=1,seq=x)报文到服务器，并进入SYN_SENT状态，等待服务器确认。</p>
+</li>
+<li><p>服务器收到后发送回去一个SYN+ACK包(SYN=1,ACK=1,seq=y,ack=x+1)，此时服务器进入SYN_RECV状态。</p>
+</li>
+<li><p>客户端收到服务器的SYN+ACK包，向服务器发送确认包ACK(ACK=1,seq=x+1,ack=y+1），之后客户端进入ESTABLISHED（TCP连接成功）状态，服务器收到这个确认包之后也进入ESTABLISHED状态。</p>
+</li>
+</ol>
+<h2 id="为什么两次握手不行？"><a href="#为什么两次握手不行？" class="headerlink" title="为什么两次握手不行？"></a>为什么两次握手不行？</h2><p>主要是考虑到服务器发出的SYN+ACK包可能会丢失。</p>
+<p>若是两次握手即可，那么当服务器发回SYN+ACK包之后，服务器即认为连接已经建立，觉得自己可以向客户端发送数据了。</p>
+<p>但是如果这个SYN+ACK包没有到达客户端的话，客户端不知道服务器到底准备好了没有，甚至服务器到底有没有收到自己发给他的连接请求。这些都不知道，客户端就会认为连接还没有成功建立，将忽略服务器发来的任何数据分组，只等待连接确认应答分组。而服务器在发出的分组超时后，重复发送同样的分组。服务器一直发，客户端一直在拒绝，这样就形成了死锁。</p>
+<h2 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h2><p><img src="https://img-blog.csdn.net/20180717204202563?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4OTUwMzE2/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="enter image description here"></p>
+<ol>
+<li><p>客户端进程发出连接释放报文（FIN=1，seq=u），并且停止发送数据。此时，客户端进入FIN-WAIT-1状态。 TCP规定，FIN报文段即使不携带数据，也要消耗一个序号。</p>
+</li>
+<li><p>服务器收到连接释放报文，发出确认报文（ACK=1，ack=u+1，seq=v），此时，服务端就进入了CLOSE-WAIT（等待关闭）状态。客户端向服务器的方向就释放了，这时候处于半关闭状态，即客户端已经没有数据要发送了，但是服务器若发送数据，客户端依然要接受。这个状态还要持续一段时间，在这期间服务器可以继续向客户端发送数据。<br>而收到这个报文的客户端进入FIN-WAIT-2状态，等待服务器发送连接释放报文（在这之前还需要接受服务器发送的一些数据）。</p>
+</li>
+<li><p>服务器将最后的数据发送完毕后，就向客户端发送连接释放报文，由于在半关闭状态，服务器之前很可能又发送了一些数据，假定此时的序列号为seq=w，所以服务器发送的是（FIN=1，seq=w，ack=u+1）此时，服务器就进入了LAST-ACK（最后确认）状态，等待客户端的确认。</p>
+</li>
+<li><p>客户端收到服务器的连接释放报文后，发出确认（ACK=1，ack=w+1，seq=u+1）。此时，客户端就进入了TIME-WAIT状态。服务端收到这个确认报文之后就会关闭。而此时客户端的TCP连接还没有释放，必须经过2∗∗MSL（最长报文段寿命）的时间后，才进入CLOSED状态。</p>
+</li>
+</ol>
+<h2 id="为什么客户端需要经过2MSL？"><a href="#为什么客户端需要经过2MSL？" class="headerlink" title="为什么客户端需要经过2MSL？"></a>为什么客户端需要经过2MSL？</h2><p>为什么TIME_WAIT状态需要经过2MSL(最大报文段生存时间)才能返回到CLOSE状态？</p>
+<p>主要是考虑到客户端最后发出的那个ACK确认包可能会丢失。所以TIME_WAIT状态就是用来重发可能丢失的ACK报文。如果服务器没有收到这个ACK确认，就会再次重发连接请求释放报文。所以客户端不能立即关闭，它必须确认服务器接收到了该ACK。</p>
+<p>客户端会在发送出ACK之后进入到TIME_WAIT，并会设置一个计时器，等待2MSL的时间。如果在该时间内再次收到FIN，那么它会重发ACK并再次等待2MSL。所谓的2MSL是两倍的MSL(Maximum Segment Lifetime)。MSL指一个片段在网络中最大的存活时间，2MSL就是一个发送和一个回复所需的最大时间。如果直到2MSL，客户端都没有再次收到FIN，那么就可以推断ACK已经被成功接收，则结束TCP连接。</p>
+<h2 id="如果已经建立了连接，但是客户端突然出现故障了怎么办？"><a href="#如果已经建立了连接，但是客户端突然出现故障了怎么办？" class="headerlink" title="如果已经建立了连接，但是客户端突然出现故障了怎么办？"></a>如果已经建立了连接，但是客户端突然出现故障了怎么办？</h2><p>TCP设有一个保活计时器，每收到一次客户端的请求后都会重新复位这个计时器，时间通常是设置为2小时，若两小时还没有收到客户端的任何数据，服务器就会发送一个探测报文段，以后每隔75秒钟发送一次。若一连发送10个探测报文仍然没反应，服务器就认为客户端出了故障，接着就关闭连接，不再继续等待。</p>
+<h2 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h2><p><img src="https://s1.51cto.com/images/20180821/1534845652351546.jpeg?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=" alt="enter image description here"><br>首部只有8个字节，16位UDP长度指的是整个报文的长度。</p>
+<p><a href="https://blog.51cto.com/lyhbwwk/2162568" target="_blank" rel="noopener">TCP/IP 数据包报文格式（IP包、TCP报头、UDP报头）</a><br><a href="https://www.cnblogs.com/feng9exe/p/8058891.html" target="_blank" rel="noopener">TCP报文格式详解</a><br><a href="https://blog.csdn.net/qq_38950316/article/details/81087809" target="_blank" rel="noopener">TCP的三次握手与四次挥手理解及面试题（很全面）</a></p>
 
-URG。该位置1时，紧急指针才有效。
-ACK。该位置1时，确认号ack才有效。
-PSH。该位置1时，说明接收方应该立刻将该报文交付给应用程序（应用层），而不是留在缓冲...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/14</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="网络协议">网络协议</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="网络">网络</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="TCP/IP">TCP/IP</a>
-    
-</div>
-            
-        </div>
     </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/14/IP与ICMP 协议/">
-            
-                <span>IP/ICMP 协议</span>
-        </a>
-        <div class="abstract-content">
-            IP协议IP数据包头部的格式如下：
-版本号IPv4就是4，IPv6就是6。
-头部长度整个数据报头部的长度（包括选项），以32位为一个单位（一行是32位，4个字节），接收端通过此域可以计算出报头在何处结束及从何处开始读数据。IP数据报头部至少是20个字节。
-服务类型服务类型（TOS、type of service）用于规定本数据报的处理方式。
-
-前面三位是优先权，数值越大代表优先权越高，当网络拥塞时，可以根据优先权来决定数据报的取舍。
-D（Delay，短延迟位），当该位置1时，数据报请求以短延迟信道传输。
-T（Throughput，高吞吐量位），当该位置1时，数据报请求以高吞吐量信道传输。...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/14</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="网络协议">网络协议</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="网络">网络</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="TCP/IP">TCP/IP</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/12/Shell编程/">
-            
-                <span>Shell编程</span>
-        </a>
-        <div class="abstract-content">
-            SSHSSH（Secure Shell）为建立在应用层基础上的安全协议。SSH 是目前较可靠，专为远程登录会话和其他网络服务提供安全性的协议。利用 SSH 协议可以有效防止远程管理过程中的信息泄露问题。传统的网络服务程序，如：ftp、pop和telnet在本质上都是不安全的，因为它们在网络上用明文传送口令和数据，别有用心的人非常容易就可以截获这些口令和数据。而且，这些服务程序的安全验证方式也是有其弱点的， 就是很容易受到“中间人”（man-in-the-middle）这种方式的攻击。所谓“中间人”的攻击方式， 就是“中间人”冒充真正的服务器接收你传给服务器的数据，然后再冒充你把数据传给真...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/12</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="网络协议">网络协议</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="设备调试">设备调试</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Linux命令">Linux命令</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Shell编程">Shell编程</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/12/设备部署/">
-            
-                <span>设备部署</span>
-        </a>
-        <div class="abstract-content">
-            好像有点懂这个设备了。这个设备里面有一个CentOS的Linux系统，可以通过XShell将笔记本和这个Linux系统连接起来，然后就能够通过笔记本电脑操纵这个Linux系统了。这样子的话，电脑虚拟机里面的Ubuntu好像就用不上了哎。当然这个设备现在我还不懂它的商业价值，不知道它是怎么卖的。。
-排网卡昨天硬盘拷贝了之后，网线直连笔记本和设备，MGT口的灯就不亮了，也就是说我没法连接到这台设备了。王佬说是要排网卡。既然笔记本连不上，那就将设备和显示器连起来。将设备插上电源，连上一个键盘，再连上一个显示器，就能够通过显示器来操纵设备了。这个时候是不需要连接网线的。
-ifconfig命令可以...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/12</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="网络">网络</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="设备调试">设备调试</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Linux命令">Linux命令</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="XShell">XShell</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/11/进程管理/">
-            
-                <span>进程管理</span>
-        </a>
-        <div class="abstract-content">
-            当我们运行程序时，Linux会为程序创建一个特殊的环境，该环境包含程序运行需要的所有资源，以保证程序能够独立运行，不受其他程序的干扰。这个特殊的环境就称为进程。每个 Linux 命令都与系统中的程序对应，输入命令，Linux 就会创建一个新的进程。例如使用 ls 命令遍历目录中的文件时，就创建了一个进程。输入一个命令，就会执行一个程序，相应地就会有进程被创建出来。系统通过一个五位数字跟踪程序的运行状态，这个数字称为 pid 或进程ID。每个进程都拥有唯一的 pid。理论上，五位数字是有限的，当数字被用完时，下一个 pid 就会重新开始，所以 pid 最终会重复。但是，两个 pid 一样的...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/11</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="操作系统">操作系统</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Linux">Linux</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/11/Linux命令/">
-            
-                <span>Linux命令</span>
-        </a>
-        <div class="abstract-content">
-            mv移动文件与文件重命名mv ../a.cpp ./mv a.cpp abc.cpp    #重命名的时候，如果涉及到了路径，就会被当成是移动操作，所以在重命名之前要先进入指定目录
-cat查看文件cat -n ../linux命令.txt |more-n 显示行号，并且带上管道命令|more来分页浏览
-vim编辑器touch abc.cpp  #创建文件vim abc.cpp  #进入vim编辑器，默认是一般模式i                  #进入编辑模式#include&lt;iostream&gt; #编辑文件按键esc            #退出编辑模式，回到一般模式:w...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/11</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Linux命令">Linux命令</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/10/XShell连接Ubuntu/">
-            
-                <span>XShell连接Ubuntu</span>
-        </a>
-        <div class="abstract-content">
-            查看ubuntu的版本lsb_release -aUbuntu-查看ubuntu系统的版本信息
-设置虚拟机静态ip虚拟机中ubuntu的网络连接模式，我给设置成了NAT模式，之前是桥接模式。
-在网络适配器里面，将VMnet8这个网络的ipv4属性修改为：ip地址：192.168.29.1子网掩码：255.255.255.0
-在虚拟机的虚拟网络编辑器，VMnet8这个网络的模式是NAT模式，选中“将主机虚拟适配器连接到此网络”，“使用本地DHCP服务将ip地址分配给虚拟机”，这两个本来就是选中状态的。
-可以在这个界面进入NAT设置和DHCP设置，得到子网ip：192.168.29.0，掩码...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/10</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="网络">网络</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="ubuntu">ubuntu</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/10/视频核心网关设备调试/">
-            
-                <span>视频核心网关设备调试</span>
-        </a>
-        <div class="abstract-content">
-            设备调试今天早上拿来的视频核心网关设备，这台设备里面存储有代码，我们需要将笔记本电脑与它连接起来。
-将设备插上电源，用网线将它的MGT口和显示器连接起来，获取DHCP自动为它分配的IP地址，一大波操作之后，得到是192.168.2.138。网线直连SPG6300设备的MGT口，开机启动后DHCP分配的ip地址在0-150，这里是138。
-获得了之后，就不需要显示器了，可以在自己的笔记本上面调试。用网线将它（MGT）和笔记本连接起来，在XShell里面输入ssh 192.168.2.138登陆远程主机（该设备），让输入用户名，这里输入root，然后输入密码，这里是Smartsecuri@6...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/10</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="网络">网络</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="TCP/IP">TCP/IP</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="设备调试">设备调试</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/08/字节对齐/">
-            
-                <span>字节对齐</span>
-        </a>
-        <div class="abstract-content">
-            计算机中内存大小的基本单位是字节（byte），理论上来讲，可以从任意地址访问某种基本数据类型，但是实际上，计算机并非逐字节大小读写内存，而是以2,4,或8的 倍数的字节块来读写内存。
-若结构体首地址为0，那么每个成员的首地址应该是成员大小的整数倍。如不满足，对前一个成员填充字节以满足。结构体的总大小应该是其最大的那个成员大小的整数倍，如不满足，最后填充字节以满足。这个主要是考虑到结构体数组的情况，比如struct A[2],若是A[0]后面不填充，那么A[1]的首地址是14，不满足要求。
-计算机每次读写一个字节块，例如，假设计算机总是从内存中取8个字节，如果一个double数据的地址对齐...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/08</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="编程">编程</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/06/入职软件安装/">
-            
-                <span>入职软件安装</span>
-        </a>
-        <div class="abstract-content">
-            Source Insight 4.0Source Insight 4.0 最简单的破解安装Source Insight 4使用技巧整理
-TeamViewerTeamViewer介绍及安装使用教程
-TortoiseSVN如何关闭win10驱动程序强制签名Win10怎么关闭UAC控制?win10关闭uac方法win10怎么关闭防火墙TortoiseSVN 使用教程
-windows资源管理器任务结束了怎么办？
-SVN与Git的区别
-TortoiseSVN使用方法
-
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/06</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="电脑">电脑</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="骚操作">骚操作</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="软件使用">软件使用</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="版本控制">版本控制</a>
-    
-</div>
-            
-        </div>
-    </article>
+    <!-- license  -->
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2019/07/14/IP与ICMP 协议/" title="IP/ICMP 协议">
+                    <div class="prevTitle">IP/ICMP 协议</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
-    <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/archives/2019/page/2/">2</a><a class="page-number" href="/archives/2019/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2019/page/5/">5</a><a class="extend next" rel="next" href="/archives/2019/page/2/">NEXT &#62;</a>
-    </nav>
     
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -796,6 +574,24 @@ TortoiseSVN使用方法
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP"><span class="toc-number">1.</span> <span class="toc-text">TCP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#确认号"><span class="toc-number">1.1.</span> <span class="toc-text">确认号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据偏移"><span class="toc-number">1.2.</span> <span class="toc-text">数据偏移</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#保留位"><span class="toc-number">1.3.</span> <span class="toc-text">保留位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标志位"><span class="toc-number">1.4.</span> <span class="toc-text">标志位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#窗口"><span class="toc-number">1.5.</span> <span class="toc-text">窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检验和"><span class="toc-number">1.6.</span> <span class="toc-text">检验和</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#紧急指针"><span class="toc-number">1.7.</span> <span class="toc-text">紧急指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选项"><span class="toc-number">1.8.</span> <span class="toc-text">选项</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三次握手"><span class="toc-number">2.</span> <span class="toc-text">三次握手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么两次握手不行？"><span class="toc-number">3.</span> <span class="toc-text">为什么两次握手不行？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四次挥手"><span class="toc-number">4.</span> <span class="toc-text">四次挥手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么客户端需要经过2MSL？"><span class="toc-number">5.</span> <span class="toc-text">为什么客户端需要经过2MSL？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果已经建立了连接，但是客户端突然出现故障了怎么办？"><span class="toc-number">6.</span> <span class="toc-text">如果已经建立了连接，但是客户端突然出现故障了怎么办？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UDP"><span class="toc-number">7.</span> <span class="toc-text">UDP</span></a></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -2215,6 +2011,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>
