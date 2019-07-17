@@ -359,16 +359,13 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/07/17/限流处理/">
+        <a class="abstract-title" href="/2019/07/17/Linux进程管理/">
             
-                <span>限流</span>
+                <span>Linux进程管理</span>
         </a>
         <div class="abstract-content">
-            高并发的处理比如这里的很多主机连接设备，请求量很高，或者设备转发的数据量很大，会导致设备负载很高，当超过设备承载极限的时候，设备可能会崩溃。为了应用服务的高可用，一个常用的办法是对大流量的请求（秒杀/抢购）进行限流，拦截掉大部分请求，只允许一部分请求真正进入后端服务器，这样就可以防止大量请求造成系统压力过大导致的系统崩溃，从而保护服务正常可用。
-处理高并发的三板斧: 缓存、降级和限流！
-
-缓存的目的是提升系统访问速度和增大系统能处理的容量。
-降级是当服务出问题或者影响到核心流程的性能时，需要暂时屏蔽掉一些服务，待高峰或者问题解决后再打开。高峰时或者cpu、内存占用较高时，减少日志记录、主...
+            kill 与 killallLinux系统中的killall命令用于杀死指定名字的进程（kill processes by name），而kill命令需要先查找到进程的PID，然后根据PID杀死指定的进程。
+通常，终止一个前台进程可以使用Ctrl+C键，但是，对于一个后台进程就须用kill命令来终止，我们就需要先使用 ps 等工具获取进程PID，然后使用kill命令来杀掉该进程。kill命令是通过向进程发送指定的信号来结束相应进程的。在默认情况下，采用编号为15的TERM信号。TERM信号将终止所有不能捕获该信号的进程。对于那些可以捕获该信号的进程就要用编号为9的kill信号，强行杀掉该...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -379,9 +376,43 @@ height:50vh;
             
             <div class="abstract-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="并发">并发</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="操作系统">操作系统</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="算法">算法</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Linux">Linux</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/07/17/Linux命令基础/">
+            
+                <span>Linux命令基础</span>
+        </a>
+        <div class="abstract-content">
+            &amp;  &amp;&amp;  |   ||命令中的特殊符号&amp; 表示任务后台执行，后台进程。&amp;&amp; 连接两个命令，前一个命令执行成功后才会执行后一个命令。|  管道，前一个命令执行的结果作为后一个命令的输入。||  连接两个命令，前一个命令执行失败后才会执行后一个命令。
+&gt; 重定向写，覆盖写&gt;&gt;重定向写，追加写
+
+&amp;&gt; 表示stderr标准错误输出信息重定向输出，覆盖写。同样也有追加写。lll&amp;&gt;test.c
+Linux中&amp;&amp;、&amp;、|、||等特殊符号
+
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/17</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Linux">Linux</a>
     
 </div>
             
@@ -413,6 +444,41 @@ height:50vh;
             <div class="abstract-tags">
     
         <a class="post-tag" href="javascript:void(0);" data-tags="驱动">驱动</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/07/17/限流处理/">
+            
+                <span>限流</span>
+        </a>
+        <div class="abstract-content">
+            高并发的处理比如这里的很多主机连接设备，请求量很高，或者设备转发的数据量很大，会导致设备负载很高，当超过设备承载极限的时候，设备可能会崩溃。为了应用服务的高可用，一个常用的办法是对大流量的请求（秒杀/抢购）进行限流，拦截掉大部分请求，只允许一部分请求真正进入后端服务器，这样就可以防止大量请求造成系统压力过大导致的系统崩溃，从而保护服务正常可用。
+处理高并发的三板斧: 缓存、降级和限流！
+
+缓存的目的是提升系统访问速度和增大系统能处理的容量。
+降级是当服务出问题或者影响到核心流程的性能时，需要暂时屏蔽掉一些服务，待高峰或者问题解决后再打开。高峰时或者cpu、内存占用较高时，减少日志记录、主...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/17</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="并发">并发</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="算法">算法</a>
     
 </div>
             
@@ -628,76 +694,6 @@ vim编辑器touch abc.cpp  #创建文件vim abc.cpp  #进入vim编辑器，默�
             <div class="abstract-tags">
     
         <a class="post-tag" href="javascript:void(0);" data-tags="Linux命令">Linux命令</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/10/XShell连接Ubuntu/">
-            
-                <span>XShell连接Ubuntu</span>
-        </a>
-        <div class="abstract-content">
-            查看ubuntu的版本lsb_release -aUbuntu-查看ubuntu系统的版本信息
-设置虚拟机静态ip虚拟机中ubuntu的网络连接模式，我给设置成了NAT模式，之前是桥接模式。
-在网络适配器里面，将VMnet8这个网络的ipv4属性修改为：ip地址：192.168.29.1子网掩码：255.255.255.0
-在虚拟机的虚拟网络编辑器，VMnet8这个网络的模式是NAT模式，选中“将主机虚拟适配器连接到此网络”，“使用本地DHCP服务将ip地址分配给虚拟机”，这两个本来就是选中状态的。
-可以在这个界面进入NAT设置和DHCP设置，得到子网ip：192.168.29.0，掩码...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/10</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="网络">网络</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="ubuntu">ubuntu</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/10/视频核心网关设备调试/">
-            
-                <span>视频核心网关设备调试</span>
-        </a>
-        <div class="abstract-content">
-            设备调试今天早上拿来的视频核心网关设备，这台设备里面存储有代码，我们需要将笔记本电脑与它连接起来。
-将设备插上电源，用网线将它的MGT口和显示器连接起来，获取DHCP自动为它分配的IP地址，一大波操作之后，得到是192.168.2.138。网线直连SPG6300设备的MGT口，开机启动后DHCP分配的ip地址在0-150，这里是138。
-获得了之后，就不需要显示器了，可以在自己的笔记本上面调试。用网线将它（MGT）和笔记本连接起来，在XShell里面输入ssh 192.168.2.138登陆远程主机（该设备），让输入用户名，这里输入root，然后输入密码，这里是Smartsecuri@6...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/10</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="网络">网络</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="TCP/IP">TCP/IP</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="设备调试">设备调试</a>
     
 </div>
             
@@ -1728,9 +1724,35 @@ vim编辑器touch abc.cpp  #创建文件vim abc.cpp  #进入vim编辑器，默�
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 52
+        Total : 54
         </div>
         <!-- search  -->
         
@@ -1743,6 +1765,16 @@ vim编辑器touch abc.cpp  #创建文件vim abc.cpp  #进入vim编辑器，默�
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/Linux命令基础/">Linux命令基础</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/Linux进程管理/">Linux进程管理</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1861,12 +1893,12 @@ vim编辑器touch abc.cpp  #创建文件vim abc.cpp  #进入vim编辑器，默�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/指针相关/">指针相关</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/头文件与库文件相关/">头文件与库文件相关</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/头文件与库文件相关/">头文件与库文件相关</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/指针相关/">指针相关</a>
         </li>
     
     
@@ -1876,12 +1908,12 @@ vim编辑器touch abc.cpp  #创建文件vim abc.cpp  #进入vim编辑器，默�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/磁盘与磁盘格式/">磁盘与磁盘格式</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/电脑硬件/">电脑硬件</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/电脑硬件/">电脑硬件</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/磁盘与磁盘格式/">磁盘与磁盘格式</a>
         </li>
     
     
@@ -1935,7 +1967,7 @@ vim编辑器touch abc.cpp  #创建文件vim abc.cpp  #进入vim编辑器，默�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/文件路径的写法/">文件路径的写法</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/pip模块/">pip模块</a>
         </li>
     
     
@@ -1963,7 +1995,7 @@ vim编辑器touch abc.cpp  #创建文件vim abc.cpp  #进入vim编辑器，默�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/设备部署/">设备部署</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/Shell编程/">Shell编程</a>
         </li>
     
     
@@ -1991,21 +2023,7 @@ vim编辑器touch abc.cpp  #创建文件vim abc.cpp  #进入vim编辑器，默�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/11/进程管理/">进程管理</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Deque/">Deque</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/Chrome离线插件安装/">Chrome离线插件安装</a>
         </li>
     
     
@@ -2033,77 +2051,7 @@ vim编辑器touch abc.cpp  #创建文件vim abc.cpp  #进入vim编辑器，默�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/Chrome离线插件安装/">Chrome离线插件安装</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/05/04/Git Github Hexo/">Git Github Hexo</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/pip模块/">pip模块</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/Shell编程/">Shell编程</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/FTP文件传输协议/">FTP文件传输协议</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/10/视频核心网关设备调试/">视频核心网关设备调试</a>
         </li>
     
     
@@ -2131,6 +2079,62 @@ vim编辑器touch abc.cpp  #创建文件vim abc.cpp  #进入vim编辑器，默�
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/05/04/Git Github Hexo/">Git Github Hexo</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Deque/">Deque</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/文件路径的写法/">文件路径的写法</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/21/python词频统计/">Python词频统计</a>
         </li>
     
@@ -2145,7 +2149,35 @@ vim编辑器touch abc.cpp  #创建文件vim abc.cpp  #进入vim编辑器，默�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/10/视频核心网关设备调试/">视频核心网关设备调试</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/11/进程管理/">进程管理</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/设备部署/">设备部署</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/FTP文件传输协议/">FTP文件传输协议</a>
         </li>
     
     </ul></div>
