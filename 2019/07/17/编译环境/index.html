@@ -22,7 +22,7 @@
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>云想衣裳花想容，春风拂槛露华浓</title>
+    <title>编译环境 · 云想衣裳花想容，春风拂槛露华浓</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,12 +203,23 @@
 </head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">xtncsg&#39;s Studio.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">编译环境</a>
+            </div>
+    </div>
     
     <a class="home-link" href="/">xtncsg's Studio.</a>
 </header>
@@ -220,24 +231,78 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(https://img-blog.csdnimg.cn/20190604163423985.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FIMjAxODAzMjQ=,size_16,color_FFFFFF,t_70)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            编译环境
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="设备调试">设备调试</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Linux">Linux</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Makefile">Makefile</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">1.5k</span>阅读时长: <span class="post-count reading-time">5 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/07/17</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -338,356 +403,59 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/17/设备调试/">
-            
-                <span>设备调试</span>
-        </a>
-        <div class="abstract-content">
-            主路部署登录网页部署主路，这样输入：防泄密网关LAN1地址：192.168.3.194LAN1网络掩码：255.255.255.0网络网关1地址：192.168.3.1ETH0：192.168.3.10ETH2：192.168.3.11ETH4：192.168.3.12
-这里全部是填3网段，因为设备是2网段，不要一样。防泄密网关LAN1地址不要和设备的地址重复。ETH0这几个连接数字录像设备的，填写NVR的地址，ETH1这几个连接交换机的不需要输入。填写完毕之后提交，确认白名单已经备份，重启网关设备。之后需要等待一段时间，才能重新登录设备。主路网卡的代号是br01。
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><p>在 Linux（unix ）环境下使用GNU 的make工具能够比较容易的构建一个属于自己的工程，整个工程的编译只需要一个命令就可以完成编译、连接以至于最后的执行。不过这需要投入一些时间去完成一个或者多个称之Makefile 文件的编写。所要完成的Makefile 文件描述了整个工程的编译、连接等规则。其中包括：工程中的哪些源文件需要编译以及如何编译、需要创建哪些库文件以及如何创建这些库文件、如何最后产生我们想要的可执行文件。Makefile 就像一门编程语言一样，有自己的书写格式、关键字、函数。</p>
+<p>make是一个命令工具，它解释Makefile 中的指令。一般来说，大多数的IDE都有这个命令，比如：Delphi的make，Visual C++的nmake，Linux下GNU的make。makefile一旦写好，只需要一个make命令，整个工程完全自动编译，极大的提高了软件开发的效率。</p>
+<p>在 UNIX 系统中，习惯使用 Makefile 作为 makefile 文件。如果要使用其他文件作为 makefile，则可利用类似下面的 make 命令选项指定 makefile 文件：<code>$ make -f Makefile.debug</code>。</p>
+<p>一个名为prog的程序由三个C源文件filea.c、fileb.c和filec.c以及库文件LS编译生成，这三个文件还分别包含自己的头文件a.h 、b.h和c.h。通常情况下，C编译器将会输出三个目标文件filea.o、fileb.o和filec.o。假设filea.c和fileb.c在声明用到一个名为defs的文件，但filec.c不用。即在filea.c和fileb.c里都有这样的声明：<code>#include &quot;defs&quot;</code>。<br>则Makefile文件的写法可以参考如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">0 #It is a example for describing makefile 注释行</span><br><span class="line">1 prog : filea.o fileb.o filec.o #指定prog由三个目标文件filea.o、fileb.o和filec.o链接生成</span><br><span class="line">2 cc filea.o fileb.o filec.o -LS -o prog #如何从prog所依赖的文件建立可执行文件</span><br><span class="line">3 filea.o : filea.c a.h defs #指定filea.o目标文件，以及它们所依赖的.c和.h文件以及defs文件</span><br><span class="line">4 cc -c filea.c #如何从目标所依赖的文件建立目标，即如何从filea.c建立filea.o</span><br><span class="line">5 fileb.o : fileb.c b.h defs #指定fileb.o目标文件，以及它们所依赖的.c和.h文件以及defs文件</span><br><span class="line">6 cc -c fileb.c #如何从目标所依赖的文件建立目标,即如何从fileb.c建立fileb.o</span><br><span class="line">7 filec.o : filec.c c.h #指定filec.o目标文件，以及它们所依赖的.c和.h文件</span><br><span class="line">8 cc -c filec.c #如何从目标所依赖的文件建立目标,即如何从filec.c建立filec.o</span><br></pre></td></tr></table></figure></p>
+<p>CC 是一个全局变量，它指定Makefile所用的编译器，一般默认是gcc。<code>.o</code>文件是unix下的中间代码目标文件，就如同在windows下的<code>.obj</code>文件一样，在unix下生成<code>.o</code>文件的过程叫编译（compile），将无数<code>.o</code>文件集合生成可执行文件的过程叫链接（link）。有时会在unix界面下看到<code>.a</code>文件，那是Archive File，<code>.a</code>文件作用是：由于源文件太多（上例是指<code>.c</code>和<code>.h</code>文件过多），编译生成的中间目标文件（<code>.o</code>文件）太多，而在链接时又需要明显地指出中间目标文件名，这对于编译很不方便，所以，我们要给中间目标文件打个包，这个包就是<code>.a</code>文件。</p>
+<p>当filea.c或a.h文件在编译之后又被修改，则 make 工具可自动重新编译filea.o，如果在前后两次编译之间，filea.c 和a.h 均没有被修改，而且filea.o还存在的话，就没有必要重新编译。通过这种依赖关系的定义，make 工具可避免许多不必要的编译工作。当然，利用Shell脚本也可以达到自动编译的效果，但是，Shell 脚本将全部编译任何源文件，包括哪些不必要重新编译的源文件，而 make 工具则可根据目标上一次编译的时间和目标所依赖的源文件的更新时间而自动判断应当编译哪个源文件。</p>
+<p>Makefile文件准备好之后，接着在Makefile文件所在的目录下敲入make这个命令就可以了。<br><a href="https://baike.baidu.com/item/Makefile/4619787?fr=aladdin#reference-%5b1%5d-974566-wrap" target="_blank" rel="noopener">百度百科Makefile</a></p>
+<h1 id="执行quick-sh"><a href="#执行quick-sh" class="headerlink" title="执行quick.sh"></a>执行<code>quick.sh</code></h1><p>执行这个文件的时候会报错，形如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Start to Copy file from adaptor to opensource</span><br><span class="line">Not found obj dirctory: /opt/iot/SmartSecuri-IoT/trunk/gateway/build/fwd/obj</span><br><span class="line">Fail Compile x86_64-native-linuxapp-gcc_J1800_igb</span><br></pre></td></tr></table></figure></p>
+<h2 id="修改quick-sh"><a href="#修改quick-sh" class="headerlink" title="修改quick.sh"></a>修改<code>quick.sh</code></h2><p>查看该文件，发现COMPILE_MODULE这个参数写错了。应将其修改为：<code>COMPILE_MODULE=(&quot;J1800_igb&quot;)</code>。</p>
+<h2 id="添加库文件J1800-igb"><a href="#添加库文件J1800-igb" class="headerlink" title="添加库文件J1800_igb"></a>添加库文件J1800_igb</h2><p>首先还是将<code>SmartSecuri-IoT</code>和<code>SmartSecuri-Platform</code>这两个文件给放到<code>/opt/iot</code>目录下。<br>好像是在<code>/SPG/bin/fwd/pkg</code>目录下，少了J1800_igb这个库文件，拷贝过来。然后再执行<code>quick.sh</code>。</p>
+<h2 id="添加权限"><a href="#添加权限" class="headerlink" title="添加权限"></a>添加权限</h2><p><code>/bin/sh: /opt/iot/SmartSecuri-Platform/trunk/opensource/f-stack/dpdk/buildtools/check-experimental-syms.sh: 权限不够</code>执行的时候，出现了这一句报错，索性就给/iot目录下的所有文件对所有用户都添加最多的权限，所以要用到<code>-r</code> 递归赋予权限的选项。<br><code>[root@SmartSPG6300 opt]# chmod 777 -R iot/</code>。</p>
+<h1 id="部署安装"><a href="#部署安装" class="headerlink" title="部署安装"></a>部署安装</h1><p>以上三步之后，<code>quick.sh</code>终于能够正常执行了。然后在相同的目录下，执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pkill fwd;cp fwd/release/J1800_igb/fwd_J1800_igb /SPG/bin/fwd/pkg/J1800_igb/ &amp;&amp; /SPG/bin/fw</span><br><span class="line">d/start_fwd.sh J1800_igb</span><br></pre></td></tr></table></figure></p>
+<p>首先是杀死这个进程，然后是拷贝文件，再然后是运行<code>start_fwd.sh</code>，后面的J1800_igb是运行时的参数，即$1位置参数。出现<code>Successfully Start Fwd, Start Mode:mr</code>即表示整个编译环境的搭建的工作已经完成了。</p>
+<p>环境搭建完成的意思应该就是说，这个时候就可以用Makefile来编译连接整个项目文件了。</p>
 
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/17</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="设备调试">设备调试</a>
-    
-</div>
-            
-        </div>
     </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/17/编译环境/">
-            
-                <span>编译环境</span>
-        </a>
-        <div class="abstract-content">
-            Makefile在 Linux（unix ）环境下使用GNU 的make工具能够比较容易的构建一个属于自己的工程，整个工程的编译只需要一个命令就可以完成编译、连接以至于最后的执行。不过这需要投入一些时间去完成一个或者多个称之Makefile 文件的编写。所要完成的Makefile 文件描述了整个工程的编译、连接等规则。其中包括：工程中的哪些源文件需要编译以及如何编译、需要创建哪些库文件以及如何创建这些库文件、如何最后产生我们想要的可执行文件。Makefile 就像一门编程语言一样，有自己的书写格式、关键字、函数。
-make是一个命令工具，它解释Makefile 中的指令。一般来说，大多数...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/17</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="设备调试">设备调试</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Linux">Linux</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Makefile">Makefile</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/17/Source Insight/">
-            
-                <span>Source Insight</span>
-        </a>
-        <div class="abstract-content">
-            项目操作Ctrl+O：打开项目文件列表项目的存放位置：C:\Users\14311\Documents\Source Insight 4.0\Projects
-删除项目，先在项目的存放位置处删除项目文件夹，然后删除project_list.sidb文件下的?C:\Users\14311\Documents\Source Insight 4.0\Projects\you\you字段。只删除文件夹的话，在软件里面使用open project，仍然可以看到这个项目继续存在着。
-为项目导入文件时，只能导入C盘里的文件。在file name这个搜索框里面，输入D:即可导入别的盘的文件。
-
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/17</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="软件使用">软件使用</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/17/TortoiseSVN/">
-            
-                <span>TortoiseSVN</span>
-        </a>
-        <div class="abstract-content">
-            checkoutworking copies工作副本checkout 检出Revision 版本HEAD Revision 最新版本Show log 显示日志Omit externals 省略外部
-SVN的四种检出深度:1、Fully recursive（全递归）检出完整的目录树，包含所有的文件或子目录。2、Immediate children,including folders（直接子节点，包含文件夹）检出目录，包含其中的文件或子目录，但是不递归展开子目录。3、Only file chlidren（仅文件子节点）检出指定目录，包含所有文件，但是不检出任何子目录。4、Only this ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/17</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="软件使用">软件使用</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="版本控制">版本控制</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/17/Linux命令基础/">
-            
-                <span>Linux命令基础</span>
-        </a>
-        <div class="abstract-content">
-            &amp;  &amp;&amp;  |   ||命令中的特殊符号&amp; 表示任务后台执行，后台进程。&amp;&amp; 连接两个命令，前一个命令执行成功后才会执行后一个命令。|  管道，前一个命令执行的结果作为后一个命令的输入。||  连接两个命令，前一个命令执行失败后才会执行后一个命令。
-&gt; 重定向写，覆盖写&gt;&gt;重定向写，追加写
-
-&amp;&gt; 表示stderr标准错误输出信息重定向输出，覆盖写。同样也有追加写。lll&amp;&gt;test.c
-Linux中&amp;&amp;、&amp;、|、||等特殊符号
-
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/17</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Linux">Linux</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/17/Linux进程管理/">
-            
-                <span>Linux进程管理</span>
-        </a>
-        <div class="abstract-content">
-            kill 与 killallLinux系统中的killall命令用于杀死指定名字的进程（kill processes by name），而kill命令需要先查找到进程的PID，然后根据PID杀死指定的进程。
-通常，终止一个前台进程可以使用Ctrl+C键，但是，对于一个后台进程就须用kill命令来终止，我们就需要先使用 ps 等工具获取进程PID，然后使用kill命令来杀掉该进程。kill命令是通过向进程发送指定的信号来结束相应进程的。在默认情况下，采用编号为15的TERM信号。TERM信号将终止所有不能捕获该信号的进程。对于那些可以捕获该信号的进程就要用编号为9的kill信号，强行杀掉该...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/17</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="操作系统">操作系统</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Linux">Linux</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/17/限流处理/">
-            
-                <span>限流</span>
-        </a>
-        <div class="abstract-content">
-            高并发的处理比如这里的很多主机连接设备，请求量很高，或者设备转发的数据量很大，会导致设备负载很高，当超过设备承载极限的时候，设备可能会崩溃。为了应用服务的高可用，一个常用的办法是对大流量的请求（秒杀/抢购）进行限流，拦截掉大部分请求，只允许一部分请求真正进入后端服务器，这样就可以防止大量请求造成系统压力过大导致的系统崩溃，从而保护服务正常可用。
-处理高并发的三板斧: 缓存、降级和限流！
-
-缓存的目的是提升系统访问速度和增大系统能处理的容量。
-降级是当服务出问题或者影响到核心流程的性能时，需要暂时屏蔽掉一些服务，待高峰或者问题解决后再打开。高峰时或者cpu、内存占用较高时，减少日志记录、主...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/17</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="并发">并发</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="算法">算法</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/17/问题集锦/">
-            
-                <span>问题集锦</span>
-        </a>
-        <div class="abstract-content">
-            更新 StFilter 驱动从SVN上面下载的代码，直接用source insight打开和在sourcr insight 的工程中打开，报错there are errors opening .....，用notepad++ 打开，报错说文件不存在。在source insight中直接打开文件，则报错该命令指定了与设备粒度/对齐不相符合的数据偏移。
-解决方法是更新StFilter驱动，首先将拷贝过来的新驱动替换C:\ProgramData\Gfa\Drm\Config\drivers目录下的驱动，然后再替换C:\Windows\System32\drivers目录下的驱动。
-当对替换操作...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/17</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="驱动">驱动</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/14/TCP与UDP 协议/">
-            
-                <span>TCP/UDP 协议</span>
-        </a>
-        <div class="abstract-content">
-            TCPTCP 首部格式如下：TCP报头中的源端口号和目的端口号同IP数据报中的源IP与目的IP唯一确定一条TCP连接。
-确认号只有在ACK位置1时才有效。指明下一个期待收到的字节序号，表明该序号之前的所有数据已经正确无误的收到。
-数据偏移数据部分在整个报文段中的偏移量，也就是首部长度。4位，以4字节为单位，最大60个字节，至少20个字节，同IP一样。
-保留位6位，一般是取0，留作以后用。
-标志位总共6个标志位，都很重要。
-
-URG。该位置1时，紧急指针才有效。
-ACK。该位置1时，确认号ack才有效。
-PSH。该位置1时，说明接收方应该立刻将该报文交付给应用程序（应用层），而不是留在缓冲...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/14</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="网络协议">网络协议</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="网络">网络</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="TCP/IP">TCP/IP</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/14/IP与ICMP 协议/">
-            
-                <span>IP/ICMP 协议</span>
-        </a>
-        <div class="abstract-content">
-            IP协议IP数据包头部的格式如下：
-版本号IPv4就是4，IPv6就是6。
-头部长度整个数据报头部的长度（包括选项），以32位为一个单位（一行是32位，4个字节），接收端通过此域可以计算出报头在何处结束及从何处开始读数据。IP数据报头部至少是20个字节。
-服务类型服务类型（TOS、type of service）用于规定本数据报的处理方式。
-
-前面三位是优先权，数值越大代表优先权越高，当网络拥塞时，可以根据优先权来决定数据报的取舍。
-D（Delay，短延迟位），当该位置1时，数据报请求以短延迟信道传输。
-T（Throughput，高吞吐量位），当该位置1时，数据报请求以高吞吐量信道传输。...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/14</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="网络协议">网络协议</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="网络">网络</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="TCP/IP">TCP/IP</a>
-    
-</div>
-            
-        </div>
-    </article>
+    <!-- license  -->
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2019/07/17/设备调试/" title="设备调试">
+                    <div class="nextTitle">设备调试</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2019/07/17/Source Insight/" title="Source Insight">
+                    <div class="prevTitle">Source Insight</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
-    <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/archives/2019/07/page/2/">2</a><a class="page-number" href="/archives/2019/07/page/3/">3</a><a class="page-number" href="/archives/2019/07/page/4/">4</a><a class="extend next" rel="next" href="/archives/2019/07/page/2/">NEXT &#62;</a>
-    </nav>
     
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -779,6 +547,24 @@ T（Throughput，高吞吐量位），当该位置1时，数据报请求以高�
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Makefile"><span class="toc-number">1.</span> <span class="toc-text">Makefile</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#执行quick-sh"><span class="toc-number">2.</span> <span class="toc-text">执行quick.sh</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#修改quick-sh"><span class="toc-number">2.1.</span> <span class="toc-text">修改quick.sh</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加库文件J1800-igb"><span class="toc-number">2.2.</span> <span class="toc-text">添加库文件J1800_igb</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加权限"><span class="toc-number">2.3.</span> <span class="toc-text">添加权限</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#部署安装"><span class="toc-number">3.</span> <span class="toc-text">部署安装</span></a></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -2293,6 +2079,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>
