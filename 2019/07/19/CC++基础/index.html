@@ -1,0 +1,2582 @@
+<!DOCTYPE html>
+<html lang="">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="κԭ">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="κԭ">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content>
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>C/C++基础 · 云想衣裳花想容，春风拂槛露华浓</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">xtncsg&#39;s Studio.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">C/C++基础</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href="/">xtncsg's Studio.</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(https://img-blog.csdnimg.cn/20190604163423985.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FIMjAxODAzMjQ=,size_16,color_FFFFFF,t_70)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            C/C++基础
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="C/C++">C/C++</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="指针">指针</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="库函数">库函数</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">4.3k</span>阅读时长: <span class="post-count reading-time">18 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/07/19</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>==2019-07-18更新==</p>
+<h1 id="typedef"><a href="#typedef" class="headerlink" title="typedef"></a>typedef</h1><h2 id="typedef-为结构体类型起别名"><a href="#typedef-为结构体类型起别名" class="headerlink" title="typedef 为结构体类型起别名"></a>typedef 为结构体类型起别名</h2><p><img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1015753163,2288355968&amp;fm=173&amp;app=49&amp;f=JPEG?w=306&amp;h=109&amp;s=C11280398F706C0346CC58DE0000D0B0" alt="enter image description here"><br><img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=2212358588,2513211965&amp;fm=173&amp;app=49&amp;f=JPEG?w=294&amp;h=117&amp;s=CB40C0189FE04D0344455CDC020050B0" alt="enter image description here"></p>
+<h2 id="typedef-为变量类型起别名"><a href="#typedef-为变量类型起别名" class="headerlink" title="typedef 为变量类型起别名"></a>typedef 为变量类型起别名</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> VOS_UINT8;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">short</span> VOS_UINT16;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> VOS_UINT32;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> VOS_UINT64;</span><br></pre></td></tr></table></figure>
+<p><a href="https://baijiahao.baidu.com/s?id=1623094778202042724&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">C语言之类型定义（typedef）</a></p>
+<h1 id="union-测试系统大小端"><a href="#union-测试系统大小端" class="headerlink" title="union 测试系统大小端"></a>union 测试系统大小端</h1><p>大端模式(Big_endian):数据的高字节存储在低地址中,数据的低字节存放在高地址中。<br>小端模式(Little_endian):数据的高字节存储在高地址中,数据的低字节存放在低地址中。</p>
+<p>Union 的特性是同一时刻只有一个成员有效，且所有的成员有一个相同的开始地址。联合体的访问不论对哪个变量的存取都是从 union 的首地址位置开始，所以可以用union来测试系统的大小端。</p>
+<p>当<code>test.i＝1</code>时，数据是00000000，00000000，00000000，00000001<br>大端模式的话，00000001是数据的低位，存储在高位字节中，存储如下，00000000，00000000，00000000，00000001，此时读取<code>test.c</code>，读取存储空间的第一个字节就是0，所以test.c＝0说明是大端。</p>
+<p>小端模式的存储如下，00000001，00000000，00000000，00000000，读取第一个字节就是1。所以<code>test.c＝1</code>就是小端存储。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">union</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> i;</span><br><span class="line">		<span class="keyword">char</span> c;</span><br><span class="line">	&#125;test;</span><br><span class="line">	test.i=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(test.c)  <span class="built_in">cout</span>&lt;&lt;<span class="string">"小端\n"</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">"大端\n"</span>;</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://blog.csdn.net/AH20180324/article/details/89006055" target="_blank" rel="noopener">union 判断系统大小端存储方式</a></p>
+<h1 id="结构体中为成员指定占用空间大小"><a href="#结构体中为成员指定占用空间大小" class="headerlink" title="结构体中为成员指定占用空间大小"></a>结构体中为成员指定占用空间大小</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">tagIpHdr</span> &#123;</span></span><br><span class="line"></span><br><span class="line">	VOS_UINT8 bitIpHdrLen:<span class="number">4</span>;</span><br><span class="line">	VOS_UINT8 bitIpVer:<span class="number">4</span>;</span><br><span class="line">	VOS_UINT8 ucTos;</span><br><span class="line">	VOS_UINT16 usTotLen;</span><br><span class="line">    </span><br><span class="line">	VOS_UINT16 usId;</span><br><span class="line">	VOS_UINT16 usFragOff;</span><br><span class="line">    </span><br><span class="line">	VOS_UINT8 ucTtl;</span><br><span class="line">	VOS_UINT8 ucProtocol;</span><br><span class="line">	VOS_UINT16 usCheckSum;</span><br><span class="line">    </span><br><span class="line">	VOS_UINT32 uiSrcAddr;</span><br><span class="line">	VOS_UINT32 uiDstAddr;</span><br><span class="line">&#125;IP_HDR_S;</span><br></pre></td></tr></table></figure>
+<p><code>VOS_UINT8 bitIpVer:4;</code>这个语句表示变量<code>bitIpVer</code>占用的空间为4bit。<code>VOS_UINT8</code>实际上是<code>unsigned int</code>占用4字节，32位，而该类型的变量<code>bitIpVer</code>实际所用的空间不用这么大，只需要4bit就够了。<br><a href="https://blog.csdn.net/chrisniu1984/article/details/6620566" target="_blank" rel="noopener">定义结构体时变量名后的冒号和数字</a></p>
+<h1 id="动态内存分配"><a href="#动态内存分配" class="headerlink" title="动态内存分配"></a>动态内存分配</h1><h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><p><a href="https://blog.csdn.net/u014062332/article/details/48490377" target="_blank" rel="noopener">隐式声明与内建函数malloc不兼容</a><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">malloc</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> size)</span>  <span class="comment">//malloc函数原型</span></span></span><br><span class="line"><span class="function"><span class="keyword">char</span>* p</span>=(<span class="keyword">char</span>*)<span class="built_in">malloc</span>(<span class="number">10</span>)  <span class="comment">//分配10个字节大小的内存空间</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">calloc</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> num, <span class="keyword">unsigned</span> <span class="keyword">int</span> size)</span>  <span class="comment">//calloc函数原型</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span>* p</span>=(<span class="keyword">int</span>*)<span class="built_in">calloc</span>(<span class="number">5</span>,<span class="keyword">sizeof</span>(<span class="keyword">int</span>));  <span class="comment">//分配5个int大小的内存空间</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">free</span><span class="params">(<span class="keyword">void</span> *ptr)</span>  <span class="comment">//释放函数的原型</span></span></span><br><span class="line"><span class="function"><span class="title">free</span><span class="params">(p)</span>   <span class="comment">//由编译器自动对指针类型进行强转</span></span></span><br></pre></td></tr></table></figure></p>
+<p>C语言申请了一块动态分配的内存之后，可以和<code>memcpy</code>连用来将一些东西拷贝到这个内存里面来。</p>
+<h2 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a>C++</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>* p=<span class="keyword">new</span> <span class="keyword">int</span>;     <span class="comment">//申请单个变量</span></span><br><span class="line"><span class="keyword">int</span>* q=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>]   <span class="comment">//申请动态数组</span></span><br><span class="line"><span class="keyword">delete</span> p;</span><br><span class="line"><span class="keyword">delete</span> []q;</span><br><span class="line"></span><br><span class="line">Test* p=<span class="keyword">new</span> Test;    <span class="comment">//申请单个对象</span></span><br><span class="line"><span class="keyword">delete</span> p;</span><br><span class="line"></span><br><span class="line">Test* f[<span class="number">3</span>] = &#123;<span class="keyword">new</span> Test(<span class="number">2</span>),<span class="keyword">new</span> Test&#125;; <span class="comment">//指针数组，多出的一个是空指针</span></span><br><span class="line">Test* g[<span class="number">3</span>] = &#123;<span class="keyword">new</span> Test(<span class="number">2</span>),<span class="keyword">new</span> Test,<span class="literal">NULL</span>&#125;;</span><br><span class="line"><span class="keyword">delete</span> f[<span class="number">1</span>];     <span class="comment">//数组中的每一个指针都要delete掉</span></span><br><span class="line"><span class="keyword">delete</span> f[<span class="number">2</span>];</span><br><span class="line"><span class="keyword">delete</span> f[<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line">Test* h = <span class="keyword">new</span> Test[<span class="number">2</span>]&#123;<span class="number">4</span>,<span class="number">6</span>&#125;; <span class="comment">//数组指针</span></span><br><span class="line"><span class="keyword">delete</span> []h;</span><br></pre></td></tr></table></figure>
+<p><a href="https://blog.csdn.net/everestrs/article/details/83314811" target="_blank" rel="noopener">C和C++动态内存分配和释放的区别</a></p>
+<h1 id="Memcpy内存拷贝"><a href="#Memcpy内存拷贝" class="headerlink" title="Memcpy内存拷贝"></a>Memcpy内存拷贝</h1><p><code>void *memcpy(void *dest, const void *src, size_t n);</code>从src的开始位置拷贝n个字节的数据到dest。如果dest存在数据，将会被覆盖。memcpy函数定义在string.h头文件里。</p>
+<h2 id="将数据拷贝到内存"><a href="#将数据拷贝到内存" class="headerlink" title="将数据拷贝到内存"></a>将数据拷贝到内存</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 10</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> str[<span class="number">15</span>]=<span class="string">"shen cheng yu"</span>;</span><br><span class="line">    <span class="keyword">char</span>* p=(<span class="keyword">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">char</span>)*N);</span><br><span class="line">    <span class="built_in">memcpy</span>(p,str,<span class="number">8</span>);</span><br><span class="line">    <span class="built_in">puts</span>(p);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"123"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"   456"</span>);</span><br><span class="line">    <span class="built_in">free</span>(p);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>程序输出：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shen che</span><br><span class="line"><span class="number">123</span>   <span class="number">456</span>[root@SmartSPG6300 xtncsg]#</span><br></pre></td></tr></table></figure></p>
+<h2 id="将数据拷贝到内存中的指定位置"><a href="#将数据拷贝到内存中的指定位置" class="headerlink" title="将数据拷贝到内存中的指定位置"></a>将数据拷贝到内存中的指定位置</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 10</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span>* p=(<span class="keyword">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">char</span>)*N);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">        <span class="built_in">memcpy</span>(p+i,<span class="string">"a"</span>,<span class="built_in">strlen</span>(<span class="string">"a"</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">puts</span>(p);</span><br><span class="line">    <span class="built_in">free</span>(p);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="覆盖原有的内存内容"><a href="#覆盖原有的内存内容" class="headerlink" title="覆盖原有的内存内容"></a>覆盖原有的内存内容</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 10</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span>* p=(<span class="keyword">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">char</span>)*N);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">        <span class="built_in">memcpy</span>(p+i,<span class="string">"a"</span>,<span class="built_in">strlen</span>(<span class="string">"a"</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">puts</span>(p);</span><br><span class="line">    <span class="built_in">memcpy</span>(p,<span class="string">"12345"</span>,<span class="built_in">strlen</span>(<span class="string">"12345"</span>));</span><br><span class="line">    <span class="built_in">puts</span>(p);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">memcpy</span>(p+<span class="number">5</span>,<span class="string">"67890"</span>,<span class="built_in">strlen</span>(<span class="string">"67890"</span>));</span><br><span class="line">    <span class="built_in">puts</span>(p);</span><br><span class="line">    <span class="built_in">free</span>(p);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">aaaaaaaaaa</span><br><span class="line"><span class="number">12345</span>aaaaa</span><br><span class="line"><span class="number">1234567890</span></span><br></pre></td></tr></table></figure></p>
+<p><a href="https://blog.csdn.net/e_one/article/details/80676166" target="_blank" rel="noopener">C语言memcpy函数的用法</a></p>
+<h1 id="puts-与gets"><a href="#puts-与gets" class="headerlink" title="puts()与gets()"></a>puts()与gets()</h1><h2 id="puts"><a href="#puts" class="headerlink" title="puts()"></a>puts()</h2><p>puts()函数只能输出字符串, 不能输出数值或进行格式变换，里面的参数可以直接是字符串或者是存放字符串的字符数组名。puts在输出字符串后会自动输出一个回车符。以<code>将数据拷贝到内存</code>为例，可以看出。<br><a href="https://zhidao.baidu.com/question/1894679339010427020.html" target="_blank" rel="noopener">c语言中，puts和printf函数有什么区别？</a></p>
+<p>==2019-07-19更新==</p>
+<h1 id="基于范围的for循环"><a href="#基于范围的for循环" class="headerlink" title="基于范围的for循环"></a>基于范围的for循环</h1><p>编译时注意要使g++包含C++11的标准。即<code>g++ 11.cpp -o 11.exe -std=c++11</code>。对于内置数组以及包含方法begin()和end()的类（如std::string)和STL容器，基于范围的for循环可以简化为他们编写循环的工作。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;v(<span class="number">6</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;x:v)&#123;  </span><br><span class="line">        x=rand()%<span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i:v)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如上例，在循环中修改数组或容器中的每个元素，要使用引用类型。x是容器v中某个元素的引用，<code>int&amp; x=v[i]</code>，因此对x进行修改也就是修改了容器v中的值。</p>
+<h1 id="随机函数"><a href="#随机函数" class="headerlink" title="随机函数"></a>随机函数</h1><h2 id="rand-函数"><a href="#rand-函数" class="headerlink" title="rand()函数"></a>rand()函数</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//rand()函数返回0~RAND_MAX之间的一个整数。</span></span><br><span class="line"><span class="keyword">int</span> a = rand();  <span class="comment">//产生一个随机数</span></span><br><span class="line"><span class="keyword">int</span> b = rand() % <span class="number">10</span>;   <span class="comment">//产生一个0-9之间的随机数</span></span><br><span class="line"><span class="keyword">int</span> c = rand() % <span class="number">10</span> + <span class="number">1</span>   <span class="comment">//产生一个1-10之间的随机数</span></span><br><span class="line"><span class="keyword">double</span>=(rand() % <span class="number">10</span>) / <span class="number">10</span>;  <span class="comment">//产生一个一位小数</span></span><br><span class="line">srand((<span class="keyword">int</span>)time(<span class="number">0</span>))  <span class="comment">//以系统时间作为随机数种子，包含在ctime头文件下面</span></span><br></pre></td></tr></table></figure>
+<p>不设随机数种子的话，当前执行程序与下一次运行程序时得到的随机数会是一样的。</p>
+<h1 id="gets-与puts"><a href="#gets-与puts" class="headerlink" title="gets()与puts()"></a>gets()与puts()</h1><p>gets()是输出一个字符串指针所指向的字符串。用来读入一行字符，包括空格，遇到回车结束输入。<br>puts()是用来输出一个字符串指针所指向的字符串。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span>* s=<span class="string">"hello world"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span> tmp[<span class="number">100</span>];</span><br><span class="line">    gets(tmp);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">puts</span>(s+<span class="number">5</span>);   <span class="comment">//puts()从该指针的位置开始向后输出</span></span><br><span class="line">    <span class="built_in">puts</span>(tmp);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>gets()要接收字符数组名，或者有明确指向的字符数组指针。不能<code>char* s;  gets(s);</code>这样的话，s没有明确的指向，是一个野指针。可以<code>char* s;  char t[100];  s=t;  gets(s);</code>这样s就有明确的指向了。<br><a href="https://zhidao.baidu.com/question/226027657.html" target="_blank" rel="noopener">C语言高手求助char *s;gets(s);这样是对还是</a></p>
+<h1 id="sizeof-与strlen"><a href="#sizeof-与strlen" class="headerlink" title="sizeof()与strlen()"></a>sizeof()与strlen()</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fun</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* str)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">sizeof</span>(str);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> s[<span class="number">20</span>]=<span class="string">"hello world"</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="built_in">strlen</span>(s)&lt;&lt;<span class="string">" "</span>&lt;&lt;<span class="keyword">sizeof</span>(s)&lt;&lt;<span class="built_in">endl</span>;   <span class="comment">//11  20</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">char</span>* t=<span class="string">"hello"</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="keyword">sizeof</span>(t)&lt;&lt;<span class="string">" "</span>&lt;&lt;fun(t)&lt;&lt;<span class="built_in">endl</span>;   <span class="comment">//8 8</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">char</span> m[]=<span class="string">"hello?"</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="built_in">strlen</span>(m)&lt;&lt;<span class="string">" "</span>&lt;&lt;<span class="keyword">sizeof</span>(m)&lt;&lt;<span class="built_in">endl</span>;   <span class="comment">//6  7</span></span><br><span class="line">	</span><br><span class="line">    <span class="comment">//字符数组的初始化一次性赋值，也可以逐个赋值。可以指定数组的大小，也可以不指定数组长度。</span></span><br><span class="line">	<span class="keyword">char</span> str1[]=&#123;<span class="string">'h'</span>,<span class="string">'e'</span>,<span class="string">'l'</span>,<span class="string">'l'</span>,<span class="string">'o'</span>&#125;;    </span><br><span class="line">	<span class="keyword">char</span> str2[]=&#123;<span class="string">'h'</span>,<span class="string">'e'</span>,<span class="string">'l'</span>,<span class="string">'l'</span>,<span class="string">'o'</span>,<span class="string">'\0'</span>&#125;;</span><br><span class="line">	<span class="built_in">puts</span>(str1);                     <span class="comment">//hello</span></span><br><span class="line">	<span class="built_in">puts</span>(str2);                     <span class="comment">//hello</span></span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="built_in">strlen</span>(str1)&lt;&lt;<span class="string">" "</span>&lt;&lt;<span class="built_in">strlen</span>(str2)&lt;&lt;<span class="built_in">endl</span>;   <span class="comment">//5  5</span></span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="keyword">sizeof</span>(str1)&lt;&lt;<span class="string">" "</span>&lt;&lt;<span class="keyword">sizeof</span>(str2)&lt;&lt;<span class="built_in">endl</span>;   <span class="comment">//5  6</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>strlen</code>是函数，在运行时确定字符数组的长度。<code>sizeof()</code>是运算符，在编译时确定变量或者数据类型的字节大小。<br><a href="https://zhidao.baidu.com/question/530532720.html?word=strlen%E4%B8%8Esizeof%E5%8C%BA%E5%88%AB" target="_blank" rel="noopener">sizeof与strlen的区别</a><br><code>strlen()</code>碰到<code>&#39;\0&#39;</code>就结束，所以<code>tsr1[]</code>和<code>str2[]</code>都是5。<br>字符数组逐个赋值之后，赋值的是什么，实际存储的就是什么，所以<code>str1[]</code>和<code>str2[]</code>分别占用了5，6个字节。</p>
+<h1 id="字符数组结尾"><a href="#字符数组结尾" class="headerlink" title="字符数组结尾"></a>字符数组结尾</h1><p>字符数组末尾以<code>&#39;\0&#39;</code>或者<code>0</code>结束。字符’<code>\0&#39;</code>的ASCII码就是0。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> s[<span class="number">10</span>];</span><br><span class="line">    <span class="built_in">memcpy</span>(s,<span class="string">"hello"</span>,<span class="built_in">strlen</span>(<span class="string">"hello"</span>));</span><br><span class="line">    s[<span class="built_in">strlen</span>(<span class="string">"hello"</span>)]=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">puts</span>(s);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h1><p>枚举的定义：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> nations&#123;wei,shu,wu&#125;; <span class="comment">//枚举类型中第一个名字的值默认为0，后面的名字的值依次加1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> nations&#123;wei=<span class="number">228</span>,shu=<span class="number">229</span>,wu=<span class="number">230</span>&#125;;  <span class="comment">//为枚举中每一个名字都赋值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> nations&#123;wei=<span class="number">228</span>,shu,wu&#125;;   <span class="comment">//只为枚举中第一个名字赋初值 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> nations&#123;wei=<span class="number">228</span>,shu,wu=<span class="number">230</span>&#125;;   <span class="comment">//shu这个名字对应的值是229</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> nations&#123;wei=<span class="number">228</span>,shu,wu=<span class="number">230</span>&#125;;</span><br><span class="line"><span class="keyword">enum</span> nations nation,country;  <span class="comment">//先定义枚举，后定义枚举类型的变量</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> nations&#123;wei=<span class="number">228</span>,shu,wu=<span class="number">230</span>&#125;nation;  <span class="comment">//定义枚举的同时定义变量</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> nations&#123;wei=<span class="number">228</span>,shu,wu=<span class="number">230</span>&#125;nation=wei,country=shu;  <span class="comment">//定义变量的同时为变量赋初值</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">enum</span> nations&#123;wei=<span class="number">225</span>,shu,wu=<span class="number">6</span>&#125;nation;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;nation);</span><br><span class="line">    <span class="keyword">switch</span>(nation)&#123;</span><br><span class="line">        <span class="keyword">case</span> wei:<span class="built_in">printf</span>(<span class="string">"wei\n"</span>);<span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> shu:<span class="built_in">printf</span>(<span class="string">"shu\n"</span>);<span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> wu:<span class="built_in">printf</span>(<span class="string">"wu\n"</span>);<span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:<span class="built_in">printf</span>(<span class="string">"error\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>枚举列表中的名字（wei,shu,wu）的作用范围是全局的（严格来说是 main() 函数内部），不能再定义与它们名字相同的变量。</p>
+<p>枚举列表中的名字都是常量，而不是变量。不能对它们赋值，只能将它们的值赋给其他的变量。</p>
+<p>枚举和宏非常类似。宏在预处理阶段将名字替换成对应的值，枚举在编译阶段将名字替换成对应的值。</p>
+<p>名字都不是变量，所以不占用数据区（常量区、全局数据区、栈区和堆区）的内存，而是直接被编译到命令里面，放到代码区，所以不能用<code>&amp;</code>取得它们的地址。这就是枚举的本质。</p>
+<p><code>case</code>关键字后面必须是一个整数，或者是结果为整数的表达式，不能包含任何变量。正是由于 这些名字最终会被替换成一个整数，所以它们才能放在 <code>case</code> 后面。</p>
+<p>枚举类型占据字节大小：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> nations&#123;wei=<span class="number">12</span>,shu,wu&#125;nation=shu;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="keyword">sizeof</span>(nations)&lt;&lt;<span class="string">" "</span>&lt;&lt;<span class="keyword">sizeof</span>(wei)&lt;&lt;<span class="string">" "</span>&lt;&lt;<span class="keyword">sizeof</span>(nation)&lt;&lt;<span class="string">" "</span>&lt;&lt;<span class="keyword">sizeof</span>(<span class="keyword">int</span>)&lt;&lt;<span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure></p>
+<p><code>4 4 4 4</code>都和int型占据相同大小的字节。<br><a href="http://c.biancheng.net/view/2034.html" target="_blank" rel="noopener">C语言枚举类型（C语言enum用法）详解</a></p>
+<h1 id="memset"><a href="#memset" class="headerlink" title="memset"></a>memset</h1><p>每种类型的变量都有各自的初始化方法，memset() 函数可以说是初始化内存的“万能函数”，通常为新申请的内存进行初始化工作。<br>函数原型为：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">memset</span><span class="params">(<span class="keyword">void</span> *dst_str, <span class="keyword">int</span> avlue, <span class="keyword">unsigned</span> <span class="keyword">long</span> n)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>指针变量 <code>dst_str</code> 所指向的前 n 字节的内存单元用一个“整数” value 替换，注意 value 是 int 型。<code>dst_str</code> 是 void* 型的指针变量，所以它可以为任何类型的数据进行初始化。</p>
+<p>memset() 的作用是在一段内存块中填充某个给定的值。因为它只能填充一个值，所以该函数的初始化为原始初始化。用memset初始化完后，后面程序中再向该内存空间中存放需要的数据。</p>
+<p>memset 一般使用“0”初始化内存单元，而且通常是给数组或结构体进行初始化。虽然数组也可以直接进行初始化，但 memset 是对较大的数组或结构体进行清零初始化的最快方法，因为它是直接对内存进行操作的。在 memset 中初始化为 0 也具有结束标志符 ‘\0’ 的作用。</p>
+<p>memset 函数的第三个参数 n 的值一般用 sizeof()  获取，这样比较专业。注意，如果是对指针变量所指向的内存单元进行清零初始化，那么一定要先对这个指针变量进行初始化，即一定要先让它指向某个有效的地址。而且用memset给指针变量如p所指向的内存单元进行初始化时，n 千万不要写成 sizeof(p)。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> str[<span class="number">10</span>];</span><br><span class="line">    <span class="keyword">char</span>* p=str;</span><br><span class="line">    <span class="built_in">memset</span>(str,<span class="number">0</span>,<span class="keyword">sizeof</span>(str));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\t"</span>,str[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>不同的memset()参数，得到的结果也不同。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="built_in">memset</span>(str,<span class="number">0</span>,<span class="keyword">sizeof</span>(str));  </span><br><span class="line"> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">memset</span>(str,<span class="number">0</span>,<span class="keyword">sizeof</span>(p));</span><br><span class="line"><span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">80</span> <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">memset</span>(str,<span class="number">0</span>,<span class="keyword">sizeof</span>(*p));  <span class="comment">//*p 是一个char型的字符。</span></span><br><span class="line"><span class="number">0</span> <span class="number">6</span> <span class="number">64</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">5</span></span><br></pre></td></tr></table></figure></p>
+<p>其中，目标字符串中写<code>str</code>和<code>p</code>效果是等价的。<br><a href="http://c.biancheng.net/view/231.html" target="_blank" rel="noopener">memset函数及其用法，C语言memset函数详解</a></p>
+<h1 id="snprintf-函数"><a href="#snprintf-函数" class="headerlink" title="snprintf()函数"></a>snprintf()函数</h1><p>这个函数与输出无关，它实际上起着字符串拷贝的作用。<br>函数原型为：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">snprintf</span><span class="params">(<span class="keyword">char</span>* dest_str,size,<span class="keyword">const</span> <span class="keyword">char</span>* format,...)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>先将可变参数 “…” 按照format的格式格式化为字符串，然后再将其拷贝至dest_str中。最多只能拷贝过去size个字节。<br>如果格式化后的字符串长度小于size，则将字符串全部拷贝至dest_str中，并在字符串结尾处加上‘\0’；。<br>如果格式化后的字符串长度大于或等于size，则将字符串的(size-1)拷贝至dest_str中，然后在字符串结尾处加上’\0’.。<br>成功返回源串的长度，失败则返回负值。</p>
+<p>因为最多只能拷贝size个字节过去，所以将<code>dst_str</code>的大小设置为size就不会有越界问题。如<code>dst_str</code>的大小是10个字节，则最多只能拷贝9个字节过来，留一个用来拷贝完成之后放<code>&#39;\0&#39;</code>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span> dest_str[<span class="number">1024</span>];</span><br><span class="line">    <span class="built_in">memset</span>(dest_str,<span class="number">0</span>,<span class="keyword">sizeof</span>(dest_str));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *src = <span class="string">"Linux C程序设计"</span>;</span><br><span class="line">    <span class="keyword">int</span> size = <span class="built_in">strlen</span>(src);</span><br><span class="line">    <span class="keyword">int</span> year = <span class="number">2019</span>;</span><br><span class="line">    <span class="keyword">int</span> month = <span class="number">7</span>;</span><br><span class="line">    <span class="keyword">int</span> day = <span class="number">19</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> nReturn = <span class="built_in">snprintf</span>(dest_str,<span class="keyword">sizeof</span>(dest_str),<span class="string">"字符串:%s\n长度是:%d\n今天是:%d年%d月%d日\n"</span>,src,size,year,month</span><br><span class="line">,day);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,nReturn);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s"</span>,dest_str);  </span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://blog.csdn.net/qq_34707315/article/details/77895735" target="_blank" rel="noopener">C中 snprintf()函数的作用</a></p>
+<h1 id="函数指针与typedef"><a href="#函数指针与typedef" class="headerlink" title="函数指针与typedef"></a>函数指针与typedef</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="built_in">cout</span>&lt;&lt;a+b&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">void</span> (*pAdd)(<span class="keyword">int</span>,<span class="keyword">int</span>);</span><br><span class="line">    pAdd=add;</span><br><span class="line">    (*pAdd)(<span class="number">2</span>,<span class="number">2</span>);</span><br><span class="line">    pAdd(<span class="number">3</span>,<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">typedef</span> <span class="title">void</span> <span class="params">(*pAdd_1)</span><span class="params">(<span class="keyword">int</span>,<span class="keyword">int</span>)</span></span>;</span><br><span class="line">    pAdd_1 tmp;</span><br><span class="line">    tmp=add;</span><br><span class="line">    tmp(<span class="number">4</span>,<span class="number">4</span>);</span><br><span class="line">    (*tmp)(<span class="number">5</span>,<span class="number">5</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>void (*pAdd)(int,int);</code>函数指针的写法。<br><code>(*pAdd)(2,2);</code>显式地调用，*Add就是该函数指针所指向的那个函数。<br><code>pAdd(3,3);</code>隐式的调用。</p>
+<p><code>typedef void (*pAdd_1)(int,int);</code>typedef后面接函数指针的写法。<br>定义了一个 数据类型，叫做pAdd_1，这个数据类型是一种函数指针。<code>pAdd_1 tmp;</code>通过数据类型定义变量，tmp是一个函数指针，然后将已经写好的函数赋值给这个函数指针。<br><a href="https://blog.csdn.net/qll125596718/article/details/6891881" target="_blank" rel="noopener">typedef函数指针用法</a></p>
+<h1 id="strncpy-函数"><a href="#strncpy-函数" class="headerlink" title="strncpy()函数"></a>strncpy()函数</h1><h2 id="strncpy-的使用"><a href="#strncpy-的使用" class="headerlink" title="strncpy()的使用"></a>strncpy()的使用</h2><p>函数原型：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> * <span class="title">strncpy</span> <span class="params">( <span class="keyword">char</span> * destination, <span class="keyword">const</span> <span class="keyword">char</span> * source, <span class="keyword">size_t</span> num )</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>strcpy (dst,src): 从源串的开始到结尾（’\0’)完全拷贝到目标串地址，而strncpy()则可以指定拷贝的长度。</p>
+<p>从src串中拷贝num个字符到dst所指向的一串内存空间。<br>如果src不够num个字符，则在目标串最后再追加<code>&#39;\0&#39;</code>，使得正好拷贝了num个字符。<br>如果src大于num个字符，则拷贝完成之后不会在最后追加隐式的<code>&#39;\0&#39;</code>，这时dst就不是真正的C字符串了。读取这个字符串会导致溢出。<br>官方文档的说明程序：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">char</span> str1[]= <span class="string">"To be or not to be"</span>;</span><br><span class="line">  <span class="keyword">char</span> str2[<span class="number">40</span>];</span><br><span class="line">  <span class="keyword">char</span> str3[<span class="number">40</span>];</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* copy to sized buffer (overflow safe): */</span></span><br><span class="line">  <span class="built_in">strncpy</span> ( str2, str1, <span class="keyword">sizeof</span>(str2) );</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* partial copy (only 5 chars): */</span></span><br><span class="line">  <span class="built_in">strncpy</span> ( str3, str2, <span class="number">5</span> );</span><br><span class="line">  str3[<span class="number">5</span>] = <span class="string">'\0'</span>;   <span class="comment">/* null character manually added */</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">puts</span> (str1);</span><br><span class="line">  <span class="built_in">puts</span> (str2);</span><br><span class="line">  <span class="built_in">puts</span> (str3);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">To be <span class="keyword">or</span> <span class="keyword">not</span> to be</span><br><span class="line">To be <span class="keyword">or</span> <span class="keyword">not</span> to be</span><br><span class="line">To be</span><br></pre></td></tr></table></figure>
+<p>因为不会在目标串后面自动添加<code>&#39;\0&#39;</code>，所以需要自己想办法在后面手动添加，防止读取的时候内存溢出。<br><a href="http://www.cplusplus.com/reference/cstring/strncpy/?kw=strncpy" target="_blank" rel="noopener">官方strncpy</a><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span>* s=(<span class="keyword">char</span>*)<span class="built_in">malloc</span>(<span class="number">5</span>);</span><br><span class="line">    <span class="built_in">strncpy</span>(s,<span class="string">"hello world"</span>,<span class="number">8</span>);</span><br><span class="line">    <span class="built_in">puts</span>(s);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>输出该字符串时会在o字符后面一直找到‘\0’才结束，因此就会出现乱码。但是这里拷贝5个字符过去却不会出现乱码？？</p>
+<h2 id="strncpy-的实现"><a href="#strncpy-的实现" class="headerlink" title="strncpy()的实现"></a>strncpy()的实现</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">strncpy</span><span class="params">(<span class="keyword">char</span> *dest, <span class="keyword">const</span> <span class="keyword">char</span> *src, <span class="keyword">size_t</span> len)</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    assert(dest != <span class="literal">NULL</span> &amp;&amp; src != <span class="literal">NULL</span>);  </span><br><span class="line">    <span class="keyword">char</span> *res = dest;  </span><br><span class="line">    <span class="keyword">int</span> offset = <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">strlen</span>(src) &lt; len)<span class="comment">//src长度小于len  </span></span><br><span class="line">    &#123;  </span><br><span class="line">        offset = len - <span class="built_in">strlen</span>(src);  </span><br><span class="line">        len = <span class="built_in">strlen</span>(src);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">while</span> (len--)  </span><br><span class="line">    &#123;  </span><br><span class="line">        *dest++ = *src++;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">while</span> (offset--)  </span><br><span class="line">    &#123;  </span><br><span class="line">        *dest++ = <span class="string">'\0'</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> res;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="strncpy-的内存重叠"><a href="#strncpy-的内存重叠" class="headerlink" title="strncpy()的内存重叠"></a>strncpy()的内存重叠</h2><p><img src="https://img-blog.csdn.net/20170526171857016" alt="enter image description here"><br>如图所示，红色表示src，黄色表示dst时，正常拷贝的话，就会造成内存重叠现象。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">strncpy</span><span class="params">(<span class="keyword">char</span> *dst, <span class="keyword">const</span> <span class="keyword">char</span> *src, <span class="keyword">size_t</span> len)</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    assert(dst != <span class="literal">NULL</span> &amp;&amp; src != <span class="literal">NULL</span>);  </span><br><span class="line">    <span class="keyword">char</span> *res = dst;  </span><br><span class="line">    <span class="keyword">int</span> offset = <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">char</span> *tmp;  </span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">strlen</span>(src) &lt; len)<span class="comment">//src长度小于len  </span></span><br><span class="line">    &#123;  </span><br><span class="line">        offset = len - <span class="built_in">strlen</span>(src);  </span><br><span class="line">        len = <span class="built_in">strlen</span>(src);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">if</span> (dst &gt;= src &amp;&amp; dst &lt;= src + len - <span class="number">1</span>)<span class="comment">//重叠,从后向前复制  </span></span><br><span class="line">    &#123;  </span><br><span class="line">        dst = dst + len - <span class="number">1</span>;  </span><br><span class="line">        src = src + len - <span class="number">1</span>;  </span><br><span class="line">        tmp = dst;  </span><br><span class="line">        <span class="keyword">while</span> (len--)  </span><br><span class="line">            *dst-- = *src--;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">else</span>  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">while</span> (len--)  </span><br><span class="line">            *dst++ = *src++;  </span><br><span class="line">        tmp = dst;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">while</span> (offset--)  </span><br><span class="line">    &#123;  </span><br><span class="line">        *tmp++ = <span class="string">'\0'</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> res;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://blog.csdn.net/weibo1230123/article/details/80382614" target="_blank" rel="noopener">深入理解strncpy这个函数</a></p>
+<h1 id="assert"><a href="#assert" class="headerlink" title="assert"></a>assert</h1><p>大多数编程语言也都有断言这一特性。断言就是对某种假设条件进行检查。在 C 语言中，断言被定义为宏的形式<code>（assert(expression)）</code>，而不是函数，其原型定义在<code>&lt;assert.h&gt;</code>文件中。其中，assert 将通过检查表达式 expression 的值来决定是否需要终止执行程序。也就是说，如果表达式 expression 的值为假（即为 0），那么它将首先向标准错误流 stderr 打印一条出错信息，然后再通过调用 abort 函数终止程序运行；否则，assert 无任何作用。只有当assert后面的表达式为真时，才会继续执行后面的语句。<br><a href="https://www.cnblogs.com/cpoint/p/3367326.html" target="_blank" rel="noopener">C语言assert()函数用法总结</a></p>
+
+    </article>
+    <!-- license  -->
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2019/07/19/static/" title="static">
+                    <div class="prevTitle">static</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:1431168022@qq.com" class="iconfont-archer email" title="email"></a>
+            
+        
+    
+        
+            
+                <a href="https://github.com/shen-cheng-yu" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title="wechat">
+                  
+                  <img class="profile-qr" src="https://img-blog.csdnimg.cn/2019060414414914.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FIMjAxODAzMjQ=,size_16,color_FFFFFF,t_70">
+                </span>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer qq" title="qq">
+                  
+                  <img class="profile-qr" src="https://img-blog.csdnimg.cn/20190604144134786.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FIMjAxODAzMjQ=,size_16,color_FFFFFF,t_70">
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#typedef"><span class="toc-number">1.</span> <span class="toc-text">typedef</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#typedef-为结构体类型起别名"><span class="toc-number">1.1.</span> <span class="toc-text">typedef 为结构体类型起别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#typedef-为变量类型起别名"><span class="toc-number">1.2.</span> <span class="toc-text">typedef 为变量类型起别名</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#union-测试系统大小端"><span class="toc-number">2.</span> <span class="toc-text">union 测试系统大小端</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结构体中为成员指定占用空间大小"><span class="toc-number">3.</span> <span class="toc-text">结构体中为成员指定占用空间大小</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动态内存分配"><span class="toc-number">4.</span> <span class="toc-text">动态内存分配</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#C"><span class="toc-number">4.1.</span> <span class="toc-text">C</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-1"><span class="toc-number">4.2.</span> <span class="toc-text">C++</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Memcpy内存拷贝"><span class="toc-number">5.</span> <span class="toc-text">Memcpy内存拷贝</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#将数据拷贝到内存"><span class="toc-number">5.1.</span> <span class="toc-text">将数据拷贝到内存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将数据拷贝到内存中的指定位置"><span class="toc-number">5.2.</span> <span class="toc-text">将数据拷贝到内存中的指定位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#覆盖原有的内存内容"><span class="toc-number">5.3.</span> <span class="toc-text">覆盖原有的内存内容</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#puts-与gets"><span class="toc-number">6.</span> <span class="toc-text">puts()与gets()</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#puts"><span class="toc-number">6.1.</span> <span class="toc-text">puts()</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基于范围的for循环"><span class="toc-number">7.</span> <span class="toc-text">基于范围的for循环</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#随机函数"><span class="toc-number">8.</span> <span class="toc-text">随机函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#rand-函数"><span class="toc-number">8.1.</span> <span class="toc-text">rand()函数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#gets-与puts"><span class="toc-number">9.</span> <span class="toc-text">gets()与puts()</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sizeof-与strlen"><span class="toc-number">10.</span> <span class="toc-text">sizeof()与strlen()</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#字符数组结尾"><span class="toc-number">11.</span> <span class="toc-text">字符数组结尾</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#枚举"><span class="toc-number">12.</span> <span class="toc-text">枚举</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#memset"><span class="toc-number">13.</span> <span class="toc-text">memset</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#snprintf-函数"><span class="toc-number">14.</span> <span class="toc-text">snprintf()函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数指针与typedef"><span class="toc-number">15.</span> <span class="toc-text">函数指针与typedef</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#strncpy-函数"><span class="toc-number">16.</span> <span class="toc-text">strncpy()函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#strncpy-的使用"><span class="toc-number">16.1.</span> <span class="toc-text">strncpy()的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#strncpy-的实现"><span class="toc-number">16.2.</span> <span class="toc-text">strncpy()的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#strncpy-的内存重叠"><span class="toc-number">16.3.</span> <span class="toc-text">strncpy()的内存重叠</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#assert"><span class="toc-number">17.</span> <span class="toc-text">assert</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 66
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/String/">String</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/CC++基础/">C/C++基础</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/设备调试/">设备调试</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/编译环境/">编译环境</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/Shell编程基础/">shell编程基础</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/Linux网络基础/">Linux网络基础</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/Linux命令基础/">Linux命令基础</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/Linux进程管理/">Linux进程管理</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/限流处理/">限流</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/问题集锦/">问题集锦</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/14</span><a class="archive-post-title" href="/2019/07/14/IP与ICMP 协议/">IP/ICMP 协议</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/14</span><a class="archive-post-title" href="/2019/07/14/TCP与UDP 协议/">TCP/UDP 协议</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/11</span><a class="archive-post-title" href="/2019/07/11/Linux命令/">Linux命令</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/10</span><a class="archive-post-title" href="/2019/07/10/XShell连接Ubuntu/">XShell连接Ubuntu</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/08</span><a class="archive-post-title" href="/2019/07/08/字节对齐/">字节对齐</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/STL总述/">STL</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/C++判断变量类型/">C++判断变量类型</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/Vector/">Vector</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/迭代器/">迭代器</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/Priority_Queue/">Priority_Queue</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/Stack/">Stack</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/Algorithm头文件里的算法/">Algorithm头文件里的算法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/Map/">Map</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/Set/">Set</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/22</span><a class="archive-post-title" href="/2019/06/22/myqr生成二维码/">MyQR生成二维码</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span><a class="archive-post-title" href="/2019/06/20/三门问题/">三门问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span><a class="archive-post-title" href="/2019/06/20/char 到 char[]的转换问题/">char* 到 char[]的转换问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span><a class="archive-post-title" href="/2019/06/20/switch...case结构中变量的作用域/">switch...case结构中变量的作用域</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/17</span><a class="archive-post-title" href="/2019/06/17/python生成词云/">Python生成词云</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/17</span><a class="archive-post-title" href="/2019/06/17/hexo使用攻略/">HEXO攻略(Archer)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/指针/">指针</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/文件后缀相关/">文件后缀相关</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/头文件与库文件相关/">头文件与库文件相关</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/记事本更改默认编码方式为UTF-8/">记事本更改默认编码方式为UTF-8</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/电脑硬件/">电脑硬件</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/磁盘与磁盘格式/">磁盘与磁盘格式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/程序运行时间/">程序运行时间</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/HTML学习笔记/">HTML学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/C++学习笔记——类和对象提高/">C++学习笔记—类和对象提高</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——从C到C++/">C++学习笔记—从C到C++</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">C++学习笔记—多态和虚函数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——类和对象基础/">C++学习笔记—类和对象基础</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/05</span><a class="archive-post-title" href="/2019/06/05/C++学习笔记——继承和派生/">C++学习笔记—继承和派生</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/04</span><a class="archive-post-title" href="/2019/06/04/古诗词学习笔记/">古诗词学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/设备部署/">设备部署</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/FTP文件传输协议/">FTP文件传输协议</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Queue/">Queue</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/11/进程管理/">进程管理</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Deque/">Deque</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/10/视频核心网关设备调试/">视频核心网关设备调试</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/文件路径的写法/">文件路径的写法</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/CC++预处理指令/">C/C++预处理指令</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/Chrome离线插件安装/">Chrome离线插件安装</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/VS 2012/">VS 2012</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/Source Insight/">Source Insight</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/Shell编程/">Shell编程</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/计算机组成原理/">计算机组成原理</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/05/04/Git Github Hexo/">Git Github Hexo</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/专业英语/">专业英语</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/static/">static</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/21/python词频统计/">Python词频统计</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/TortoiseSVN/">TortoiseSVN</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/入职软件安装/">入职软件安装</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/pip模块/">pip模块</a>
+        </li>
+    
+    </ul></div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="磁盘"><span class="iconfont-archer">&#xe606;</span>磁盘</span>
+    
+        <span class="sidebar-tag-name" data-tags="操作系统"><span class="iconfont-archer">&#xe606;</span>操作系统</span>
+    
+        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
+    
+        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
+    
+        <span class="sidebar-tag-name" data-tags="github"><span class="iconfont-archer">&#xe606;</span>github</span>
+    
+        <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
+    
+        <span class="sidebar-tag-name" data-tags="html"><span class="iconfont-archer">&#xe606;</span>html</span>
+    
+        <span class="sidebar-tag-name" data-tags="Word"><span class="iconfont-archer">&#xe606;</span>Word</span>
+    
+        <span class="sidebar-tag-name" data-tags="Office"><span class="iconfont-archer">&#xe606;</span>Office</span>
+    
+        <span class="sidebar-tag-name" data-tags="编程"><span class="iconfont-archer">&#xe606;</span>编程</span>
+    
+        <span class="sidebar-tag-name" data-tags="电脑"><span class="iconfont-archer">&#xe606;</span>电脑</span>
+    
+        <span class="sidebar-tag-name" data-tags="硬件"><span class="iconfont-archer">&#xe606;</span>硬件</span>
+    
+        <span class="sidebar-tag-name" data-tags="骚操作"><span class="iconfont-archer">&#xe606;</span>骚操作</span>
+    
+        <span class="sidebar-tag-name" data-tags="文学"><span class="iconfont-archer">&#xe606;</span>文学</span>
+    
+        <span class="sidebar-tag-name" data-tags="软件使用"><span class="iconfont-archer">&#xe606;</span>软件使用</span>
+    
+        <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
+    
+        <span class="sidebar-tag-name" data-tags="模块与包"><span class="iconfont-archer">&#xe606;</span>模块与包</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据分析"><span class="iconfont-archer">&#xe606;</span>数据分析</span>
+    
+        <span class="sidebar-tag-name" data-tags="数学"><span class="iconfont-archer">&#xe606;</span>数学</span>
+    
+        <span class="sidebar-tag-name" data-tags="模拟"><span class="iconfont-archer">&#xe606;</span>模拟</span>
+    
+        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
+    
+        <span class="sidebar-tag-name" data-tags="网络协议"><span class="iconfont-archer">&#xe606;</span>网络协议</span>
+    
+        <span class="sidebar-tag-name" data-tags="版本控制"><span class="iconfont-archer">&#xe606;</span>版本控制</span>
+    
+        <span class="sidebar-tag-name" data-tags="网络"><span class="iconfont-archer">&#xe606;</span>网络</span>
+    
+        <span class="sidebar-tag-name" data-tags="TCP/IP"><span class="iconfont-archer">&#xe606;</span>TCP/IP</span>
+    
+        <span class="sidebar-tag-name" data-tags="设备调试"><span class="iconfont-archer">&#xe606;</span>设备调试</span>
+    
+        <span class="sidebar-tag-name" data-tags="ubuntu"><span class="iconfont-archer">&#xe606;</span>ubuntu</span>
+    
+        <span class="sidebar-tag-name" data-tags="Linux命令"><span class="iconfont-archer">&#xe606;</span>Linux命令</span>
+    
+        <span class="sidebar-tag-name" data-tags="XShell"><span class="iconfont-archer">&#xe606;</span>XShell</span>
+    
+        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
+    
+        <span class="sidebar-tag-name" data-tags="Shell编程"><span class="iconfont-archer">&#xe606;</span>Shell编程</span>
+    
+        <span class="sidebar-tag-name" data-tags="驱动"><span class="iconfont-archer">&#xe606;</span>驱动</span>
+    
+        <span class="sidebar-tag-name" data-tags="并发"><span class="iconfont-archer">&#xe606;</span>并发</span>
+    
+        <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
+    
+        <span class="sidebar-tag-name" data-tags="Makefile"><span class="iconfont-archer">&#xe606;</span>Makefile</span>
+    
+        <span class="sidebar-tag-name" data-tags="文件"><span class="iconfont-archer">&#xe606;</span>文件</span>
+    
+        <span class="sidebar-tag-name" data-tags="Markdown"><span class="iconfont-archer">&#xe606;</span>Markdown</span>
+    
+        <span class="sidebar-tag-name" data-tags="C/C++"><span class="iconfont-archer">&#xe606;</span>C/C++</span>
+    
+        <span class="sidebar-tag-name" data-tags="英语"><span class="iconfont-archer">&#xe606;</span>英语</span>
+    
+        <span class="sidebar-tag-name" data-tags="指针"><span class="iconfont-archer">&#xe606;</span>指针</span>
+    
+        <span class="sidebar-tag-name" data-tags="计算机组成原理"><span class="iconfont-archer">&#xe606;</span>计算机组成原理</span>
+    
+        <span class="sidebar-tag-name" data-tags="库函数"><span class="iconfont-archer">&#xe606;</span>库函数</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br>
+    1、请确保node版本大于6.2<br>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "κԭ"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+
