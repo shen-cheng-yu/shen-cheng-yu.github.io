@@ -346,15 +346,115 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href="/2019/07/24/netstat/">
+            
+                <span>netstat</span>
+        </a>
+        <div class="abstract-content">
+            
+参数解释
+
+
+选项
+含义
+
+
+
+
+-t
+指明显示TCP端口
+
+
+-u
+指明显示UDP端口
+
+
+-x
+指明显示unix端口
+
+
+-p
+显示进程标识符和程序名称，每一个套接字/端口都属于一个程序
+
+
+-n
+不进行DNS轮询，端口号和ip都显示数字，不显示域名或名称（加快命令执行速度）
+
+
+-c
+每隔一个固定时间，执行该netstat命令。
+
+
+
+12345678Proto RefCnt Flags       Type       State         I-Node   Pathunix  2      [ ]         DGRAM                    105...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/24</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="网络命令">网络命令</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2019/07/24/DPDP模块开发指南/">
+            
+                <span>DPDK模块开发指南</span>
+        </a>
+        <div class="abstract-content">
+            整体流程
+初始化
+包处理
+配置下发java组下发信息（包）给linuxC组，我们对于这些包做出解析处理，完成功能。
+
+如何增加模块添加模块ID的枚举定义在vpg_module.def.h文件的module_id_e中，增加模块ID的枚举定义。12345678910111213141516typedef enum tag_module_id_e&#123;    MODULE_ID_SND       = 0,      MODULE_ID_BLC,    MODULE_ID_WLM,    MODULE_ID_EXAMPLE,    MODULE_ID_DAC,    MODULE_ID...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/24</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="smart">smart</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href="/2019/07/23/json/">
             
                 <span>Json</span>
         </a>
         <div class="abstract-content">
-            C语言没有字典这样的结构，所以对于解析json格式的数据来说不是那么好解析，但是有时候又需要处理这样的数据格式。有一个解析json的函数库可以使用，就是cJSON。
+            2019-07-23
+
+C语言没有字典这样的结构，所以对于解析json格式的数据来说不是那么好解析，但是有时候又需要处理这样的数据格式。有一个解析json的函数库可以使用，就是cJSON。
 点此下载后可以直接使用
 自己使用时只需要其中的cJSON.c和cJSON.h文件就可以了，只需要将cJSON和自己的main文件一起编译即可。
-cJSON 结构体：123456789typedef struct cJSON &#123;　　struct cJSON *next,*prev;      /* 遍历数组或对象链的前向或后向链表指针*/　　struct cJSON *child;                  ...
+cJSON 结构体：123456789typedef struct cJSON &#123;　　struct cJSON *next,*prev;      /* 遍历数组或对象链的前向或后向链表指针*/　　struct cJSON *child;      ...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -479,6 +579,50 @@ cJSON 结构体：123456789typedef struct cJSON &#123;　　struct cJSON *next,*
     
     
     <article class="index-post">
+        <a class="abstract-title" href="/2019/07/19/CC++预处理指令/">
+            
+                <span>C/C++预处理指令</span>
+        </a>
+        <div class="abstract-content">
+            ==2019-07-18更新：==
+预处理指令
+#include包含一个源代码文件
+#define定义宏
+#undef取消已定义的宏
+#if如果给定条件为真，则编译下面代码
+#else如果#if的给定条件为假，则编译下面代码
+#ifdef如果宏已经定义，则编译下面代码
+#ifndef如果宏没有定义，则编译下面代码
+#elif如果前面的#if给定条件不为真，当前条件为真，则编译下面代码
+#endif结束一个#if……#else条件编译块
+#error停止编译并显示错误信息
+
+预处理指令是以#号开头的代码行。#后是指令关键字，整行语句构成了一条预处理指令。该指令将在编译器进行编译之前对源代码...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/19</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="编程">编程</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="C/C++">C/C++</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href="/2019/07/19/专业英语/">
             
                 <span>专业英语</span>
@@ -574,121 +718,6 @@ Applica...
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/07/19/CC++基础/">
-            
-                <span>C/C++基础</span>
-        </a>
-        <div class="abstract-content">
-            ==2019-07-18更新==
-typedeftypedef 为结构体类型起别名
-typedef 为变量类型起别名1234typedef unsigned char VOS_UINT8;typedef unsigned short VOS_UINT16;typedef unsigned int VOS_UINT32;typedef unsigned long VOS_UINT64;
-C语言之类型定义（typedef）
-union 测试系统大小端大端模式(Big_endian):数据的高字节存储在低地址中,数据的低字节存放在高地址中。小端模式(Little_endian):数据的高字节存...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/19</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="C/C++">C/C++</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="指针">指针</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="库函数">库函数</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/19/VS 2012/">
-            
-                <span>VS 2012</span>
-        </a>
-        <div class="abstract-content">
-            ==2019-07-18更新==
-VS2012 的启动目录D:\Visual Studio 2012\Common7\IDE\devene.exe
-解决方案资源管理器快捷键ctrl+alt+L打开。
-建立项目所有的.cpp文件都要有include &quot;stdafx.h&quot;，且要放在文件第一行。
-在主程序中，使用include xxx.h而不是include xxx.cpp。在其他文件中，将函数的声明放在.h文件中，然后将函数的定义放在.cpp文件中。C++LNK2005 某函数已经在.obj中定义
-
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/19</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="软件使用">软件使用</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/19/CC++预处理指令/">
-            
-                <span>C/C++预处理指令</span>
-        </a>
-        <div class="abstract-content">
-            ==2019-07-18更新：==
-预处理指令
-#include包含一个源代码文件
-#define定义宏
-#undef取消已定义的宏
-#if如果给定条件为真，则编译下面代码
-#else如果#if的给定条件为假，则编译下面代码
-#ifdef如果宏已经定义，则编译下面代码
-#ifndef如果宏没有定义，则编译下面代码
-#elif如果前面的#if给定条件不为真，当前条件为真，则编译下面代码
-#endif结束一个#if……#else条件编译块
-#error停止编译并显示错误信息
-
-预处理指令是以#号开头的代码行。#后是指令关键字，整行语句构成了一条预处理指令。该指令将在编译器进行编译之前对源代码...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/19</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="编程">编程</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="C/C++">C/C++</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
         <a class="abstract-title" href="/2019/07/19/static/">
             
                 <span>static</span>
@@ -721,16 +750,16 @@ static 修饰函数类的静态成员函数静态成员（变量，函数）本�
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/07/19/计算机组成原理/">
+        <a class="abstract-title" href="/2019/07/19/CC++基础/">
             
-                <span>计算机组成原理</span>
+                <span>C/C++基础</span>
         </a>
         <div class="abstract-content">
             ==2019-07-18更新==
-CPU与操作系统命令行执行systeminfo，可以看到系统类型x64-based PC代表操作系统位数，处理器Intel64 Family 6 Model 94 Stepping 3 GenuineIntel ~2304 Mhz代表电脑CPU位数。其中X86说明是32位的，X64说明是64位的。可以看出，我的电脑的操作系统和CPU的位数都是64位的。
-CPU位数 = CPU中寄存器的位数 = CPU能够一次并行处理的数据宽度（位数）= 数据总线宽度 = 机器字长。
-CPU代表着电脑的硬件，而操作系统则代表着电脑的软件。
-硬件对软件是向下兼容的，高位数的...
+typedeftypedef 为结构体类型起别名
+typedef 为变量类型起别名1234typedef unsigned char VOS_UINT8;typedef unsigned short VOS_UINT16;typedef unsigned int VOS_UINT32;typedef unsigned long VOS_UINT64;
+C语言之类型定义（typedef）
+union 测试系统大小端大端模式(Big_endian):数据的高字节存储在低地址中,数据的低字节存放在高地址中。小端模式(Little_endian):数据的高字节存...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -741,9 +770,11 @@ CPU代表着电脑的硬件，而操作系统则代表着电脑的软件。
             
             <div class="abstract-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="电脑">电脑</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="C/C++">C/C++</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="计算机组成原理">计算机组成原理</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="指针">指针</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="库函数">库函数</a>
     
 </div>
             
@@ -753,7 +784,7 @@ CPU代表着电脑的硬件，而操作系统则代表着电脑的软件。
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/2/">NEXT &#62;</a>
+        <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/8/">8</a><a class="extend next" rel="next" href="/archives/page/2/">NEXT &#62;</a>
     </nav>
     
 </main>
@@ -2154,29 +2185,9 @@ CPU代表着电脑的硬件，而操作系统则代表着电脑的软件。
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 70
+        Total : 72
         </div>
         <!-- search  -->
         
@@ -2192,31 +2203,13 @@ CPU代表着电脑的硬件，而操作系统则代表着电脑的软件。
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/Vector/">Vector</a>
+            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/netstat/">netstat</a>
         </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/smart/">Smart</a>
+            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/DPDP模块开发指南/">DPDK模块开发指南</a>
         </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
     
     
         <li class="archive-post-item">
@@ -2250,12 +2243,12 @@ CPU代表着电脑的硬件，而操作系统则代表着电脑的软件。
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/Linux进程管理/">Linux进程管理</a>
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/Linux命令基础/">Linux命令基础</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/Linux命令基础/">Linux命令基础</a>
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/Linux进程管理/">Linux进程管理</a>
         </li>
     
     
@@ -2305,6 +2298,11 @@ CPU代表着电脑的硬件，而操作系统则代表着电脑的软件。
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/Vector/">Vector</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/迭代器/">迭代器</a>
         </li>
     
@@ -2344,6 +2342,29 @@ CPU代表着电脑的硬件，而操作系统则代表着电脑的软件。
         </li>
     
     
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/Shell编程/">Shell编程</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
         <li class="archive-post-item">
             <span class="archive-post-date">06/20</span><a class="archive-post-title" href="/2019/06/20/char 到 char[]的转换问题/">char* 到 char[]的转换问题</a>
         </li>
@@ -2365,17 +2386,17 @@ CPU代表着电脑的硬件，而操作系统则代表着电脑的软件。
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/文件后缀相关/">文件后缀相关</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/指针/">指针</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/头文件与库文件相关/">头文件与库文件相关</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/文件后缀相关/">文件后缀相关</a>
         </li>
     
     
@@ -2434,87 +2455,8 @@ CPU代表着电脑的硬件，而操作系统则代表着电脑的软件。
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/TortoiseSVN/">TortoiseSVN</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
         <li class="archive-post-item">
             <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/设备部署/">设备部署</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/入职软件安装/">入职软件安装</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/CC++预处理指令/">C/C++预处理指令</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/String/">String</a>
         </li>
     
     
@@ -2542,7 +2484,7 @@ CPU代表着电脑的硬件，而操作系统则代表着电脑的软件。
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Deque/">Deque</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Queue/">Queue</a>
         </li>
     
     
@@ -2570,7 +2512,7 @@ CPU代表着电脑的硬件，而操作系统则代表着电脑的软件。
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/文件路径的写法/">文件路径的写法</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/11/进程管理/">进程管理</a>
         </li>
     
     
@@ -2598,7 +2540,7 @@ CPU代表着电脑的硬件，而操作系统则代表着电脑的软件。
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/Source Insight/">Source Insight</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/10/视频核心网关设备调试/">视频核心网关设备调试</a>
         </li>
     
     
@@ -2612,7 +2554,7 @@ CPU代表着电脑的硬件，而操作系统则代表着电脑的软件。
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/pip模块/">pip模块</a>
         </li>
     
     
@@ -2654,63 +2596,7 @@ CPU代表着电脑的硬件，而操作系统则代表着电脑的软件。
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/11/进程管理/">进程管理</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/21/python词频统计/">Python词频统计</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/dpdk/">DPDK</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/10/视频核心网关设备调试/">视频核心网关设备调试</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/05/04/Git Github Hexo/">Git Github Hexo</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/TortoiseSVN/">TortoiseSVN</a>
         </li>
     
     
@@ -2738,49 +2624,175 @@ CPU代表着电脑的硬件，而操作系统则代表着电脑的软件。
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/pip模块/">pip模块</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Queue/">Queue</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/Shell编程/">Shell编程</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/FTP文件传输协议/">FTP文件传输协议</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/String/">String</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/设备部署/">设备部署</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Deque/">Deque</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/smart/">Smart</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/dpdk/">DPDK</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/05/04/Git Github Hexo/">Git Github Hexo</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/文件路径的写法/">文件路径的写法</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/CC++预处理指令/">C/C++预处理指令</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/21/python词频统计/">Python词频统计</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/入职软件安装/">入职软件安装</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/Source Insight/">Source Insight</a>
         </li>
     
     </ul></div>
@@ -2877,6 +2889,8 @@ CPU代表着电脑的硬件，而操作系统则代表着电脑的软件。
         <span class="sidebar-tag-name" data-tags="smart"><span class="iconfont-archer">&#xe606;</span>smart</span>
     
         <span class="sidebar-tag-name" data-tags="dpdk"><span class="iconfont-archer">&#xe606;</span>dpdk</span>
+    
+        <span class="sidebar-tag-name" data-tags="网络命令"><span class="iconfont-archer">&#xe606;</span>网络命令</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
