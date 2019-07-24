@@ -266,17 +266,13 @@ height:50vh;
                 
                     <div class="post-intro-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="网络协议">网络协议</a>
-    
         <a class="post-tag" href="javascript:void(0);" data-tags="网络">网络</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="TCP/IP">TCP/IP</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">2.6k</span>阅读时长: <span class="post-count reading-time">9 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">2.8k</span>阅读时长: <span class="post-count reading-time">9 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -434,6 +430,8 @@ height:50vh;
 <h4 id="宽松源路由选择"><a href="#宽松源路由选择" class="headerlink" title="宽松源路由选择"></a>宽松源路由选择</h4><p>源主机指定的两个IP地址之间可以有其他IP地址的路由器。格式与严格的相同，只是选项码字段值为<code>10000011</code>。</p>
 <h3 id="记录路由"><a href="#记录路由" class="headerlink" title="记录路由"></a>记录路由</h3><p>记录路由选项的数据格式同上，选项码字段值为<code>10000111</code>。IP数据包可以记录数据包从源主机传输到目标主机时，所经过路径上的各个路由器的IP地址。指针初值为4，指向存放第一个IP地址的位置（数据包还没有离开源主机时就已经知道的）。将每个经过的路由器的IP地址存入选项的数据区中，指针字段的值也随着增加（每次加4），它始终指向下一个存放IP地址的位置。当记录了9个IP地址后，指针字段的值为40，表示数据区已满。</p>
 <p><a href="https://blog.csdn.net/wangzhen209/article/details/74453548" target="_blank" rel="noopener">IP数据报格式详解</a></p>
+<h1 id="ip地址"><a href="#ip地址" class="headerlink" title="ip地址"></a>ip地址</h1><p>A类地址最开始是0，B类地址最开始是10，C类地址最开始是110……….<br>A类地址的范围是0.0.0.0~127.255.255.255，其中127.0.0.0~127.255.255.255都是单独拿出来用作保留地址的。<br>其中，127.0.0.1是回环地址，用来测试时使用，能ping通回环地址表示本机的TCP/IP协议安装正常。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@SmartSPG6300 etc]# cat hosts</span><br><span class="line">192.168.1.188   192.168.1.188</span><br><span class="line">127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4</span><br></pre></td></tr></table></figure></p>
+<p>Linux中将127.0.0.1与localhost是绑定起来的。<br>三类地址的私有地址是：<br>A类地址：10.0.0.0～10.255.255.255<br>B类地址：172.16.0.0～172.31.255.255<br>C类地址：192.168.0.0～192.168.255.255</p>
 <h1 id="ICMP协议"><a href="#ICMP协议" class="headerlink" title="ICMP协议"></a>ICMP协议</h1><p>ICMP是基于IP协议工作的，是IP协议的上层协议，但仍然把它归结为网络层协议 。ICMP只能搭配IPv4使用，如果是IPv6的情况下, 需要是用ICMPv6。</p>
 <h2 id="ICMP报头"><a href="#ICMP报头" class="headerlink" title="ICMP报头"></a>ICMP报头</h2><p>一个ICMP报文包括IP报头（至少20字节）、ICMP报头（至少8字节）和ICMP报文的数据部分。当IP报头中的上层协议标识字段值为1时，就说明这是一个ICMP报文。<br><img src="https://img-blog.csdn.net/201805301801365?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JhaWR1XzM3OTY0MDcx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="enter image description here"></p>
 <ol>
@@ -484,7 +482,33 @@ height:50vh;
 </tbody>
 </table>
 <h2 id="Ping"><a href="#Ping" class="headerlink" title="Ping"></a>Ping</h2><p>向目标主机发送一个类型字段值为8的ICMP回送请求报文，如果途中没有异常，则目标返回类型字段值为0的ICMP回送应答报文，说明这台主机存在。</p>
-<h3 id="目标不可到达报文"><a href="#目标不可到达报文" class="headerlink" title="目标不可到达报文"></a>目标不可到达报文</h3><p>类型值为3，不同的代码字段值标识了不同的报文类型。<br>|代码字段值（十进制）|报文类型|<br>|:———:|:——-:|<br>|0|网络不可到达|<br>|1|主机不可到达|<br>|2|协议不可到达|<br>|3|端口不可到达|</p>
+<h3 id="目标不可到达报文"><a href="#目标不可到达报文" class="headerlink" title="目标不可到达报文"></a>目标不可到达报文</h3><p>类型值为3，不同的代码字段值标识了不同的报文类型。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">代码字段值（十进制）</th>
+<th style="text-align:center">报文类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">网络不可到达</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">主机不可到达</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">协议不可到达</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">端口不可到达</td>
+</tr>
+</tbody>
+</table>
 <h3 id="源抑制报文"><a href="#源抑制报文" class="headerlink" title="源抑制报文"></a>源抑制报文</h3><p>类型字段值为4，代码字段值为0。充当一个控制流量的角色，通知对向主机减少数据报流量。由于ICMP没有回复传输的报文，所以只要停止该报文，对方主机就会逐渐恢复传输速率。 </p>
 <h3 id="超时报文"><a href="#超时报文" class="headerlink" title="超时报文"></a>超时报文</h3><p>类型字段值为11。代码字段值为0表示传输超时，代码字段值为1表示目标主机在进行分段重组时超时。</p>
 <h3 id="时间戳请求"><a href="#时间戳请求" class="headerlink" title="时间戳请求"></a>时间戳请求</h3><p> 发送方主机填充原始时间戳，以类型值字段为13的时间戳请求报文发送出去。接收方收到请求后填充接受时间戳后以类型值字段为14的时间戳应答报文返回，发送方计算这个时间差， 作为两台主机之间数据报来回一次的传输时间。</p>
@@ -507,8 +531,8 @@ height:50vh;
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2019/07/12/Shell编程/" title="Shell编程">
-                    <div class="prevTitle">Shell编程</div>
+                <a href="/2019/07/12/Shell编程/" title="shell编程">
+                    <div class="prevTitle">shell编程</div>
                 </a>
             
         </li>
@@ -634,7 +658,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#IP协议"><span class="toc-number">1.</span> <span class="toc-text">IP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#版本号"><span class="toc-number">1.1.</span> <span class="toc-text">版本号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#头部长度"><span class="toc-number">1.2.</span> <span class="toc-text">头部长度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务类型"><span class="toc-number">1.3.</span> <span class="toc-text">服务类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总长度"><span class="toc-number">1.4.</span> <span class="toc-text">总长度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生存时间"><span class="toc-number">1.5.</span> <span class="toc-text">生存时间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上层协议标识"><span class="toc-number">1.6.</span> <span class="toc-text">上层协议标识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#校验和"><span class="toc-number">1.7.</span> <span class="toc-text">校验和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分片与重组"><span class="toc-number">1.8.</span> <span class="toc-text">分片与重组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分片"><span class="toc-number">1.8.1.</span> <span class="toc-text">分片</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#标志"><span class="toc-number">1.8.1.1.</span> <span class="toc-text">标志</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#片偏移"><span class="toc-number">1.8.1.2.</span> <span class="toc-text">片偏移</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重组"><span class="toc-number">1.8.2.</span> <span class="toc-text">重组</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选项"><span class="toc-number">1.9.</span> <span class="toc-text">选项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#源路由选择"><span class="toc-number">1.9.1.</span> <span class="toc-text">源路由选择</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#宽松源路由选择"><span class="toc-number">1.9.1.1.</span> <span class="toc-text">宽松源路由选择</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#记录路由"><span class="toc-number">1.9.2.</span> <span class="toc-text">记录路由</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ICMP协议"><span class="toc-number">2.</span> <span class="toc-text">ICMP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ICMP报头"><span class="toc-number">2.1.</span> <span class="toc-text">ICMP报头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ping"><span class="toc-number">2.2.</span> <span class="toc-text">Ping</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#目标不可到达报文"><span class="toc-number">2.2.1.</span> <span class="toc-text">目标不可到达报文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#源抑制报文"><span class="toc-number">2.2.2.</span> <span class="toc-text">源抑制报文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#超时报文"><span class="toc-number">2.2.3.</span> <span class="toc-text">超时报文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时间戳请求"><span class="toc-number">2.2.4.</span> <span class="toc-text">时间戳请求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Traceroute"><span class="toc-number">2.3.</span> <span class="toc-text">Traceroute</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#IP协议"><span class="toc-number">1.</span> <span class="toc-text">IP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#版本号"><span class="toc-number">1.1.</span> <span class="toc-text">版本号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#头部长度"><span class="toc-number">1.2.</span> <span class="toc-text">头部长度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务类型"><span class="toc-number">1.3.</span> <span class="toc-text">服务类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总长度"><span class="toc-number">1.4.</span> <span class="toc-text">总长度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生存时间"><span class="toc-number">1.5.</span> <span class="toc-text">生存时间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上层协议标识"><span class="toc-number">1.6.</span> <span class="toc-text">上层协议标识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#校验和"><span class="toc-number">1.7.</span> <span class="toc-text">校验和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分片与重组"><span class="toc-number">1.8.</span> <span class="toc-text">分片与重组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分片"><span class="toc-number">1.8.1.</span> <span class="toc-text">分片</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#标志"><span class="toc-number">1.8.1.1.</span> <span class="toc-text">标志</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#片偏移"><span class="toc-number">1.8.1.2.</span> <span class="toc-text">片偏移</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重组"><span class="toc-number">1.8.2.</span> <span class="toc-text">重组</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选项"><span class="toc-number">1.9.</span> <span class="toc-text">选项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#源路由选择"><span class="toc-number">1.9.1.</span> <span class="toc-text">源路由选择</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#宽松源路由选择"><span class="toc-number">1.9.1.1.</span> <span class="toc-text">宽松源路由选择</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#记录路由"><span class="toc-number">1.9.2.</span> <span class="toc-text">记录路由</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ip地址"><span class="toc-number">2.</span> <span class="toc-text">ip地址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ICMP协议"><span class="toc-number">3.</span> <span class="toc-text">ICMP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ICMP报头"><span class="toc-number">3.1.</span> <span class="toc-text">ICMP报头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ping"><span class="toc-number">3.2.</span> <span class="toc-text">Ping</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#目标不可到达报文"><span class="toc-number">3.2.1.</span> <span class="toc-text">目标不可到达报文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#源抑制报文"><span class="toc-number">3.2.2.</span> <span class="toc-text">源抑制报文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#超时报文"><span class="toc-number">3.2.3.</span> <span class="toc-text">超时报文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时间戳请求"><span class="toc-number">3.2.4.</span> <span class="toc-text">时间戳请求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Traceroute"><span class="toc-number">3.3.</span> <span class="toc-text">Traceroute</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1943,9 +1967,200 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 72
+        Total : 77
         </div>
         <!-- search  -->
         
@@ -1956,8 +2171,57 @@ top:50vh;
     
     
     
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/FTP文件传输协议/">FTP文件传输协议</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/网络命令/">网络命令</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/视频核心安全网关/">视频核心安全网关</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/网络协议/">网络协议</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/电脑软件相关/">电脑软件相关</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/Markdown/">Markdown</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/XShell/">XShell</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/网络端口/">网络端口</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1991,17 +2255,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/Shell编程基础/">shell编程基础</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/Linux网络基础/">Linux网络基础</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/Linux命令基础/">Linux命令基础</a>
         </li>
     
     
@@ -2011,12 +2265,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/限流处理/">限流</a>
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/问题集锦/">公司问题集锦</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/问题集锦/">问题集锦</a>
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/限流处理/">限流</a>
         </li>
     
     
@@ -2081,6 +2335,34 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">06/17</span><a class="archive-post-title" href="/2019/06/17/python生成词云/">Python生成词云</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/入职软件安装/">入职软件安装</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/Map/">Map</a>
         </li>
     
@@ -2100,29 +2382,6 @@ top:50vh;
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/Shell编程/">Shell编程</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
         <li class="archive-post-item">
             <span class="archive-post-date">06/20</span><a class="archive-post-title" href="/2019/06/20/char 到 char[]的转换问题/">char* 到 char[]的转换问题</a>
         </li>
@@ -2134,22 +2393,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/17</span><a class="archive-post-title" href="/2019/06/17/python生成词云/">Python生成词云</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">06/17</span><a class="archive-post-title" href="/2019/06/17/hexo使用攻略/">HEXO攻略(Archer)</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/文件后缀相关/">文件后缀相关</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/指针/">指针</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/指针/">指针</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/文件后缀相关/">文件后缀相关</a>
         </li>
     
     
@@ -2164,12 +2418,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/磁盘与磁盘格式/">磁盘与磁盘格式</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/电脑硬件/">电脑硬件</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/电脑硬件/">电脑硬件</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/磁盘与磁盘格式/">磁盘与磁盘格式</a>
         </li>
     
     
@@ -2213,6 +2467,29 @@ top:50vh;
         </li>
     
     
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/计算机组成原理/">计算机组成原理</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
         <li class="archive-post-item">
             <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
         </li>
@@ -2228,7 +2505,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/VS 2012/">VS 2012</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/dpdk/">DPDK</a>
         </li>
     
     
@@ -2242,7 +2519,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Queue/">Queue</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/Shell编程/">shell编程</a>
         </li>
     
     
@@ -2256,7 +2533,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/static/">static</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/smart/">Smart</a>
         </li>
     
     
@@ -2270,35 +2547,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/11/进程管理/">进程管理</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/专业英语/">专业英语</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/10/视频核心网关设备调试/">视频核心网关设备调试</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/String/">String</a>
         </li>
     
     
@@ -2326,6 +2575,20 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/CC++预处理指令/">C/C++预处理指令</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/Chrome离线插件安装/">Chrome离线插件安装</a>
         </li>
     
@@ -2340,7 +2603,35 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/计算机组成原理/">计算机组成原理</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/static/">static</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Deque/">Deque</a>
         </li>
     
     
@@ -2382,35 +2673,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/FTP文件传输协议/">FTP文件传输协议</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/String/">String</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/文件路径的写法/">文件路径的写法</a>
         </li>
     
     
@@ -2438,35 +2701,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Deque/">Deque</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/smart/">Smart</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/dpdk/">DPDK</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/10/视频核心网关设备调试/">视频核心网关设备调试</a>
         </li>
     
     
@@ -2494,7 +2729,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/文件路径的写法/">文件路径的写法</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/Source Insight/">Source Insight</a>
         </li>
     
     
@@ -2508,7 +2743,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/CC++预处理指令/">C/C++预处理指令</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Queue/">Queue</a>
         </li>
     
     
@@ -2536,7 +2771,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/入职软件安装/">入职软件安装</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/11/进程管理/">进程管理</a>
         </li>
     
     
@@ -2550,7 +2785,21 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/Source Insight/">Source Insight</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/专业英语/">专业英语</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/VS 2012/">VS 2012</a>
         </li>
     
     </ul></div>
@@ -2649,6 +2898,12 @@ top:50vh;
         <span class="sidebar-tag-name" data-tags="dpdk"><span class="iconfont-archer">&#xe606;</span>dpdk</span>
     
         <span class="sidebar-tag-name" data-tags="网络命令"><span class="iconfont-archer">&#xe606;</span>网络命令</span>
+    
+        <span class="sidebar-tag-name" data-tags="软件"><span class="iconfont-archer">&#xe606;</span>软件</span>
+    
+        <span class="sidebar-tag-name" data-tags="命令"><span class="iconfont-archer">&#xe606;</span>命令</span>
+    
+        <span class="sidebar-tag-name" data-tags="Shell"><span class="iconfont-archer">&#xe606;</span>Shell</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
