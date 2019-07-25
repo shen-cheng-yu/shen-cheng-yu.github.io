@@ -359,6 +359,47 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href="/2019/07/14/TCP与UDP 协议/">
+            
+                <span>TCP/UDP 协议</span>
+        </a>
+        <div class="abstract-content">
+            TCPTCP 首部格式如下：TCP报头中的源端口号和目的端口号同IP数据报中的源IP与目的IP唯一确定一条TCP连接。
+确认号只有在ACK位置1时才有效。指明下一个期待收到的字节序号，表明该序号之前的所有数据已经正确无误的收到。
+数据偏移数据部分在整个报文段中的偏移量，也就是首部长度。4位，以4字节为单位，最大60个字节，至少20个字节，同IP一样。
+保留位6位，一般是取0，留作以后用。
+标志位总共6个标志位，都很重要。
+
+URG。该位置1时，紧急指针才有效。
+ACK。该位置1时，确认号ack才有效。
+PSH。该位置1时，说明接收方应该立刻将该报文交付给应用程序（应用层），而不是留在缓冲...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/14</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="网络协议">网络协议</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="网络">网络</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="TCP/IP">TCP/IP</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href="/2019/07/14/IP与ICMP 协议/">
             
                 <span>IP/ICMP 协议</span>
@@ -661,36 +702,6 @@ TortoiseSVN使用方法
         <a class="post-tag" href="javascript:void(0);" data-tags="电脑">电脑</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags="smart">smart</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/07/06/FTP文件传输协议/">
-            
-                <span>FTP文件传输协议</span>
-        </a>
-        <div class="abstract-content">
-            FTP（File Transfer Protocol）是TCP/IP网络上两台计算机传送文件的协议，属于应用层。FTP客户机可以给服务器发出命令来下载文件，上载文件，创建或改变服务器上的目录。相比于HTTP，FTP协议要复杂得多。复杂的原因，是因为FTP协议要用到两个TCP连接，一个是命令链路，用来在FTP客户端与服务器之间传递命令，服务器使用21号端口；另一个是数据链路，用来上传或下载数据，服务器使用端口号20。FTP是基于TCP协议的，因此iptables防火墙设置中只需要放开指定端口（21 + PASV端口范围）的TCP协议即可。
-FTP的两种工作模式：==PORT（主动）方式==...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/06</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="网络协议">网络协议</a>
     
 </div>
             
@@ -2363,9 +2374,356 @@ FTP的两种工作模式：==PORT（主动）方式==...
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 78
+        Total : 79
         </div>
         <!-- search  -->
         
@@ -2376,8 +2734,27 @@ FTP的两种工作模式：==PORT（主动）方式==...
     
     
     
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/static/">static</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/25</span><a class="archive-post-title" href="/2019/07/25/test/">test</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -2401,7 +2778,7 @@ FTP的两种工作模式：==PORT（主动）方式==...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/Markdown/">Markdown</a>
+            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/网络协议/">网络协议</a>
         </li>
     
     
@@ -2411,7 +2788,7 @@ FTP的两种工作模式：==PORT（主动）方式==...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/网络协议/">网络协议</a>
+            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/Markdown/">Markdown</a>
         </li>
     
     
@@ -2466,12 +2843,12 @@ FTP的两种工作模式：==PORT（主动）方式==...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/限流处理/">限流</a>
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/问题集锦/">公司问题集锦</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/问题集锦/">公司问题集锦</a>
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/限流处理/">限流</a>
         </li>
     
     
@@ -2493,29 +2870,6 @@ FTP的两种工作模式：==PORT（主动）方式==...
         <li class="archive-post-item">
             <span class="archive-post-date">07/10</span><a class="archive-post-title" href="/2019/07/10/XShell连接Ubuntu/">XShell连接Ubuntu</a>
         </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/static/">static</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
     
     
         <li class="archive-post-item">
@@ -2553,18 +2907,59 @@ FTP的两种工作模式：==PORT（主动）方式==...
         </li>
     
     
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/专业英语/">专业英语</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
         <li class="archive-post-item">
             <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/Algorithm头文件里的算法/">Algorithm头文件里的算法</a>
         </li>
     
     
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
         <li class="archive-post-item">
-            <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/Map/">Map</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Queue/">Queue</a>
         </li>
     
     
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
         <li class="archive-post-item">
-            <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/Set/">Set</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/CC++预处理指令/">C/C++预处理指令</a>
         </li>
     
     
@@ -2579,35 +2974,6 @@ FTP的两种工作模式：==PORT（主动）方式==...
     
         <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/05/04/Git Github Hexo/">Git Github Hexo</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/22</span><a class="archive-post-title" href="/2019/06/22/myqr生成二维码/">MyQR生成二维码</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/20</span><a class="archive-post-title" href="/2019/06/20/三门问题/">三门问题</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/20</span><a class="archive-post-title" href="/2019/06/20/char 到 char[]的转换问题/">char* 到 char[]的转换问题</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/20</span><a class="archive-post-title" href="/2019/06/20/switch...case结构中变量的作用域/">switch...case结构中变量的作用域</a>
         </li>
     
     
@@ -2635,17 +3001,172 @@ FTP的两种工作模式：==PORT（主动）方式==...
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/Map/">Map</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/Set/">Set</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/22</span><a class="archive-post-title" href="/2019/06/22/myqr生成二维码/">MyQR生成二维码</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/计算机组成原理/">计算机组成原理</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span><a class="archive-post-title" href="/2019/06/20/三门问题/">三门问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span><a class="archive-post-title" href="/2019/06/20/char 到 char[]的转换问题/">char* 到 char[]的转换问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span><a class="archive-post-title" href="/2019/06/20/switch...case结构中变量的作用域/">switch...case结构中变量的作用域</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/设备部署/">设备部署</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">06/17</span><a class="archive-post-title" href="/2019/06/17/python生成词云/">Python生成词云</a>
         </li>
     
     
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/文件后缀相关/">文件后缀相关</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/11/进程管理/">进程管理</a>
         </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/头文件与库文件相关/">头文件与库文件相关</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/文件路径的写法/">文件路径的写法</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/Chrome离线插件安装/">Chrome离线插件安装</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/TortoiseSVN/">TortoiseSVN</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/文件后缀相关/">文件后缀相关</a>
         </li>
     
     
@@ -2680,116 +3201,7 @@ FTP的两种工作模式：==PORT（主动）方式==...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/C++学习笔记——类和对象提高/">C++学习笔记—类和对象提高</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——从C到C++/">C++学习笔记—从C到C++</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">C++学习笔记—多态和虚函数</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——类和对象基础/">C++学习笔记—类和对象基础</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">06/05</span><a class="archive-post-title" href="/2019/06/05/C++学习笔记——继承和派生/">C++学习笔记—继承和派生</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/04</span><a class="archive-post-title" href="/2019/06/04/古诗词学习笔记/">古诗词学习笔记</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Deque/">Deque</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/pip模块/">pip模块</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/smart/">Smart</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/dpdk/">DPDK</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/String/">String</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/专业英语/">专业英语</a>
         </li>
     
     
@@ -2812,54 +3224,12 @@ FTP的两种工作模式：==PORT（主动）方式==...
     
         </ul>
     
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/入职软件安装/">入职软件安装</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/文件路径的写法/">文件路径的写法</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/设备部署/">设备部署</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/C++学习笔记——类和对象提高/">C++学习笔记—类和对象提高</a>
         </li>
     
     
@@ -2873,21 +3243,7 @@ FTP的两种工作模式：==PORT（主动）方式==...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/11/进程管理/">进程管理</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/CC++预处理指令/">C/C++预处理指令</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/10/视频核心网关设备调试/">视频核心网关设备调试</a>
         </li>
     
     
@@ -2915,7 +3271,77 @@ FTP的两种工作模式：==PORT（主动）方式==...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/计算机组成原理/">计算机组成原理</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Deque/">Deque</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/smart/">Smart</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/入职软件安装/">入职软件安装</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/String/">String</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——从C到C++/">C++学习笔记—从C到C++</a>
         </li>
     
     
@@ -2957,7 +3383,31 @@ FTP的两种工作模式：==PORT（主动）方式==...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/TortoiseSVN/">TortoiseSVN</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/dpdk/">DPDK</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">C++学习笔记—多态和虚函数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——类和对象基础/">C++学习笔记—类和对象基础</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/04</span><a class="archive-post-title" href="/2019/06/04/古诗词学习笔记/">古诗词学习笔记</a>
         </li>
     
     
@@ -2985,49 +3435,7 @@ FTP的两种工作模式：==PORT（主动）方式==...
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/10/视频核心网关设备调试/">视频核心网关设备调试</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Queue/">Queue</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/Chrome离线插件安装/">Chrome离线插件安装</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/pip模块/">pip模块</a>
         </li>
     
     </ul></div>
