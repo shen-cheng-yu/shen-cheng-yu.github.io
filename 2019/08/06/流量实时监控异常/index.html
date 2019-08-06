@@ -22,7 +22,7 @@
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>shell编程进阶 · 云想衣裳花想容，春风拂槛露华浓</title>
+    <title>流量实时监控异常 · 云想衣裳花想容，春风拂槛露华浓</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/">xtncsg&#39;s Studio.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">shell编程进阶</a>
+                <a href="#" class="post-name">流量实时监控异常</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            shell编程进阶
+            流量实时监控异常
             <!-- 404 -->
             
         </h1>
@@ -266,22 +266,24 @@ height:50vh;
                 
                     <div class="post-intro-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="Linux">Linux</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="网页配置">网页配置</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="命令">命令</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="网络">网络</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="Shell">Shell</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="设备调试">设备调试</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="shell">shell</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">2.7k</span>阅读时长: <span class="post-count reading-time">10 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">3.2k</span>阅读时长: <span class="post-count reading-time">12 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/07/28</span>
+                    <span class="post-intro-time">2019/08/06</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -405,157 +407,71 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="括号"><a href="#括号" class="headerlink" title="括号"></a>括号</h1><p><code>$((exp))</code>用于计算整数表达式和<code>$[]</code>的效果是一样的。<code>$((25+2))</code>结果是27。</p>
-<p>大括号有一种特殊用法，<code>{1..10}</code>相当于从1到10，<code>touch {a..d}.txt</code> 结果为<code>a.txt b.txt c.txt d.txt</code>。大括号中没有空格。</p>
-<h1 id="命令组"><a href="#命令组" class="headerlink" title="命令组"></a>命令组</h1><p><code>( echo &quot;astr !=bstr&quot;;echo &quot;hello&quot; )</code>小括号里可以放好几个命令，彼此之间用分号隔开。括号中的命令将会新开一个子shell顺序执行，所以括号中的变量不能够被脚本余下的部分使用  。</p>
-<p><code>{ cmd1;cmd2;cmd3;}</code> 在当前shell顺序执行命令<code>cmd1,cmd2,cmd3</code>, 各命令之间用分号隔开，最后一个命令也必须带分号。</p>
-<h1 id="dirname"><a href="#dirname" class="headerlink" title="dirname"></a>dirname</h1><p>dirname命令可以取给定路径的目录部分。这个命令很一般用在shell脚本中，用于取得脚本文件所在目录，然后将当前目录切换过去。Linux下还有一个命令是basename，它与dirname相反，是取得文件名称部分。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@SmartSPG6300 build]<span class="comment"># dirname quick.sh</span></span><br><span class="line">.    <span class="comment">#脚本文件的目录部分是当前目录，即build目录下</span></span><br><span class="line"></span><br><span class="line">[root@SmartSPG6300 build]<span class="comment"># dirname /opt/iot/SmartSecuri-IoT/trunk</span></span><br><span class="line">/opt/iot/SmartSecuri-IoT   <span class="comment">#取trunk目录所在的目录，即它的上一级目录</span></span><br><span class="line"></span><br><span class="line">[root@SmartSPG6300 trunk]<span class="comment"># dirname ./gateway/build/quick.sh</span></span><br><span class="line">./gateway/build</span><br><span class="line"></span><br><span class="line">[root@SmartSPG6300 trunk]<span class="comment"># cd $(dirname ./gateway/build/quick.sh)</span></span><br><span class="line">[root@SmartSPG6300 build]<span class="comment"># </span></span><br><span class="line"></span><br><span class="line">[root@SmartSPG6300 build]<span class="comment"># basename quick.sh   #取文件名称部分</span></span><br><span class="line">quick.sh</span><br></pre></td></tr></table></figure></p>
-<p><a href="https://blog.csdn.net/Lovegengxin/article/details/81012940" target="_blank" rel="noopener">linux下dirname $0获取当前脚本执行的路径名</a></p>
-<h1 id="引号"><a href="#引号" class="headerlink" title="引号"></a>引号</h1><p>单引号屏蔽各种特殊字符。<br>双引号支持内部字符有特殊含义,比如换行，变量，传递的参数等。<br>反引号中字符串作为shell命令执行，并返回执行结果。<code>$()等价于`</code>  `<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/bash</span></span><br><span class="line">a=1</span><br><span class="line"><span class="built_in">echo</span> <span class="string">'$a % \n'</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"<span class="variable">$a</span> \n \/ \\"</span></span><br><span class="line"><span class="built_in">echo</span> -e  <span class="string">"<span class="variable">$a</span> \n \/ \\"</span></span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$a</span> % \n</span><br><span class="line">1 \n \/ \</span><br><span class="line">1 </span><br><span class="line"> \/ \</span><br></pre></td></tr></table></figure>
-<p>linux如果echo要让转义字符发生作用，就要使用-e选项,且转义字符要使用双引号。</p>
-<h1 id="echo-e"><a href="#echo-e" class="headerlink" title="echo -e"></a>echo -e</h1><p><code>-e</code>激活转义字符。使用<code>-e</code>选项时，若字符串中出现以下字符，则特别加以处理，而不会将它当成一般文字输出：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">字符</th>
-<th style="text-align:center">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">\a</td>
-<td style="text-align:center">发出警告声</td>
-</tr>
-<tr>
-<td style="text-align:center">\b</td>
-<td style="text-align:center">删除前一个字符</td>
-</tr>
-<tr>
-<td style="text-align:center">\c</td>
-<td style="text-align:center">最后不加上换行符号</td>
-</tr>
-<tr>
-<td style="text-align:center">\f</td>
-<td style="text-align:center">换行但光标仍旧停留在原来的位置</td>
-</tr>
-<tr>
-<td style="text-align:center">\n</td>
-<td style="text-align:center">换行且光标移至行首</td>
-</tr>
-<tr>
-<td style="text-align:center">\r</td>
-<td style="text-align:center">光标移至行首，但不换行</td>
-</tr>
-<tr>
-<td style="text-align:center">\t</td>
-<td style="text-align:center">插入tab</td>
-</tr>
-<tr>
-<td style="text-align:center">\v</td>
-<td style="text-align:center">与\f相同</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>\\</code></td>
-<td style="text-align:center"><code>插入\字符</code></td>
-</tr>
-<tr>
-<td style="text-align:center">\nnn</td>
-<td style="text-align:center">插入nnn（八进制）所代表的ASCII字符</td>
-</tr>
-</tbody>
-</table>
-<p><a href="https://www.cnblogs.com/karl-python/p/9261920.html" target="_blank" rel="noopener">echo -e 命令详解</a></p>
-<h1 id="export"><a href="#export" class="headerlink" title="export"></a>export</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1.sh</span></span><br><span class="line"><span class="meta">#! /bin/bash</span></span><br><span class="line">var1=<span class="string">"hello"</span></span><br><span class="line">var2=<span class="string">"world"</span></span><br><span class="line"><span class="built_in">export</span> var2</span><br><span class="line">./2.sh   <span class="comment">#调用的时候要加路径</span></span><br><span class="line"><span class="built_in">echo</span> var2</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#2.sh</span></span><br><span class="line"><span class="built_in">echo</span> 调用开始</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$var1</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$var22</span></span><br><span class="line"><span class="built_in">echo</span> 调用结束</span><br><span class="line">var2=<span class="string">"wawawa"</span></span><br></pre></td></tr></table></figure>
-<p>程序输出：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">调用开始</span><br><span class="line"></span><br><span class="line">world</span><br><span class="line">调用结束</span><br><span class="line">world</span><br></pre></td></tr></table></figure></p>
-<p>脚本中export的变量在启动其他脚本的时候会复制一份传入其他脚本。其他脚本中对此变量的修改并不会在离开脚本后生效。 </p>
-<p>使用场景：</p>
-<blockquote>
-<p>在脚本A中定义了一个变量V赋值为1，export了变量V，在脚本A中启动脚本B，在脚本B中变量V的值就是1，如果在脚本B中修改了V的值为2，那么脚本B结束后，脚本A中的V的值依然是1。</p>
-</blockquote>
-<blockquote>
-<p>脚本A中export的变量在启动其他脚本的时候会复制一份传入其他脚本，传入的值是调用其他脚本&gt;的时的值。并不是export时的值。 在脚本A中定义了一个变量V赋值为1，export了变量V，然后修改V为2，在脚本A中启动脚本B，在脚本B中变量V的值就是2。</p>
-</blockquote>
-<p><code>1.sh</code>中只有<code>var2</code>得到了export，所以在<code>2.sh</code>中输出<code>var1</code>的值，将会得不到任何值。</p>
-<p><a href="https://blog.csdn.net/xiaoyink/article/details/83663151" target="_blank" rel="noopener">shell中的export</a></p>
-<h1 id="连续执行多条命令"><a href="#连续执行多条命令" class="headerlink" title="连续执行多条命令"></a>连续执行多条命令</h1><p><code>&amp;&amp;</code>和<code>||</code>这两个符号连接命令时，意思是只有当前一个命令执行成功或者执行失败时，后面一个命令才会继续执行。</p>
-<p>当使用<code>;</code>来连接时，则不论前面的命令执行是否成功，后面的命令都会继续执行。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[root@SmartSPG6300 src]<span class="comment"># echo 1 || echo 2 || echo 3 &amp;&amp; echo 4 </span></span><br><span class="line">1</span><br><span class="line">4</span><br><span class="line"></span><br><span class="line">[root@SmartSPG6300 src]<span class="comment"># echo 1 &amp;&amp; echoo 2 &amp;&amp; echo 3 || echo 4</span></span><br><span class="line">1</span><br><span class="line">bash: echoo: 未找到命令...</span><br><span class="line">相似命令是： <span class="string">'echo'</span></span><br><span class="line">4</span><br><span class="line"></span><br><span class="line">[root@SmartSPG6300 src]<span class="comment"># echo 1 &amp;&amp; echoo 2 &amp;&amp; echo 3 ; echo 4</span></span><br><span class="line">1</span><br><span class="line">bash: echoo: 未找到命令...</span><br><span class="line">相似命令是： <span class="string">'echo'</span></span><br><span class="line">4</span><br><span class="line"></span><br><span class="line">[root@SmartSPG6300 src]<span class="comment"># echoo 1 || echo 2 || echo 3 || echo 4 &amp;&amp; echoo 5 &amp;&amp; echo 6 ; echo 7</span></span><br><span class="line">bash: echoo: 未找到命令...</span><br><span class="line">相似命令是： <span class="string">'echo'</span></span><br><span class="line">2</span><br><span class="line">bash: echoo: 未找到命令...</span><br><span class="line">相似命令是： <span class="string">'echo'</span></span><br><span class="line">7</span><br></pre></td></tr></table></figure></p>
-<p>这种成功或者失败的关系是从左向右顺序传递的，遇到不执行的则跳过。<br>以最后一条命令为例，<code>echoo 1</code>执行失败， 所以<code>echo 2</code>执行。因为<code>echo 2</code>执行成功，所以<code>echo 3</code>不执行。 因为<code>echo 2</code>执行成功，所以<code>echo 4</code>不执行。 因为<code>echo 2</code>执行成功，所以<code>echoo 5</code>执行。因为<code>echoo 5</code>执行失败，所以<code>echo 6</code>不执行。 最后<code>echo 7</code>执行了。<br><a href="https://www.cnblogs.com/frostbelt/p/5992035.html" target="_blank" rel="noopener">Linux连续执行多条命令</a></p>
-<h1 id="指定样式输出文字"><a href="#指定样式输出文字" class="headerlink" title="指定样式输出文字"></a>指定样式输出文字</h1><p>格式：<code>echo -e &quot;\033[背景颜色;字体颜色;显示效果m待输出的字符串\033[0m&quot;</code><br>其中，<code>\033[</code>是命令的开头部分，中间可以填写的字段包括背景颜色，字体颜色，显示效果这三个参数以及待输出的字符串，<code>\033[0m]</code>是命令的结束部分（用以将颜色置回）。</p>
-<p>这三个参数的可选值各不相同。背景颜色取值在<code>40-47</code>之间，字体颜色取值在<code>30-37</code>之间。</p>
-<p>显示效果的取值如下：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">值</th>
-<th style="text-align:center">效果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">0</td>
-<td style="text-align:center">无效果</td>
-</tr>
-<tr>
-<td style="text-align:center">1</td>
-<td style="text-align:center">加深高亮显示</td>
-</tr>
-<tr>
-<td style="text-align:center">2</td>
-<td style="text-align:center">减弱低亮显示</td>
-</tr>
-<tr>
-<td style="text-align:center">4</td>
-<td style="text-align:center">下划线</td>
-</tr>
-<tr>
-<td style="text-align:center">5</td>
-<td style="text-align:center">闪烁</td>
-</tr>
-<tr>
-<td style="text-align:center">7</td>
-<td style="text-align:center">反显（替换背景色和字体颜色）</td>
-</tr>
-<tr>
-<td style="text-align:center">8</td>
-<td style="text-align:center">消隐（不在屏幕上显示输出）</td>
-</tr>
-</tbody>
-</table>
-<p><a href="https://blog.csdn.net/u010964076/article/details/79917975" target="_blank" rel="noopener">命令行特殊显示效果\033和发声音\007</a><br><a href="https://www.cnblogs.com/demonxian3/p/8963807.html" target="_blank" rel="noopener">关于linux特殊含义的转义符\033</a></p>
-<h1 id="发出声音-007"><a href="#发出声音-007" class="headerlink" title="发出声音\007"></a>发出声音\007</h1><p><code>echo -e &quot;\007待输出的字符串\033[0m]&quot;</code>将会发出一声响声。</p>
-<h1 id="cat多行导入数据"><a href="#cat多行导入数据" class="headerlink" title="cat多行导入数据"></a>cat多行导入数据</h1><p>这句话是说，创建一个文件，并向文件中输入内容。如果文件已经存在，则新输入的内容会覆盖掉原有的内容。<br>如果是<code>cat&gt;file</code>，则按<kbd>Ctrl</kbd>+<kbd>C</kbd>结束输入。</p>
-<p>如果是<code>cat&gt;file&lt;&lt;eof</code>，则<strong>必须</strong>输入<code>eof</code>才会正常的结束输入。    此时如果按<kbd>Ctrl</kbd>+<kbd>C</kbd>，也会结束输入，但是并不会创建文件或者覆盖原有的文件内容。</p>
-<p>输入结束符<code>eof</code>可以自己任意填写。<br><a href="https://www.cnblogs.com/zhongjianlong/archive/2013/09/17/linux.html" target="_blank" rel="noopener">linux cat命令的&lt;&lt;EOF</a></p>
-<p>如果是<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat&lt;&lt;eof</span><br><span class="line">123</span><br><span class="line">456</span><br><span class="line">789</span><br><span class="line">eof</span><br></pre></td></tr></table></figure></p>
-<p>这样没有写文件名的情况，好像就是把数据写入到stdout中（打印到屏幕上）</p>
-<blockquote>
-<p>一个&gt;符号是覆盖的意思，两个&gt;就是追加的意思。cat&gt;&gt;abc.c&lt;&lt;eof即是向文件中追加内容，原有的内容并不会被覆盖掉。</p>
-</blockquote>
-<h1 id="创建临时文件"><a href="#创建临时文件" class="headerlink" title="创建临时文件"></a>创建临时文件</h1><h2 id="利用脚本执行时的进程号"><a href="#利用脚本执行时的进程号" class="headerlink" title="利用脚本执行时的进程号"></a>利用脚本执行时的进程号</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tmp=<span class="string">"./tmp_$$"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"hello world"</span>&gt;<span class="variable">$tmp</span></span><br></pre></td></tr></table></figure>
-<h2 id="利用-RANDOM变量产生伪随机数"><a href="#利用-RANDOM变量产生伪随机数" class="headerlink" title="利用$RANDOM变量产生伪随机数"></a>利用$RANDOM变量产生伪随机数</h2><p>$RANDOM 变量，返回（0-32767）之间的随机数，它产生的是伪随机数，所以不应该用于加密的密码。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tmp=<span class="string">"./tmp_<span class="variable">$RANDOM</span>"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"hello world"</span>&gt;<span class="variable">$tmp</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="利用mktemp命令"><a href="#利用mktemp命令" class="headerlink" title="利用mktemp命令"></a>利用mktemp命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">file1=$(mktemp)</span><br><span class="line"></span><br><span class="line">file2=`mktemp -d`</span><br><span class="line">file3=$(mktemp -u)</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$file1</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$file2</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$file3</span></span><br></pre></td></tr></table></figure>
-<p><code>mktemp</code>命令创建的临时文件或者临时目录是放在<code>/tmp</code>目录下的。<br><code>file1</code>创建了一个临时文件。<br><code>file2</code>创建了一个临时目录。<br><code>file3</code>则仅仅是将一个临时的文件名保存在变量<code>file3</code>中，但是并没有创建出实际的变量。</p>
-<p><a href="https://www.cnblogs.com/chengjian-physique/p/7913117.html" target="_blank" rel="noopener">linux之创建临时文件的方法</a><br><a href="https://blog.csdn.net/fcku_88/article/details/88635468" target="_blank" rel="noopener">Linux 创建临时文件</a></p>
-<h1 id="caller-获取堆栈信息"><a href="#caller-获取堆栈信息" class="headerlink" title="caller 获取堆栈信息"></a>caller 获取堆栈信息</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> test1()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"test1 called"</span></span><br><span class="line">    <span class="built_in">caller</span></span><br><span class="line">    <span class="built_in">caller</span> 0</span><br><span class="line">    <span class="built_in">caller</span> 1</span><br><span class="line">    <span class="built_in">caller</span> 2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> test2()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"test2 called"</span></span><br><span class="line">    test1  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> test3()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"test3 called"</span></span><br><span class="line">    test2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test3</span><br></pre></td></tr></table></figure>
-<p>在某个函数中使用caller，则将调用该函数的行号（在哪一行产生了对该函数的调用），调用该函数的程序名（哪个函数对该函数进行了调用），调用函数的文件名（哪个文件里面产生了对该函数的调用）输出到屏幕上。</p>
-<p>该命令不带参数的话，就只返回行号和文件名。</p>
-<p>带有参数的话，就返回全部信息。<code>caller 0</code>和<code>caller</code>效果是一样的。上例中的<code>caller 0</code>返回调用<code>test1</code>的函数的信息，<code>caller 1</code>就返回调用<code>test2</code>的函数的信息，<code>caller 2</code>返回调用<code>test3</code>的函数信息。注意，这里的<code>test3</code>是由<code>main</code>函数调用的。</p>
-<p>所以程序输出如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#caller.sh</span></span><br><span class="line">test3 called</span><br><span class="line">test2 called</span><br><span class="line">test1 called</span><br><span class="line">15 ./caller.sh</span><br><span class="line">15 test2 ./caller.sh</span><br><span class="line">21 test3 ./caller.sh</span><br><span class="line">24 main ./caller.sh</span><br></pre></td></tr></table></figure></p>
-<p><a href="https://blog.csdn.net/iEearth/article/details/52625636" target="_blank" rel="noopener">【Bash百宝箱】shell内建命令之builtin、command、caller</a></p>
-<h1 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h1><p>awk是把文件逐行的读入，以空格为默认分隔符将每行切片，切开的部分再进行各种分析处理。<br>基本格式： <code>awk &#39;{pattern  action}&#39; {filenames}</code><br>其中 pattern 表示 AWK 在数据中查找的内容，而 action 是在找到匹配内容时所执行的一系列命令。pattern就是要表示的正则表达式，用斜杠括起来。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以上文中的caller.sh文件为例</span></span><br><span class="line">[root@SmartSPG6300 xtncsg]<span class="comment"># awk '/function/ &#123;print $2&#125;' ./caller.sh</span></span><br><span class="line">test1()</span><br><span class="line">test2()</span><br><span class="line">test3()</span><br></pre></td></tr></table></figure>
-<p><code>pattern</code>是<code>/function/</code>进行正则表达式匹配，匹配到了就执行<code>{print $2}</code>这个<code>action</code>，即打印出每一行第二列的元素。默认是对每一行以空格进行分隔。最后写上文件名。</p>
-<p>以文件<code>awk</code>为例：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">张飞 蜀 188</span><br><span class="line">曹操 魏 195</span><br><span class="line">刘备 蜀 122</span><br><span class="line">太史慈 吴 78</span><br><span class="line">吕布 群 44555</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@SmartSPG6300 xtncsg]<span class="comment"># awk '&#123;if(NR==4) print $2&#125;' ./awk</span></span><br><span class="line">吴</span><br><span class="line"></span><br><span class="line">[root@SmartSPG6300 xtncsg]<span class="comment"># awk '&#123;if(NR&gt;1 &amp;&amp; NR&lt;4) print $2&#125;' ./awk</span></span><br><span class="line">魏</span><br><span class="line">蜀</span><br></pre></td></tr></table></figure>
-<p>输出某一行中的某一列，其中NR用于定位行，$用于定位列，其中<code>$0</code>表示输出zheng<br><a href="https://ask.csdn.net/questions/675239" target="_blank" rel="noopener">awk 怎么输出 某一行某一列的内容 用一个管道</a><br><a href="https://www.cnblogs.com/ftl1012/p/9250541.html" target="_blank" rel="noopener">Linux awk命令详解</a></p>
-<h1 id="sleep"><a href="#sleep" class="headerlink" title="sleep"></a>sleep</h1><p><code>sleep 10</code>休眠时间，单位为秒</p>
-<h1 id="exit-1"><a href="#exit-1" class="headerlink" title="exit -1"></a>exit -1</h1><p>shell编程里，<code>exit</code>用于退出程序（退出整个shell脚本文件）。<br>退出码应该写在<code>0-255</code>的范围内。</p>
-<p>shell应该是用8位数据来存储这个退出码，且这个退出码使用<code>unsigned int</code>来存储。<br>所以如果写<code>exit -1</code>，计算机中的数据都是用补码来存储。-1的补码是<code>11111111</code>。将这个数据用<code>unsigned int</code>来解析，得到的结果就是255。</p>
-<p>同理，如果<code>exit -109</code>，得到的返回码就是147，猜想验证通过。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="built_in">test</span>()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"hello world"</span></span><br><span class="line">    <span class="built_in">exit</span> -109</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">test</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"wawawa"</span>  <span class="comment">#下面的语句并不会执行</span></span><br><span class="line"><span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
-<p>执行完这个文件之后，在终端输入<code>echo $?</code>来获取脚本文件执行之后的返回码，即该文件中最后一条语句执行的状态返回码，得到是147。<br><a href="https://www.jb51.net/article/73377.htm" target="_blank" rel="noopener">exit(-1)或者return(-1)shell得到的退出码为什么是255</a></p>
+        <h1 id="打开流量实时监控网页"><a href="#打开流量实时监控网页" class="headerlink" title="打开流量实时监控网页"></a>打开流量实时监控网页</h1><p><code>https://192.168.2.166:8443/SPGProject</code>打开公司<strong>防泄密系统软件V1.0</strong>，现在的账号和密码分别是<code>spgadmin</code>和<code>19970627Shen</code>。</p>
+<p>这是当时在<code>https://192.168.2.166:8443/DRMInitProject/</code>公司的<strong>安全文档初始化系统</strong>里面（该网页的账号和密码都是<code>configAdmin</code>）设置的三个管理员账号之一（<code>spgadmin  admin  logadmin</code>）。如果防泄密系统软件的密码输错次数太多，相应的管理员账号就会被禁用。可以再次启用该账号或者删除掉重新建立一个新的账号。新建立的账号的密码是<code>111111</code>。</p>
+<p><img src="https://raw.githubusercontent.com/shen-cheng-yu/hexo_photos/master/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190729155919.png" alt="enter image description here"></p>
+<p><img src="https://raw.githubusercontent.com/shen-cheng-yu/hexo_photos/master/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190729155934.png" alt="enter image description here"></p>
+<p>打开防泄密系统软件里面的实时监控，就可以看到网关设备的接收流量与发送流量。当前没有流量经过，实时监控里面的数字是<code>0Mb/s</code>。网路传输的单位都是<code>b/s</code>，以位为单位。</p>
+<h1 id="流量监控的流程"><a href="#流量监控的流程" class="headerlink" title="流量监控的流程"></a>流量监控的流程</h1><p>设备连接打流机之后，开始打流。这时dpdk将经过设备的流量写入<code>tmp/smm/RX</code>和<code>/tmp/smm/TX</code>两个文件中。之后<code>/opt/iot/SmartSecuri-Platform/trunk/app/src/smm/scripts</code>目录下的<code>smm_get_sysstate.sh</code>脚本读取<code>RX</code>和<code>TX</code>文件中的流量数据，将其传输给java。文件中的数据单位是<code>b/s</code>，传输给java之后，那边将其转换为<code>Mb/s</code>，显示在网页上。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">cat /tmp/smm/RX;cat /tmp/smm/TX;cat /tmp/smm/CPU;cat /tmp/smm/MEM;</span><br></pre></td></tr></table></figure></p>
+<h1 id="连接打流机"><a href="#连接打流机" class="headerlink" title="连接打流机"></a>连接打流机</h1><p>测试那边有打流机两台，打流机发送数据包给网关设备，这样网关设备才有流量经过，实时监控才有流量波动。</p>
+<p>如果是主路模式，则有两根线连着（设备的eth0连接打流机的eth0，设备的eth1连接打流机的eth1）。这样子打流机上面显示的数据还要乘以2，才是实际的流量。</p>
+<p>如果是旁路模式，则只有一根线连接设备与打流机（我这里使用的是eth0），因为只有一根线，所以这时候就不必乘2了。</p>
+<p>打流机有两台，一台是电口，一台是光口。我的这台设备是两口（ETH0,ETH1）的电口设备。打流机的ETH0，ETH1两口和设备的两个口是一一对应连接的。如果设备不止两个口，则除了ETH0，ETH1之外的其他口，用网线两两连接起来。设备的管理口（MGT）用网线连接到集线器，这样设备应该就是和打流机在一个网段之内了吧。</p>
+<p>在pc的xhell上开两个连接页面，登录自己的设备和打流机（地址<code>192.168.2.39</code>，用户名<code>root</code>，密码<code>smartsecuri</code>）。</p>
+<h1 id="开始打流"><a href="#开始打流" class="headerlink" title="开始打流"></a>开始打流</h1><p>连接上打流机之后，执行<code>/opt/sjm400/test.sh</code>脚本开始打流，执行时后面需要跟一个参数，因为是两口，所以需要乘2才是真正的阈值。这时打流机显示的收发流量应该都是要小于这个阈值的。<code>test</code>脚本写明了设备和打流机接线的方式。</p>
+<p>脚本内容如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">pkill tcpreplay</span><br><span class="line">setsid tcpreplay -i eth0 -K -l 0 -M <span class="variable">$1</span> /opt/sjm4000/last_0.pcap &gt;/dev/null 2&gt;&amp;1 &amp;</span><br><span class="line">setsid tcpreplay -i eth1 -K -l 0 -M <span class="variable">$1</span> /opt/sjm4000/last_1.pcap &gt;/dev/null 2&gt;&amp;1 &amp;</span><br><span class="line">setsid tcpreplay -i eth0 -K -l 0 -M <span class="variable">$1</span> /opt/sjm4000/last_0.pcap &gt;/dev/null 2&gt;&amp;1 &amp;</span><br><span class="line">setsid tcpreplay -i eth1 -K -l 0 -M <span class="variable">$1</span> /opt/sjm4000/last_1.pcap &gt;/dev/null 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure></p>
+<p><code>sar  -n DEV 2</code>实时查看打流机收发的流量。</p>
+<p><code>pkill tcpreplay</code>结束打流。</p>
+<h1 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本"></a>查看版本</h1><p>用XShell连接上设备<code>192.168.2.166</code>，查看<strong>dpdk</strong>和<strong>cpu</strong>的版本。<br><code>cat /SPG/GLBconfig/version</code>查看 dpdk的版本包。<code>V1R3C05B007</code>我设备里目前的dpdk版本是<code>07</code>版本的。<br>使用命令<code>lscpu</code>查看cpu型号<code>型号名称：             Intel(R) Celeron(R) CPU  J1800  @ 2.41GHz</code>，我目前的CPU型号是<code>J1800</code>。</p>
+<p>这时需要更新版本包，以及版本包安装之后的一系列环境搭建，见相关文章。</p>
+<p>查看打流机的<code>cat /opt/sjm400/snedEquConfig.sh</code>文件。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#the number of ethers to send packets</span></span><br><span class="line">sendpacketethnum=2</span><br><span class="line"></span><br><span class="line"><span class="comment">#source eth to send packets </span></span><br><span class="line">srceth=(eth0 eth1)</span><br><span class="line"><span class="comment">#require to match srceth</span></span><br><span class="line"><span class="comment">#eg. src : eth0   dst: eth1  ; src : eth1   dst: eth0  ;</span></span><br><span class="line">dsteth=(eth1 eth0)</span><br></pre></td></tr></table></figure></p>
+<h1 id="打流分析"><a href="#打流分析" class="headerlink" title="打流分析"></a>打流分析</h1><p>打流机上的<code>rKb/s</code>是接收自设备的数据，<code>tKb/s</code>是发送到设备的数据。<br><img src="https://raw.githubusercontent.com/shen-cheng-yu/hexo_photos/master/%E5%8F%91%E5%8C%85%E6%9C%BA%E6%B5%81%E9%87%8F%E7%9A%84%E8%AF%BB%E5%8F%96.png" alt="enter image description here"><br>打流机的流量是对角线来读取的，可以看出打流机接收的流量比发送的流量要少。<br>但是在设备的流量图上，接收的流量和发送的流量大小不一定，有时候接收的多，有时候发送的多。</p>
+<p>一开始只有<code>tkb/s</code>，没有<code>rkb/s</code>，只有打流机发送出去的，没有打流机接收的流量。所以相应的，设备只有接收的，没有发送的流量。这时候，设备就是不能正常转发流量。</p>
+<p>这是因为设备的（设备）准入设置不对，将设备准入修改为<code>192.168.0.0/16</code>，流量图上面就正常显示出接收与发送的流量了。</p>
+<p>禅道上面的异常，流量波动的图形是三角形的样子。从0开始上升到一个非常大的值，然后又降低到0。</p>
+<p>当<code>test.sh</code>后面的参数较小时，设备的流量图显示正常，只显示一条线（接收与发送的数据相差无几，线条重合了）。当流量太大，超过了设备的规模，流量图上的接收流量就会比发送流量多，也就是说这时候的设备在转发流量的时候，发生了丢包的现象。</p>
+<p>比如<code>test.sh 300</code>的时候，阈值是600Mb/s。打流机上面显示的流量，换算过后是585Mb/s，低于阈值。乘2之后，是1170Mb/s，但是java界面显示的是1000Mb/s左右。这之间的差距值还是挺大的。</p>
+<h1 id="设备桥测试"><a href="#设备桥测试" class="headerlink" title="设备桥测试"></a>设备桥测试</h1><p>主路部署完之后，eth0和eth1就不能用了。但是它们还可以作为桥来使用。</p>
+<p>ETH0和ETH1这两个相邻口之间是一个桥。</p>
+<p>再找两台pc，pc1接eth0，pc2接eth1。用pc1去ping pc2，如果能Ping 通，就说明触发了流量。可以在网页上看看这个流量。</p>
+<p>如果能ping通的话，将dpdk重启一次。在试一试能不能ping通。</p>
+<p>dpdk重启，执行<code>pkill fwd; /SPG/bin/fwd/start_fwd.sh J1800_igb</code>先关闭再开启的意思。<br><code>cp</code>语句是将编译出来的可执行文件放到一个目录下面，然后开启dpdk的时候就执行这些可执行文件。</p>
+<p>ping不通，加入设备准入策略，可以单向ping通，但是流量图上没有显示出流量波动。</p>
+<h1 id="将RX和TX写死"><a href="#将RX和TX写死" class="headerlink" title="将RX和TX写死"></a>将<code>RX</code>和<code>TX</code>写死</h1><p><code>chmod a-w RX</code>关闭了文件的写入权限，但是随着打流的进行，文件中的内容仍然会发生变化。</p>
+<h1 id="切换旁路"><a href="#切换旁路" class="headerlink" title="切换旁路"></a>切换旁路</h1><p>将设备切换成旁路之后，尝试着再复现一次。<br>主路和旁路的ip可以一样，不一样更好，但是这两者不能和MGT口发生冲突。<br>旁路现在写的是4网段。<br>切换成旁路之后，需要重启服务器（网关设备）。</p>
+<p>这时<code>./test.sh 200</code>，阈值是400。打流机上显示的流量是390M，但是dpdk文件中和<code>java</code>界面显示的都是330M。今天的测试，流量图上显示的形状都是正常的，但是具体的数据又不太准确。</p>
+<h1 id="光口设备测试"><a href="#光口设备测试" class="headerlink" title="光口设备测试"></a>光口设备测试</h1><p>使用光口设备和光口打流机进行测试。<br>光口设备是4个进程，所以<code>test.sh</code>脚本后面跟着的参数乘以4才是真正的阈值。<br>光口打流机是6个口，所以打流机上面显示的流量乘以6才是写进<code>RX`</code>TX`文件里的数据。</p>
+<p>根据<code>test</code>里面写进的接线方式，这时候是发包机的<code>eth0</code>连接设备的<code>eth0</code>，发包机的<code>eth1</code>连接设备的<code>eth5</code>。此时设备的<code>eth1</code>至<code>eth4</code>两两串联。</p>
+<p>光口打流机的ip是<code>192.168.2.36</code>，光口设备的ip是<code>192.168.2.177</code>。光口设备的<code>SPGProject</code>的密码是<code>Aaaa1111</code>，满足了大写小写兼数字，且至少8位数。</p>
+<p><code>ps -ef | grep tcp</code>命令不知道是干什么的。</p>
+<p>测试那边测试光口设备的性能主要是看设备的最大接收流量是多少时会发生丢包现象。在<code>missed packets</code>参数里可以看到设备各个口的丢包数据。</p>
+<p>设备的额定流量是， <code>4000Mb/s</code>，所以<code>test</code>脚本后面最多能够输入1000。</p>
+<p>光口的每一个口的线都是一对出现的，发包机的这一对线是黄白两根颜色的，那么设备上的相应的一对线就应该是白黄的。发包机的<code>erh0  eth1</code>分别连接设备的<code>eth0  eth5</code>。设备上其他线两两串联的时候，也要注意颜色要是相反的。</p>
+<p>乘以6才是实际需要显示的流量，是因为测试了设备的6个口吧。而不是看连了几根线。</p>
+<p>光口打流机的<code>test.sh</code>内容如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setsid tcpreplay -i eth0 -K -l 0 -M <span class="variable">$1</span> /opt/sjm4000/last_0.pcap &gt;/dev/null 2&gt;&amp;1 &amp;</span><br><span class="line">setsid tcpreplay -i eth1 -K -l 0 -M <span class="variable">$1</span> /opt/sjm4000/last_1.pcap &gt;/dev/null 2&gt;&amp;1 &amp;</span><br><span class="line"><span class="comment">#setsid tcpreplay -i eth2 -K -l 0 -M $1 /opt/sjm4000/last_2.pcap &gt;/dev/null 2&gt;&amp;1 &amp;</span></span><br><span class="line"><span class="comment">#setsid tcpreplay -i eth3 -K -l 0 -M $1 /opt/sjm4000/last_3.pcap &gt;/dev/null 2&gt;&amp;1 &amp;</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="保存流量数据到文件中"><a href="#保存流量数据到文件中" class="headerlink" title="保存流量数据到文件中"></a>保存流量数据到文件中</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">cat /tmp/smm/RX&gt;&gt;c</span><br><span class="line">cat /tmp/smm/TX&gt;&gt;d</span><br></pre></td></tr></table></figure>
+<p>将文件中的值追加到一个文件中去，注意这里不要写成<code>$(cat /tmp/smm/RX)&gt;&gt;c</code>，括号里面的命令执行结果是一个数，括号会将这个数看成是一个命令执行一下。所以这时候会在文件中的每一个数后面加上一句<code>command not found</code>。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bash: 31510134393^M: <span class="built_in">command</span> not found</span><br><span class="line">bash: 31502283907^M: <span class="built_in">command</span> not found</span><br><span class="line">bash: 31500047510^M: <span class="built_in">command</span> not found</span><br><span class="line">bash: 31525502889^M: <span class="built_in">command</span> not found</span><br></pre></td></tr></table></figure></p>
+<p>这样写也会产生同样的问题：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var=$(cat /tmp/smm/TX)</span><br><span class="line">cat /tmp/smm/RX&gt;&gt;c</span><br><span class="line"><span class="variable">$var</span>&gt;&gt;d</span><br></pre></td></tr></table></figure></p>
+<p>在文件中追加一个新的数的时候，会自动换一行进行写入。每一行数字结尾处的<code>^M</code>就是换行符的意思。删除这个换行符的命令见下面的链接。<br><a href="https://www.cnblogs.com/czalinux/p/6668236.html" target="_blank" rel="noopener">shell脚本中出现^M</a></p>
+<h1 id="丢包"><a href="#丢包" class="headerlink" title="丢包"></a>丢包</h1><p><code>test.sh 5000</code>时发生丢包的现象<br><img src="https://raw.githubusercontent.com/shen-cheng-yu/hexo_photos/master/%E4%B8%A2%E5%8C%85%E7%8E%B0%E8%B1%A1.jpg" alt="enter image description here"></p>
+<h1 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h1><p>共出现过两次异常结果。<br>第一次是在gf那里，他在使用光口设备打流，我过去看看。他打开流量图，看到的就是异常。</p>
+<p>第二次，先停dpdk，再删文件，继续打流。dpdk停了之后，威胁识别界面显示服务器异常。打流机只有发送出去的流量，即设备上没有流量经过。文件删除了之后，打流的时候，目录下并没有新建出文件。</p>
+<p>打流的时候手动新建文件RX，写入2000，结果变成了15个2000，这是因为写完数据没有换行的话，由于换行符导致的。这时候，流量图上的接收流量为<code>9.2E16</code>。<br><img src="https://raw.githubusercontent.com/shen-cheng-yu/hexo_photos/master/%E6%96%87%E4%BB%B6%E5%BC%82%E5%B8%B8%E6%97%B6%E7%9A%84%E6%B5%81%E9%87%8F%E5%BC%82%E5%B8%B8.jpg" alt="enter image description here"></p>
+<p>停止打流的时候，新建文件TX，写入1800，文件内容没有发生变化，流量图上也没有产生发送的流量。</p>
+<p>停止打流，因为文件中有数据，所以流量图不变。删除文件，流量重新降低到0。<br>之后再开始打流的时候，虽然文件仍然有数据，但是流量图显示不出来了。还会出现<code>CPU和内存显示为NaN</code>的异常。停止打流的时候，文件中的数据慢慢降低，但下降的时候居然有时候还会上升一小段。</p>
+<p><font color="red">2019-08-05</font></p>
+<h1 id="测试情景记录"><a href="#测试情景记录" class="headerlink" title="测试情景记录"></a>测试情景记录</h1><ol>
+<li>等界面平稳（0）很长时间后，再开始打流</li>
+<li>界面打开，值为0的时候，突然开始打流。</li>
+<li>dpdk重启之后开始打流</li>
+<li>dpdk关闭的时候，打流</li>
+<li>删掉RX和TX文件的时候，再开始打流（DPDk停止，删除文件，再开始打流）</li>
+<li>不停流，继续换流量开始打流</li>
+<li>停流的时候，不等完全将至0，即开始新一轮的打流</li>
+<li>先打流，之后再打开网页</li>
+</ol>
+<h1 id="修改代码"><a href="#修改代码" class="headerlink" title="修改代码"></a>修改代码</h1><p>注意windows换行符在写文件时的影响。<br>如果cat不到文件会向java发送什么东西？？此时应该要发送0。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="keyword">if</span> [ ! -e /tmp/smm/RX ];<span class="keyword">then</span></span><br><span class="line">    touch /tmp/smm/RX</span><br><span class="line">    <span class="built_in">echo</span> 0 &gt;/tmp/smm/RX</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ ! -e /tmp/smm/TX ];<span class="keyword">then</span></span><br><span class="line">    touch /tmp/smm/TX</span><br><span class="line">    <span class="built_in">echo</span> 0 &gt;/tmp/smm/TX</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">cat /tmp/smm/RX;cat /tmp/smm/TX;cat /tmp/smm/CPU;cat /tmp/smm/MEM;</span><br></pre></td></tr></table></figure></p>
+<p>用<code>[]</code>来做条件判断时，注意条件要与左右括号之间有空格。<br>用<code>echo</code>向文件中写入数据时，数据左右也要保持有空格。<br><code>-e</code>代表所有类型的文件，<code>-f</code>代表普通类型的文件。</p>
 
     </article>
     <!-- license  -->
@@ -565,16 +481,16 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href="/2019/07/28/wireshark/" title="wireshark">
-                    <div class="nextTitle">wireshark</div>
+                <a href="/2019/08/06/编译机/" title="编译机">
+                    <div class="nextTitle">编译机</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2019/07/28/Linux文件权限/" title="Linux文件权限">
-                    <div class="prevTitle">Linux文件权限</div>
+                <a href="/2019/08/06/母盘部署/" title="母盘部署">
+                    <div class="prevTitle">母盘部署</div>
                 </a>
             
         </li>
@@ -700,7 +616,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#括号"><span class="toc-number">1.</span> <span class="toc-text">括号</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#命令组"><span class="toc-number">2.</span> <span class="toc-text">命令组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#dirname"><span class="toc-number">3.</span> <span class="toc-text">dirname</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#引号"><span class="toc-number">4.</span> <span class="toc-text">引号</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#echo-e"><span class="toc-number">5.</span> <span class="toc-text">echo -e</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#export"><span class="toc-number">6.</span> <span class="toc-text">export</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#连续执行多条命令"><span class="toc-number">7.</span> <span class="toc-text">连续执行多条命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#指定样式输出文字"><span class="toc-number">8.</span> <span class="toc-text">指定样式输出文字</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#发出声音-007"><span class="toc-number">9.</span> <span class="toc-text">发出声音\007</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat多行导入数据"><span class="toc-number">10.</span> <span class="toc-text">cat多行导入数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#创建临时文件"><span class="toc-number">11.</span> <span class="toc-text">创建临时文件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#利用脚本执行时的进程号"><span class="toc-number">11.1.</span> <span class="toc-text">利用脚本执行时的进程号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用-RANDOM变量产生伪随机数"><span class="toc-number">11.2.</span> <span class="toc-text">利用$RANDOM变量产生伪随机数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用mktemp命令"><span class="toc-number">11.3.</span> <span class="toc-text">利用mktemp命令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#caller-获取堆栈信息"><span class="toc-number">12.</span> <span class="toc-text">caller 获取堆栈信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#awk"><span class="toc-number">13.</span> <span class="toc-text">awk</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sleep"><span class="toc-number">14.</span> <span class="toc-text">sleep</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#exit-1"><span class="toc-number">15.</span> <span class="toc-text">exit -1</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#打开流量实时监控网页"><span class="toc-number">1.</span> <span class="toc-text">打开流量实时监控网页</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#流量监控的流程"><span class="toc-number">2.</span> <span class="toc-text">流量监控的流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#连接打流机"><span class="toc-number">3.</span> <span class="toc-text">连接打流机</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#开始打流"><span class="toc-number">4.</span> <span class="toc-text">开始打流</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#查看版本"><span class="toc-number">5.</span> <span class="toc-text">查看版本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#打流分析"><span class="toc-number">6.</span> <span class="toc-text">打流分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#设备桥测试"><span class="toc-number">7.</span> <span class="toc-text">设备桥测试</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将RX和TX写死"><span class="toc-number">8.</span> <span class="toc-text">将RX和TX写死</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#切换旁路"><span class="toc-number">9.</span> <span class="toc-text">切换旁路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#光口设备测试"><span class="toc-number">10.</span> <span class="toc-text">光口设备测试</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#保存流量数据到文件中"><span class="toc-number">11.</span> <span class="toc-text">保存流量数据到文件中</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#丢包"><span class="toc-number">12.</span> <span class="toc-text">丢包</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#测试结果"><span class="toc-number">13.</span> <span class="toc-text">测试结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#测试情景记录"><span class="toc-number">14.</span> <span class="toc-text">测试情景记录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#修改代码"><span class="toc-number">15.</span> <span class="toc-text">修改代码</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -2638,131 +2554,9 @@ top:50vh;
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 87
+        Total : 91
         </div>
         <!-- search  -->
         
@@ -2778,7 +2572,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/修改Archer主题的背景颜色/">修改Archer主题的背景颜色</a>
+            <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/DPDK内存管理/">DPDK内存管理</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/编译机/">编译机</a>
         </li>
     
     
@@ -2792,7 +2591,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/28/Shell编程进阶/">shell编程进阶</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/入职软件安装/">入职软件安装</a>
         </li>
     
     
@@ -2806,17 +2605,32 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/流量实时监控异常/">流量实时监控异常</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/母盘部署/">母盘部署</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/C语言文件操作/">C语言文件操作</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/wireshark/">wireshark</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/内存管理/">内存管理</a>
+            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/网络基础/">网络基础</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/网络基础/">网络基础</a>
+            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/内存管理/">内存管理</a>
         </li>
     
     
@@ -2831,11 +2645,6 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/Shell 编程进阶/">shell编程进阶</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/摄像头基础/">摄像头基础</a>
         </li>
     
@@ -2846,7 +2655,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/修改Archer主题的背景颜色/">修改Archer主题的背景颜色</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/npm/">npm</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/网络命令/">网络命令</a>
         </li>
     
     
@@ -2856,7 +2675,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/网络命令/">网络命令</a>
+            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/Markdown/">Markdown</a>
         </li>
     
     
@@ -2867,11 +2686,6 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/网络协议/">网络协议</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/Markdown/">Markdown</a>
         </li>
     
     
@@ -2926,12 +2740,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/限流处理/">限流</a>
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/问题集锦/">公司问题集锦</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/问题集锦/">公司问题集锦</a>
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/限流处理/">限流</a>
         </li>
     
     
@@ -3005,7 +2819,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/10/视频核心网关设备调试/">视频核心网关设备调试</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/TortoiseSVN/">TortoiseSVN</a>
         </li>
     
     
@@ -3019,7 +2833,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/CC++预处理指令/">C/C++预处理指令</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Deque/">Deque</a>
         </li>
     
     
@@ -3033,35 +2847,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/计算机组成原理/">计算机组成原理</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/smart/">Smart</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/记事本更改默认编码方式为UTF-8/">记事本更改默认编码方式为UTF-8</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/设备部署/">设备部署</a>
         </li>
     
     
@@ -3089,35 +2875,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/Set/">Set</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/Chrome离线插件安装/">Chrome离线插件安装</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/Map/">Map</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/Set/">Set</a>
         </li>
     
     
@@ -3156,7 +2919,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Queue/">Queue</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/Source Insight/">Source Insight</a>
         </li>
     
     
@@ -3185,6 +2948,11 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/记事本更改默认编码方式为UTF-8/">记事本更改默认编码方式为UTF-8</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/电脑硬件/">电脑硬件</a>
         </li>
     
@@ -3194,31 +2962,18 @@ top:50vh;
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/05/04/Git Github Hexo/">Git Github Hexo</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/程序运行时间/">程序运行时间</a>
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/HTML学习笔记/">HTML学习笔记</a>
+        </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/程序运行时间/">程序运行时间</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/C++学习笔记——类和对象提高/">C++学习笔记—类和对象提高</a>
         </li>
     
     
@@ -3237,77 +2992,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/dpdk/">DPDK</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">C++学习笔记—多态和虚函数</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/Source Insight/">Source Insight</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/C++学习笔记——类和对象提高/">C++学习笔记—类和对象提高</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/文件路径的写法/">文件路径的写法</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/05</span><a class="archive-post-title" href="/2019/06/05/C++学习笔记——继承和派生/">C++学习笔记—继承和派生</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/21/python词频统计/">Python词频统计</a>
         </li>
     
     
@@ -3330,82 +3015,12 @@ top:50vh;
     
         </ul>
     
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/HTML学习笔记/">HTML学习笔记</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
     <div class="archive-year"> Invalid date </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/设备部署/">设备部署</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/FTP文件传输协议/">FTP文件传输协议</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/11/进程管理/">进程管理</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Deque/">Deque</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/pip模块/">pip模块</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/05/04/Git Github Hexo/">Git Github Hexo</a>
         </li>
     
     
@@ -3433,7 +3048,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/TortoiseSVN/">TortoiseSVN</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/dpdk/">DPDK</a>
         </li>
     
     
@@ -3447,7 +3062,63 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/String/">String</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/FTP文件传输协议/">FTP文件传输协议</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——类和对象基础/">C++学习笔记—类和对象基础</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/11/进程管理/">进程管理</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/CC++基础/">C/C++基础</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Queue/">Queue</a>
         </li>
     
     
@@ -3475,7 +3146,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/CC++基础/">C/C++基础</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/String/">String</a>
         </li>
     
     
@@ -3489,12 +3160,105 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——类和对象基础/">C++学习笔记—类和对象基础</a>
+            <span class="archive-post-date">06/04</span><a class="archive-post-title" href="/2019/06/04/古诗词学习笔记/">古诗词学习笔记</a>
         </li>
     
     
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
         <li class="archive-post-item">
-            <span class="archive-post-date">06/04</span><a class="archive-post-title" href="/2019/06/04/古诗词学习笔记/">古诗词学习笔记</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/10/视频核心网关设备调试/">视频核心网关设备调试</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/28/Shell编程进阶/">shell编程进阶</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/计算机组成原理/">计算机组成原理</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/文件路径的写法/">文件路径的写法</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/pip模块/">pip模块</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/CC++预处理指令/">C/C++预处理指令</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/Chrome离线插件安装/">Chrome离线插件安装</a>
         </li>
     
     
@@ -3522,7 +3286,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/入职软件安装/">入职软件安装</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/smart/">Smart</a>
         </li>
     
     
@@ -3536,21 +3300,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">C++学习笔记—多态和虚函数</a>
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/05</span><a class="archive-post-title" href="/2019/06/05/C++学习笔记——继承和派生/">C++学习笔记—继承和派生</a>
+        </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/21/python词频统计/">Python词频统计</a>
+            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
         </li>
     
     </ul></div>
@@ -3653,6 +3413,8 @@ top:50vh;
         <span class="sidebar-tag-name" data-tags="文学"><span class="iconfont-archer">&#xe606;</span>文学</span>
     
         <span class="sidebar-tag-name" data-tags="文件"><span class="iconfont-archer">&#xe606;</span>文件</span>
+    
+        <span class="sidebar-tag-name" data-tags="shell"><span class="iconfont-archer">&#xe606;</span>shell</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
