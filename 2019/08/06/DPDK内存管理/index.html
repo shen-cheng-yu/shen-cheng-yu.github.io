@@ -268,11 +268,13 @@ height:50vh;
     
         <a class="post-tag" href="javascript:void(0);" data-tags="dpdk">dpdk</a>
     
+        <a class="post-tag" href="javascript:void(0);" data-tags="数据结构">数据结构</a>
+    
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">700</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1.1k</span>阅读时长: <span class="post-count reading-time">4 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -417,11 +419,24 @@ height:50vh;
 <p>注意：<code>mbuf</code>在内存中，<code>headroom</code>是低地址，<code>tailroom</code>是高地址。<br>这些操作已经由<code>rte_pktmbuf_adj()</code>实现，函数原型如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">rte_pktmbuf_adj</span><span class="params">(struct rte_mbuf *m, <span class="keyword">uint16_t</span> len)</span></span></span><br></pre></td></tr></table></figure></p>
 <p>可以通过以下一系列操作为IP报文封装二层头部：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">m-&gt;pkt.data -= <span class="number">14</span>;</span><br><span class="line"></span><br><span class="line">m-&gt;pkt.data_len += <span class="number">14</span>;</span><br><span class="line"></span><br><span class="line">m-&gt;pkt.pkt_len += <span class="number">14</span>;</span><br></pre></td></tr></table></figure></p>
 <p>这些操作由<code>rte_pktmbuf_prepend()</code>实现，函数原型如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">rte_pktmbuf_prepend</span><span class="params">(struct rte_mbuf *m, <span class="keyword">uint16_t</span> len)</span></span></span><br></pre></td></tr></table></figure></p>
-<p>如果需要在<code>tailroom</code>中加入N个字节数据，我们可以通过以下操作完成：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tail = m-&gt;pkt.data + m-&gt;pkt.data_len; <span class="comment">// tail记录tailroom首地址</span></span><br><span class="line"></span><br><span class="line">m-&gt;pkt.data_len += N;</span><br><span class="line"></span><br><span class="line">m-&gt;pkt.pkt_len += N;</span><br></pre></td></tr></table></figure></p>
-<p>这些操作由<code>rte_pktmbuf_append()</code>实现，函数原型如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">rte_pktmbuf_append</span><span class="params">(struct rte_mbuf *m, <span class="keyword">uint16_t</span> len)</span></span></span><br></pre></td></tr></table></figure></p>
-<p><code>librte_mbuf</code>还提供了<code>rte_pktmbuf_trim()</code>函数，用来移除mbuf中data数据域的最后N个字节，函数实现如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">m-&gt;pkt.data_len -= N;</span><br><span class="line"></span><br><span class="line">m-&gt;pkt.pkt_len -= N;</span><br></pre></td></tr></table></figure></p>
+<p><font color="red">2019-08-06</font></p>
+<h1 id="rte-mempool-create"><a href="#rte-mempool-create" class="headerlink" title="rte_mempool_create()"></a>rte_mempool_create()</h1><p>使用默认值创建<code>rte_mempool</code>：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pool = rte_mempool_create(</span><br><span class="line">				name,</span><br><span class="line">                DEFAULT_MEMPOOL_BUFFERS,   </span><br><span class="line">                DEFAULT_MBUF_SIZE,   </span><br><span class="line">                DEFAULT_MEMPOOL_CACHE_SIZE,  <span class="comment">//32</span></span><br><span class="line">                <span class="keyword">sizeof</span>(struct rte_pktmbuf_pool_private),</span><br><span class="line">                rte_pktmbuf_pool_init, <span class="literal">NULL</span>,</span><br><span class="line">                rte_pktmbuf_init, <span class="literal">NULL</span>,</span><br><span class="line">                <span class="number">0</span>,</span><br><span class="line">                <span class="number">0</span>);</span><br></pre></td></tr></table></figure></p>
+<p><code>DEFAULT_MEMPOOL_BUFFERS</code>值是<code>8192 * 32=256K个</code>，应该是指申请的<code>rte_mbuf</code>的个数。</p>
+<p><code>DEFAULT_MBUF_SIZE</code>值是<code>(4096 + sizeof(struct rte_mbuf) + 128)</code>，应该是指申请的<code>mbuf</code>的大小。128是默认的<code>headroom</code>大小，再加上<code>rte_mbuf</code>结构体大小，以及留作存放报文数据的<code>data</code>大小4096字节。</p>
+<p>使用自己的值创建<code>mempool</code>：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pool = rte_mempool_create(</span><br><span class="line">			   <span class="string">"mbuf_pool"</span>, NB_MBUF,</span><br><span class="line">               MBUF_SIZE, <span class="number">32</span>,</span><br><span class="line">               <span class="keyword">sizeof</span>(struct rte_pktmbuf_pool_private),</span><br><span class="line">               rte_pktmbuf_pool_init, <span class="literal">NULL</span>,</span><br><span class="line">               rte_pktmbuf_init, <span class="literal">NULL</span>,</span><br><span class="line">               rte_socket_id(), <span class="number">0</span>);</span><br></pre></td></tr></table></figure></p>
+<h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><p><code>rte_mbuf</code>数据结构如下;<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">rte_mbuf</span> &#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">rte_mempool</span> *<span class="title">pool</span>;</span> </span><br><span class="line">	<span class="keyword">void</span> *buf_addr;      </span><br><span class="line">	<span class="keyword">phys_addr_t</span> buf_physaddr; </span><br><span class="line">	<span class="keyword">uint16_t</span> buf_len;     </span><br><span class="line">    <span class="keyword">union</span> &#123;</span><br><span class="line">	           <span class="keyword">rte_atomic16_t</span> refcnt_atomic;   </span><br><span class="line">               <span class="keyword">uint16_t</span> refcnt;             </span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">uint8_t</span> type;     </span><br><span class="line">    <span class="keyword">uint8_t</span> reserved;       </span><br><span class="line">    <span class="keyword">uint16_t</span> ol_flags;        </span><br><span class="line">    <span class="keyword">union</span> &#123;</span><br><span class="line"></span><br><span class="line">		       <span class="class"><span class="keyword">struct</span> <span class="title">rte_ctrlmbuf</span> <span class="title">ctrl</span>;</span></span><br><span class="line">               <span class="class"><span class="keyword">struct</span> <span class="title">rte_pktmbuf</span> <span class="title">pkt</span>;</span></span><br><span class="line">   &#125;;</span><br><span class="line">&#125; __rte_cache_aligned;</span><br></pre></td></tr></table></figure></p>
+<p><code>rte_mbuf</code>有一个数据成员<code>pkt</code>，它的数据结构是：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">rte_pktmbuf</span> &#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">rte_mbuf</span> *<span class="title">next</span>;</span>  </span><br><span class="line">    <span class="keyword">void</span>* data;           </span><br><span class="line">    <span class="keyword">uint16_t</span> data_len;     </span><br><span class="line">    <span class="keyword">uint8_t</span> nb_segs;      </span><br><span class="line">    <span class="keyword">uint8_t</span> in_port;      </span><br><span class="line">    <span class="keyword">uint32_t</span> pkt_len;    </span><br><span class="line">    <span class="keyword">union</span> rte_vlan_macip vlan_macip;</span><br><span class="line">    <span class="keyword">union</span> &#123;</span><br><span class="line">	           <span class="keyword">uint32_t</span> rss;   </span><br><span class="line">               <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">	                       <span class="keyword">uint16_t</span> hash;</span><br><span class="line">                           <span class="keyword">uint16_t</span> id;</span><br><span class="line">               &#125; fdir;            </span><br><span class="line">    <span class="keyword">uint32_t</span> sched;   </span><br><span class="line">    &#125; hash;             </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h1 id="mbuf的分片"><a href="#mbuf的分片" class="headerlink" title="mbuf的分片"></a>mbuf的分片</h1><p><code>mbuf</code>在使用时可能会有多个<code>segments</code>，如下图：<br><img src="https://raw.githubusercontent.com/shen-cheng-yu/hexo_photos/master/%E4%B8%80%E4%B8%AA%E7%89%87%E6%AE%B5%E7%9A%84mbuf.webp" alt="enter image description here"></p>
+<p><img src="https://raw.githubusercontent.com/shen-cheng-yu/hexo_photos/master/%E4%B8%89%E4%B8%AA%E7%89%87%E6%AE%B5%E7%9A%84mbuf.webp" alt="enter image description here"></p>
+<p><a href="https://www.jianshu.com/p/94e96c426c4c" target="_blank" rel="noopener">DPDK编程指南（翻译）（六）</a></p>
+<h1 id="数据结构分析"><a href="#数据结构分析" class="headerlink" title="数据结构分析"></a>数据结构分析</h1><p><code>mbuf</code>有一个指针，指向分配它的内存池。<br><code>buf-addr</code>指向<code>mbuf</code>起始地址，即<code>headroom</code>的开始地址。<br><code>buf_len</code>表明了<code>mbuf</code>从<code>headroom</code>到<code>tailroom</code>之间的长度。<br><code>pkt</code>是一个<code>rte_pktmbuf</code>类型的结构体的成员变量。该结构体里面，<br><code>rte_mbuf* next</code>指针指向同一个<code>mbuf</code>中的下一个<code>segment</code>，并不能用来指向<code>mempool</code>中的下一个<code>mbuf</code>。<br><code>data_len</code>指的是该分片中的<code>data</code>的长度，<code>pkt_len</code>指的是该<code>mbuf</code>中所有分片的所有长度。<br>一个<code>mbuf</code>有多个<code>segment</code>时，只有第一个分段有<code>headroom</code>，只有最后一个分段有<code>tailroom</code>，其他的分段只有<code>rte_mbuf</code>结构体区域和<code>data</code>区域。</p>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="rte-pktmbuf-mtod-rte-mbuf-m"><a href="#rte-pktmbuf-mtod-rte-mbuf-m" class="headerlink" title="rte_pktmbuf_mtod(rte_mbuf* m)"></a>rte_pktmbuf_mtod(rte_mbuf* m)</h2><p>这是一个宏，将指针指向<code>mbuf</code>的数据部分的首部(<code>data</code>区间的首地址)。</p>
+<h2 id="rte-pktmbuf-trim"><a href="#rte-pktmbuf-trim" class="headerlink" title="rte_pktmbuf_trim()"></a>rte_pktmbuf_trim()</h2><p><code>librte_mbuf</code>还提供了<code>rte_pktmbuf_trim()</code>函数，用来移除mbuf中data数据域的最后N个字节，函数实现如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">m-&gt;pkt.data_len -= N;</span><br><span class="line"></span><br><span class="line">m-&gt;pkt.pkt_len -= N;</span><br></pre></td></tr></table></figure></p>
 <p>函数原型如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">rte_pktmbuf_trim</span><span class="params">(struct rte_mbuf *m, <span class="keyword">uint16_t</span> len)</span></span></span><br></pre></td></tr></table></figure></p>
+<h2 id="rte-pktmbuf-append"><a href="#rte-pktmbuf-append" class="headerlink" title="rte_pktmbuf_append()"></a>rte_pktmbuf_append()</h2><p>如果需要在<code>tailroom</code>中加入N个字节数据，我们可以通过以下操作完成：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tail = m-&gt;pkt.data + m-&gt;pkt.data_len; <span class="comment">// tail记录tailroom首地址</span></span><br><span class="line"></span><br><span class="line">m-&gt;pkt.data_len += N;</span><br><span class="line"></span><br><span class="line">m-&gt;pkt.pkt_len += N;</span><br></pre></td></tr></table></figure></p>
+<p>这些操作由<code>rte_pktmbuf_append()</code>实现，函数原型如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">rte_pktmbuf_append</span><span class="params">(struct rte_mbuf *m, <span class="keyword">uint16_t</span> len)</span></span></span><br></pre></td></tr></table></figure></p>
 <p><a href="https://www.cnblogs.com/ziding/p/4214499.html" target="_blank" rel="noopener">dpdk基础模块之rte_mbuf详解</a></p>
+<p><a href="https://blog.csdn.net/yyywill/article/details/52965208" target="_blank" rel="noopener">【转载】DPDK编程开发（5）—mbuf</a></p>
 
     </article>
     <!-- license  -->
@@ -430,12 +445,17 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2019/08/06/编译机/" title="编译机">
+                    <div class="nextTitle">编译机</div>
+                </a>
+            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2019/08/06/编译机/" title="编译机">
-                    <div class="prevTitle">编译机</div>
+                <a href="/2019/08/06/流量实时监控异常/" title="流量实时监控异常">
+                    <div class="prevTitle">流量实时监控异常</div>
                 </a>
             
         </li>
@@ -561,7 +581,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#rte-mbuf和rte-mempool总览"><span class="toc-number">1.</span> <span class="toc-text">rte_mbuf和rte_mempool总览</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rte-mbuf"><span class="toc-number">2.</span> <span class="toc-text">rte_mbuf</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分配"><span class="toc-number">2.1.</span> <span class="toc-text">分配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#报文的封装"><span class="toc-number">2.2.</span> <span class="toc-text">报文的封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#释放"><span class="toc-number">2.3.</span> <span class="toc-text">释放</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#封装与解封装"><span class="toc-number">2.4.</span> <span class="toc-text">封装与解封装</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#rte-mbuf和rte-mempool总览"><span class="toc-number">1.</span> <span class="toc-text">rte_mbuf和rte_mempool总览</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rte-mbuf"><span class="toc-number">2.</span> <span class="toc-text">rte_mbuf</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分配"><span class="toc-number">2.1.</span> <span class="toc-text">分配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#报文的封装"><span class="toc-number">2.2.</span> <span class="toc-text">报文的封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#释放"><span class="toc-number">2.3.</span> <span class="toc-text">释放</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#封装与解封装"><span class="toc-number">2.4.</span> <span class="toc-text">封装与解封装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rte-mempool-create"><span class="toc-number">3.</span> <span class="toc-text">rte_mempool_create()</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据结构"><span class="toc-number">4.</span> <span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mbuf的分片"><span class="toc-number">5.</span> <span class="toc-text">mbuf的分片</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据结构分析"><span class="toc-number">6.</span> <span class="toc-text">数据结构分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数"><span class="toc-number">7.</span> <span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#rte-pktmbuf-mtod-rte-mbuf-m"><span class="toc-number">7.1.</span> <span class="toc-text">rte_pktmbuf_mtod(rte_mbuf* m)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rte-pktmbuf-trim"><span class="toc-number">7.2.</span> <span class="toc-text">rte_pktmbuf_trim()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rte-pktmbuf-append"><span class="toc-number">7.3.</span> <span class="toc-text">rte_pktmbuf_append()</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -2499,9 +2519,41 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 91
+        Total : 93
         </div>
         <!-- search  -->
         
@@ -2517,6 +2569,11 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/限流之数量控制/">限流之数量控制</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/DPDK内存管理/">DPDK内存管理</a>
         </li>
     
@@ -2524,29 +2581,6 @@ top:50vh;
         <li class="archive-post-item">
             <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/编译机/">编译机</a>
         </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/入职软件安装/">入职软件安装</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
     
     
         <li class="archive-post-item">
@@ -2575,12 +2609,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/内存管理/">内存管理</a>
+            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/文件/">文件</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/文件/">文件</a>
+            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/内存管理/">内存管理</a>
         </li>
     
     
@@ -2620,17 +2654,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/Markdown/">Markdown</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/电脑软件相关/">我的电脑</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/网络协议/">网络协议</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/Markdown/">Markdown</a>
         </li>
     
     
@@ -2754,71 +2788,6 @@ top:50vh;
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/TortoiseSVN/">TortoiseSVN</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Deque/">Deque</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/设备部署/">设备部署</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/专业英语/">专业英语</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
         <li class="archive-post-item">
             <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/Map/">Map</a>
         </li>
@@ -2844,16 +2813,6 @@ top:50vh;
         </li>
     
     
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/20</span><a class="archive-post-title" href="/2019/06/20/switch...case结构中变量的作用域/">switch...case结构中变量的作用域</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/17</span><a class="archive-post-title" href="/2019/06/17/python生成词云/">Python生成词云</a>
-        </li>
-    
-    
     
     
     
@@ -2864,7 +2823,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/Source Insight/">Source Insight</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Queue/">Queue</a>
         </li>
     
     
@@ -2878,12 +2837,49 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/头文件与库文件相关/">头文件与库文件相关</a>
+            <span class="archive-post-date">06/20</span><a class="archive-post-title" href="/2019/06/20/switch...case结构中变量的作用域/">switch...case结构中变量的作用域</a>
         </li>
     
     
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/文件后缀相关/">文件后缀相关</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/pip模块/">pip模块</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/入职软件安装/">入职软件安装</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/17</span><a class="archive-post-title" href="/2019/06/17/python生成词云/">Python生成词云</a>
         </li>
     
     
@@ -2893,17 +2889,27 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/文件后缀相关/">文件后缀相关</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/头文件与库文件相关/">头文件与库文件相关</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/记事本更改默认编码方式为UTF-8/">记事本更改默认编码方式为UTF-8</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/电脑硬件/">电脑硬件</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/磁盘与磁盘格式/">磁盘与磁盘格式</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/磁盘与磁盘格式/">磁盘与磁盘格式</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/电脑硬件/">电脑硬件</a>
         </li>
     
     
@@ -2924,6 +2930,11 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——从C到C++/">C++学习笔记—从C到C++</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
         </li>
     
     
@@ -2951,34 +2962,6 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/static/">static</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/05/04/Git Github Hexo/">Git Github Hexo</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/VS 2012/">VS 2012</a>
         </li>
     
@@ -2993,21 +2976,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/dpdk/">DPDK</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/FTP文件传输协议/">FTP文件传输协议</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/计算机组成原理/">计算机组成原理</a>
         </li>
     
     
@@ -3035,7 +3004,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/11/进程管理/">进程管理</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/10/视频核心网关设备调试/">视频核心网关设备调试</a>
         </li>
     
     
@@ -3063,7 +3032,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Queue/">Queue</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/Source Insight/">Source Insight</a>
         </li>
     
     
@@ -3091,7 +3060,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/String/">String</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/smart/">Smart</a>
         </li>
     
     
@@ -3119,7 +3088,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/10/视频核心网关设备调试/">视频核心网关设备调试</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/dpdk/">DPDK</a>
         </li>
     
     
@@ -3142,12 +3111,12 @@ top:50vh;
     
         </ul>
     
-    <div class="archive-year"> Invalid date </div>
+    <div class="archive-year"> 2019 </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/计算机组成原理/">计算机组成原理</a>
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">C++学习笔记—多态和虚函数</a>
         </li>
     
     
@@ -3170,12 +3139,110 @@ top:50vh;
     
         </ul>
     
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/05</span><a class="archive-post-title" href="/2019/06/05/C++学习笔记——继承和派生/">C++学习笔记—继承和派生</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
     <div class="archive-year"> Invalid date </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/pip模块/">pip模块</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/FTP文件传输协议/">FTP文件传输协议</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/专业英语/">专业英语</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Deque/">Deque</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/11/进程管理/">进程管理</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/String/">String</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/static与extern/">static与extern</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/06/LinuxC学习基础/">Linux/C基础学习</a>
         </li>
     
     
@@ -3217,6 +3284,20 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/TortoiseSVN/">TortoiseSVN</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
         </li>
     
@@ -3231,7 +3312,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/smart/">Smart</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/设备部署/">设备部署</a>
         </li>
     
     
@@ -3240,22 +3321,12 @@ top:50vh;
     
         </ul>
     
-    <div class="archive-year"> 2019 </div>
+    <div class="archive-year"> Invalid date </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">C++学习笔记—多态和虚函数</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/05</span><a class="archive-post-title" href="/2019/06/05/C++学习笔记——继承和派生/">C++学习笔记—继承和派生</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/05/04/Git Github Hexo/">Git Github Hexo</a>
         </li>
     
     </ul></div>
@@ -3360,6 +3431,12 @@ top:50vh;
         <span class="sidebar-tag-name" data-tags="文件"><span class="iconfont-archer">&#xe606;</span>文件</span>
     
         <span class="sidebar-tag-name" data-tags="shell"><span class="iconfont-archer">&#xe606;</span>shell</span>
+    
+        <span class="sidebar-tag-name" data-tags="内存"><span class="iconfont-archer">&#xe606;</span>内存</span>
+    
+        <span class="sidebar-tag-name" data-tags="linux"><span class="iconfont-archer">&#xe606;</span>linux</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

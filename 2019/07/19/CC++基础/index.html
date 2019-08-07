@@ -276,7 +276,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">4.3k</span>阅读时长: <span class="post-count reading-time">18 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">4.4k</span>阅读时长: <span class="post-count reading-time">19 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -405,7 +405,7 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>==2019-07-18更新==</p>
+        <p><font color="red">2019-07-18</font></p>
 <h1 id="typedef"><a href="#typedef" class="headerlink" title="typedef"></a>typedef</h1><h2 id="typedef-为结构体类型起别名"><a href="#typedef-为结构体类型起别名" class="headerlink" title="typedef 为结构体类型起别名"></a>typedef 为结构体类型起别名</h2><p><img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1015753163,2288355968&amp;fm=173&amp;app=49&amp;f=JPEG?w=306&amp;h=109&amp;s=C11280398F706C0346CC58DE0000D0B0" alt="enter image description here"><br><img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=2212358588,2513211965&amp;fm=173&amp;app=49&amp;f=JPEG?w=294&amp;h=117&amp;s=CB40C0189FE04D0344455CDC020050B0" alt="enter image description here"></p>
 <h2 id="typedef-为变量类型起别名"><a href="#typedef-为变量类型起别名" class="headerlink" title="typedef 为变量类型起别名"></a>typedef 为变量类型起别名</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> VOS_UINT8;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">short</span> VOS_UINT16;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> VOS_UINT32;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> VOS_UINT64;</span><br></pre></td></tr></table></figure>
 <p><a href="https://baijiahao.baidu.com/s?id=1623094778202042724&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">C语言之类型定义（typedef）</a></p>
@@ -472,6 +472,12 @@ height:50vh;
 <h2 id="strncpy-的内存重叠"><a href="#strncpy-的内存重叠" class="headerlink" title="strncpy()的内存重叠"></a>strncpy()的内存重叠</h2><p><img src="https://img-blog.csdn.net/20170526171857016" alt="enter image description here"><br>如图所示，红色表示src，黄色表示dst时，正常拷贝的话，就会造成内存重叠现象。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">strncpy</span><span class="params">(<span class="keyword">char</span> *dst, <span class="keyword">const</span> <span class="keyword">char</span> *src, <span class="keyword">size_t</span> len)</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    assert(dst != <span class="literal">NULL</span> &amp;&amp; src != <span class="literal">NULL</span>);  </span><br><span class="line">    <span class="keyword">char</span> *res = dst;  </span><br><span class="line">    <span class="keyword">int</span> offset = <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">char</span> *tmp;  </span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">strlen</span>(src) &lt; len)<span class="comment">//src长度小于len  </span></span><br><span class="line">    &#123;  </span><br><span class="line">        offset = len - <span class="built_in">strlen</span>(src);  </span><br><span class="line">        len = <span class="built_in">strlen</span>(src);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">if</span> (dst &gt;= src &amp;&amp; dst &lt;= src + len - <span class="number">1</span>)<span class="comment">//重叠,从后向前复制  </span></span><br><span class="line">    &#123;  </span><br><span class="line">        dst = dst + len - <span class="number">1</span>;  </span><br><span class="line">        src = src + len - <span class="number">1</span>;  </span><br><span class="line">        tmp = dst;  </span><br><span class="line">        <span class="keyword">while</span> (len--)  </span><br><span class="line">            *dst-- = *src--;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">else</span>  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">while</span> (len--)  </span><br><span class="line">            *dst++ = *src++;  </span><br><span class="line">        tmp = dst;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">while</span> (offset--)  </span><br><span class="line">    &#123;  </span><br><span class="line">        *tmp++ = <span class="string">'\0'</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> res;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><a href="https://blog.csdn.net/weibo1230123/article/details/80382614" target="_blank" rel="noopener">深入理解strncpy这个函数</a></p>
 <h1 id="assert"><a href="#assert" class="headerlink" title="assert"></a>assert</h1><p>大多数编程语言也都有断言这一特性。断言就是对某种假设条件进行检查。在 C 语言中，断言被定义为宏的形式<code>（assert(expression)）</code>，而不是函数，其原型定义在<code>&lt;assert.h&gt;</code>文件中。其中，assert 将通过检查表达式 expression 的值来决定是否需要终止执行程序。也就是说，如果表达式 expression 的值为假（即为 0），那么它将首先向标准错误流 stderr 打印一条出错信息，然后再通过调用 abort 函数终止程序运行；否则，assert 无任何作用。只有当assert后面的表达式为真时，才会继续执行后面的语句。<br><a href="https://www.cnblogs.com/cpoint/p/3367326.html" target="_blank" rel="noopener">C语言assert()函数用法总结</a></p>
+<p><font color="red">2019-08-07</font></p>
+<h1 id="printf"><a href="#printf" class="headerlink" title="printf()"></a>printf()</h1><p><code>%4d</code>     输出长度为4，右对齐，位数不够则左边补空格<br><code>%04d</code>   位数不够则左边补0<br><code>%-4d</code>   左对齐</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a=<span class="number">-15</span>;</span><br><span class="line">    <span class="keyword">int</span> b=<span class="number">36</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n%u\n"</span>,a,a);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%p\n%p"</span>,b,&amp;b);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">-15</span></span><br><span class="line"><span class="number">4294967281</span></span><br><span class="line"><span class="number">0x24</span></span><br><span class="line"><span class="number">0x7ffd50142448</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="typedef-重命名的意义"><a href="#typedef-重命名的意义" class="headerlink" title="typedef 重命名的意义"></a>typedef 重命名的意义</h1><p>使用<code>typedef</code>为枚举和结构体重命名之后，再定义变量的时候，就可以省略掉<code>struct`</code>enum<code>这两个关键字了。
+``</code>cpp<br>int main()<br>{<br>    typedef enum nations{<br>        wei,<br>        shu,<br>        wu<br>    }countrys;<br>    countrys nation=shu;<br>    printf(“%d\n”,nation);<br>    return 0;<br>}</p>
 
     </article>
     <!-- license  -->
@@ -481,16 +487,16 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href="/2019/07/19/专业英语/" title="专业英语">
-                    <div class="nextTitle">专业英语</div>
+                <a href="/2019/07/19/VS 2012/" title="VS 2012">
+                    <div class="nextTitle">VS 2012</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2019/07/19/static/" title="static">
-                    <div class="prevTitle">static</div>
+                <a href="/2019/07/19/计算机组成原理/" title="计算机组成原理">
+                    <div class="prevTitle">计算机组成原理</div>
                 </a>
             
         </li>
@@ -616,7 +622,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#typedef"><span class="toc-number">1.</span> <span class="toc-text">typedef</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#typedef-为结构体类型起别名"><span class="toc-number">1.1.</span> <span class="toc-text">typedef 为结构体类型起别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#typedef-为变量类型起别名"><span class="toc-number">1.2.</span> <span class="toc-text">typedef 为变量类型起别名</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#union-测试系统大小端"><span class="toc-number">2.</span> <span class="toc-text">union 测试系统大小端</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结构体中为成员指定占用空间大小"><span class="toc-number">3.</span> <span class="toc-text">结构体中为成员指定占用空间大小</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动态内存分配"><span class="toc-number">4.</span> <span class="toc-text">动态内存分配</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#C"><span class="toc-number">4.1.</span> <span class="toc-text">C</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-1"><span class="toc-number">4.2.</span> <span class="toc-text">C++</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Memcpy内存拷贝"><span class="toc-number">5.</span> <span class="toc-text">Memcpy内存拷贝</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#将数据拷贝到内存"><span class="toc-number">5.1.</span> <span class="toc-text">将数据拷贝到内存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将数据拷贝到内存中的指定位置"><span class="toc-number">5.2.</span> <span class="toc-text">将数据拷贝到内存中的指定位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#覆盖原有的内存内容"><span class="toc-number">5.3.</span> <span class="toc-text">覆盖原有的内存内容</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#puts-与gets"><span class="toc-number">6.</span> <span class="toc-text">puts()与gets()</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#puts"><span class="toc-number">6.1.</span> <span class="toc-text">puts()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gets-与puts-区别"><span class="toc-number">6.2.</span> <span class="toc-text">gets()与puts()区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基于范围的for循环"><span class="toc-number">7.</span> <span class="toc-text">基于范围的for循环</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#随机函数"><span class="toc-number">8.</span> <span class="toc-text">随机函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#rand-函数"><span class="toc-number">8.1.</span> <span class="toc-text">rand()函数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sizeof-与strlen"><span class="toc-number">9.</span> <span class="toc-text">sizeof()与strlen()</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#字符数组结尾"><span class="toc-number">10.</span> <span class="toc-text">字符数组结尾</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#枚举"><span class="toc-number">11.</span> <span class="toc-text">枚举</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#memset"><span class="toc-number">12.</span> <span class="toc-text">memset</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#snprintf-函数"><span class="toc-number">13.</span> <span class="toc-text">snprintf()函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数指针与typedef"><span class="toc-number">14.</span> <span class="toc-text">函数指针与typedef</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#strncpy-函数"><span class="toc-number">15.</span> <span class="toc-text">strncpy()函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#strncpy-的使用"><span class="toc-number">15.1.</span> <span class="toc-text">strncpy()的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#strncpy-的实现"><span class="toc-number">15.2.</span> <span class="toc-text">strncpy()的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#strncpy-的内存重叠"><span class="toc-number">15.3.</span> <span class="toc-text">strncpy()的内存重叠</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#assert"><span class="toc-number">16.</span> <span class="toc-text">assert</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#typedef"><span class="toc-number">1.</span> <span class="toc-text">typedef</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#typedef-为结构体类型起别名"><span class="toc-number">1.1.</span> <span class="toc-text">typedef 为结构体类型起别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#typedef-为变量类型起别名"><span class="toc-number">1.2.</span> <span class="toc-text">typedef 为变量类型起别名</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#union-测试系统大小端"><span class="toc-number">2.</span> <span class="toc-text">union 测试系统大小端</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结构体中为成员指定占用空间大小"><span class="toc-number">3.</span> <span class="toc-text">结构体中为成员指定占用空间大小</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动态内存分配"><span class="toc-number">4.</span> <span class="toc-text">动态内存分配</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#C"><span class="toc-number">4.1.</span> <span class="toc-text">C</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-1"><span class="toc-number">4.2.</span> <span class="toc-text">C++</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Memcpy内存拷贝"><span class="toc-number">5.</span> <span class="toc-text">Memcpy内存拷贝</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#将数据拷贝到内存"><span class="toc-number">5.1.</span> <span class="toc-text">将数据拷贝到内存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将数据拷贝到内存中的指定位置"><span class="toc-number">5.2.</span> <span class="toc-text">将数据拷贝到内存中的指定位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#覆盖原有的内存内容"><span class="toc-number">5.3.</span> <span class="toc-text">覆盖原有的内存内容</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#puts-与gets"><span class="toc-number">6.</span> <span class="toc-text">puts()与gets()</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#puts"><span class="toc-number">6.1.</span> <span class="toc-text">puts()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gets-与puts-区别"><span class="toc-number">6.2.</span> <span class="toc-text">gets()与puts()区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基于范围的for循环"><span class="toc-number">7.</span> <span class="toc-text">基于范围的for循环</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#随机函数"><span class="toc-number">8.</span> <span class="toc-text">随机函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#rand-函数"><span class="toc-number">8.1.</span> <span class="toc-text">rand()函数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sizeof-与strlen"><span class="toc-number">9.</span> <span class="toc-text">sizeof()与strlen()</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#字符数组结尾"><span class="toc-number">10.</span> <span class="toc-text">字符数组结尾</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#枚举"><span class="toc-number">11.</span> <span class="toc-text">枚举</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#memset"><span class="toc-number">12.</span> <span class="toc-text">memset</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#snprintf-函数"><span class="toc-number">13.</span> <span class="toc-text">snprintf()函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数指针与typedef"><span class="toc-number">14.</span> <span class="toc-text">函数指针与typedef</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#strncpy-函数"><span class="toc-number">15.</span> <span class="toc-text">strncpy()函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#strncpy-的使用"><span class="toc-number">15.1.</span> <span class="toc-text">strncpy()的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#strncpy-的实现"><span class="toc-number">15.2.</span> <span class="toc-text">strncpy()的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#strncpy-的内存重叠"><span class="toc-number">15.3.</span> <span class="toc-text">strncpy()的内存重叠</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#assert"><span class="toc-number">16.</span> <span class="toc-text">assert</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#printf"><span class="toc-number">17.</span> <span class="toc-text">printf()</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#typedef-重命名的意义"><span class="toc-number">18.</span> <span class="toc-text">typedef 重命名的意义</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -2554,9 +2560,41 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 91
+        Total : 93
         </div>
         <!-- search  -->
         
@@ -2572,6 +2610,11 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/限流之数量控制/">限流之数量控制</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/DPDK内存管理/">DPDK内存管理</a>
         </li>
     
@@ -2579,29 +2622,6 @@ top:50vh;
         <li class="archive-post-item">
             <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/编译机/">编译机</a>
         </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/入职软件安装/">入职软件安装</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
     
     
         <li class="archive-post-item">
@@ -2630,12 +2650,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/内存管理/">内存管理</a>
+            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/文件/">文件</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/文件/">文件</a>
+            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/内存管理/">内存管理</a>
         </li>
     
     
@@ -2675,17 +2695,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/Markdown/">Markdown</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/电脑软件相关/">我的电脑</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/网络协议/">网络协议</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/Markdown/">Markdown</a>
         </li>
     
     
@@ -2809,71 +2829,6 @@ top:50vh;
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/TortoiseSVN/">TortoiseSVN</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Deque/">Deque</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/设备部署/">设备部署</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/专业英语/">专业英语</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
         <li class="archive-post-item">
             <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/Map/">Map</a>
         </li>
@@ -2899,16 +2854,6 @@ top:50vh;
         </li>
     
     
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/20</span><a class="archive-post-title" href="/2019/06/20/switch...case结构中变量的作用域/">switch...case结构中变量的作用域</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/17</span><a class="archive-post-title" href="/2019/06/17/python生成词云/">Python生成词云</a>
-        </li>
-    
-    
     
     
     
@@ -2919,7 +2864,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/Source Insight/">Source Insight</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Queue/">Queue</a>
         </li>
     
     
@@ -2933,12 +2878,49 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/头文件与库文件相关/">头文件与库文件相关</a>
+            <span class="archive-post-date">06/20</span><a class="archive-post-title" href="/2019/06/20/switch...case结构中变量的作用域/">switch...case结构中变量的作用域</a>
         </li>
     
     
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/文件后缀相关/">文件后缀相关</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/pip模块/">pip模块</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/入职软件安装/">入职软件安装</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/17</span><a class="archive-post-title" href="/2019/06/17/python生成词云/">Python生成词云</a>
         </li>
     
     
@@ -2948,17 +2930,27 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/文件后缀相关/">文件后缀相关</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/头文件与库文件相关/">头文件与库文件相关</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/记事本更改默认编码方式为UTF-8/">记事本更改默认编码方式为UTF-8</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/电脑硬件/">电脑硬件</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/磁盘与磁盘格式/">磁盘与磁盘格式</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/磁盘与磁盘格式/">磁盘与磁盘格式</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/电脑硬件/">电脑硬件</a>
         </li>
     
     
@@ -2979,6 +2971,11 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——从C到C++/">C++学习笔记—从C到C++</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
         </li>
     
     
@@ -3006,34 +3003,6 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/static/">static</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/05/04/Git Github Hexo/">Git Github Hexo</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/VS 2012/">VS 2012</a>
         </li>
     
@@ -3048,21 +3017,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/dpdk/">DPDK</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/FTP文件传输协议/">FTP文件传输协议</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/计算机组成原理/">计算机组成原理</a>
         </li>
     
     
@@ -3090,7 +3045,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/11/进程管理/">进程管理</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/10/视频核心网关设备调试/">视频核心网关设备调试</a>
         </li>
     
     
@@ -3118,7 +3073,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Queue/">Queue</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/Source Insight/">Source Insight</a>
         </li>
     
     
@@ -3146,7 +3101,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/String/">String</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/smart/">Smart</a>
         </li>
     
     
@@ -3174,7 +3129,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/10/视频核心网关设备调试/">视频核心网关设备调试</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/dpdk/">DPDK</a>
         </li>
     
     
@@ -3197,12 +3152,12 @@ top:50vh;
     
         </ul>
     
-    <div class="archive-year"> Invalid date </div>
+    <div class="archive-year"> 2019 </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/计算机组成原理/">计算机组成原理</a>
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">C++学习笔记—多态和虚函数</a>
         </li>
     
     
@@ -3225,12 +3180,110 @@ top:50vh;
     
         </ul>
     
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/05</span><a class="archive-post-title" href="/2019/06/05/C++学习笔记——继承和派生/">C++学习笔记—继承和派生</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
     <div class="archive-year"> Invalid date </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/pip模块/">pip模块</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/FTP文件传输协议/">FTP文件传输协议</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/专业英语/">专业英语</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Deque/">Deque</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/11/进程管理/">进程管理</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/String/">String</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/static与extern/">static与extern</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/06/LinuxC学习基础/">Linux/C基础学习</a>
         </li>
     
     
@@ -3272,6 +3325,20 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/TortoiseSVN/">TortoiseSVN</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
         </li>
     
@@ -3286,7 +3353,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/smart/">Smart</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/设备部署/">设备部署</a>
         </li>
     
     
@@ -3295,22 +3362,12 @@ top:50vh;
     
         </ul>
     
-    <div class="archive-year"> 2019 </div>
+    <div class="archive-year"> Invalid date </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">C++学习笔记—多态和虚函数</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/05</span><a class="archive-post-title" href="/2019/06/05/C++学习笔记——继承和派生/">C++学习笔记—继承和派生</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/05/04/Git Github Hexo/">Git Github Hexo</a>
         </li>
     
     </ul></div>
@@ -3415,6 +3472,12 @@ top:50vh;
         <span class="sidebar-tag-name" data-tags="文件"><span class="iconfont-archer">&#xe606;</span>文件</span>
     
         <span class="sidebar-tag-name" data-tags="shell"><span class="iconfont-archer">&#xe606;</span>shell</span>
+    
+        <span class="sidebar-tag-name" data-tags="内存"><span class="iconfont-archer">&#xe606;</span>内存</span>
+    
+        <span class="sidebar-tag-name" data-tags="linux"><span class="iconfont-archer">&#xe606;</span>linux</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
