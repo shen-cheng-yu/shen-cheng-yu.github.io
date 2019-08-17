@@ -274,7 +274,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">1.2k</span>阅读时长: <span class="post-count reading-time">4 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1.3k</span>阅读时长: <span class="post-count reading-time">5 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -437,6 +437,8 @@ height:50vh;
 <p>这些操作由<code>rte_pktmbuf_append()</code>实现，函数原型如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">rte_pktmbuf_append</span><span class="params">(struct rte_mbuf *m, <span class="keyword">uint16_t</span> len)</span></span></span><br></pre></td></tr></table></figure></p>
 <p><a href="https://www.cnblogs.com/ziding/p/4214499.html" target="_blank" rel="noopener">dpdk基础模块之rte_mbuf详解</a></p>
 <p><a href="https://blog.csdn.net/yyywill/article/details/52965208" target="_blank" rel="noopener">【转载】DPDK编程开发（5）—mbuf</a></p>
+<h1 id="Cache-Line"><a href="#Cache-Line" class="headerlink" title="Cache Line"></a>Cache Line</h1><p>Mbuf结构报头（rte_mbuf结构体）经过精心设计，原先仅占1个Cache Line。随着Mbuf头部携带的信息越来越多，现在Mbuf头部已经调整成两个Cache Line，原则上讲基础性、频繁访问的数据放在一个Cache Line字节，而将功能性扩展的数据放在第二个Cache Line字节。</p>
+<p>对于单个Mbuf存放不下的巨型帧（Jumbo Frame），Mbuf还有指向下一个Mbuf结构的指针来形成帧链表结构。所有应用都应使用Mbuf结构来传输网络帧。</p>
 
     </article>
     <!-- license  -->
@@ -446,16 +448,16 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href="/2019/08/06/编译机/" title="编译机">
-                    <div class="nextTitle">编译机</div>
+                <a href="/2019/08/06/限流之数量控制/" title="限流之数量控制">
+                    <div class="nextTitle">限流之数量控制</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2019/08/06/母盘部署/" title="母盘部署">
-                    <div class="prevTitle">母盘部署</div>
+                <a href="/2019/08/06/编译机/" title="编译机">
+                    <div class="prevTitle">编译机</div>
                 </a>
             
         </li>
@@ -581,7 +583,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#rte-mbuf和rte-mempool总览"><span class="toc-number">1.</span> <span class="toc-text">rte_mbuf和rte_mempool总览</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rte-mbuf"><span class="toc-number">2.</span> <span class="toc-text">rte_mbuf</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分配"><span class="toc-number">2.1.</span> <span class="toc-text">分配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#报文的封装"><span class="toc-number">2.2.</span> <span class="toc-text">报文的封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#释放"><span class="toc-number">2.3.</span> <span class="toc-text">释放</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#封装与解封装"><span class="toc-number">2.4.</span> <span class="toc-text">封装与解封装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rte-mempool-create"><span class="toc-number">3.</span> <span class="toc-text">rte_mempool_create()</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据结构"><span class="toc-number">4.</span> <span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mbuf的分片"><span class="toc-number">5.</span> <span class="toc-text">mbuf的分片</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据结构分析"><span class="toc-number">6.</span> <span class="toc-text">数据结构分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数"><span class="toc-number">7.</span> <span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#rte-pktmbuf-mtod-rte-mbuf-m"><span class="toc-number">7.1.</span> <span class="toc-text">rte_pktmbuf_mtod(rte_mbuf* m)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rte-pktmbuf-trim"><span class="toc-number">7.2.</span> <span class="toc-text">rte_pktmbuf_trim()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rte-pktmbuf-append"><span class="toc-number">7.3.</span> <span class="toc-text">rte_pktmbuf_append()</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#rte-mbuf和rte-mempool总览"><span class="toc-number">1.</span> <span class="toc-text">rte_mbuf和rte_mempool总览</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rte-mbuf"><span class="toc-number">2.</span> <span class="toc-text">rte_mbuf</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分配"><span class="toc-number">2.1.</span> <span class="toc-text">分配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#报文的封装"><span class="toc-number">2.2.</span> <span class="toc-text">报文的封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#释放"><span class="toc-number">2.3.</span> <span class="toc-text">释放</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#封装与解封装"><span class="toc-number">2.4.</span> <span class="toc-text">封装与解封装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rte-mempool-create"><span class="toc-number">3.</span> <span class="toc-text">rte_mempool_create()</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据结构"><span class="toc-number">4.</span> <span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mbuf的分片"><span class="toc-number">5.</span> <span class="toc-text">mbuf的分片</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据结构分析"><span class="toc-number">6.</span> <span class="toc-text">数据结构分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数"><span class="toc-number">7.</span> <span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#rte-pktmbuf-mtod-rte-mbuf-m"><span class="toc-number">7.1.</span> <span class="toc-text">rte_pktmbuf_mtod(rte_mbuf* m)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rte-pktmbuf-trim"><span class="toc-number">7.2.</span> <span class="toc-text">rte_pktmbuf_trim()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rte-pktmbuf-append"><span class="toc-number">7.3.</span> <span class="toc-text">rte_pktmbuf_append()</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Cache-Line"><span class="toc-number">8.</span> <span class="toc-text">Cache Line</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -3369,9 +3371,26 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 107
+        Total : 110
         </div>
         <!-- search  -->
         
@@ -3387,7 +3406,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/内存管理/">内存管理</a>
+            <span class="archive-post-date">08/17</span><a class="archive-post-title" href="/2019/08/17/Linux系统性能/">Linux系统性能</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/17</span><a class="archive-post-title" href="/2019/08/17/dac/">dac</a>
         </li>
     
     
@@ -3401,7 +3425,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/16/dpdk网卡收包流程/">DPDK网卡收包流程</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/入职软件安装/">入职软件安装</a>
         </li>
     
     
@@ -3412,6 +3436,11 @@ top:50vh;
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/17</span><a class="archive-post-title" href="/2019/08/17/测试/">测试总结</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -3455,12 +3484,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/流量实时监控异常/">流量实时监控异常</a>
+            <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/母盘部署/">母盘部署</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/母盘部署/">母盘部署</a>
+            <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/流量实时监控异常/">流量实时监控异常</a>
         </li>
     
     
@@ -3475,12 +3504,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/文件/">文件</a>
+            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/内存管理/">内存管理</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/网络基础/">网络基础</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/文件/">文件</a>
         </li>
     
     
@@ -3492,34 +3526,6 @@ top:50vh;
         <li class="archive-post-item">
             <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/摄像头基础/">摄像头基础</a>
         </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/11</span><a class="archive-post-title" href="/2019/07/11/Linux命令/">Linux命令</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/09/挂载与磁盘格式/">挂载与磁盘格式</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
     
     
         <li class="archive-post-item">
@@ -3538,22 +3544,22 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/网络命令/">网络命令</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/视频核心安全网关/">视频核心安全网关</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/网络协议/">网络协议</a>
+            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/网络命令/">网络命令</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/我的电脑/">我的电脑</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/网络协议/">网络协议</a>
         </li>
     
     
@@ -3633,6 +3639,11 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">07/11</span><a class="archive-post-title" href="/2019/07/11/Linux命令/">Linux命令</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">07/10</span><a class="archive-post-title" href="/2019/07/10/XShell连接Ubuntu/">XShell连接Ubuntu</a>
         </li>
     
@@ -3676,7 +3687,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/CC++预处理指令/">C/C++预处理指令</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/Chrome离线插件安装/">Chrome离线插件安装</a>
         </li>
     
     
@@ -3690,35 +3701,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/计算机组成原理/">计算机组成原理</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/system与dos命令/">system()函数与DOS命令</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/记事本更改默认编码方式为UTF-8/">记事本更改默认编码方式为UTF-8</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/10/视频核心网关设备调试/">视频核心网关设备调试</a>
         </li>
     
     
@@ -3785,6 +3768,29 @@ top:50vh;
         </li>
     
     
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/设备部署/">设备部署</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
         <li class="archive-post-item">
             <span class="archive-post-date">06/20</span><a class="archive-post-title" href="/2019/06/20/三门问题/">三门问题</a>
         </li>
@@ -3805,11 +3811,6 @@ top:50vh;
         </li>
     
     
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/头文件与库文件相关/">头文件与库文件相关</a>
-        </li>
-    
-    
     
     
     
@@ -3820,7 +3821,26 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/入职软件安装/">入职软件安装</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/头文件与库文件相关/">头文件与库文件相关</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">C++学习笔记—多态和虚函数</a>
         </li>
     
     
@@ -3848,35 +3868,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/linux基础/">linux基础</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">C++学习笔记—多态和虚函数</a>
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——从C到C++/">C++学习笔记—从C到C++</a>
         </li>
     
     
@@ -3904,12 +3896,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/指针/">指针</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/文件后缀相关/">文件后缀相关</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/指针/">指针</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/记事本更改默认编码方式为UTF-8/">记事本更改默认编码方式为UTF-8</a>
         </li>
     
     
@@ -3938,8 +3935,31 @@ top:50vh;
         </li>
     
     
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
         <li class="archive-post-item">
-            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——从C到C++/">C++学习笔记—从C到C++</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/28/Shell编程进阶/">shell编程进阶</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/dpdk概念基础/">DPDK基础概念</a>
         </li>
     
     
@@ -3967,7 +3987,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/dpdk基础/">dpdk基础</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/08/ping时延太高/">ping时延太高</a>
         </li>
     
     
@@ -3981,7 +4001,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/28/Shell编程进阶/">shell编程进阶</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/VS 2012/">VS 2012</a>
         </li>
     
     
@@ -3995,7 +4015,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/smart/">Smart</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/system与dos命令/">system()函数与DOS命令</a>
         </li>
     
     
@@ -4023,63 +4043,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/设备部署/">设备部署</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/String/">String</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Queue/">Queue</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/06/LinuxC学习基础/">Linux/C基础学习</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/pip模块/">pip模块</a>
         </li>
     
     
@@ -4135,7 +4099,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/专业英语/">专业英语</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/linux基础/">linux基础</a>
         </li>
     
     
@@ -4150,6 +4114,20 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/Shell编程/">shell编程</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/dpdk编程基础/">dpdk基础编程</a>
         </li>
     
     
@@ -4182,105 +4160,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/10/视频核心网关设备调试/">视频核心网关设备调试</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/08/ping时延太高/">ping时延太高</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/Chrome离线插件安装/">Chrome离线插件安装</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/16/attribute关键字/">attribute关键字</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/14/网络字节序与主机字节序/">网络字节序与主机字节序</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/VS 2012/">VS 2012</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/dpdk编程基础/">dpdk基础编程</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/pip模块/">pip模块</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/06/LinuxC学习基础/">Linux/C基础学习</a>
         </li>
     
     
@@ -4308,6 +4188,48 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/14/网络字节序与主机字节序/">网络字节序与主机字节序</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/计算机组成原理/">计算机组成原理</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/16/attribute关键字/">attribute关键字</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/Source Insight/">Source Insight</a>
         </li>
     
@@ -4322,7 +4244,119 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/dpdk概念基础/">DPDK基础概念</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/dpdk基础/">dpdk基础</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/CC++预处理指令/">C/C++预处理指令</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/16/dpdk网卡收包流程/">DPDK网卡收包流程</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/smart/">Smart</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/09/挂载与磁盘格式/">挂载与磁盘格式</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/String/">String</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Queue/">Queue</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/专业英语/">专业英语</a>
         </li>
     
     </ul></div>
@@ -4415,6 +4449,8 @@ top:50vh;
         <span class="sidebar-tag-name" data-tags="文学"><span class="iconfont-archer">&#xe606;</span>文学</span>
     
         <span class="sidebar-tag-name" data-tags="并发"><span class="iconfont-archer">&#xe606;</span>并发</span>
+    
+        <span class="sidebar-tag-name" data-tags="测试"><span class="iconfont-archer">&#xe606;</span>测试</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
