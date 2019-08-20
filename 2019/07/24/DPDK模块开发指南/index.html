@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">2k</span>阅读时长: <span class="post-count reading-time">8 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">2.1k</span>阅读时长: <span class="post-count reading-time">8 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -406,14 +406,15 @@ height:50vh;
 <li>包处理</li>
 <li>配置下发<br>java组下发信息（包）给linuxC组，我们对于这些包做出解析处理，完成功能。</li>
 </ol>
-<h1 id="如何增加模块"><a href="#如何增加模块" class="headerlink" title="如何增加模块"></a>如何增加模块</h1><h2 id="添加模块ID的枚举定义"><a href="#添加模块ID的枚举定义" class="headerlink" title="添加模块ID的枚举定义"></a>添加模块ID的枚举定义</h2><p>在<code>vpg_module.def.h</code>文件的<code>module_id_e</code>中，增加模块ID的枚举定义。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> tag_module_id_e</span><br><span class="line">&#123;</span><br><span class="line">    MODULE_ID_SND       = <span class="number">0</span>,  </span><br><span class="line">    MODULE_ID_BLC,</span><br><span class="line">    MODULE_ID_WLM,</span><br><span class="line">    MODULE_ID_EXAMPLE,</span><br><span class="line">    MODULE_ID_DAC,</span><br><span class="line">    MODULE_ID_DDI,</span><br><span class="line">    MODULE_ID_TID,	</span><br><span class="line">    MODULE_ID_API,</span><br><span class="line">	MODULE_ID_DSM,</span><br><span class="line">	MODULE_ID_ECM,	</span><br><span class="line">	MODULE_ID_NAC,</span><br><span class="line">	MODULE_ID_LIC,</span><br><span class="line">    MODULE_ID_MAX</span><br><span class="line">&#125;module_id_e;</span><br></pre></td></tr></table></figure></p>
+<h1 id="如何增加模块"><a href="#如何增加模块" class="headerlink" title="如何增加模块"></a>如何增加模块</h1><h2 id="添加模块ID的枚举定义"><a href="#添加模块ID的枚举定义" class="headerlink" title="添加模块ID的枚举定义"></a>添加模块ID的枚举定义</h2><p>在<code>vpg_module.def.h</code>文件的<code>module_id_e</code>中，增加模块ID的枚举定义。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> tag_module_id_e</span><br><span class="line">&#123;</span><br><span class="line">    MODULE_ID_SND       = <span class="number">0</span>,  </span><br><span class="line">    MODULE_ID_BLC,</span><br><span class="line">    MODULE_ID_WLM,</span><br><span class="line">    MODULE_ID_EXAMPLE,</span><br><span class="line">    MODULE_ID_DAC,</span><br><span class="line">    MODULE_ID_DDI,</span><br><span class="line">    MODULE_ID_TID,	</span><br><span class="line">    MODULE_ID_API,</span><br><span class="line">    MODULE_ID_DSM,</span><br><span class="line">    MODULE_ID_ECM,	</span><br><span class="line">    MODULE_ID_NAC,</span><br><span class="line">    MODULE_ID_LIC,</span><br><span class="line">    MODULE_ID_MAX</span><br><span class="line">&#125;module_id_e;</span><br></pre></td></tr></table></figure></p>
 <h2 id="包含模块的头文件"><a href="#包含模块的头文件" class="headerlink" title="包含模块的头文件"></a>包含模块的头文件</h2><p>在<code>vpg_module.def.c</code>文件中，增加包含模块的头文件。一般头文件中包含自身模块的初始化函数即可，可参考<code>packet_balance.h</code>。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//包含各个模块的头文件</span></span><br><span class="line"><span class="comment">/*include modules*/</span></span><br><span class="line"><span class="comment">//#include "module_example.h"</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"packet_routing.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"packet_balance.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"dac.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"device_discovery.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"tid_business_entry.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"api_extern.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"dsm.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"lic.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"ecm.h"</span></span></span><br></pre></td></tr></table></figure></p>
 <h2 id="完成模块的头文件"><a href="#完成模块的头文件" class="headerlink" title="完成模块的头文件"></a>完成模块的头文件</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//头文件里面包含有该模块自身的初始化函数的声明即可</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _INCLUDE_MODULE_PACKET_BALANCE_H_</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _INCLUDE_MODULE_PACKET_BALANCE_H_</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"vos_typedef.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"vos_str.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function">VOS_INT32 <span class="title">packet_balance_init</span><span class="params">(VOS_VOID)</span></span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
 <h2 id="函数指针指向模块的初始化函数"><a href="#函数指针指向模块的初始化函数" class="headerlink" title="函数指针指向模块的初始化函数"></a>函数指针指向模块的初始化函数</h2><p>在<code>vpg_module.def.c</code> 文件的<code>vgp_module_init_register</code>函数中，将模块自身的初始化函数复制到<code>g_astModuleInfo</code>数组对应的元素中。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">tag_module_info_t</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="comment">//在module_info_t结构体中定义了很多的函数指针</span></span><br><span class="line">    rte_pipeline_table_action_handler_hit pfPktProcess;</span><br><span class="line">    vgp_module_init_fun pfModuleInit;</span><br><span class="line">    vgp_module_cfg_handle_fun pfModuleCfgHandle;</span><br><span class="line">    vgp_module_action_handle_fun pfModuleActionHandle;</span><br><span class="line">    vgp_module_msg_handle_fun pfModuleMsgHandle;</span><br><span class="line">    vgp_module_local_init_fun pfModuleLocalInit;</span><br><span class="line">    vgp_module_global_init_fun pfModuleGlobalInit;</span><br><span class="line">    vgp_module_dbg_handle_fun pfModuleDbgHandle;</span><br><span class="line">    vgp_module_cfg_get_fun pfModuleCfgGet;</span><br><span class="line">    VOS_CHAR pcModuleName[VGP_MODULE_NAME_LEN];</span><br><span class="line">    VOS_VOID *pGlobalData;</span><br><span class="line">    vgp_module_aging_handle_fun pfModuleAgingHandle;</span><br><span class="line">&#125;<span class="keyword">module_info_t</span>;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义一个结构体数组，数组中的每一个元素代表一个模块来用</span></span><br><span class="line"><span class="keyword">module_info_t</span> g_astModuleInfo[MODULE_ID_MAX];</span><br><span class="line"><span class="keyword">module_device_info_t</span> g_stDeviceInfo;</span><br><span class="line"></span><br><span class="line"><span class="function">VOS_INT32 <span class="title">vgp_module_init_register</span><span class="params">(VOS_VOID)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> 	<span class="comment">/*filled by modules*/</span></span><br><span class="line">	<span class="comment">//g_astModuleInfo[MODULE_ID_EXAMPLE].pfModuleInit = exp_init; </span></span><br><span class="line"><span class="comment">//将每个模块中用来指向初始化函数的函数指针，指向他们的初始化函数</span></span><br><span class="line">	g_astModuleInfo[MODULE_ID_SND].pfModuleInit = packet_routing_init; </span><br><span class="line">	g_astModuleInfo[MODULE_ID_BLC].pfModuleInit = packet_balance_init; </span><br><span class="line">	g_astModuleInfo[MODULE_ID_DDI].pfModuleInit = ddi_init;</span><br><span class="line">    g_astModuleInfo[MODULE_ID_DAC].pfModuleInit = dac_init; </span><br><span class="line">    g_astModuleInfo[MODULE_ID_API].pfModuleInit = api_init; </span><br><span class="line">    g_astModuleInfo[MODULE_ID_TID].pfModuleInit = tid_init; </span><br><span class="line">    g_astModuleInfo[MODULE_ID_DSM].pfModuleInit = dsm_init;</span><br><span class="line">    g_astModuleInfo[MODULE_ID_LIC].pfModuleInit = lic_module_init;</span><br><span class="line">    g_astModuleInfo[MODULE_ID_ECM].pfModuleInit = ecm_init; </span><br><span class="line">	</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="实现模块的初始化函数"><a href="#实现模块的初始化函数" class="headerlink" title="实现模块的初始化函数"></a>实现模块的初始化函数</h2><p>主要内容为填充<code>module_register_info_t</code>结构体并且调用<code>vgp_module_register</code>函数，可参考<code>packet_balance.c</code>文件的<code>packet_balance_init</code>函数。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实现该模块的初始化函数</span></span><br><span class="line"><span class="function">VOS_INT32 <span class="title">packet_balance_init</span><span class="params">(VOS_VOID)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//int i = 0;</span></span><br><span class="line">	<span class="comment">//VOS_UINT32 uiRet;</span></span><br><span class="line">	<span class="keyword">module_register_info_t</span> stMyModuleRegisterInfo = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//填充 module_register_info_t 结构体 </span></span><br><span class="line">	stMyModuleRegisterInfo.pfPktProcess = vgp_packet_balance_process;</span><br><span class="line">	stMyModuleRegisterInfo.pfModuleLocalInit = VOS_NULL_PTR;</span><br><span class="line">	stMyModuleRegisterInfo.pfModuleCfgHandle = VOS_NULL_PTR;</span><br><span class="line">	stMyModuleRegisterInfo.pfModuleMsgHandle = VOS_NULL_PTR;</span><br><span class="line">	VOS_StrNCpy(stMyModuleRegisterInfo.pcModuleName, <span class="string">"BLC"</span>, VGP_MODULE_NAME_LEN);</span><br><span class="line">	</span><br><span class="line"><span class="comment">//调用 vgp_module_register 函数</span></span><br><span class="line">	vgp_module_register(&amp;stMyModuleRegisterInfo, MODULE_ID_BLC);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义一个结构体数组，数组中的每一个元素代表一个模块来用</span></span><br><span class="line"><span class="keyword">module_info_t</span> g_astModuleInfo[MODULE_ID_MAX];</span><br><span class="line"><span class="keyword">module_device_info_t</span> g_stDeviceInfo;</span><br><span class="line"></span><br><span class="line"><span class="function">VOS_INT32 <span class="title">vgp_module_init_register</span><span class="params">(VOS_VOID)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/*filled by modules*/</span></span><br><span class="line">    <span class="comment">//g_astModuleInfo[MODULE_ID_EXAMPLE].pfModuleInit = exp_init; </span></span><br><span class="line">    <span class="comment">//将每个模块中用来指向初始化函数的函数指针，指向他们的初始化函数</span></span><br><span class="line">    g_astModuleInfo[MODULE_ID_SND].pfModuleInit = packet_routing_init; </span><br><span class="line">    g_astModuleInfo[MODULE_ID_BLC].pfModuleInit = packet_balance_init; </span><br><span class="line">    g_astModuleInfo[MODULE_ID_DDI].pfModuleInit = ddi_init;</span><br><span class="line">    g_astModuleInfo[MODULE_ID_DAC].pfModuleInit = dac_init; </span><br><span class="line">    g_astModuleInfo[MODULE_ID_API].pfModuleInit = api_init; </span><br><span class="line">    g_astModuleInfo[MODULE_ID_TID].pfModuleInit = tid_init; </span><br><span class="line">    g_astModuleInfo[MODULE_ID_DSM].pfModuleInit = dsm_init;</span><br><span class="line">    g_astModuleInfo[MODULE_ID_LIC].pfModuleInit = lic_module_init;</span><br><span class="line">    g_astModuleInfo[MODULE_ID_ECM].pfModuleInit = ecm_init; </span><br><span class="line">	</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="实现模块的初始化函数"><a href="#实现模块的初始化函数" class="headerlink" title="实现模块的初始化函数"></a>实现模块的初始化函数</h2><p>主要内容为填充<code>module_register_info_t</code>结构体并且调用<code>vgp_module_register</code>函数，可参考<code>packet_balance.c</code>文件的<code>packet_balance_init</code>函数。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实现该模块的初始化函数</span></span><br><span class="line"><span class="function">VOS_INT32 <span class="title">packet_balance_init</span><span class="params">(VOS_VOID)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//int i = 0;</span></span><br><span class="line">	<span class="comment">//VOS_UINT32 uiRet;</span></span><br><span class="line">	<span class="keyword">module_register_info_t</span> stMyModuleRegisterInfo = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//填充 module_register_info_t 结构体 </span></span><br><span class="line">	stMyModuleRegisterInfo.pfPktProcess = vgp_packet_balance_process;</span><br><span class="line">	stMyModuleRegisterInfo.pfModuleLocalInit = VOS_NULL_PTR;</span><br><span class="line">	stMyModuleRegisterInfo.pfModuleCfgHandle = VOS_NULL_PTR;</span><br><span class="line">	stMyModuleRegisterInfo.pfModuleMsgHandle = VOS_NULL_PTR;</span><br><span class="line">	VOS_StrNCpy(stMyModuleRegisterInfo.pcModuleName, <span class="string">"BLC"</span>, VGP_MODULE_NAME_LEN);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//调用 vgp_module_register 函数</span></span><br><span class="line">	vgp_module_register(&amp;stMyModuleRegisterInfo, MODULE_ID_BLC);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>结构体的成员是一个个函数指针，将这些实现功能的函数，赋值给这些函数指针，然后就可以通过函数指针来调用这些函数了。具体在哪里调用，什么时候调用，还不清楚。</p>
 <p><code>module_register_info_t</code>结构体具体内容为：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">tag_module_register_info_t</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    vgp_module_global_init_fun pfModuleGlobalInit;  <span class="comment">//全局数据取初始化 </span></span><br><span class="line">    vgp_module_local_init_fun pfModuleLocalInit;    <span class="comment">//本地数据取初始化</span></span><br><span class="line">    rte_pipeline_table_action_handler_hit pfPktProcess;  <span class="comment">//报文处理回调</span></span><br><span class="line">    vgp_module_cfg_handle_fun pfModuleCfgHandle;    <span class="comment">//配置下发回调</span></span><br><span class="line">    vgp_module_action_handle_fun pfModuleActionHandle;  <span class="comment">//命令下发回调</span></span><br><span class="line">    vgp_module_msg_handle_fun pfModuleMsgHandle;   <span class="comment">//消息处理回调</span></span><br><span class="line">    vgp_module_dbg_handle_fun pfModuleDbgHandle;  </span><br><span class="line">    vgp_module_aging_handle_fun pfModuleAgingHandle;</span><br><span class="line">    vgp_module_cfg_get_fun pfModuleCfgGet;    </span><br><span class="line">    </span><br><span class="line">    VOS_CHAR pcModuleName[VGP_MODULE_NAME_LEN];     <span class="comment">//模块名称</span></span><br><span class="line">&#125;<span class="keyword">module_register_info_t</span>;</span><br></pre></td></tr></table></figure></p>
-<p><code>vgp_module_register</code>函数如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">VOS_INT32 <span class="title">vgp_module_register</span><span class="params">(<span class="keyword">const</span> <span class="keyword">module_register_info_t</span>* pstModuleRegisterInfo, VOS_UINT32 uiModuleId)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">module_register_info_t</span> *pstSrcInfo = pstModuleRegisterInfo;</span><br><span class="line">    <span class="keyword">module_info_t</span> *pstDstInfo = &amp;(g_astModuleInfo[uiModuleId]);;</span><br><span class="line"></span><br><span class="line">    ASSERT_RETURN_RET((uiModuleId &lt; MODULE_ID_MAX), VOS_ERR);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* set field*/</span></span><br><span class="line">    VOS_StrNCpy(pstDstInfo-&gt;pcModuleName, pstSrcInfo-&gt;pcModuleName, VGP_MODULE_NAME_LEN);</span><br><span class="line">    pstDstInfo-&gt;pfPktProcess        = pstSrcInfo-&gt;pfPktProcess;</span><br><span class="line">    pstDstInfo-&gt;pfModuleGlobalInit   = pstSrcInfo-&gt;pfModuleGlobalInit;</span><br><span class="line">    pstDstInfo-&gt;pfModuleLocalInit   = pstSrcInfo-&gt;pfModuleLocalInit;</span><br><span class="line">    pstDstInfo-&gt;pfModuleCfgHandle   = pstSrcInfo-&gt;pfModuleCfgHandle;</span><br><span class="line">    pstDstInfo-&gt;pfModuleActionHandle   = pstSrcInfo-&gt;pfModuleActionHandle;</span><br><span class="line">    pstDstInfo-&gt;pfModuleMsgHandle   = pstSrcInfo-&gt;pfModuleMsgHandle;</span><br><span class="line">    pstDstInfo-&gt;pfModuleDbgHandle   = pstSrcInfo-&gt;pfModuleDbgHandle;</span><br><span class="line">	pstDstInfo-&gt;pfModuleAgingHandle   = pstSrcInfo-&gt;pfModuleAgingHandle;</span><br><span class="line">    pstDstInfo-&gt;pfModuleCfgGet   = pstSrcInfo-&gt;pfModuleCfgGet;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"=========vgp_module_register===module_id:%d==\r\n"</span>, uiModuleId);</span><br><span class="line">    <span class="keyword">return</span> VOS_OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>vgp_module_register</code>函数如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">VOS_INT32 <span class="title">vgp_module_register</span><span class="params">(<span class="keyword">const</span> <span class="keyword">module_register_info_t</span>* pstModuleRegisterInfo, VOS_UINT32 uiModuleId)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//这里为什么要设置两个结构体，起着什么作用？</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">module_register_info_t</span> *pstSrcInfo = pstModuleRegisterInfo;</span><br><span class="line">    <span class="keyword">module_info_t</span> *pstDstInfo = &amp;(g_astModuleInfo[uiModuleId]);;</span><br><span class="line"></span><br><span class="line">    ASSERT_RETURN_RET((uiModuleId &lt; MODULE_ID_MAX), VOS_ERR);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* set field*/</span></span><br><span class="line">    VOS_StrNCpy(pstDstInfo-&gt;pcModuleName, pstSrcInfo-&gt;pcModuleName, VGP_MODULE_NAME_LEN);</span><br><span class="line">    pstDstInfo-&gt;pfPktProcess        = pstSrcInfo-&gt;pfPktProcess;</span><br><span class="line">    pstDstInfo-&gt;pfModuleGlobalInit   = pstSrcInfo-&gt;pfModuleGlobalInit;</span><br><span class="line">    pstDstInfo-&gt;pfModuleLocalInit   = pstSrcInfo-&gt;pfModuleLocalInit;</span><br><span class="line">    pstDstInfo-&gt;pfModuleCfgHandle   = pstSrcInfo-&gt;pfModuleCfgHandle;</span><br><span class="line">    pstDstInfo-&gt;pfModuleActionHandle   = pstSrcInfo-&gt;pfModuleActionHandle;</span><br><span class="line">    pstDstInfo-&gt;pfModuleMsgHandle   = pstSrcInfo-&gt;pfModuleMsgHandle;</span><br><span class="line">    pstDstInfo-&gt;pfModuleDbgHandle   = pstSrcInfo-&gt;pfModuleDbgHandle;</span><br><span class="line">    pstDstInfo-&gt;pfModuleAgingHandle   = pstSrcInfo-&gt;pfModuleAgingHandle;</span><br><span class="line">    pstDstInfo-&gt;pfModuleCfgGet   = pstSrcInfo-&gt;pfModuleCfgGet;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"=========vgp_module_register===module_id:%d==\r\n"</span>, uiModuleId);</span><br><span class="line">    <span class="keyword">return</span> VOS_OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="适配新增加文件的makefile"><a href="#适配新增加文件的makefile" class="headerlink" title="适配新增加文件的makefile"></a>适配新增加文件的makefile</h2><p>如果在平台代码里fwd目录下新增加一个example目录，适配makefile步骤如下：</p>
 <ol>
 <li><p>在新增加的example目录里创建一个makefile，内容如下：</p>
@@ -428,7 +429,7 @@ height:50vh;
 <h2 id="本地数据取初始化"><a href="#本地数据取初始化" class="headerlink" title="本地数据取初始化"></a>本地数据取初始化</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> VOS_VOID* (*vgp_module_local_init_fun)(struct pipeline *p,VOS_VOID* arg);</span><br></pre></td></tr></table></figure>
 <p>模块使用的本地数据区初始化。<br>返回指向本地数据区的指针， 0（VOS_NULL_PTR）失败。<br>模块自行分配的数据区，供模块内部使用，可见范围为当前pipeline，通过（待补充接口）获取。</p>
 <h2 id="配置下发回调"><a href="#配置下发回调" class="headerlink" title="配置下发回调"></a>配置下发回调</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">VOS_INT32</span> <span class="params">(*vgp_module_cfg_handle_fun)</span><span class="params">(cJSON* pCfg)</span></span>;</span><br></pre></td></tr></table></figure>
-<p>dpdk控制线程在收到对应模块的配置下发后回调。<br>pCfg是配置内容，cJSON结构体指针。<br>返回VOS_OK则成功，VOS_ERR    失败。</p>
+<p>dpdk控制线程在收到对应模块的配置下发后回调。即java下发配置给模块之后，dpdk控制线程就调用写的这个函数。<br>pCfg是配置内容，cJSON结构体指针。<br>返回VOS_OK则成功，VOS_ERR    失败。</p>
 <p>收到对应模块的配置消息后在DPDK控制线程中调用。若需要下发到各个pipeline的本地数据区，需要模块在此函数中自行发送到pipeline的消息，pipeline收到后调用消息处理回调实现。</p>
 <h2 id="命令下发回调"><a href="#命令下发回调" class="headerlink" title="命令下发回调"></a>命令下发回调</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">VOS_INT32</span> <span class="params">(*vgp_module_action_handle_fun)</span><span class="params">( cJSON* pstJsonAction, cJSON* pstJsonReply)</span></span>;</span><br></pre></td></tr></table></figure>
 <p>dpdk控制线程在收到对应模块的命令下发后回调。<br>pstJsonAction是配置内容的cJSON结构体指针，pstJsonReply是应答内容的cJSON结构体指针，已由框架分配，供模块在其中加入应答内容。<br>VOS_OK成功，VOS_ERR失败。</p>
@@ -3208,198 +3209,9 @@ top:50vh;
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 110
+        Total : 113
         </div>
         <!-- search  -->
         
@@ -3415,6 +3227,16 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">08/19</span><a class="archive-post-title" href="/2019/08/19/命令行/">命令行</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/19</span><a class="archive-post-title" href="/2019/08/19/回调函数/">回调函数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">08/17</span><a class="archive-post-title" href="/2019/08/17/Linux系统性能/">Linux系统性能</a>
         </li>
     
@@ -3422,29 +3244,6 @@ top:50vh;
         <li class="archive-post-item">
             <span class="archive-post-date">08/17</span><a class="archive-post-title" href="/2019/08/17/dac/">dac</a>
         </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/入职软件安装/">入职软件安装</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
     
     
         <li class="archive-post-item">
@@ -3493,12 +3292,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/母盘部署/">母盘部署</a>
+            <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/流量实时监控异常/">流量实时监控异常</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/流量实时监控异常/">流量实时监控异常</a>
+            <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/母盘部署/">母盘部署</a>
         </li>
     
     
@@ -3518,12 +3317,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/网络基础/">网络基础</a>
+            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/文件/">文件</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/文件/">文件</a>
+            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/网络基础/">网络基础</a>
         </li>
     
     
@@ -3563,17 +3362,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/Markdown/">Markdown</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/我的电脑/">我的电脑</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/网络协议/">网络协议</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/Markdown/">Markdown</a>
         </li>
     
     
@@ -3593,7 +3392,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/DPDP模块开发指南/">DPDK模块开发指南</a>
+            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/DPDK模块开发指南/">DPDK模块开发指南</a>
         </li>
     
     
@@ -3628,12 +3427,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/问题集锦/">公司问题集锦</a>
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/限流处理/">限流算法</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/限流处理/">限流算法</a>
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/问题集锦/">公司问题集锦</a>
         </li>
     
     
@@ -3670,71 +3469,6 @@ top:50vh;
         <li class="archive-post-item">
             <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/C++判断变量类型/">C++判断变量类型</a>
         </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/TortoiseSVN/">TortoiseSVN</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/Chrome离线插件安装/">Chrome离线插件安装</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/10/视频核心网关设备调试/">视频核心网关设备调试</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/21/python词频统计/">Python词频统计</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
     
     
         <li class="archive-post-item">
@@ -3777,6 +3511,16 @@ top:50vh;
         </li>
     
     
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span><a class="archive-post-title" href="/2019/06/20/三门问题/">三门问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span><a class="archive-post-title" href="/2019/06/20/char 到 char[]的转换问题/">char* 到 char[]的转换问题</a>
+        </li>
+    
+    
     
     
     
@@ -3801,16 +3545,6 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/20</span><a class="archive-post-title" href="/2019/06/20/三门问题/">三门问题</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/20</span><a class="archive-post-title" href="/2019/06/20/char 到 char[]的转换问题/">char* 到 char[]的转换问题</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">06/20</span><a class="archive-post-title" href="/2019/06/20/switch...case结构中变量的作用域/">switch...case结构中变量的作用域</a>
         </li>
     
@@ -3830,7 +3564,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/专业英语/">专业英语</a>
         </li>
     
     
@@ -3891,7 +3625,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/文件路径的写法/">文件路径的写法</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/pip模块/">pip模块</a>
         </li>
     
     
@@ -3905,12 +3639,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/指针/">指针</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/文件后缀相关/">文件后缀相关</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/文件后缀相关/">文件后缀相关</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/指针/">指针</a>
         </li>
     
     
@@ -3939,64 +3673,31 @@ top:50vh;
         </li>
     
     
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
         <li class="archive-post-item">
             <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/C++学习笔记——类和对象提高/">C++学习笔记—类和对象提高</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/28/Shell编程进阶/">shell编程进阶</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/dpdk概念基础/">DPDK基础概念</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/FTP文件传输协议/">FTP文件传输协议</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/08/ping时延太高/">ping时延太高</a>
         </li>
     
     
@@ -4024,7 +3725,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/system与dos命令/">system()函数与DOS命令</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/dpdk概念基础/">DPDK基础概念</a>
         </li>
     
     
@@ -4038,7 +3739,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/05/04/Git Github Hexo/">Git Github Hexo</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Deque/">Deque</a>
         </li>
     
     
@@ -4052,7 +3753,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/pip模块/">pip模块</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/计算机组成原理/">计算机组成原理</a>
         </li>
     
     
@@ -4080,7 +3781,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/09/top命令/">top命令</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/Source Insight/">Source Insight</a>
         </li>
     
     
@@ -4136,7 +3837,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/dpdk编程基础/">dpdk基础编程</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/system与dos命令/">system()函数与DOS命令</a>
         </li>
     
     
@@ -4147,11 +3848,6 @@ top:50vh;
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/05</span><a class="archive-post-title" href="/2019/06/05/C++学习笔记——继承和派生/">C++学习笔记—继承和派生</a>
-        </li>
     
     
         <li class="archive-post-item">
@@ -4169,7 +3865,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/06/LinuxC学习基础/">Linux/C基础学习</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Queue/">Queue</a>
         </li>
     
     
@@ -4183,7 +3879,21 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Deque/">Deque</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/FTP文件传输协议/">FTP文件传输协议</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/smart/">Smart</a>
         </li>
     
     
@@ -4211,7 +3921,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/计算机组成原理/">计算机组成原理</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/文件路径的写法/">文件路径的写法</a>
         </li>
     
     
@@ -4234,54 +3944,40 @@ top:50vh;
     
         </ul>
     
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/Source Insight/">Source Insight</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/dpdk基础/">dpdk基础</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/CC++预处理指令/">C/C++预处理指令</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
+            <span class="archive-post-date">06/05</span><a class="archive-post-title" href="/2019/06/05/C++学习笔记——继承和派生/">C++学习笔记—继承和派生</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/05/04/Git Github Hexo/">Git Github Hexo</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/28/Shell编程进阶/">shell编程进阶</a>
         </li>
     
     
@@ -4309,7 +4005,49 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/smart/">Smart</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/dpdk编程基础/">dpdk基础编程</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/06/LinuxC学习基础/">Linux/C基础学习</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/TortoiseSVN/">TortoiseSVN</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/09/top命令/">top命令</a>
         </li>
     
     
@@ -4351,7 +4089,21 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Queue/">Queue</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/CC++预处理指令/">C/C++预处理指令</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
         </li>
     
     
@@ -4365,7 +4117,91 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/专业英语/">专业英语</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/19/java学习笔记/">java学习笔记</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/Chrome离线插件安装/">Chrome离线插件安装</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/dpdk基础/">dpdk基础</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/08/ping时延太高/">ping时延太高</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/入职软件安装/">入职软件安装</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/10/视频核心网关设备调试/">视频核心网关设备调试</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/21/python词频统计/">Python词频统计</a>
         </li>
     
     </ul></div>
@@ -4460,6 +4296,10 @@ top:50vh;
         <span class="sidebar-tag-name" data-tags="并发"><span class="iconfont-archer">&#xe606;</span>并发</span>
     
         <span class="sidebar-tag-name" data-tags="测试"><span class="iconfont-archer">&#xe606;</span>测试</span>
+    
+        <span class="sidebar-tag-name" data-tags="java"><span class="iconfont-archer">&#xe606;</span>java</span>
+    
+        <span class="sidebar-tag-name" data-tags="windows"><span class="iconfont-archer">&#xe606;</span>windows</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
