@@ -274,7 +274,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">230</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">672</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -407,6 +407,26 @@ height:50vh;
 <h1 id="电脑快捷键"><a href="#电脑快捷键" class="headerlink" title="电脑快捷键"></a>电脑快捷键</h1><p><kbd>Win</kbd>+<kbd>Ctrl</kbd>+<kbd>C</kbd> 显示器黑白/彩色设置<br><kbd>Win</kbd>+<kbd>Ctrl</kbd>+<kbd>D</kbd> 切换到桌面<br><kbd>Win</kbd>+<kbd>Tab</kbd>多桌面管理<br><kbd>Win</kbd>+<kbd>Ctrl</kbd>+左/右 在多桌面之间切换<br><kbd>Ctrl</kbd>+<kbd>Win</kbd>+<kbd>F4</kbd> 关闭当前桌面<br>现在浏览器是你任务栏第几个图标?比如，如果是第四个就是<kbd>Win</kbd>+<kbd>4</kbd>， 如果是第一个就<kbd>Win</kbd>+<kbd>1</kbd>，就会自动打开浏览器</p>
 <p>你浏览器里开了几个标签?比如想打开第一个标签就是<kbd>Ctrl</kbd>+<kbd>1</kbd>，想打开第二个浏览器标签就<kbd>Ctrl</kbd>+<kbd>2</kbd></p>
 <p><kbd>Ctrl</kbd>+<kbd>W</kbd> 关闭当前标签<br><kbd>Ctrl</kbd>+<kbd>Tab</kbd> 在标签之间切换<br><kbd>Win</kbd>+<kbd>D</kbd> 回桌面</p>
+<p><code>Alt + F4</code>关闭正在打开的窗口。</p>
+<h1 id="关闭windows-defender-防火墙"><a href="#关闭windows-defender-防火墙" class="headerlink" title="关闭windows defender 防火墙"></a>关闭windows defender 防火墙</h1><p><code>设置 -&gt; 更新和安全 -&gt; windows安全 -&gt; 病毒和威胁防护 -&gt; 病毒和威胁防护设置 -&gt; 实时保护</code>关掉。</p>
+<h1 id="关闭UAC"><a href="#关闭UAC" class="headerlink" title="关闭UAC"></a>关闭UAC</h1><p><code>win + R</code>输入<code>gpedit.msc</code>打开本地组策略编辑器。<br>进入<code>计算机配置 -&gt; windows 设置 -&gt; 安全设置 -&gt; 本地策略 -&gt; 安全选项</code>  中，将</p>
+<ol>
+<li>用户帐户控制：以管理员批准模式运行所有管理员</li>
+<li>用户帐户控制：用于内置管理员账号的管理员批准模式</li>
+</ol>
+<p>两项给禁用掉即可。</p>
+<p><a href="http://www.xitongtiandi.net/wenzhang/win10/31148.html" target="_blank" rel="noopener">win10真正关闭uac控制方法</a></p>
+<h1 id="如何关闭win10驱动程序强制签名"><a href="#如何关闭win10驱动程序强制签名" class="headerlink" title="如何关闭win10驱动程序强制签名"></a>如何关闭win10驱动程序强制签名</h1><p><a href="https://blog.csdn.net/loongsking/article/details/80036974" target="_blank" rel="noopener">如何关闭win10驱动程序强制签名</a></p>
+<h1 id="任务管理器"><a href="#任务管理器" class="headerlink" title="任务管理器"></a>任务管理器</h1><p><a href="https://zhidao.baidu.com/question/1732358143096700827/answer/2893530991.html?fr=index_ans&amp;word=%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%99%A8%E7%BB%93%E6%9D%9F%E4%BB%BB%E5%8A%A1" target="_blank" rel="noopener">windows资源管理器任务结束了怎么办？</a></p>
+<h1 id="浏览器界面不能用搜狗输入法"><a href="#浏览器界面不能用搜狗输入法" class="headerlink" title="浏览器界面不能用搜狗输入法"></a>浏览器界面不能用搜狗输入法</h1><p>有的时候，在浏览器界面不能用搜狗输入法，其他界面是可以的。</p>
+<p>按下<kbd>Ctrl</kbd>+<kbd>逗号</kbd>即可。</p>
+<h1 id="Chrome离线插件安装"><a href="#Chrome离线插件安装" class="headerlink" title="Chrome离线插件安装"></a>Chrome离线插件安装</h1><p>将一个<code>.crx</code>后缀的本地文件，安装到谷歌浏览器里面。<br>直接拖动安装的话会出问题，会提示<code>crx-header-invalid</code>，有已下三种解决办法。</p>
+<ol>
+<li>在扩展程序管理界面，选中开发者模式。以前安装油猴的时候就是这么做的。</li>
+<li>修改参数。不太懂，安装<code>hacker-version</code>时也无法解决问题。</li>
+<li>将<code>.crx</code>文件的后缀修改为<code>.rar</code>或者其他压缩文件的格式，解压。在Chrome浏览器的扩展程序管理界面，选中<code>加载已解压的扩展程序</code>，就能解决无法安装<code>hacker-version</code>的问题了。</li>
+</ol>
+<p><a href="http://chromecj.com/utilities/2018-09/1525.html" target="_blank" rel="noopener">chrome 67版本后无法拖拽离线安装CRX格式插件的解决方法</a></p>
 
     </article>
     <!-- license  -->
@@ -416,16 +436,16 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href="/2019/07/24/Markdown/" title="Markdown">
-                    <div class="nextTitle">Markdown</div>
+                <a href="/2019/07/24/网络实践/" title="网络实践">
+                    <div class="nextTitle">网络实践</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2019/07/24/XShell/" title="XShell">
-                    <div class="prevTitle">XShell</div>
+                <a href="/2019/07/24/Markdown/" title="Markdown">
+                    <div class="prevTitle">Markdown</div>
                 </a>
             
         </li>
@@ -551,7 +571,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#IE浏览器"><span class="toc-number">1.</span> <span class="toc-text">IE浏览器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#电脑快捷键"><span class="toc-number">2.</span> <span class="toc-text">电脑快捷键</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#IE浏览器"><span class="toc-number">1.</span> <span class="toc-text">IE浏览器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#电脑快捷键"><span class="toc-number">2.</span> <span class="toc-text">电脑快捷键</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关闭windows-defender-防火墙"><span class="toc-number">3.</span> <span class="toc-text">关闭windows defender 防火墙</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关闭UAC"><span class="toc-number">4.</span> <span class="toc-text">关闭UAC</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如何关闭win10驱动程序强制签名"><span class="toc-number">5.</span> <span class="toc-text">如何关闭win10驱动程序强制签名</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#任务管理器"><span class="toc-number">6.</span> <span class="toc-text">任务管理器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#浏览器界面不能用搜狗输入法"><span class="toc-number">7.</span> <span class="toc-text">浏览器界面不能用搜狗输入法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Chrome离线插件安装"><span class="toc-number">8.</span> <span class="toc-text">Chrome离线插件安装</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -2678,711 +2698,9 @@ top:50vh;
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 116
+        Total : 100
         </div>
         <!-- search  -->
         
@@ -3398,22 +2716,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">08/19</span><a class="archive-post-title" href="/2019/08/19/命令行/">命令行</a>
+            <span class="archive-post-date">08/25</span><a class="archive-post-title" href="/2019/08/25/BUG总结/">BUG总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/25</span><a class="archive-post-title" href="/2019/08/25/哈希与服务器命中/">哈希与服务器命中</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">08/19</span><a class="archive-post-title" href="/2019/08/19/回调函数/">回调函数</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/17</span><a class="archive-post-title" href="/2019/08/17/Linux系统性能/">Linux系统性能</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/17</span><a class="archive-post-title" href="/2019/08/17/dac/">dac</a>
         </li>
     
     
@@ -3433,16 +2746,6 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">08/07</span><a class="archive-post-title" href="/2019/08/07/生活中的计算机/">生活中的计算机</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/07</span><a class="archive-post-title" href="/2019/08/07/软件开发/">软件开发</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">08/07</span><a class="archive-post-title" href="/2019/08/07/禅道/">禅道</a>
         </li>
     
@@ -3458,17 +2761,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/编译机/">编译机</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/流量实时监控异常/">流量实时监控异常</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/母盘部署/">母盘部署</a>
         </li>
     
     
@@ -3478,12 +2771,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/wireshark/">wireshark</a>
+            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/内存管理/">内存管理</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/内存管理/">内存管理</a>
+            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/文件/">文件基础</a>
         </li>
     
     
@@ -3493,7 +2786,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/文件/">文件基础</a>
+            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/wireshark/">wireshark</a>
         </li>
     
     
@@ -3508,11 +2801,6 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/25</span><a class="archive-post-title" href="/2019/07/25/hexo-admin/">hexo admin</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/修改Archer主题的背景颜色/">修改Archer主题的背景颜色</a>
         </li>
     
@@ -3523,17 +2811,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/视频核心安全网关/">视频核心安全网关</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/网络命令/">网络命令</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/网络协议/">网络协议</a>
+            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/网络实践/">网络实践</a>
         </li>
     
     
@@ -3578,21 +2856,6 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/设备调试/">设备调试</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/编译环境/">编译环境</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/Linux网络基础/">Linux网络基础</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/Linux进程管理/">Linux进程管理</a>
         </li>
     
@@ -3629,11 +2892,6 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">07/08</span><a class="archive-post-title" href="/2019/07/08/字节对齐/">字节对齐</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/STL总述/">STL</a>
         </li>
     
     
@@ -3692,29 +2950,6 @@ top:50vh;
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/TortoiseSVN/">TortoiseSVN</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
         <li class="archive-post-item">
             <span class="archive-post-date">06/20</span><a class="archive-post-title" href="/2019/06/20/switch...case结构中变量的作用域/">switch...case结构中变量的作用域</a>
         </li>
@@ -3725,129 +2960,8 @@ top:50vh;
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/入职软件安装/">入职软件安装</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
         <li class="archive-post-item">
             <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/指针/">指针</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/28/Shell编程进阶/">shell编程进阶</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/文件后缀相关/">文件后缀相关</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Queue/">Queue</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/pip模块/">pip模块</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/磁盘与磁盘格式/">磁盘与磁盘格式</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/文件路径的写法/">文件路径的写法</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/头文件与库文件相关/">头文件与库文件相关</a>
         </li>
     
     
@@ -3861,27 +2975,9 @@ top:50vh;
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/09/挂载与磁盘格式/">挂载与磁盘格式</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/磁盘与磁盘格式/">磁盘与磁盘格式</a>
         </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
     
     
         <li class="archive-post-item">
@@ -3889,69 +2985,34 @@ top:50vh;
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/CC++基础/">C/C++基础</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/HTML学习笔记/">HTML学习笔记</a>
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/linux基础/">linux基础</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/C++学习笔记——类和对象提高/">C++学习笔记—类和对象提高</a>
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/Shell编程/">shell编程</a>
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——从C到C++/">C++学习笔记—从C到C++</a>
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/VS 2012/">VS 2012</a>
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">C++学习笔记—多态和虚函数</a>
         </li>
     
     
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——类和对象基础/">C++学习笔记—类和对象基础</a>
+        </li>
     
     
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/05</span><a class="archive-post-title" href="/2019/06/05/C++学习笔记——继承和派生/">C++学习笔记—继承和派生</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -3969,432 +3030,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/09/top命令/">top命令</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/10/视频核心网关设备调试/">视频核心网关设备调试</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/14/网络字节序与主机字节序/">网络字节序与主机字节序</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/Source Insight/">Source Insight</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/16/attribute关键字/">attribute关键字</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/专业英语/">专业英语</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/HTML学习笔记/">HTML学习笔记</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/21/python词频统计/">Python词频统计</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/C++学习笔记——类和对象提高/">C++学习笔记—类和对象提高</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——从C到C++/">C++学习笔记—从C到C++</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Deque/">Deque</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">C++学习笔记—多态和虚函数</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/FTP文件传输协议/">FTP文件传输协议</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/08/ping时延太高/">ping时延太高</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/05/04/Git Github Hexo/">Git Github Hexo</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/dpdk编程基础/">dpdk基础编程</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/19/java学习笔记/">java学习笔记</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/计算机组成原理/">计算机组成原理</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/06/LinuxC学习基础/">Linux/C基础学习</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/设备部署/">设备部署</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/smart/">Smart</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/dpdk基础/">dpdk基础</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——类和对象基础/">C++学习笔记—类和对象基础</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/Chrome离线插件安装/">Chrome离线插件安装</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/05</span><a class="archive-post-title" href="/2019/06/05/C++学习笔记——继承和派生/">C++学习笔记—继承和派生</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/dpdk概念基础/">DPDK基础概念</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/CC++预处理指令/">C/C++预处理指令</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/25/产品防护培训/">产品防护培训</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/25/命令行参数的实现/">命令行参数的实现</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/25/Linux内核模块开发/">Linux内核模块开发</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/25/公司代码的编译运行/">公司代码的编译运行</a>
         </li>
     
     
@@ -4422,7 +3058,175 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/pip模块/">pip模块</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/09/挂载与磁盘格式/">挂载与磁盘格式</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/25/产品防护培训/">产品防护培训</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/dpdk编程基础/">dpdk基础编程</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/专业英语/">专业英语</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/VS 2012/">VS 2012</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/09/Linux系统分析/">Linux系统分析</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/16/dpdk网卡收包流程/">DPDK网卡收包流程</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/05/04/Git Github Hexo/">Git Github Hexo</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/Source Insight/">Source Insight</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/06/LinuxC学习基础/">Linux/C基础学习</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/21/python词频统计/">Python词频统计</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/25/IP地址/">IP地址</a>
         </li>
     
     
@@ -4450,7 +3254,315 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/FTP文件传输协议/">FTP文件传输协议</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/计算机组成原理/">计算机组成原理</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/28/Shell编程进阶/">shell编程进阶</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/dpdk概念基础/">DPDK基础概念</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/25/Makefile/">Makefile</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Deque/">Deque</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/文件路径的写法/">文件路径的写法</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/TortoiseSVN/">TortoiseSVN</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/25/设备部署/">设备部署</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/14/网络字节序与主机字节序/">网络字节序与主机字节序</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/08/ping时延太高/">ping时延太高</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/linux基础/">linux基础</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/dpdk基础使用/">dpdk基础使用</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/Shell编程/">shell编程</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/CC++基础/">C/C++基础</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/system与dos命令/">system()函数与DOS命令</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/CC++预处理指令/">C/C++预处理指令</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/19/java学习笔记/">java学习笔记</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/25/命令行参数的实现/">命令行参数的实现</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Queue/">Queue</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/25/Linux内核模块开发/">Linux内核模块开发</a>
         </li>
     
     </ul></div>
@@ -4460,59 +3572,55 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
-        <span class="sidebar-tag-name" data-tags="编程"><span class="iconfont-archer">&#xe606;</span>编程</span>
-    
         <span class="sidebar-tag-name" data-tags="C/C++"><span class="iconfont-archer">&#xe606;</span>C/C++</span>
     
-        <span class="sidebar-tag-name" data-tags="骚操作"><span class="iconfont-archer">&#xe606;</span>骚操作</span>
+        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
     
-        <span class="sidebar-tag-name" data-tags="软件使用"><span class="iconfont-archer">&#xe606;</span>软件使用</span>
+        <span class="sidebar-tag-name" data-tags="并发"><span class="iconfont-archer">&#xe606;</span>并发</span>
     
-        <span class="sidebar-tag-name" data-tags="dpdk"><span class="iconfont-archer">&#xe606;</span>dpdk</span>
+        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
     
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+        <span class="sidebar-tag-name" data-tags="网络协议"><span class="iconfont-archer">&#xe606;</span>网络协议</span>
     
         <span class="sidebar-tag-name" data-tags="文件"><span class="iconfont-archer">&#xe606;</span>文件</span>
     
-        <span class="sidebar-tag-name" data-tags="html"><span class="iconfont-archer">&#xe606;</span>html</span>
-    
-        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
+        <span class="sidebar-tag-name" data-tags="网络"><span class="iconfont-archer">&#xe606;</span>网络</span>
     
         <span class="sidebar-tag-name" data-tags="软件"><span class="iconfont-archer">&#xe606;</span>软件</span>
     
         <span class="sidebar-tag-name" data-tags="网页配置"><span class="iconfont-archer">&#xe606;</span>网页配置</span>
     
-        <span class="sidebar-tag-name" data-tags="网络协议"><span class="iconfont-archer">&#xe606;</span>网络协议</span>
-    
-        <span class="sidebar-tag-name" data-tags="命令"><span class="iconfont-archer">&#xe606;</span>命令</span>
-    
-        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
-    
         <span class="sidebar-tag-name" data-tags="操作系统"><span class="iconfont-archer">&#xe606;</span>操作系统</span>
     
-        <span class="sidebar-tag-name" data-tags="Office"><span class="iconfont-archer">&#xe606;</span>Office</span>
+        <span class="sidebar-tag-name" data-tags="C/C+"><span class="iconfont-archer">&#xe606;</span>C/C+</span>
     
         <span class="sidebar-tag-name" data-tags="电脑"><span class="iconfont-archer">&#xe606;</span>电脑</span>
     
-        <span class="sidebar-tag-name" data-tags="网络"><span class="iconfont-archer">&#xe606;</span>网络</span>
+        <span class="sidebar-tag-name" data-tags="Office"><span class="iconfont-archer">&#xe606;</span>Office</span>
+    
+        <span class="sidebar-tag-name" data-tags="软件使用"><span class="iconfont-archer">&#xe606;</span>软件使用</span>
     
         <span class="sidebar-tag-name" data-tags="TCP/IP"><span class="iconfont-archer">&#xe606;</span>TCP/IP</span>
     
         <span class="sidebar-tag-name" data-tags="ubuntu"><span class="iconfont-archer">&#xe606;</span>ubuntu</span>
     
+        <span class="sidebar-tag-name" data-tags="编程"><span class="iconfont-archer">&#xe606;</span>编程</span>
+    
+        <span class="sidebar-tag-name" data-tags="dpdk"><span class="iconfont-archer">&#xe606;</span>dpdk</span>
+    
+        <span class="sidebar-tag-name" data-tags="java"><span class="iconfont-archer">&#xe606;</span>java</span>
+    
+        <span class="sidebar-tag-name" data-tags="html"><span class="iconfont-archer">&#xe606;</span>html</span>
+    
         <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
     
-        <span class="sidebar-tag-name" data-tags="设备调试"><span class="iconfont-archer">&#xe606;</span>设备调试</span>
+        <span class="sidebar-tag-name" data-tags="命令"><span class="iconfont-archer">&#xe606;</span>命令</span>
     
         <span class="sidebar-tag-name" data-tags="node.js"><span class="iconfont-archer">&#xe606;</span>node.js</span>
     
-        <span class="sidebar-tag-name" data-tags="smart"><span class="iconfont-archer">&#xe606;</span>smart</span>
-    
-        <span class="sidebar-tag-name" data-tags="json"><span class="iconfont-archer">&#xe606;</span>json</span>
-    
         <span class="sidebar-tag-name" data-tags="模块与包"><span class="iconfont-archer">&#xe606;</span>模块与包</span>
     
-        <span class="sidebar-tag-name" data-tags="英语"><span class="iconfont-archer">&#xe606;</span>英语</span>
+        <span class="sidebar-tag-name" data-tags="设备调试"><span class="iconfont-archer">&#xe606;</span>设备调试</span>
     
         <span class="sidebar-tag-name" data-tags="数据分析"><span class="iconfont-archer">&#xe606;</span>数据分析</span>
     
@@ -4520,35 +3628,33 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="模拟"><span class="iconfont-archer">&#xe606;</span>模拟</span>
     
-        <span class="sidebar-tag-name" data-tags="磁盘"><span class="iconfont-archer">&#xe606;</span>磁盘</span>
+        <span class="sidebar-tag-name" data-tags="英语"><span class="iconfont-archer">&#xe606;</span>英语</span>
+    
+        <span class="sidebar-tag-name" data-tags="smart"><span class="iconfont-archer">&#xe606;</span>smart</span>
     
         <span class="sidebar-tag-name" data-tags="前端"><span class="iconfont-archer">&#xe606;</span>前端</span>
     
-        <span class="sidebar-tag-name" data-tags="指针"><span class="iconfont-archer">&#xe606;</span>指针</span>
+        <span class="sidebar-tag-name" data-tags="windows"><span class="iconfont-archer">&#xe606;</span>windows</span>
     
-        <span class="sidebar-tag-name" data-tags="计算机组成原理"><span class="iconfont-archer">&#xe606;</span>计算机组成原理</span>
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
         <span class="sidebar-tag-name" data-tags="内存"><span class="iconfont-archer">&#xe606;</span>内存</span>
     
+        <span class="sidebar-tag-name" data-tags="磁盘"><span class="iconfont-archer">&#xe606;</span>磁盘</span>
+    
+        <span class="sidebar-tag-name" data-tags="测试"><span class="iconfont-archer">&#xe606;</span>测试</span>
+    
         <span class="sidebar-tag-name" data-tags="硬件"><span class="iconfont-archer">&#xe606;</span>硬件</span>
     
-        <span class="sidebar-tag-name" data-tags="软件开发"><span class="iconfont-archer">&#xe606;</span>软件开发</span>
-    
-        <span class="sidebar-tag-name" data-tags="XShell"><span class="iconfont-archer">&#xe606;</span>XShell</span>
+        <span class="sidebar-tag-name" data-tags="计算机组成原理"><span class="iconfont-archer">&#xe606;</span>计算机组成原理</span>
     
         <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
+    
+        <span class="sidebar-tag-name" data-tags="指针"><span class="iconfont-archer">&#xe606;</span>指针</span>
     
         <span class="sidebar-tag-name" data-tags="Shell"><span class="iconfont-archer">&#xe606;</span>Shell</span>
     
         <span class="sidebar-tag-name" data-tags="文学"><span class="iconfont-archer">&#xe606;</span>文学</span>
-    
-        <span class="sidebar-tag-name" data-tags="并发"><span class="iconfont-archer">&#xe606;</span>并发</span>
-    
-        <span class="sidebar-tag-name" data-tags="测试"><span class="iconfont-archer">&#xe606;</span>测试</span>
-    
-        <span class="sidebar-tag-name" data-tags="java"><span class="iconfont-archer">&#xe606;</span>java</span>
-    
-        <span class="sidebar-tag-name" data-tags="windows"><span class="iconfont-archer">&#xe606;</span>windows</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

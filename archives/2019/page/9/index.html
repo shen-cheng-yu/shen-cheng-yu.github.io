@@ -346,18 +346,18 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/07/06/迭代器/">
+        <a class="abstract-title" href="/2019/06/20/char 到 char[]的转换问题/">
             
-                <span>迭代器</span>
+                <span>char* 到 char[]的转换问题</span>
         </a>
         <div class="abstract-content">
-            123vector&lt;int&gt;::iterator it1;  vector&lt;int&gt;::reverse_iterator it2;  //反向迭代器vector&lt;int&gt;::const_iterator it3;   //常量迭代器
-不能通过常量迭代器修改元素内容，*it2=20;这是错误的。双向迭代器：++p,--p,*p,p=p1(赋值),p==p1,p!=p1(判断是否相等)随机访问迭代器：除了双向迭代器的所有功能之外，还有p+i,p-i,p+=i,p-=i（迭代器前后移动）,p[i]（迭代器p后面第i个元素的引用）,p&gt;(&gt;=,&l...
+            12345678910111213141516#include&lt;iostream&gt;using namespace std;void fun(const char*);int main()&#123;    char s[10]="apple";    fun(s);    return 0;&#125;void fun(const char* str)&#123;    char t[10];    t=str;    cout&lt;&lt;t&lt;&lt;endl;&#125;
+这里将一个char*的字符串转换成char []这样的，就会报错：1error: incom...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/06</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/20</span>
             </div>
             <!-- tags  -->
             
@@ -365,7 +365,7 @@
     
         <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="STL">STL</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="编程">编程</a>
     
 </div>
             
@@ -378,17 +378,17 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/07/06/Priority_Queue/">
+        <a class="abstract-title" href="/2019/06/20/switch...case结构中变量的作用域/">
             
-                <span>Priority_Queue</span>
+                <span>switch...case结构中变量的作用域</span>
         </a>
         <div class="abstract-content">
-            底层用堆实现的优先队列，队首元素是队列中优先级最高的那个。基本数据类型中，即默认是数值最大的那个元素。优先队列的本质是堆。1234567891011121314151617181920#include&lt;iostream&gt;#include&lt;queue&gt;using namespace std;int main()&#123;    priority_queue&lt;int&gt;q;    q.push(2);  //入队，O(log n)    q.push(8);    q.push(1);    cout&lt;&lt;q.size()&lt;&lt;endl...
+            实验代码：123456789101112131415161718#include&lt;iostream&gt;using namespace std;int main()&#123;    int i=2;    switch(i)&#123;    case 1:        i=5;        int j=4;        break;    case 2:        cout&lt;&lt;i&lt;&lt;j&lt;&lt;endl;        break;    default:        cout&lt;&lt;3;    &#125;    retur...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/06</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/20</span>
             </div>
             <!-- tags  -->
             
@@ -396,7 +396,7 @@
     
         <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="STL">STL</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="编程">编程</a>
     
 </div>
             
@@ -409,25 +409,26 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/07/06/Set/">
+        <a class="abstract-title" href="/2019/06/17/python生成词云/">
             
-                <span>Set</span>
+                <span>Python生成词云</span>
         </a>
         <div class="abstract-content">
-            内部自动递增有序且不含重复元素的容器1234567891011121314151617181920212223242526272829303132333435363738#include&lt;iostream&gt;#include&lt;set&gt;using namespace std;int main()&#123;    set&lt;int&gt;st;    for(int i=100;i&lt;=500;i+=100)        st.insert(i);    st.insert(200);  //插入元素，O(log n)    st.insert(350); ...
+            生成词云的方式有很多，有很多这样的网站，软件，微信小程序等等，这里采用python里面wordcloud模块来完成，给定一段文字，用jieba模块分词，得到很多词语，分析这些词的出现频率，将出现频率高的词语整合成词云的形式。
+先上代码吧。12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455from wordcloud import WordCloud,STOPWORDS  //词云模块import matplotlib.pyplot as ...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/06</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/17</span>
             </div>
             <!-- tags  -->
             
             <div class="abstract-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="python">python</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="STL">STL</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="数据分析">数据分析</a>
     
 </div>
             
@@ -440,25 +441,29 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/07/06/Queue/">
+        <a class="abstract-title" href="/2019/06/17/文件路径的写法/">
             
-                <span>Queue</span>
+                <span>文件路径的写法</span>
         </a>
         <div class="abstract-content">
-            先进先出的限制性数据结构使用front()和pop()之前需要判断队列是否为空1234567891011121314151617181920212223#include&lt;iostream&gt;#include&lt;queue&gt;using namespace std;int main()&#123;    queue&lt;int&gt;q;    for(int i=0;i&lt;5;i++)        q.push(i);  //添加队尾元素，O(1)    cout&lt;&lt;q.size()&lt;&lt;endl;  //O(1)    //访问队首队尾元...
+            windows里面的文件路径，它的斜杠符号是这样\。但是编程的时候，如果涉及到文件路径，就不能这么写了，会被当作是转义字符给转义掉的。比如这么写就是错的：path_txt=&#39;C:\Users\14311\Desktop\1-100.txt&#39;
+有以下三种方法：
+
+两个斜杠，表示第二个斜杠只是一个普通字符，不是转义的意思。path_txt=&#39;C:\\Users\\14311\\Desktop\\1-100.txt&#39;
+原始字符串，显示地声明这里的斜杠不用转义。path_txt=r&#39;C:\Users\14311\Desktop\1-100.txt&#39;...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/06</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/17</span>
             </div>
             <!-- tags  -->
             
             <div class="abstract-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="文件">文件</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="STL">STL</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="python">python</a>
     
 </div>
             
@@ -471,25 +476,27 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/07/06/Stack/">
+        <a class="abstract-title" href="/2019/06/17/pip模块/">
             
-                <span>Stack</span>
+                <span>pip模块</span>
         </a>
         <div class="abstract-content">
-            1234567891011121314151617#include&lt;iostream&gt;#include&lt;stack&gt;using namespace std;int main()&#123;    stack&lt;int&gt;s;    for(int i=0;i&lt;5;i++)        s.push(i);  //入栈，O(1)    cout&lt;&lt;s.size()&lt;&lt;endl; //获取元素个数，O(1)    for(int i=0;i&lt;3;i++)&#123;        if(s.empty()==false) ...
+            这是python安装模块的一个模块（用来安装别的模块，它自己也是一个模块）。
+命令pip freeze在cmd窗口，可以通过pip freeze查看目前已经安装了哪些包。
+pip show numpy通过类似这样的命令，查看已经安装的包的一些具体信息。这时候还没有安装好wordcloud模块，因此查询时没有反应。安装好了之后可以看到：1234567891011C:\WINDOWS\system32&gt;pip show wordcloudName: wordcloudVersion: 1.5.0Summary: A little word cloud generatorHome-pag...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/06</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/17</span>
             </div>
             <!-- tags  -->
             
             <div class="abstract-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="python">python</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="STL">STL</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="模块与包">模块与包</a>
     
 </div>
             
@@ -502,25 +509,23 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/07/06/String/">
+        <a class="abstract-title" href="/2019/06/16/指针/">
             
-                <span>String</span>
+                <span>指针</span>
         </a>
         <div class="abstract-content">
-            访问1234567891011121314151617181920212223242526272829303132333435363738#include&lt;iostream&gt;#include&lt;string&gt;#include&lt;typeinfo&gt;using namespace std;int main()&#123;    string name="shen cheng yu";    printf("%c\n",name[5]); //printf对单个字符进行操作    // printf("%s\n",name); 读入或者输出整个字符串，只能用ci...
+            本文记录了一些使用指针时的注意事项。
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/06</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/16</span>
             </div>
             <!-- tags  -->
             
             <div class="abstract-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="STL">STL</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="C/C++">C/C++</a>
     
 </div>
             
@@ -533,24 +538,26 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/07/06/Algorithm头文件里的算法/">
+        <a class="abstract-title" href="/2019/06/16/记事本更改默认编码方式为UTF-8/">
             
-                <span>Algorithm头文件里的算法</span>
+                <span>记事本更改默认编码方式为UTF-8</span>
         </a>
         <div class="abstract-content">
-            find()利用find()查找vector中的元素见STL中相关部分。
-find()查找普通数组12345678910111213#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;int main()&#123;    int array[10]=&#123;1,2,3,4,5,6,7,8,9,10&#125;;    //find()返回值是迭代器，int*类型的迭代器    int* p=find(array,array+10,6); //数组名作迭代器用    if(p==array+10) ...
+             由于之前在Marxico上写好的Markdown文件，导入到记事本里面，再修改记事本的后缀为.md，把这样的文件上传到Hexo上，博客上显示的文章就会乱码。为了一劳永逸的解决这个问题，就想把记事本的默认编码方式改为utf-8，要不然每次都要另存为才能改编码方式。
+使新建windows记事本的字符集编码默认为UTF-8如何使创建记事本时的默认编码为UTF-8shellnew是什么程序
+最终的实现方法和百度到的有些出入。基本原理就是在C:\Windows\SHELLNEW里面，保存一个空白的utf-8格式的模板记事本文件，然后在注册表里面更改.txt文件的默认模板为刚刚保存的那个文件。
+我...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/06</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/16</span>
             </div>
             <!-- tags  -->
             
             <div class="abstract-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="电脑">电脑</a>
     
 </div>
             
@@ -563,25 +570,23 @@ find()查找普通数组12345678910111213#include&lt;iostream&gt;#include&lt;alg
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/07/06/C++判断变量类型/">
+        <a class="abstract-title" href="/2019/06/16/电脑硬件/">
             
-                <span>C++判断变量类型</span>
+                <span>电脑硬件</span>
         </a>
         <div class="abstract-content">
-            string类型的变量，经过str.c_str()这个函数转换之后是什么类型的变量呢？123456string name="shen cheng yu";printf("%s\n",name.c_str());//不论是否初始化了，转换后的类型都是const char*if(typeid(name.c_str())==typeid(const char*))  cout&lt;&lt;"yes\n";else cout&lt;&lt;"no\n";
-不论这个string变量是否有过初始化，转换后的类型都是const char*。
-用typeid()函数获取变量的类型。需要添加头文件：1#...
+            鼠标工作原理定位原理光电鼠标内部有一个发光二极管，它发出的光线通过一个菱形镜，折射到鼠标垫或者桌面上，可以照亮光电鼠标底部表面（这是鼠标底部总会发光的原因），当然也有部分光线直接通过菱形镜笔直地向前照射。光电鼠标经底部表面反射回的一部分光线，通过一个圆形镜后，传输到一个光感应器件（微成像器）内成像。这个菱形镜和圆形镜是光电鼠标内部光学器件中很重要的一部分。当光电鼠标移动时，其移动轨迹便会被记录为一组高速拍摄的连贯图像，被光电鼠标内部的一块专用图像分析芯片（DSP，即数字微处理器）分析处理。该芯片通过对这些图像上特征点位置的变化进行分析，来判断鼠标的移动方向和移动距离，从而完成光标的定位。...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/06</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/16</span>
             </div>
             <!-- tags  -->
             
             <div class="abstract-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="硬件">硬件</a>
     
 </div>
             
@@ -594,26 +599,27 @@ find()查找普通数组12345678910111213#include&lt;iostream&gt;#include&lt;alg
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/07/06/Vector/">
+        <a class="abstract-title" href="/2019/06/16/磁盘与磁盘格式/">
             
-                <span>Vector</span>
+                <span>磁盘与磁盘格式</span>
         </a>
         <div class="abstract-content">
-            对vector使用的建议是：先创建一个空的vector对象，然后再运行时再利用vector的成员函数push_back向其中添加元素。vector在尾部增删元素时，大所数情况下可以在常数时间内完成（除非此时需要重新分配内存）。
-添加1234567891011121314int main()&#123;    vector&lt;int&gt;v;    for(int i=0;i&lt;10;i++)&#123;        v.push_back(i);    &#125;    v.insert(v.begin()+1,9); //在指定的迭代器位置处插入元素,O(n)    //...
+            磁盘的结构管家公众号链接硬盘最基本的组成部分是由坚硬金属材料制成的涂以磁性介质的盘片，一个硬盘包括有多个盘片，每个盘片有两面，都可记录信息。总共有多少个盘面，就有多少个磁头用来独写读写信息。每个扇区可存储128×2的N次方（N＝0.1.2.3）字节信息。在DOS中每扇区是128×2的2次方＝512字节。柱面是从最外缘的“0”开始编号，磁头从0开始编号，扇区是从1开始编号。柱面、磁头、扇区构成了硬盘结构的基本参数，硬盘的CHS，即Cylinder（柱面）、Head（磁头）、Sector（扇区），只要知道了硬盘的CHS的数目，即可确定硬盘的容量，计算公式为：存储容量＝磁头数×磁道（柱面）数×...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/06</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/16</span>
             </div>
             <!-- tags  -->
             
             <div class="abstract-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="操作系统">操作系统</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="STL">STL</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="磁盘">磁盘</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="硬件">硬件</a>
     
 </div>
             
@@ -626,17 +632,17 @@ find()查找普通数组12345678910111213#include&lt;iostream&gt;#include&lt;alg
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/07/06/Map/">
+        <a class="abstract-title" href="/2019/06/16/程序运行时间/">
             
-                <span>Map</span>
+                <span>程序运行时间</span>
         </a>
         <div class="abstract-content">
-            12345678910111213141516171819202122232425262728293031323334353637#include&lt;iostream&gt;#include&lt;map&gt;using namespace std;int main()&#123;    map&lt;char,int&gt;mp; //构造从char到int的映射    //键或值的类型为字符数组时，只能用string，不能用char[]数组。    mp['a']=20;  //键所对应的值是唯一的    mp['a']=30;    printf("%d\n",mp['a']...
+            C++程序运行时间1234567891011121314#include&lt;iostream&gt;#include&lt;ctime&gt;using namespace std;int main()&#123;    clock_t startTime,endTime;    for(int i=0;i&lt;123456789;i++)&#123;&#125;    startTime=clock();    for(int i=0;i&lt;123456789;i++)&#123;&#125;    endTime=clock();    double time1=(doub...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/06</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/16</span>
             </div>
             <!-- tags  -->
             
@@ -644,7 +650,7 @@ find()查找普通数组12345678910111213#include&lt;iostream&gt;#include&lt;alg
     
         <a class="post-tag" href="javascript:void(0);" data-tags="C++">C++</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="STL">STL</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="编程">编程</a>
     
 </div>
             
@@ -654,7 +660,7 @@ find()查找普通数组12345678910111213#include&lt;iostream&gt;#include&lt;alg
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/archives/2019/page/8/">&#60; PREV</a><a class="page-number" href="/archives/2019/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2019/page/7/">7</a><a class="page-number" href="/archives/2019/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/archives/2019/page/10/">10</a><a class="page-number" href="/archives/2019/page/11/">11</a><a class="page-number" href="/archives/2019/page/12/">12</a><a class="extend next" rel="next" href="/archives/2019/page/10/">NEXT &#62;</a>
+        <a class="extend prev" rel="prev" href="/archives/2019/page/8/">&#60; PREV</a><a class="page-number" href="/archives/2019/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2019/page/7/">7</a><a class="page-number" href="/archives/2019/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/archives/2019/page/10/">10</a><a class="extend next" rel="next" href="/archives/2019/page/10/">NEXT &#62;</a>
     </nav>
     
 </main>
@@ -2873,711 +2879,9 @@ find()查找普通数组12345678910111213#include&lt;iostream&gt;#include&lt;alg
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 116
+        Total : 100
         </div>
         <!-- search  -->
         
@@ -3593,22 +2897,17 @@ find()查找普通数组12345678910111213#include&lt;iostream&gt;#include&lt;alg
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">08/19</span><a class="archive-post-title" href="/2019/08/19/命令行/">命令行</a>
+            <span class="archive-post-date">08/25</span><a class="archive-post-title" href="/2019/08/25/BUG总结/">BUG总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/25</span><a class="archive-post-title" href="/2019/08/25/哈希与服务器命中/">哈希与服务器命中</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">08/19</span><a class="archive-post-title" href="/2019/08/19/回调函数/">回调函数</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/17</span><a class="archive-post-title" href="/2019/08/17/Linux系统性能/">Linux系统性能</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/17</span><a class="archive-post-title" href="/2019/08/17/dac/">dac</a>
         </li>
     
     
@@ -3628,16 +2927,6 @@ find()查找普通数组12345678910111213#include&lt;iostream&gt;#include&lt;alg
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">08/07</span><a class="archive-post-title" href="/2019/08/07/生活中的计算机/">生活中的计算机</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/07</span><a class="archive-post-title" href="/2019/08/07/软件开发/">软件开发</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">08/07</span><a class="archive-post-title" href="/2019/08/07/禅道/">禅道</a>
         </li>
     
@@ -3653,17 +2942,7 @@ find()查找普通数组12345678910111213#include&lt;iostream&gt;#include&lt;alg
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/编译机/">编译机</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/流量实时监控异常/">流量实时监控异常</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/母盘部署/">母盘部署</a>
         </li>
     
     
@@ -3673,12 +2952,12 @@ find()查找普通数组12345678910111213#include&lt;iostream&gt;#include&lt;alg
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/wireshark/">wireshark</a>
+            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/内存管理/">内存管理</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/内存管理/">内存管理</a>
+            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/文件/">文件基础</a>
         </li>
     
     
@@ -3688,7 +2967,7 @@ find()查找普通数组12345678910111213#include&lt;iostream&gt;#include&lt;alg
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/文件/">文件基础</a>
+            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/wireshark/">wireshark</a>
         </li>
     
     
@@ -3703,11 +2982,6 @@ find()查找普通数组12345678910111213#include&lt;iostream&gt;#include&lt;alg
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/25</span><a class="archive-post-title" href="/2019/07/25/hexo-admin/">hexo admin</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/修改Archer主题的背景颜色/">修改Archer主题的背景颜色</a>
         </li>
     
@@ -3718,17 +2992,7 @@ find()查找普通数组12345678910111213#include&lt;iostream&gt;#include&lt;alg
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/视频核心安全网关/">视频核心安全网关</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/网络命令/">网络命令</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/网络协议/">网络协议</a>
+            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/网络实践/">网络实践</a>
         </li>
     
     
@@ -3773,21 +3037,6 @@ find()查找普通数组12345678910111213#include&lt;iostream&gt;#include&lt;alg
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/设备调试/">设备调试</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/编译环境/">编译环境</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/Linux网络基础/">Linux网络基础</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/Linux进程管理/">Linux进程管理</a>
         </li>
     
@@ -3824,11 +3073,6 @@ find()查找普通数组12345678910111213#include&lt;iostream&gt;#include&lt;alg
     
         <li class="archive-post-item">
             <span class="archive-post-date">07/08</span><a class="archive-post-title" href="/2019/07/08/字节对齐/">字节对齐</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2019/07/06/STL总述/">STL</a>
         </li>
     
     
@@ -3887,29 +3131,6 @@ find()查找普通数组12345678910111213#include&lt;iostream&gt;#include&lt;alg
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/TortoiseSVN/">TortoiseSVN</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
         <li class="archive-post-item">
             <span class="archive-post-date">06/20</span><a class="archive-post-title" href="/2019/06/20/switch...case结构中变量的作用域/">switch...case结构中变量的作用域</a>
         </li>
@@ -3920,129 +3141,8 @@ find()查找普通数组12345678910111213#include&lt;iostream&gt;#include&lt;alg
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/入职软件安装/">入职软件安装</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
         <li class="archive-post-item">
             <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/指针/">指针</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/28/Shell编程进阶/">shell编程进阶</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/文件后缀相关/">文件后缀相关</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Queue/">Queue</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/pip模块/">pip模块</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/磁盘与磁盘格式/">磁盘与磁盘格式</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/文件路径的写法/">文件路径的写法</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/头文件与库文件相关/">头文件与库文件相关</a>
         </li>
     
     
@@ -4056,27 +3156,9 @@ find()查找普通数组12345678910111213#include&lt;iostream&gt;#include&lt;alg
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/09/挂载与磁盘格式/">挂载与磁盘格式</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/磁盘与磁盘格式/">磁盘与磁盘格式</a>
         </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
     
     
         <li class="archive-post-item">
@@ -4084,69 +3166,34 @@ find()查找普通数组12345678910111213#include&lt;iostream&gt;#include&lt;alg
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/CC++基础/">C/C++基础</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/HTML学习笔记/">HTML学习笔记</a>
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/linux基础/">linux基础</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/C++学习笔记——类和对象提高/">C++学习笔记—类和对象提高</a>
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/Shell编程/">shell编程</a>
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——从C到C++/">C++学习笔记—从C到C++</a>
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/VS 2012/">VS 2012</a>
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">C++学习笔记—多态和虚函数</a>
         </li>
     
     
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——类和对象基础/">C++学习笔记—类和对象基础</a>
+        </li>
     
     
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/05</span><a class="archive-post-title" href="/2019/06/05/C++学习笔记——继承和派生/">C++学习笔记—继承和派生</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -4164,432 +3211,7 @@ find()查找普通数组12345678910111213#include&lt;iostream&gt;#include&lt;alg
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/09/top命令/">top命令</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/10/视频核心网关设备调试/">视频核心网关设备调试</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/14/网络字节序与主机字节序/">网络字节序与主机字节序</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/Source Insight/">Source Insight</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/16/attribute关键字/">attribute关键字</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/专业英语/">专业英语</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/HTML学习笔记/">HTML学习笔记</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/21/python词频统计/">Python词频统计</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/C++学习笔记——类和对象提高/">C++学习笔记—类和对象提高</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——从C到C++/">C++学习笔记—从C到C++</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Deque/">Deque</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">C++学习笔记—多态和虚函数</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/FTP文件传输协议/">FTP文件传输协议</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/08/ping时延太高/">ping时延太高</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/05/04/Git Github Hexo/">Git Github Hexo</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/dpdk编程基础/">dpdk基础编程</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/19/java学习笔记/">java学习笔记</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/计算机组成原理/">计算机组成原理</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/06/LinuxC学习基础/">Linux/C基础学习</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/设备部署/">设备部署</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/smart/">Smart</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/dpdk基础/">dpdk基础</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——类和对象基础/">C++学习笔记—类和对象基础</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/Chrome离线插件安装/">Chrome离线插件安装</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/05</span><a class="archive-post-title" href="/2019/06/05/C++学习笔记——继承和派生/">C++学习笔记—继承和派生</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/dpdk概念基础/">DPDK基础概念</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/CC++预处理指令/">C/C++预处理指令</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/25/产品防护培训/">产品防护培训</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/25/命令行参数的实现/">命令行参数的实现</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/25/Linux内核模块开发/">Linux内核模块开发</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/25/公司代码的编译运行/">公司代码的编译运行</a>
         </li>
     
     
@@ -4617,7 +3239,175 @@ find()查找普通数组12345678910111213#include&lt;iostream&gt;#include&lt;alg
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/pip模块/">pip模块</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/09/挂载与磁盘格式/">挂载与磁盘格式</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/25/产品防护培训/">产品防护培训</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/dpdk编程基础/">dpdk基础编程</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/专业英语/">专业英语</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/VS 2012/">VS 2012</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/09/Linux系统分析/">Linux系统分析</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/16/dpdk网卡收包流程/">DPDK网卡收包流程</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/05/04/Git Github Hexo/">Git Github Hexo</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/Source Insight/">Source Insight</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/06/LinuxC学习基础/">Linux/C基础学习</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/21/python词频统计/">Python词频统计</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/25/IP地址/">IP地址</a>
         </li>
     
     
@@ -4645,7 +3435,315 @@ find()查找普通数组12345678910111213#include&lt;iostream&gt;#include&lt;alg
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/FTP文件传输协议/">FTP文件传输协议</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/计算机组成原理/">计算机组成原理</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/28/Shell编程进阶/">shell编程进阶</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/dpdk概念基础/">DPDK基础概念</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/25/Makefile/">Makefile</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Deque/">Deque</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/文件路径的写法/">文件路径的写法</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/C++学习笔记——运算符重载/">C++学习笔记—运算符重载</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/TortoiseSVN/">TortoiseSVN</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/25/设备部署/">设备部署</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/14/网络字节序与主机字节序/">网络字节序与主机字节序</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/08/ping时延太高/">ping时延太高</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/linux基础/">linux基础</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/dpdk基础使用/">dpdk基础使用</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/Shell编程/">shell编程</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/CC++基础/">C/C++基础</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/system与dos命令/">system()函数与DOS命令</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/CC++预处理指令/">C/C++预处理指令</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/19/java学习笔记/">java学习笔记</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/25/命令行参数的实现/">命令行参数的实现</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Queue/">Queue</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/25/Linux内核模块开发/">Linux内核模块开发</a>
         </li>
     
     </ul></div>
@@ -4655,59 +3753,55 @@ find()查找普通数组12345678910111213#include&lt;iostream&gt;#include&lt;alg
     
         <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
-        <span class="sidebar-tag-name" data-tags="编程"><span class="iconfont-archer">&#xe606;</span>编程</span>
-    
         <span class="sidebar-tag-name" data-tags="C/C++"><span class="iconfont-archer">&#xe606;</span>C/C++</span>
     
-        <span class="sidebar-tag-name" data-tags="骚操作"><span class="iconfont-archer">&#xe606;</span>骚操作</span>
+        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
     
-        <span class="sidebar-tag-name" data-tags="软件使用"><span class="iconfont-archer">&#xe606;</span>软件使用</span>
+        <span class="sidebar-tag-name" data-tags="并发"><span class="iconfont-archer">&#xe606;</span>并发</span>
     
-        <span class="sidebar-tag-name" data-tags="dpdk"><span class="iconfont-archer">&#xe606;</span>dpdk</span>
+        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
     
-        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+        <span class="sidebar-tag-name" data-tags="网络协议"><span class="iconfont-archer">&#xe606;</span>网络协议</span>
     
         <span class="sidebar-tag-name" data-tags="文件"><span class="iconfont-archer">&#xe606;</span>文件</span>
     
-        <span class="sidebar-tag-name" data-tags="html"><span class="iconfont-archer">&#xe606;</span>html</span>
-    
-        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
+        <span class="sidebar-tag-name" data-tags="网络"><span class="iconfont-archer">&#xe606;</span>网络</span>
     
         <span class="sidebar-tag-name" data-tags="软件"><span class="iconfont-archer">&#xe606;</span>软件</span>
     
         <span class="sidebar-tag-name" data-tags="网页配置"><span class="iconfont-archer">&#xe606;</span>网页配置</span>
     
-        <span class="sidebar-tag-name" data-tags="网络协议"><span class="iconfont-archer">&#xe606;</span>网络协议</span>
-    
-        <span class="sidebar-tag-name" data-tags="命令"><span class="iconfont-archer">&#xe606;</span>命令</span>
-    
-        <span class="sidebar-tag-name" data-tags="STL"><span class="iconfont-archer">&#xe606;</span>STL</span>
-    
         <span class="sidebar-tag-name" data-tags="操作系统"><span class="iconfont-archer">&#xe606;</span>操作系统</span>
     
-        <span class="sidebar-tag-name" data-tags="Office"><span class="iconfont-archer">&#xe606;</span>Office</span>
+        <span class="sidebar-tag-name" data-tags="C/C+"><span class="iconfont-archer">&#xe606;</span>C/C+</span>
     
         <span class="sidebar-tag-name" data-tags="电脑"><span class="iconfont-archer">&#xe606;</span>电脑</span>
     
-        <span class="sidebar-tag-name" data-tags="网络"><span class="iconfont-archer">&#xe606;</span>网络</span>
+        <span class="sidebar-tag-name" data-tags="Office"><span class="iconfont-archer">&#xe606;</span>Office</span>
+    
+        <span class="sidebar-tag-name" data-tags="软件使用"><span class="iconfont-archer">&#xe606;</span>软件使用</span>
     
         <span class="sidebar-tag-name" data-tags="TCP/IP"><span class="iconfont-archer">&#xe606;</span>TCP/IP</span>
     
         <span class="sidebar-tag-name" data-tags="ubuntu"><span class="iconfont-archer">&#xe606;</span>ubuntu</span>
     
+        <span class="sidebar-tag-name" data-tags="编程"><span class="iconfont-archer">&#xe606;</span>编程</span>
+    
+        <span class="sidebar-tag-name" data-tags="dpdk"><span class="iconfont-archer">&#xe606;</span>dpdk</span>
+    
+        <span class="sidebar-tag-name" data-tags="java"><span class="iconfont-archer">&#xe606;</span>java</span>
+    
+        <span class="sidebar-tag-name" data-tags="html"><span class="iconfont-archer">&#xe606;</span>html</span>
+    
         <span class="sidebar-tag-name" data-tags="python"><span class="iconfont-archer">&#xe606;</span>python</span>
     
-        <span class="sidebar-tag-name" data-tags="设备调试"><span class="iconfont-archer">&#xe606;</span>设备调试</span>
+        <span class="sidebar-tag-name" data-tags="命令"><span class="iconfont-archer">&#xe606;</span>命令</span>
     
         <span class="sidebar-tag-name" data-tags="node.js"><span class="iconfont-archer">&#xe606;</span>node.js</span>
     
-        <span class="sidebar-tag-name" data-tags="smart"><span class="iconfont-archer">&#xe606;</span>smart</span>
-    
-        <span class="sidebar-tag-name" data-tags="json"><span class="iconfont-archer">&#xe606;</span>json</span>
-    
         <span class="sidebar-tag-name" data-tags="模块与包"><span class="iconfont-archer">&#xe606;</span>模块与包</span>
     
-        <span class="sidebar-tag-name" data-tags="英语"><span class="iconfont-archer">&#xe606;</span>英语</span>
+        <span class="sidebar-tag-name" data-tags="设备调试"><span class="iconfont-archer">&#xe606;</span>设备调试</span>
     
         <span class="sidebar-tag-name" data-tags="数据分析"><span class="iconfont-archer">&#xe606;</span>数据分析</span>
     
@@ -4715,35 +3809,33 @@ find()查找普通数组12345678910111213#include&lt;iostream&gt;#include&lt;alg
     
         <span class="sidebar-tag-name" data-tags="模拟"><span class="iconfont-archer">&#xe606;</span>模拟</span>
     
-        <span class="sidebar-tag-name" data-tags="磁盘"><span class="iconfont-archer">&#xe606;</span>磁盘</span>
+        <span class="sidebar-tag-name" data-tags="英语"><span class="iconfont-archer">&#xe606;</span>英语</span>
+    
+        <span class="sidebar-tag-name" data-tags="smart"><span class="iconfont-archer">&#xe606;</span>smart</span>
     
         <span class="sidebar-tag-name" data-tags="前端"><span class="iconfont-archer">&#xe606;</span>前端</span>
     
-        <span class="sidebar-tag-name" data-tags="指针"><span class="iconfont-archer">&#xe606;</span>指针</span>
+        <span class="sidebar-tag-name" data-tags="windows"><span class="iconfont-archer">&#xe606;</span>windows</span>
     
-        <span class="sidebar-tag-name" data-tags="计算机组成原理"><span class="iconfont-archer">&#xe606;</span>计算机组成原理</span>
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
         <span class="sidebar-tag-name" data-tags="内存"><span class="iconfont-archer">&#xe606;</span>内存</span>
     
+        <span class="sidebar-tag-name" data-tags="磁盘"><span class="iconfont-archer">&#xe606;</span>磁盘</span>
+    
+        <span class="sidebar-tag-name" data-tags="测试"><span class="iconfont-archer">&#xe606;</span>测试</span>
+    
         <span class="sidebar-tag-name" data-tags="硬件"><span class="iconfont-archer">&#xe606;</span>硬件</span>
     
-        <span class="sidebar-tag-name" data-tags="软件开发"><span class="iconfont-archer">&#xe606;</span>软件开发</span>
-    
-        <span class="sidebar-tag-name" data-tags="XShell"><span class="iconfont-archer">&#xe606;</span>XShell</span>
+        <span class="sidebar-tag-name" data-tags="计算机组成原理"><span class="iconfont-archer">&#xe606;</span>计算机组成原理</span>
     
         <span class="sidebar-tag-name" data-tags="算法"><span class="iconfont-archer">&#xe606;</span>算法</span>
+    
+        <span class="sidebar-tag-name" data-tags="指针"><span class="iconfont-archer">&#xe606;</span>指针</span>
     
         <span class="sidebar-tag-name" data-tags="Shell"><span class="iconfont-archer">&#xe606;</span>Shell</span>
     
         <span class="sidebar-tag-name" data-tags="文学"><span class="iconfont-archer">&#xe606;</span>文学</span>
-    
-        <span class="sidebar-tag-name" data-tags="并发"><span class="iconfont-archer">&#xe606;</span>并发</span>
-    
-        <span class="sidebar-tag-name" data-tags="测试"><span class="iconfont-archer">&#xe606;</span>测试</span>
-    
-        <span class="sidebar-tag-name" data-tags="java"><span class="iconfont-archer">&#xe606;</span>java</span>
-    
-        <span class="sidebar-tag-name" data-tags="windows"><span class="iconfont-archer">&#xe606;</span>windows</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
