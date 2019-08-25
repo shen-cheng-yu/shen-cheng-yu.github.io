@@ -22,7 +22,7 @@
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>限流算法 · 云想衣裳花想容，春风拂槛露华浓</title>
+    <title>Linux内核模块开发 · 云想衣裳花想容，春风拂槛露华浓</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/">xtncsg&#39;s Studio.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">限流算法</a>
+                <a href="#" class="post-name">Linux内核模块开发</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            限流算法
+            Linux内核模块开发
             <!-- 404 -->
             
         </h1>
@@ -266,20 +266,18 @@ height:50vh;
                 
                     <div class="post-intro-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="算法">算法</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="并发">并发</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Linux">Linux</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">1.5k</span>阅读时长: <span class="post-count reading-time">5 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1.1k</span>阅读时长: <span class="post-count reading-time">4 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/07/17</span>
+                    <span class="post-intro-time">2019/08/25</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -403,27 +401,25 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="高并发的处理"><a href="#高并发的处理" class="headerlink" title="高并发的处理"></a>高并发的处理</h1><p>比如这里的很多主机连接设备，请求量很高，或者设备转发的数据量很大，会导致设备负载很高，当超过设备承载极限的时候，设备可能会崩溃。为了应用服务的高可用，一个常用的办法是对大流量的请求（秒杀/抢购）进行限流，拦截掉大部分请求，只允许一部分请求真正进入后端服务器，这样就可以防止大量请求造成系统压力过大导致的系统崩溃，从而保护服务正常可用。</p>
-<p>处理高并发的三板斧: 缓存、降级和限流！</p>
-<ol>
-<li>缓存的目的是提升系统访问速度和增大系统能处理的容量。</li>
-<li>降级是当服务出问题或者影响到核心流程的性能时，需要暂时屏蔽掉一些服务，待高峰或者问题解决后再打开。高峰时或者cpu、内存占用较高时，减少日志记录、主动拒绝一些请求等等。</li>
-<li>限流的目的是通过对并发访问/请求进行限制或者一个时间窗口内的请求进行限速来保护系统，一旦达到限制速率则可以拒绝服务或者排队等待。</li>
-</ol>
-<p>设备是在数据传输的过程中，起着中转的作用，数据从设备的入口流入，再从出口流出。可能有多个入口或者出口。这里的限速指的是全局的限速，就是在单位时间内，这些口流入和流出的数据总和不能超过一个阈值。</p>
-<p>一个时间窗口内的请求即是指一个时间单位，比如1min之内的请求数量做一个限制。</p>
-<h1 id="限流算法"><a href="#限流算法" class="headerlink" title="限流算法"></a>限流算法</h1><p>令牌桶(Token Bucket)、漏桶(leaky bucket)和计数器算法是最常用的三种限流的算法。</p>
-<h2 id="计数器"><a href="#计数器" class="headerlink" title="计数器"></a>计数器</h2><p>计数器限流主要用来限制<strong>总并发数</strong>，比如数据库连接池大小、线程池大小、程序访问并发数等都是使用计数器算法。统计当前正在并发执行的次数，如果超过域值就简单粗暴的直接响应给用户，说明系统繁忙，请稍后再试或其它信息。<br>弊端是简单粗暴超过域值就拒绝请求，可能只是瞬时的请求量高，也会拒绝请求。当请求量降下来之后，需要用户手动再次建立连接。</p>
-<h2 id="令牌桶"><a href="#令牌桶" class="headerlink" title="令牌桶"></a>令牌桶</h2><p>令牌桶算法是网络流量整形（Traffic Shaping）和速率限制（Rate Limiting）中最常使用的一种算法。先有一个木桶，系统按照固定速度，往桶里加入Token，如果桶已经满了就不再添加。当有请求到来时，会各自拿走一个Token，取到Token 才能继续进行请求处理，没有Token 就拒绝服务。这里如果一段时间没有请求时，桶内就会积累一些Token，下次一旦有突发流量，只要Token 足够，也能一次处理，所以令牌桶算法的特点是允许突发流量。</p>
-<p>假如令牌则按照每秒5 个的速度放入令牌桶，桶中最多存放20 个令牌，那系统可以支持两种类型的请求流量，一种是允许持续的每秒处理5 个请求，第二种是每隔4 秒，等桶中20 个令牌攒满后，就可以处理一次有20 个请求的突发情况。</p>
-<h2 id="漏桶"><a href="#漏桶" class="headerlink" title="漏桶"></a>漏桶</h2><p>想象有一个木桶，新请求就像水滴一样，不断地滴进来，水滴进来的速度是不确定的，有时会快一点，有时会慢一点，同时桶底下有个洞，可以按照固定的速度把水漏走，如果水进来的速度比漏走的快，桶就会满了，桶满了水就会漫出来，对应的就是拒绝请求。<br>请求就像水滴一样以不固定的速度流进来，但是系统处理请求的速度是固定的，水桶就像一个先进先出的请求缓冲队列，当请求进来的速度比处理请求的速度快，缓冲队列就会渐渐的满，队列满时就会拒绝新的请求进来。</p>
-<p>漏桶算法的主要特点是可以平滑网络上的突发流量，请求可以被整形成稳定的流量。<br><a href="http://www.dczou.com/viemall/852.html" target="_blank" rel="noopener">聊聊互联网限流方案</a></p>
-<p>令牌桶限制的是单位时间内的平均流入速率，令牌流入的速度是固定的。但是允许突发请求。<br>漏桶限制的是流出速度，也就是处理速度，碰到突发请求，也是按固定速率处理这些请求，平滑突发流入速率。<br><a href="https://www.cnblogs.com/xianzhedeyu/p/5868024.html" target="_blank" rel="noopener">服务器端限流保护</a></p>
-<h1 id="限流应用"><a href="#限流应用" class="headerlink" title="限流应用"></a>限流应用</h1><p>这里的限流指的是限制视频核心安全网关设备的转发流量以及连接数量。</p>
-<p>限制的是收包的流量。设备收到数据包之后，将其转发出去。一般这种转发是有冗余的，即转发出去的流量没有收到的多。</p>
-<p>一台设备有很多个核，一个核就是指一个CPU。其中有一个核是用来收发数据包的，其他核是用来做具体的业务模块的。收发数据的核收到数据包之后，将其转发给别的核。这里要注意负载均衡。不能让有的核频繁接收，而有的核却一直在空闲着。</p>
-<p>比如这台设备出厂是4000 -O，就是说这台设备最多能连接4000台摄像头。如果每个摄像头的码流是4M，就是活总的流量就是16G。</p>
-<p>限制连接数量的时候，那些已经连接上，有视频传输的就不限制了。还没连接上的就不让连接了。</p>
+        <p><font color="red">2019-08-24</font></p>
+<h1 id="proc虚拟文件系统"><a href="#proc虚拟文件系统" class="headerlink" title="/proc虚拟文件系统"></a>/proc虚拟文件系统</h1><p><code>/proc</code>文件系统是<code>Linux</code>内核的一个虚拟文件系统，它只有在内核启动以后，工作起来的时候才会被动态地创建。</p>
+<p><code>/proc</code>下面的内容会随着内核的配置和工作的状态变化，比如<code>/proc/meminfo</code>这个文件，里面的内容是内存信息，不同的机器自然不同。<code>/proc</code>目录下面用数字命名的子目录，对应当前系统正在运行的进程，而子目录里面的内容就是对应进程的信息。<code>ps -ef</code>得到的进程，他们的<code>pid</code>都对应一个<code>/proc</code>下面的文件。许多传统的程序仍然使用<code>/proc</code>文件系统作为内核与用户程序的接口。</p>
+<h1 id="操作proc文件"><a href="#操作proc文件" class="headerlink" title="操作proc文件"></a>操作proc文件</h1><h2 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h2><p>参数表示目录名字与父文件夹的指针。<br>如果是在/proc目录下创建文件夹，parent为NULL。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//函数原型：</span></span><br><span class="line"><span class="function">struct proc_dir_entry *<span class="title">proc_mkdir</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *name, struct proc_dir_entry *parent)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">proc_dir_entry</span> *<span class="title">mytest_dir</span> = <span class="title">proc_mkdir</span>("<span class="title">mytest</span>", <span class="title">NULL</span>);</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">函数原型：</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">inline</span> struct proc_dir_entry *<span class="title">proc_create</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *name, <span class="keyword">mode_t</span> mode,struct proc_dir_entry *parent, <span class="keyword">const</span> struct file_operations *proc_fops)</span></span>;</span><br><span class="line">  </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">proc_dir_entry</span> *<span class="title">mytest_file</span> = <span class="title">proc_create</span>("<span class="title">mytest</span>", 0<span class="title">x0644</span>, <span class="title">mytest_dir</span>, &amp;<span class="title">mytest_proc_fops</span>);</span></span><br></pre></td></tr></table></figure>
+<p>参数分别表示文件名，文件访问权限，父目录名，文件操作函数结构体。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">file_operations</span> <span class="title">mytest_proc_fops</span> = &#123;</span></span><br><span class="line"> .owner = THIS_MODULE,</span><br><span class="line"> .open = hello_proc_open,</span><br><span class="line"> .read = seq_read,</span><br><span class="line"> .write = mytest_proc_write,</span><br><span class="line"> .llseek = seq_lseek,</span><br><span class="line"> .release = single_release,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">函数原型：</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">remove_proc_entry</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *name, struct proc_dir_entry *parent)</span></span>;</span><br><span class="line"></span><br><span class="line">remove_proc_entry(<span class="string">"mytest"</span> mytest_dir);  <span class="comment">//删除文件</span></span><br><span class="line"></span><br><span class="line">remove_proc_entry(<span class="string">"mytest"</span>, <span class="literal">NULL</span>);       <span class="comment">//删除目录</span></span><br></pre></td></tr></table></figure>
+<h1 id="内核模块开发"><a href="#内核模块开发" class="headerlink" title="内核模块开发"></a>内核模块开发</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//hello.c</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//前三个标配，第四个是操作proc文件的函数所在的头文件</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/module.h&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/init.h&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/version.h&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/proc_fs.h&gt;  </span></span></span><br><span class="line"></span><br><span class="line">MODULE_LICENSE(<span class="string">"GPL"</span>);  <span class="comment">//添加许可说明</span></span><br><span class="line">MODULE_AUTHOR(<span class="string">""</span>); </span><br><span class="line">MODULE_DESCRIPTION(<span class="string">""</span>); </span><br><span class="line">MODULE_VERION(<span class="string">""</span>); </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hello_init</span><span class="params">(<span class="keyword">void</span>)</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">proc_dir_entry</span>* <span class="title">hello_dir</span> = <span class="title">proc_mkdir</span>("<span class="title">hello</span>", <span class="title">NULL</span>);</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">NULL</span>==hello_dir)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="comment">//内核模块不能使用printf()</span></span><br><span class="line">        printk(<span class="string">"category created failed\n"</span>);  </span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">	</span><br><span class="line">	<span class="comment">//定义文件操作函数结构体</span></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">file_operations</span> <span class="title">hello_fops</span> = &#123;</span></span><br><span class="line">		 .owner = THIS_MODULE,</span><br><span class="line">		 .open = hello_proc_open,</span><br><span class="line">		 .read = seq_read,</span><br><span class="line">		 .write = mytest_proc_write,</span><br><span class="line">		 .llseek = seq_lseek,</span><br><span class="line">		 .release = single_release,</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">proc_dir_entry</span>* <span class="title">hello_file</span> = <span class="title">proc_create</span>("<span class="title">hello</span>.<span class="title">cpp</span>", 0<span class="title">x0644</span>, <span class="title">hello_dir</span>, &amp;<span class="title">hello_fops</span>);</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">NULL</span> == hello_file)  </span><br><span class="line">    &#123;  </span><br><span class="line">        printk(<span class="string">"file created failed\n"</span>);  </span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;   </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">hello_exit</span><span class="params">(<span class="keyword">void</span>)</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    remove_proc_entry(<span class="string">"hello.cpp"</span>, hello_dir);  </span><br><span class="line">    remove_proc_entry(<span class="string">"hello"</span>, <span class="literal">NULL</span>);  </span><br><span class="line">    printk(<span class="string">"All Proc Entry Removed!\n"</span>);  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line">module_init(hello_init);  <span class="comment">//定义入口及出口函数</span></span><br><span class="line">module_exit(hello_exit);</span><br></pre></td></tr></table></figure>
+<h1 id="内核模块的编译与加载"><a href="#内核模块的编译与加载" class="headerlink" title="内核模块的编译与加载"></a>内核模块的编译与加载</h1><h2 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">obj-m:=hello.o  <span class="comment">//显式地将hello.o编译成hello.ko,而hello.o则由make的自动推导功能编译hello.c文件生成。</span></span><br><span class="line"> </span><br><span class="line">all:  </span><br><span class="line">    make -C /usr/src/kernels/`uname -r` M=`pwd` modules  </span><br><span class="line"> </span><br><span class="line">clean:  </span><br><span class="line">    make -C /usr/src/kernels/`uname -r` M=`pwd` clean</span><br></pre></td></tr></table></figure>
+<p><code>obj-m</code>表示编译生成可加载模块</p>
+<h2 id="伪目标"><a href="#伪目标" class="headerlink" title="伪目标"></a>伪目标</h2><p><code>all，clean</code>是<code>makefile</code>中的伪目标，伪目标并不是一个真正的编译目标，它代表着一系列想要执行的命令集合，通常一个<code>makefile</code>会对应多个操作，例如编译，清除编译结果，安装，就可以使用这些伪目标来进行标记。在执行时就可以键入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make clean</span><br><span class="line">make install</span><br></pre></td></tr></table></figure></p>
+<p>等指令来完成相应的指令操作，当<code>make</code>后不带参数时，默认执行第一个伪目标的操作。</p>
+<h2 id="makefile语句"><a href="#makefile语句" class="headerlink" title="makefile语句"></a>makefile语句</h2><p><code>make -C $KDIR M=$PWD [target]</code><br><code>-C</code>选项：此选项指定内核源码的位置，<code>make</code>在编译时将会进入内核源码目录，执行编译，编译完成时返回。<br><code>M=$(PWD)</code>：需要编译的模块源文件地址。<br><code>[target]</code>：可选选项。默认行为是将源文件编译并生成内核模块，即<code>module(s)</code><br><code>clean</code>：卸载源文件目录下编译过程中生成的文件</p>
+<h2 id="安装内核开发包"><a href="#安装内核开发包" class="headerlink" title="安装内核开发包"></a>安装内核开发包</h2><p><code>/usr/src/kernels/</code>，如果这个目录是空的，就说明没有安装内核开发包。<br>执行以下命令安装：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum install kernel-devel </span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /lib/modules/3.10.0-514.el7.x86_64/            //示例</span><br><span class="line"></span><br><span class="line">rm -f build</span><br><span class="line"></span><br><span class="line">ln -s /usr/src/kernels/3.10.0-862.14.4.el7.x86_64/ ./build</span><br></pre></td></tr></table></figure></p>
+<h2 id="查看内核版本"><a href="#查看内核版本" class="headerlink" title="查看内核版本"></a>查看内核版本</h2><p><code>uname -r</code>指令得到<code>Linux</code>系统的内核版本号<br><code>uname -a</code>也可</p>
+<h2 id="加载内核模块"><a href="#加载内核模块" class="headerlink" title="加载内核模块"></a>加载内核模块</h2><p><code>make</code>命令之后得到<code>hello.ko</code>文件</p>
+<p><code>.ko</code>文件是<code>kernel object</code>文件（内核模块），该文件的意义是把内核的一些功能移动到内核外边， 需要的时候插入内核，不需要时卸载。这样可以缩小内核体积，同时使用方便。</p>
+<p>执行<code>insmod hello.ko</code>将模块加载进内核<br><code>lcmod</code>查看内核中有哪些模块<br><code>rmmod hello</code>从内核中移除模块</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="https://blog.51cto.com/freshpassport/600735" target="_blank" rel="noopener">使用/proc文件系统和内核打交道(1)-初步建立关系</a><br><a href="https://www.cnblogs.com/FarmPick/p/6382634.html" target="_blank" rel="noopener">proc_mkdir与proc_create</a><br><a href>ddi_hook.c文件的Makefile写法</a><br><a href="https://www.cnblogs.com/downey-blog/p/10486907.html" target="_blank" rel="noopener">linux内核可加载模块的makefile</a><br><a href="https://blog.csdn.net/qq_38880380/article/details/79227760" target="_blank" rel="noopener">Linux下编写和加载 .ko 文件（驱动模块文件）</a></p>
 
     </article>
     <!-- license  -->
@@ -433,16 +429,16 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href="/2019/07/17/Linux进程管理/" title="Linux进程管理">
-                    <div class="nextTitle">Linux进程管理</div>
+                <a href="/2019/08/25/产品防护培训/" title="产品防护培训">
+                    <div class="nextTitle">产品防护培训</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2019/07/17/问题集锦/" title="公司问题集锦">
-                    <div class="prevTitle">公司问题集锦</div>
+                <a href="/2019/08/25/命令行参数的实现/" title="命令行参数的实现">
+                    <div class="prevTitle">命令行参数的实现</div>
                 </a>
             
         </li>
@@ -568,7 +564,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#高并发的处理"><span class="toc-number">1.</span> <span class="toc-text">高并发的处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#限流算法"><span class="toc-number">2.</span> <span class="toc-text">限流算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#计数器"><span class="toc-number">2.1.</span> <span class="toc-text">计数器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#令牌桶"><span class="toc-number">2.2.</span> <span class="toc-text">令牌桶</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#漏桶"><span class="toc-number">2.3.</span> <span class="toc-text">漏桶</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#限流应用"><span class="toc-number">3.</span> <span class="toc-text">限流应用</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#proc虚拟文件系统"><span class="toc-number">1.</span> <span class="toc-text">/proc虚拟文件系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#操作proc文件"><span class="toc-number">2.</span> <span class="toc-text">操作proc文件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建目录"><span class="toc-number">2.1.</span> <span class="toc-text">创建目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建文件"><span class="toc-number">2.2.</span> <span class="toc-text">创建文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除文件"><span class="toc-number">2.3.</span> <span class="toc-text">删除文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#内核模块开发"><span class="toc-number">3.</span> <span class="toc-text">内核模块开发</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#内核模块的编译与加载"><span class="toc-number">4.</span> <span class="toc-text">内核模块的编译与加载</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Makefile"><span class="toc-number">4.1.</span> <span class="toc-text">Makefile</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#伪目标"><span class="toc-number">4.2.</span> <span class="toc-text">伪目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#makefile语句"><span class="toc-number">4.3.</span> <span class="toc-text">makefile语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装内核开发包"><span class="toc-number">4.4.</span> <span class="toc-text">安装内核开发包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看内核版本"><span class="toc-number">4.5.</span> <span class="toc-text">查看内核版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加载内核模块"><span class="toc-number">4.6.</span> <span class="toc-text">加载内核模块</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">5.</span> <span class="toc-text">参考文献</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -3184,9 +3180,222 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 113
+        Total : 116
         </div>
         <!-- search  -->
         
@@ -3252,17 +3461,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/限流之数量控制/">限流之数量控制</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/编译机/">编译机</a>
+            <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/哈希链表/">哈希链表</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/DPDK内存管理/">DPDK内存管理</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/06</span><a class="archive-post-title" href="/2019/08/06/编译机/">编译机</a>
         </li>
     
     
@@ -3292,17 +3501,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/文件/">文件</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/网络基础/">网络基础</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/Linux文件权限/">Linux文件权限</a>
+            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/文件/">文件基础</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/28</span><a class="archive-post-title" href="/2019/07/28/Linux文件/">Linux文件</a>
         </li>
     
     
@@ -3337,17 +3546,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/网络协议/">网络协议</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/Markdown/">Markdown</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/我的电脑/">我的电脑</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/24</span><a class="archive-post-title" href="/2019/07/24/网络协议/">网络协议</a>
         </li>
     
     
@@ -3377,7 +3586,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/23</span><a class="archive-post-title" href="/2019/07/23/json/">Json</a>
+            <span class="archive-post-date">07/23</span><a class="archive-post-title" href="/2019/07/23/json/">使用C语言解析json数据</a>
         </li>
     
     
@@ -3402,7 +3611,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/限流处理/">限流算法</a>
+            <span class="archive-post-date">07/17</span><a class="archive-post-title" href="/2019/07/17/限流算法/">限流算法</a>
         </li>
     
     
@@ -3506,7 +3715,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/设备部署/">设备部署</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/TortoiseSVN/">TortoiseSVN</a>
         </li>
     
     
@@ -3539,7 +3748,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/专业英语/">专业英语</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/入职软件安装/">入职软件安装</a>
         </li>
     
     
@@ -3553,12 +3762,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/头文件与库文件相关/">头文件与库文件相关</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">C++学习笔记—多态和虚函数</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/指针/">指针</a>
         </li>
     
     
@@ -3572,7 +3776,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/static与extern/">static与extern</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/28/Shell编程进阶/">shell编程进阶</a>
         </li>
     
     
@@ -3586,7 +3790,21 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——从C到C++/">C++学习笔记—从C到C++</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/文件后缀相关/">文件后缀相关</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Queue/">Queue</a>
         </li>
     
     
@@ -3614,12 +3832,35 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/文件后缀相关/">文件后缀相关</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/磁盘与磁盘格式/">磁盘与磁盘格式</a>
         </li>
     
     
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/指针/">指针</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/文件路径的写法/">文件路径的写法</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/头文件与库文件相关/">头文件与库文件相关</a>
         </li>
     
     
@@ -3633,130 +3874,31 @@ top:50vh;
         </li>
     
     
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/磁盘与磁盘格式/">磁盘与磁盘格式</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/09/挂载与磁盘格式/">挂载与磁盘格式</a>
         </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/程序运行时间/">程序运行时间</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/HTML学习笔记/">HTML学习笔记</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/C++学习笔记——类和对象提高/">C++学习笔记—类和对象提高</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/VS 2012/">VS 2012</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/dpdk概念基础/">DPDK基础概念</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Deque/">Deque</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/计算机组成原理/">计算机组成原理</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——类和对象基础/">C++学习笔记—类和对象基础</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/Source Insight/">Source Insight</a>
         </li>
     
     
@@ -3812,7 +3954,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/system与dos命令/">system()函数与DOS命令</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/VS 2012/">VS 2012</a>
         </li>
     
     
@@ -3840,7 +3982,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Queue/">Queue</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/09/top命令/">top命令</a>
         </li>
     
     
@@ -3854,7 +3996,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/FTP文件传输协议/">FTP文件传输协议</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/04/Office学习笔记/">Office学习笔记</a>
         </li>
     
     
@@ -3868,7 +4010,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/smart/">Smart</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/10/视频核心网关设备调试/">视频核心网关设备调试</a>
         </li>
     
     
@@ -3896,7 +4038,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/文件路径的写法/">文件路径的写法</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/Source Insight/">Source Insight</a>
         </li>
     
     
@@ -3919,12 +4061,115 @@ top:50vh;
     
         </ul>
     
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/专业英语/">专业英语</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/05</span><a class="archive-post-title" href="/2019/06/05/C++学习笔记——继承和派生/">C++学习笔记—继承和派生</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/HTML学习笔记/">HTML学习笔记</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/21/python词频统计/">Python词频统计</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2019/06/16/C++学习笔记——类和对象提高/">C++学习笔记—类和对象提高</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——从C到C++/">C++学习笔记—从C到C++</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/Deque/">Deque</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——多态和虚函数/">C++学习笔记—多态和虚函数</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/FTP文件传输协议/">FTP文件传输协议</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/08/ping时延太高/">ping时延太高</a>
         </li>
     
     
@@ -3952,35 +4197,35 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/28/Shell编程进阶/">shell编程进阶</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/16/dpdk网卡收包流程/">DPDK网卡收包流程</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/dpdk编程基础/">dpdk基础编程</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/19/java学习笔记/">java学习笔记</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/计算机组成原理/">计算机组成原理</a>
         </li>
     
     
@@ -4008,7 +4253,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/17/TortoiseSVN/">TortoiseSVN</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/12/设备部署/">设备部署</a>
         </li>
     
     
@@ -4022,7 +4267,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/09/top命令/">top命令</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/smart/">Smart</a>
         </li>
     
     
@@ -4036,7 +4281,21 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/09/挂载与磁盘格式/">挂载与磁盘格式</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/dpdk基础/">dpdk基础</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/08</span><a class="archive-post-title" href="/2019/06/08/C++学习笔记——类和对象基础/">C++学习笔记—类和对象基础</a>
         </li>
     
     
@@ -4050,7 +4309,35 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/String/">String</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/Chrome离线插件安装/">Chrome离线插件安装</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/05</span><a class="archive-post-title" href="/2019/06/05/C++学习笔记——继承和派生/">C++学习笔记—继承和派生</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/23/dpdk概念基础/">DPDK基础概念</a>
         </li>
     
     
@@ -4092,7 +4379,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/19/java学习笔记/">java学习笔记</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/25/产品防护培训/">产品防护培训</a>
         </li>
     
     
@@ -4106,7 +4393,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/17/Chrome离线插件安装/">Chrome离线插件安装</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/25/命令行参数的实现/">命令行参数的实现</a>
         </li>
     
     
@@ -4120,7 +4407,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/dpdk基础/">dpdk基础</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/25/Linux内核模块开发/">Linux内核模块开发</a>
         </li>
     
     
@@ -4134,7 +4421,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/08/ping时延太高/">ping时延太高</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/String/">String</a>
         </li>
     
     
@@ -4148,7 +4435,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/06/入职软件安装/">入职软件安装</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/16/dpdk网卡收包流程/">DPDK网卡收包流程</a>
         </li>
     
     
@@ -4162,7 +4449,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/10/视频核心网关设备调试/">视频核心网关设备调试</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/07/19/static与extern/">static与extern</a>
         </li>
     
     
@@ -4176,7 +4463,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/06/21/python词频统计/">Python词频统计</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2019/08/07/system与dos命令/">system()函数与DOS命令</a>
         </li>
     
     </ul></div>
